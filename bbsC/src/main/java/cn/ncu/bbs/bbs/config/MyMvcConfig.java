@@ -29,8 +29,11 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
                 registry.addViewController("/meetlist.html").setViewName("mlist");
                 registry.addViewController("/infomet.html").setViewName("infomeeting");
                 registry.addViewController("/mpermt.html").setViewName("meetingpermt");
+                registry.addViewController("/article.html").setViewName("article");
+                registry.addViewController("/qustion.html").setViewName("qustion");
             }
 
+            //拦截器
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
 //                super.addInterceptors(registry);

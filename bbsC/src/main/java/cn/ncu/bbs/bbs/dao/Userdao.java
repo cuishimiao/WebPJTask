@@ -53,8 +53,8 @@ public interface Userdao {
      private String describe;   //个人描述
      private String github;   //github账号
      */
-    @Update("UPDATE usertable SET username = #{username}, job = #{job}, sex = #{sex}, phone = #{phone}, describe = #{describe}, github = #{github} WHERE uid = #{uid}")
-    void updateUser(@Param("username") String username, @Param("job") String job, @Param("sex") String sex, @Param("phone") String phone,
-                    @Param("describe") String describe, @Param("github") String github,
+    @Update("UPDATE usertable SET username = #{username}, describe = #{describe}, sex = #{sex},job = #{job}, phone = #{phone},  github = #{github} WHERE uid = #{uid}")
+    void updateUser(@Param("username") String username, @Param("describe") String describe,@Param("sex") String sex, @Param("job") String job,  @Param("phone") String phone,
+                    @Param("github") String github,
                     @Param("uid") Integer uid);
 }
