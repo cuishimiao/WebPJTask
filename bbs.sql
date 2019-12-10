@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/12/9 22:24:14                           */
+/* Created on:     2019/12/10 23:04:30                          */
 /*==============================================================*/
 
 
@@ -33,9 +33,9 @@ charset = UTF8;
 create table good_article
 (
    id                   int not null auto_increment,
-   article_id           int,
+   article_id           int not null,
    primary key (id)
-)charset = UTF8;;
+);
 
 /*==============================================================*/
 /* Table: post_article                                          */
@@ -43,11 +43,11 @@ create table good_article
 create table post_article
 (
    article_id           int not null auto_increment,
-   author_id            varchar(20) not null,
-   title                varchar(20),
-   content              text,
-   create_time          timestamp,
-   category_id          int,
+   author_id            int not null,
+   title                varchar(20) not null,
+   content              text not null,
+   create_time          timestamp not null,
+   category_id          int not null,
    article_top          int,
    primary key (article_id)
 )
@@ -58,10 +58,10 @@ charset = UTF8;
 /*==============================================================*/
 create table reply_article
 (
-   article_id           numeric(10,0),
-   responder_id         numeric(10,0),
-   context              text,
-   reply_time           timestamp,
+   article_id           int not null,
+   responder_id         int not null,
+   context              text not null,
+   reply_time           timestamp not null,
    id                   int not null auto_increment,
    primary key (id)
 )
@@ -73,9 +73,9 @@ charset = UTF8;
 create table request_article
 (
    id                   int not null auto_increment,
-   user_id              numeric(10,0),
-   content              text,
-   create_time          timestamp,
+   user_id              int,
+   content              text not null,
+   create_time          timestamp not null,
    primary key (id)
 )
 charset = UTF8;
