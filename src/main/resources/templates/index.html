@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>BBS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skin-blue.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<body class="skin-blue layout-top-nav" style="transform: none; height: auto; min-height: 100%;">
+<div class="wrapper" style="transform: none; height: auto; min-height: 100%;">
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">
+                        <img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">
+                    </a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/" class="active">首页</a></li>
+                        <li><a href="#">问答</a></li>
+                        <li><a href="/main">我的主页</a></li>
+                    </ul>
+
+                    <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">写文章 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">提问</a></li>
+                    </ul>
+                </div>
+
+                <div class="navbar-custom-menu" id="user-nav-wrapper">
+                    <ul class="nav navbar-nav" id="user-nav">
+                        <li><a data-toggle="modal" data-target="#login">登录 </a></li>
+                        <li><a href="#"  id="eroll">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-wrapper" style="transform: none; min-height: 49px;">
+        <div class="container" style="transform: none;">
+            <section class="content" style="transform: none;">
+                <div class="row" style="transform: none;">
+                    <div class="col-md-9">
+                        <div id="carousel-home-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-home-generic" data-slide-to="0" class=""></li>
+                                <li data-target="#carousel-home-generic" data-slide-to="1" class="active"></li>
+                                <li data-target="#carousel-home-generic" data-slide-to="2" class=""></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active left">
+                                    <a href="#" target="_blank">
+                                        <img src="/images/lb1.jpg" width="760" height="300" alt="欢迎加入 CoderGroup">
+                                        <div class="carousel-caption">欢迎加入 CoderGroup</div>
+                                    </a>
+                                </div>
+                                <div class="item next left">
+                                    <a href="#" target="_blank">
+                                        <img src="/images/lb2.jpg" width="760" height="300" alt="技术分享，疑难求助，简单而方便">
+                                        <div class="carousel-caption">技术分享，疑难求助，简单而方便</div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="#" target="_blank">
+                                        <img src="/images/lb3.jpg" width="760" height="300" alt="程序人生，义无反顾">
+                                        <div class="carousel-caption">程序人生，义无反顾</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-home-generic" data-slide="prev">
+                                <span class="fa fa-angle-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-home-generic" data-slide="next">
+                                <span class="fa fa-angle-right"></span>
+                            </a>
+                        </div>
+
+
+                        <div id="article-box">
+                            <div id="article-box-replace">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">推荐文章</h3>
+                                    </div>
+                                    <div class="box-body" id="box-body" style="padding: 0 10px;">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="sidebar" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+                    <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">公告栏</h3>
+                            </div>
+                            <div class="box-body" style="padding: 0 10px;">
+                                <ul class="profile-mine__content mb0">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/bulletins/sell" target="_blank">
+                                                    <span class="text-maroon">[置顶]</span>本站源码出售
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/bulletins/uprotocol" target="_blank">
+                                                    用户协议
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/bulletins/reputation-explanation" target="_blank">
+                                                    用户积分(声望)说明
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li style="border-bottom: 0;">
+                                        <a href="/bulletins" target="_blank">查看更多</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">热门标签</h3>
+                            </div>
+                            <div class="box-body" style="padding: 0 10px;">
+                                <div class="row">
+                                    <div class="col-md-12" style="margin: 5px 0;">
+                                    <a class="btn btn-default btn-xs" href="/article?keywords=面试" target="_blank" style="margin: 3px;">
+                                            面试
+                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=源码" target="_blank" style="margin: 3px;">
+                                        源码
+                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=Java" target="_blank" style="margin: 3px;">
+                                        Java
+                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=算法" target="_blank" style="margin: 3px;">
+                                        算法
+                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=数据结构" target="_blank" style="margin: 3px;">
+                                        数据结构
+                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=计算机网络" target="_blank" style="margin: 3px;">
+                                        计算机网络
+                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=操作系统" target="_blank" style="margin: 3px;">
+                                        操作系统
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">最新问答</h3>
+                            </div>
+                            <div class="box-body" style="padding: 0 10px;">
+                                <ul class="profile-mine__content mb0">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/questions/11507" target="_blank">
+                                                    很厉害的网站
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/questions/11506" target="_blank">
+                                                    SG飞艇稳赢计划群822444
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/questions/11505" target="_blank">
+                                                    极速赛车七码雪球计划交流群822444
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/questions/11504" target="_blank">
+                                                    澳洲幸运10精准计划交流群822444
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 profile-mine__content--title-warp">
+                                                <a class="profile-mine__content--title" href="/questions/11503" target="_blank">
+                                                    SG飞艇稳定五码计划群822444
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li style="border-bottom: 0;">
+                                        <a href="/questions" target="_blank">查看更多</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">声望榜</h3>
+
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding">
+                                <div class="ranking-card-base false">
+                                    <div class="ranking-list-base true">
+                                        <div class="ranking-list">
+                                            <div class="ranking-list-item">
+                                                <div class="list-inner">
+                                                    <div class="ranking">1</div>
+                                                    <div class="avatar">
+                                                        <a href="/yu7788" target="_blank">
+                                                            <img src="http://www.gravatar.com/avatar/f3f150bee831811e25c8ed677c37c76c?s=128&amp;d=identicon&amp;r=PG" style="height: 30px; width: 30px;" class="img-circle"></a>
+                                                    </div>
+                                                    <div class="name-info">
+                                                        <div class="name">yu7788</div>
+                                                        <div class="info">32115 声望</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ranking-list-item">
+                                                <div class="list-inner">
+                                                    <div class="ranking">2</div>
+                                                    <div class="avatar">
+                                                        <a href="/dx3303" target="_blank">
+                                                            <img src="http://www.gravatar.com/avatar/a7cf42c2c6084336d93895100ddc0ebb?s=128&amp;d=identicon&amp;r=PG" style="height: 30px; width: 30px;" class="img-circle"></a>
+                                                    </div>
+                                                    <div class="name-info">
+                                                        <div class="name">dx3303</div>
+                                                        <div class="info">25260 声望</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ranking-list-item hide">
+                                                <div class="list-inner">
+                                                    <div class="ranking">10</div>
+                                                    <div class="avatar">
+                                                        <a href="/115044810052" target="_blank">
+                                                            <img src="http://cdn2.codergroup.cn/uploads/2018/11/1/115044810052/1541070111410" style="height: 30px; width: 30px;" class="img-circle"></a>
+                                                    </div>
+                                                    <div class="name-info">
+                                                        <div class="name">哈哈哈哈</div>
+                                                        <div class="info">66 声望</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ranking-list-item-more">
+                                                <a href="javascript:void(0)">
+                                                    <div class="list-inner text-center">显示更多...</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">联系我们</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <strong><i class="fa fa-qq margin-r-5"></i> QQ交流群</strong>
+
+                                <p class="text-muted">
+                                    开发者交流群：<strong>590480292</strong> <br>
+                                </p>
+
+                                <hr>
+                                <strong><i class="fa fa-wechat margin-r-5"></i> 管理员微信</strong>
+
+                                <p class="text-muted">
+                                    微信号：<strong>847064370 </strong>(QQ同号) <br>
+                                    遇到问题，可以联系管理员
+                                </p>
+
+                                <hr>
+                                <strong><i class="fa fa-file-text-o margin-r-5"></i> 其他方式</strong>
+                                <p>
+                                    <a href="https://liuyanzhao.com/message.html" target="_blank">博客留言板</a>
+                                </p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div></div></div>
+                </div>
+
+            </section>
+        </div>
+        <!-- /.container -->
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="container" style="text-align: center;">
+        <strong>Copyright © 2019 <a href="http://codergroup.cn">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
+    </div>
+</footer>
+
+<div class="modal fade"id="login">
+    <div class="modal-dialog modal-sm " style="width: 350px">
+        <div class="modal-content">
+            <div class="modal-title">
+                <h4 class="center" style="font-size: 18px" >快速登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-group" action="/">
+                    <div class="form-group">
+                        <label for="">用户名</label>
+                        <input class="form-control" type="text" placeholder="用户名" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="">密码</label>
+                        <input class="form-control" type="password" placeholder="密码" id="password">
+                    </div>
+                    还没有账号?<a href="#" id="btnRegister">立即注册</a>
+                    <div id="message">
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary" id="login_btn">登录</button>
+                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
