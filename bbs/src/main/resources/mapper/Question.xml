@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ncu.edu.cn.bbs.dao.QuestionDao">
+    <select id="findAllRequest" resultType="requestArticle">
+        select * from question where uid = #{uid}
+    </select>
+    <insert id="generateRequest">
+        insert into question(uid, content, time,question_tilte) VALUES
+        (#{uid},#{content},#{time},#{question_title})
+    </insert>
+    <select id="getRequest" resultType="requestArticle">
+        select * from question where question_id = #{id}
+    </select>
+
+</mapper>
