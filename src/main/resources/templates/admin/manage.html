@@ -17,7 +17,38 @@
 </head>
 <body>
 
-<div th:insert="~{/navigation :: nav}"></div>
+<!--<div th:insert="~{/navigation :: nav}"></div>-->
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!--                <a href="/" class="navbar-brand">-->
+                <!--                    <img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
+                <!--                </a>-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/" class="active">首页</a></li>
+                    <li><a href="#">问答</a></li>
+                    <li><a href="/main">我的主页</a></li>
+                </ul>
+
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/articles_manage">文章管理 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/qustion_manage">问答管理</a></li>
+                    <li><a href="/user_manage">用户管理</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+</header>
 
 <div class="container-fluid">
     <div class="row">

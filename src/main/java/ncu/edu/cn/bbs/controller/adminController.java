@@ -25,4 +25,24 @@ public class adminController {
         return "/admin/manage";
     }
 
+    //跳转到文章管理界面
+    @RequestMapping("/articles_manage")
+    public String article_manage()
+    {
+        return "/admin/article_list";
+    }
+    //跳转到用户管理界面
+    @RequestMapping("/qustion_manage")
+    public  String question_manage()
+    {
+        return "/admin/question_list";
+    }
+
+    //跳转到用户管理界面
+    @RequestMapping("/user_manage")
+    public String user_manage()
+    {
+        return "/admin/user_list";
+    }
+
 }

@@ -4,6 +4,7 @@
     <title>发布文章 -BBS</title>
     <head th:insert="~{import :: head}"></head>
     <head th:insert="~{import :: markdown}"></head>
+
     <script src="/js/jquery.min.js"></script>
     <script>
         $(function () {
@@ -72,10 +73,24 @@
 </header>
 
 <div class="container-fluid main">
+    <ul class="nav nav-tabs">
+        <li><a href="/manage/articles" target="_blank">文章管理</a></li>
+        <li><a href="/manage/categorys" target="_blank">分类管理</a></li>
+
+        <li class="pull-right"><a href="#" class="text-muted" title="个人中心" target="_blank"><i class="fa fa-gear"></i></a></li>
+        <li class="pull-right"><a href="#" target="_blank">我的主页</a></li>
+    </ul>
+</div>
+<div class="container-fluid main">
+
+
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发布文章</h2>
             <hr>
+            <!--管理导航 -->
+
+
 
             <form action="/#" method="post">
                 <input type="hidden" name="id" th:value="${id}">
@@ -95,6 +110,23 @@
                               cols="30"
                               rows="10"></textarea>
                 </div>
+
+                <!--类别组件  -->
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+
+
                 <script type="text/javascript">
                     $(function () {
                         var editor = editormd("question-editor", {
@@ -110,36 +142,7 @@
                         });
                     });
                 </script>
-<!--                <div class="form-group">-->
-<!--                    <label for="tag">添加标签:</label>-->
-<!--                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"-->
-<!--                           autocomplete="off"-->
-<!--                           placeholder="输入标签，以，号分隔"-->
-<!--                           onclick="showSelectTag()">-->
-<!--                    <div id="select-tag" class="publish-tag-tab">-->
-<!--                        <ul class="nav nav-tabs" role="tablist">-->
-<!--                            <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"-->
-<!--                                th:class="${selectCategoryStat.first ? 'active':''}">-->
-<!--                                <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab"-->
-<!--                                   data-toggle="tab" th:text="${selectCategory.categoryName}"></a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                        <div class="tab-content">-->
-<!--                            <div role="tabpanel" th:id="${selectCategory.categoryName}"-->
-<!--                                 th:each="selectCategory: ${tags}"-->
-<!--                                 th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">-->
-<!--                                <span>-->
-<!--                                    <span th:each="selectTag: ${selectCategory.tags}">-->
-<!--                                    <span class="community-tag" onclick="selectTag(this)"-->
-<!--                                          th:data-tag="${selectTag}"-->
-<!--                                          th:text="${' '+selectTag}">-->
-<!--                                    </span>-->
-<!--                                </span>-->
-<!--                                </span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+
 
                 <div class="container-fluid main ">
                     <div class="row">

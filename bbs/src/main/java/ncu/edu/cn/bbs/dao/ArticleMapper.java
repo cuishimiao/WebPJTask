@@ -31,8 +31,12 @@ public interface ArticleMapper {
     Article getArticleById(@Param(value = "articleid") Integer articleid);
 
     @Update("update article set count=count+1 where article_id = #{id}")
-    void plusbyid(Integer id);
+    void plusbyid(@Param("id")Integer id);
 
     @Select("select * from article where uid=#{uid}")//找到该作者所有的文章
     List<Article> getAllHisArticle(@Param(value = "uid") Integer uid);
+
+    @Update("update article set `like`=`like`+1 where article_id = #{id}")
+    void pluslike(@Param("id")Integer id);
+
 }
