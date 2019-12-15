@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ncu.edu.cn.bbs.dao.ArticleDao">
+
+    <select id="getArticle" resultType="postArticle">
+        select * from article where article_id=#{id}
+    </select>
+
+    <insert id="generateArticle">
+        insert into article(uid, title, content, create_time, category_id, uname,top)
+        values (#{uid},#{title},#{content},#{create_time},#{category_id},#{uname},#{top})
+    </insert>
+
+    <update id="modifyArticle">
+        update article set content = #{content},title = #{title},create_time=#{create_time} where article_id =#{article_id}
+    </update>
+
+    <delete id="deleteArticle">
+        delete from article where article_id = #{id}
+    </delete>
+
+    <select id="findAll" resultType="postArticle">
+        select * from article
+    </select>
+
+    <select id="findAllByUid" resultType="postArticle">
+        select * from article where uid = #{uid}
+    </select>
+</mapper>

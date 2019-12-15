@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ncu.edu.cn.bbs.dao.ReplyArticleDao">
+
+<insert id="generateReply">
+    insert into reply_article(article_id, responder_id, context, reply_time) values
+(#{article_id},#{responder_id},#{context},#{reply_time})
+</insert>
+
+<select id="findAllReply" resultType="replyArticle">
+    select * from reply_article where article_id = #{id}
+</select>
+
+<select id="getReply" resultType="replyArticle">
+    select * from reply_article where id = #{id}
+</select>
+
+<update id="modifyReply">
+    update reply_article set context = #{context},reply_time=#{reply_time} where id =#{id}
+</update>
+
+<delete id="deleteReply">
+    delete from reply_article where id =#{id}
+</delete>
+</mapper>
