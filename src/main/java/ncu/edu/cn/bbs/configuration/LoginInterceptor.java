@@ -21,8 +21,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         User user = (User) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         if(user == null){
-            response.sendRedirect(request.getContextPath()+"/");
+//            response.sendRedirect(request.getContextPath()+"/");
+
+            //重定向
+            request.getRequestDispatcher("/").forward(request, response);
             return false;
+
         }else{
             return true;
         }

@@ -21,8 +21,6 @@ public class ArticleController {
     ArticleService service;
 
 
-
-
     @RequestMapping("/articles")
     @ResponseBody
     public List<Article> findAll(){
