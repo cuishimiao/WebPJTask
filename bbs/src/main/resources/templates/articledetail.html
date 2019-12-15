@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<title th:text="${card.getCardTheme()}"></title>-->
+    <title>文章详情</title>
+
+    <link rel="stylesheet" href="../static/css/cycle_title_css.css">
+    <link rel="stylesheet" href="../static/css/3.3.7bootstrap.min.css">
+    <script src="../static/js/2.1.1jquery.min.js"></script>
+    <script src="../static/js/bootstrap3.3.7.min.js"></script>
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <!--<link rel="stylesheet" href="css/skin-blue.min.css">-->
+    <!--<link rel="stylesheet" href="css/bootstrap.css">-->
+
+    <script>
+        (function ($) {
+            $.extend({
+                tipsBox: function (options) {
+                    options = $.extend({
+                        obj: null, //jq对象，要在那个html标签上显示
+                        str: "+1", //字符串，要显示的内容;也可以传一段html，如: "<b style='font-family:Microsoft YaHei;'>+1</b>"
+                        startSize: "12px", //动画开始的文字大小
+                        endSize: "30px",  //动画结束的文字大小
+                        interval: 600, //动画时间间隔
+                        color: "red",  //文字颜色
+                        callback: function () { }  //回调函数
+                    }, options);
+                    $("body").append("<span class='num'>" + options.str + "</span>");
+                    var box = $(".num");
+                    var left = options.obj.offset().left + options.obj.width() / 2;
+                    var top = options.obj.offset().top - options.obj.height();
+                    box.css({
+                        "position": "absolute",
+                        "left": left + "px",
+                        "top": top + "px",
+                        "z-index": 9999,
+                        "font-size": options.startSize,
+                        "line-height": options.endSize,
+                        "color": options.color
+                    });
+                    box.animate({
+                        "font-size": options.endSize,
+                        "opacity": "0",
+                        "top": top - parseInt(options.endSize) + "px"
+                    }, options.interval, function () {
+                        box.remove();
+                        options.callback();
+                    });
+                }
+            });
+        })(jQuery);
+        function niceIn(prop){
+            prop.find('i').addClass('niceIn');
+            setTimeout(function(){
+                prop.find('i').removeClass('niceIn');
+            },1000);
+        }
+        $(function () {
+            $("#btn").click(function () {
+                $.tipsBox({
+                    obj: $(this),
+                    str: "+1",
+                    callback: function () {
+                    }
+                });
+                niceIn($(this));
+            });
+        });
+    </script>
+</head>
+<style>
+    .top{color: white}
+</style>
+<body style="background-color: #E6E6E6">
+<!--导航条-->
+<!--<div th:insert="~{nav :: copy}"></div>-->
+<!--<div>-->
+    <!--<nav class="navbar navbar-static-top" style="background-color:#777777; ">-->
+        <!--<div class="container" style="height: 20px">-->
+            <!--<div class="navbar-header">-->
+                <!--<a href="/" class="navbar-brand">-->
+                    <!--&lt;!&ndash;codegroup图片地址&ndash;&gt;-->
+                    <!--&lt;!&ndash;<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">&ndash;&gt;-->
+                <!--</a>-->
+                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">-->
+                    <!--<i class="fa fa-bars"></i>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+            <!--<div class="collapse navbar-collapse pull-left" id="navbar-collapse">-->
+                <!--<ul class="nav navbar-nav">-->
+                    <!--<li><a href="#" class="active top">首页</a></li>-->
+                    <!--<li><a href="/article" class="active top">文章 <span class="sr-only">(current)</span></a></li>-->
+                    <!--<li><a href="/askandanswer" class="top">问答</a></li>-->
+                    <!--<li><a href="#" class="top">我的主页</a></li>-->
+                <!--</ul>-->
+
+                <!--<form class="navbar-form navbar-left" action="" role="search">-->
+                    <!--<div class="form-group">-->
+                        <!--<input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">-->
+                    <!--</div>-->
+                <!--</form>-->
+                <!--<ul class="nav navbar-nav">-->
+                    <!--<li><a href="#"  class="top">写文章 <span class="sr-only">(current)</span></a></li>-->
+                    <!--<li><a href="#" class="top">提问</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="navbar-custom-menu" id="user-nav-wrapper" style="float: right">-->
+                <!--<ul class="nav navbar-nav">-->
+                    <!--<li><a id="loginModalBtn"  class="top" >登录 </a></li>-->
+                    <!--<li><a href="/register" target="_blank" class="top">注册</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</nav>-->
+<!--</div>-->
+
+<!--++-->
+<div>
+    <nav class="navbar navbar-static-top" style="background-color:#777777; ">
+        <div class="container" style="height: 20px">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">
+                    <!--codegroup图片地址-->
+                    <!--<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" class="active top">首页</a></li>
+                    <li><a href="/article" class="active top">文章 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/askandanswer" class="top">问答</a></li>
+                    <li><a href="#" class="top">我的主页</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-left" action="" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li><a href="#"  class="top">写文章 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#" class="top">提问</a></li>
+                </ul>
+            </div>
+            <div class="navbar-custom-menu" id="user-nav-wrapper" style="float: right">
+                <ul class="nav navbar-nav">
+                    <li><a id="loginModalBtn"  class="top" >登录 </a></li>
+                    <li><a href="/register" target="_blank" class="top">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!---->
+<div>
+    <div class="container-fluid main profile" >
+        <div class="row">
+            <!--左侧信息栏-->
+            <div class="col-md-9"style="width: 750px;margin-left: 70px;background-color: white;border-radius: 5px;" >
+                <!--帖子标题-->
+                <h4><span th:text="${article.title}"></span></h4>
+                <span class="text-desc">
+                    作者：<span th:text="${article.uname}"></span>
+                    <!--发布时间：<span th:text="${#dates.format(card.getCardTime(),'yyyy-MM-dd HH:mm')}"></span> |-->
+                    发布时间：
+                    阅读数：<span th:text="${article.count}"></span>
+                </span>
+
+                <hr>
+
+
+                <!---->
+                <!--这里结合session处理非作者不显示编辑按钮-->
+                <!---->
+
+                <!--<a class="community-menu" th:href="@{'/publish/'+${card.getCardId()}}">-->
+                    <!--<span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>-->
+                    <!--编辑-->
+                <!--</a>-->
+
+
+                <!--<a class="community-menu">-->
+                    <!--<span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>-->
+                    <!--编辑-->
+                <!--</a>-->
+
+
+                <!--&nbsp;&nbsp;&nbsp;-->
+                <!--<a class="community-menu">-->
+                <!--<span aria-hidden="true" class="glyphicon glyphicon-thumbs-up"></span>-->
+                <!--点赞<span th:text="${card.getLikeNum()}"></span>-->
+                <!--</a>-->
+
+                <!--点赞按钮-->
+                <!--<div class="opera">-->
+
+
+                <!--AJAX实现无刷新点赞功能-->
+                <span id="btn" class="opera">
+                    <i class="glyphicon glyphicon-thumbs-up">&#xe602;</i> 喜欢<span th:text="${article.like}"></span>
+                </span>
+                <!--<span span th:text="${article.like}">点赞</span>-->
+                <!--</div>-->
+                <hr class="col-lg-12 col-md-12 col-xs-12">
+
+                <!--数据库缺失字段-->
+                <span class="text-desc">
+                    文章标签：<span></span>
+                </span>
+
+                <!--描述/内容-->
+                <!--<div class="well col-lg-12 col-md-12 col-xs-12" >-->
+                <textarea style="background-color: white;border:none;" disabled="disabled" cols="90" rows="10"  th:text="${article.content}"></textarea>
+                <!--</div>-->
+                <hr class="col-lg-12 col-md-12 col-xs-12">
+
+                <!--评论-->
+                <h3>发表评论<br/>
+                    <hr class="col-lg-12 col-md-12 col-xs-12">
+                    <span>2</span>条评论
+                </h3>
+                <span class="text-desc">
+
+                </span>
+            </div>
+
+
+            <!--右侧信息栏-->
+            <div class="col-md-3" style="margin-left: 30px;background-color: white;border-radius: 5px;" >
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <h4>发起人</h4>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <!--<img class="media-object img-circle" th:src="${card.getUser().getHead()}">-->
+                                <!--头像-->
+                                <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <span th:text="${article.uname}"></span>
+                            </h4>
+                            <h6>工作地点：</h6>
+                            <h6>工作性质：</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <h5>他的文章</h5>
+                </div>
+                <!--<hr class="col-lg-12 col-md-12 col-xs-12">-->
+                <div >
+                    <div class="col-lg-12 col-md-12 col-xs-12" th:each="hisArticle:${hisArticles}">
+                        <h5><a th:href="@{'/Articledetail/'+${hisArticle.article_id}}" th:text="${hisArticle.title}"></a></h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="margin-left: 30px;background-color: white;border-radius: 5px;margin-top: 20px" >
+                <div class="col-lg-12 col-md-12 col-xs-12" style="border-bottom: #9ea6b9">
+                    <h4>联系我们</h4>
+                </div>
+                <div style="border-bottom: #9ea6b9" class="col-lg-12 col-md-12 col-xs-12">
+                    <h6>QQ交流群</h6>
+                    <h6><span style="color: #9ea6b9">开发者交流群：123456789</span></h6>
+                </div>
+                <div style="border-bottom: #9ea6b9" class="col-lg-12 col-md-12 col-xs-12">
+                    <h6>管理员微信</h6>
+                    <h6><span style="color: #9ea6b9">微信号：123456789</span></h6>
+                    <h6><span style="color: #9ea6b9">工作时间：8:00--18:00</span></h6>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
