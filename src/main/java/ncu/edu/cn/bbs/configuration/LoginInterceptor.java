@@ -22,9 +22,10 @@ public class LoginInterceptor implements HandlerInterceptor {
         User user = (User) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         if(user == null){
 //            response.sendRedirect(request.getContextPath()+"/");
+            response.sendRedirect("/");
 
-            //重定向
-            request.getRequestDispatcher("/").forward(request, response);
+//            //重定向
+//            request.getRequestDispatcher("/").forward(request, response);
             return false;
 
         }else{
