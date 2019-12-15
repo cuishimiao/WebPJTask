@@ -13,6 +13,7 @@ public class User {
     private String work;
     private String isAdmin;
     private String head;
+    private Integer gold;
 
     public String getUsername() {
         return username;
@@ -84,6 +85,22 @@ public class User {
 
     public void setIsAdmin(String isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    public String getHead() {
+        return head;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
+
+    public Integer getGold() {
+        return gold;
+    }
+
+    public void setGold(Integer gold) {
+        this.gold = gold;
     }
 
     @Override
