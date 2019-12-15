@@ -18,7 +18,7 @@ public class adminController {
     UserService userServiceservice;
 
 
-    @RequestMapping("/manage")
+    @RequestMapping("/admin/manage")
 
     public String manage()
     {
