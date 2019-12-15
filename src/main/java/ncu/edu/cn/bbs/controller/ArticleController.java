@@ -52,16 +52,30 @@ public class ArticleController {
     @RequestMapping("/publish")
     public String publish(HttpSession session,Model m)
     {
-        m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
-        return "publish";
+        if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null)
+        {
+            m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+            return "publish";
+        }
+        else
+            return "/index";
+
     }
 
     //跳到发问题界面
     @RequestMapping("/ask")
     public  String ask(HttpSession session, Model m)
     {
-        m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
-        return "question";
+        if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null)
+        {
+            m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+            return "question";
+        }
+        else
+        {
+            return "/index";
+        }
+
     }
 
 

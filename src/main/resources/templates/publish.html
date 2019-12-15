@@ -4,6 +4,7 @@
     <title>发布文章 -BBS</title>
     <head th:insert="~{import :: head}"></head>
     <head th:insert="~{import :: markdown}"></head>
+
     <script src="/js/jquery.min.js"></script>
     <script>
         $(function () {
@@ -72,10 +73,24 @@
 </header>
 
 <div class="container-fluid main">
+    <ul class="nav nav-tabs">
+        <li><a href="/manage/articles" target="_blank">文章管理</a></li>
+        <li><a href="/manage/categorys" target="_blank">分类管理</a></li>
+
+        <li class="pull-right"><a href="#" class="text-muted" title="个人中心" target="_blank"><i class="fa fa-gear"></i></a></li>
+        <li class="pull-right"><a href="#" target="_blank">我的主页</a></li>
+    </ul>
+</div>
+<div class="container-fluid main">
+
+
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发布文章</h2>
             <hr>
+            <!--管理导航 -->
+
+
 
             <form action="/#" method="post">
                 <input type="hidden" name="id" th:value="${id}">
