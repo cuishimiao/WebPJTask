@@ -1,37 +1,44 @@
 package ncu.edu.cn.bbs.entity;
 
-
 import org.apache.ibatis.type.Alias;
 
 import java.sql.Timestamp;
 
 @Alias("postArticle")
 public class Article {
-    private int article_id;
-    private int uid;
+    private Integer article_id;
+    private Integer uid;
     private String title;
     private String content;
-    private int category_id;
+    private Integer count;
     private Timestamp create_time;
-    private int top;
+    private Integer top;
     private String uhead;
-    private String like;
-    private String score;
+    private Integer like;
+    private Integer score;
     private String uname;
 
-    public int getArticle_id() {
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Integer getArticle_id() {
         return article_id;
     }
 
-    public void setArticle_id(int article_id) {
+    public void setArticle_id(Integer article_id) {
         this.article_id = article_id;
     }
 
-    public int getUid() {
+    public Integer getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 
@@ -51,14 +58,6 @@ public class Article {
         this.content = content;
     }
 
-    public int getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
-    }
-
     public Timestamp getCreate_time() {
         return create_time;
     }
@@ -67,11 +66,11 @@ public class Article {
         this.create_time = create_time;
     }
 
-    public int getTop() {
+    public Integer getTop() {
         return top;
     }
 
-    public void setTop(int top) {
+    public void setTop(Integer top) {
         this.top = top;
     }
 
@@ -83,19 +82,19 @@ public class Article {
         this.uhead = uhead;
     }
 
-    public String getLike() {
+    public Integer getLike() {
         return like;
     }
 
-    public void setLike(String like) {
+    public void setLike(Integer like) {
         this.like = like;
     }
 
-    public String getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 
@@ -114,7 +113,6 @@ public class Article {
                 ", uid=" + uid +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", category_id=" + category_id +
                 ", create_time=" + create_time +
                 ", top=" + top +
                 ", uhead='" + uhead + '\'' +

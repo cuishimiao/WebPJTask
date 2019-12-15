@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc">-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>article</title>
+    <!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+    <link rel="stylesheet" href="../static/css/cycle_title_css.css">
+    <link rel="stylesheet" href="../static/css/3.3.7bootstrap.min.css">
+    <script src="../static/js/2.1.1jquery.min.js"></script>
+    <script src="../static/js/bootstrap3.3.7.min.js"></script>
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <!--<link rel="stylesheet" href="css/skin-blue.min.css">-->
+    <!--<link rel="stylesheet" href="css/bootstrap.css">-->
+
+
+</head>
+<style>
+.top{color: white}
+</style>
+<body class="hold-transition skin-blue layout-top-nav" style="background-color: #E6E6E6">
+<div>
+    <nav class="navbar navbar-static-top" style="background-color:#777777; ">
+        <div class="container" style="height: 20px">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">
+                    <!--codegroup图片地址-->
+                    <!--<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" class="active top">首页</a></li>
+                    <li><a href="/article" class="active top">文章 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/askandanswer" class="top">问答</a></li>
+                    <li><a href="#" class="top">我的主页</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-left" action="" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li><a href="#"  class="top">写文章 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#" class="top">提问</a></li>
+                </ul>
+            </div>
+            <div class="navbar-custom-menu" id="user-nav-wrapper" style="float: right">
+                <ul class="nav navbar-nav">
+                    <li><a id="loginModalBtn"  class="top" >登录 </a></li>
+                    <li><a href="/register" target="_blank" class="top">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div>
+    <div class="col-md-9"style="width: 750px;margin-left: 70px;" >
+         <div>
+             <ul class="nav nav-pills" style="background-color: whitesmoke;">
+                 <li role="presentation" class="active"><a href="#">全部文章</a></li>
+                 <li role="presentation"><a href="#">我的文章</a></li>
+                 <li role="presentation"><a href="#">我的收藏</a></li>
+             </ul>
+         </div>
+        <div>
+            <form  class="input-group" style="margin-top: 20px" th:action="@{/check}" method="get">
+                <input type="text" class="form-control" name="key" placeholder="在所有文章中搜索...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">搜索</button>
+                </span>
+             </form>
+         </div>
+
+        <!--box-->
+        <!--th:each="article:${Articles}"-->
+        <div class="post-box-item" style="background: white;border-radius:5px" th:each="article:${articleDto.articles}">
+            <h3 class="post-box-header">
+                <!--标题-->
+                <a th:href="@{'/Articledetail/'+${article.article_id}}" class="title" th:text="${article.title}"></a>
+                <hr style="margin: 5px">
+            </h3>
+            <div class="post-box-footer">
+                <div id="article-info-ul">
+                    <ul class="list-inline box-head">
+                        <li>
+                            <a href="">
+                                <img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="30">
+                                <!--发布人-->
+                            </a>
+                            <!--描述-->
+                            <span>原描述</span>
+                        </li>
+                        <li class="pull-right">
+                            <a href="#" class="link-black" >访问
+                                <i class="margin-r-5" th:text="${article.count}"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-black">
+                                <i class="margin-r-5"></i>
+                                <span th:text="${article.create_time}"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--分页栏-->
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li th:if="${articleDto.showFirstPage}">
+                    <a th:href="@{/article/(page=1)}" aria-label="Previous">
+                        <span aria-hidden="true">&lt;&lt;</span>
+                    </a>
+                </li>
+                <li th:if="${articleDto.showPrevious}">
+                    <a th:href="@{/article/(page=${articleDto.page - 1})}"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&lt;</span>
+                    </a>
+                </li>
+
+                <li th:each="page : ${articleDto.pages}" th:class="${articleDto.page == page}? 'active' : ''">
+                    <a th:href="@{/article/(page=${page})}" th:text="${page}"></a>
+                </li>
+
+                <li th:if="${articleDto.showNext}">
+                    <a th:href="@{/article/(page=${articleDto.page +1 })}"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&gt;</span>
+                    </a>
+                </li>
+                <li th:if="${articleDto.showEndPage}">
+                    <a th:href="@{/article/(page=${articleDto.totalPage})}"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&gt;&gt;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="col-md-3" style="margin-left: 20px;margin-right: 20px;background-color: whitesmoke">
+        <div class="list-group" style="margin-top: 15px">
+            <a href="#" class="list-group-item active">
+                <span style="font-size: 13px">公告栏</span>
+            </a>
+            <a href="#" class="list-group-item"><span style="color: #a94442">[置顶]</span>白日依山尽</a>
+            <a href="#" class="list-group-item">黄河入海流</a>
+            <a href="#" class="list-group-item">欲穷千里目</a>
+            <a href="#" class="list-group-item">更上一层楼</a>
+        </div>
+
+        <div class="list-group" style="margin-top: 15px">
+            <a href="#" class="list-group-item active">
+                <span style="font-size: 13px">精品文章</span>
+            </a>
+            <a href="#" class="list-group-item" th:each="goodArticle:${goodArticles}" th:text="${goodArticle.title}"></a>
+        </div>
+
+        <div class="list-group" style="margin-top: 15px">
+            <a href="#" class="list-group-item active" style="margin-bottom: 5px">
+                <span style="font-size: 13px">赏金榜</span>
+            </a>
+            <a href="#" class="" th:each="golduser:${goldUsers}">
+                <div style="margin-top: 2px;border-radius: 3px;background-color: white" >
+                    <div class="media-left">
+                        <a href="#">
+                            <!--<img class="media-object" src="..." alt="...">-->
+                            <img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">
+                        </a>
+                    </div>
+                    <div class="media-body" style="margin-left: 10px;">
+                        <h5 class="media-heading" style="margin-top: 3px"><span th:text="${golduser.user_id}"></span></h5>
+                        <h5 class="media-heading" style="margin-bottom:3px"><span th:text="${golduser.gold}"></span></h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
