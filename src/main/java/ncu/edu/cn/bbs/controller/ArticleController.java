@@ -77,8 +77,4 @@ public class ArticleController {
         return service.modifyArticle(article);
     }
 
-
-
-
-
 }
