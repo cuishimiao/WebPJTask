@@ -5,7 +5,8 @@ import org.apache.ibatis.type.Alias;
 import javax.annotation.sql.DataSourceDefinition;
 import java.sql.Timestamp;
 @Alias("requestArticle")
-public class Question {
+public class
+Question {
     private Integer question_id;
     private String uid;
     private Timestamp time;
