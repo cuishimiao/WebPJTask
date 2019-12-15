@@ -7,16 +7,15 @@
     <script src="/js/jquery.min.js"></script>
     <script>
         $(function () {
-            $(document).on('click','#btn',function () {
+            $(document).on('click','#btn1',function () {
                 var param={
-                    title:$("#title").val(),
+                    question_title:$("#title").val(),
                     content:$("#description").val(),
-                    uid:$("#uid").val(),
-                    category_id:$("#categoryId").val()
+                    uid:$("#uid").val()
 
                 };
                 $.ajax({
-                    url:"/writeArticle",
+                    url:"/generateRequest",
                     contentType:"application/json",
                     method:"POST",
                     data:JSON.stringify(param),
@@ -110,7 +109,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <button type="button" id="btn" class="btn btn-success btn-publish ">
+                            <button type="button" id="btn1" class="btn btn-success btn-publish ">
                                 发布
                             </button>
                         </div>

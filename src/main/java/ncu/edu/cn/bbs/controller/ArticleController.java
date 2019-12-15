@@ -58,6 +58,13 @@ public class ArticleController {
         return "publish";
     }
 
+    //跳到发问题界面
+    @RequestMapping("/ask")
+    public  String ask(HttpSession session, Model m)
+    {
+        m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+        return "question";
+    }
 
 
     @RequestMapping("/deleteArticle")
