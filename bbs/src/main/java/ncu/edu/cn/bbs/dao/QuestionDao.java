@@ -12,4 +12,9 @@ public interface QuestionDao {
     int generateRequest(Question article);
     List<Question> findAllRequest(int uid);
     Question getRequest(int question_id);
+
+    List<Question> findAllr();
+
+    int deleteby(int uid);
+
 }

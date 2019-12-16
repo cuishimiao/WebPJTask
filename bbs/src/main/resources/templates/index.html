@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>BBS</title>
@@ -10,6 +10,7 @@
 </head>
 <body class="skin-blue layout-top-nav" style="transform: none; height: auto; min-height: 100%;">
 <div class="wrapper" style="transform: none; height: auto; min-height: 100%;">
+    <li><a th:href="@{/manageart}" >进入管理员模式 </a></li>
     <header class="main-header">
         <nav class="navbar navbar-static-top">
             <div class="container">

@@ -38,7 +38,10 @@ public class UserMainController {
     {
         return "/manage/articles";
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> d777c7c95474e47bf7456a359e200c6091850e91
 
     @RequestMapping("/manage/comments")
     public String showCategory()
@@ -46,5 +49,8 @@ public class UserMainController {
         return "/manage/comments";
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d777c7c95474e47bf7456a359e200c6091850e91
 }

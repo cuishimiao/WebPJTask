@@ -10,6 +10,7 @@ public class Article {
     private Integer uid;
     private String title;
     private String content;
+    private int category_id;
     private Integer count;
     private Timestamp create_time;
     private Integer top;
@@ -17,6 +18,14 @@ public class Article {
     private Integer like;
     private Integer score;
     private String uname;
+
+    public int getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
+    }
 
     public Integer getCount() {
         return count;

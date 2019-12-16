@@ -7,4 +7,9 @@
 <select id="findAll" resultType="category">
     select * from category
 </select>
+
+<delete id="deletebyid">
+    delete from category where category_id =#{category_id}
+</delete>
+
 </mapper>

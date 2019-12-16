@@ -11,7 +11,7 @@ public class User {
     private String phone;
     private String address;
     private String work;
-    private String isAdmin;
+    private String is_admin;
     private String head;
     private Integer gold;
     private String description;
@@ -89,11 +89,11 @@ public class User {
     }
 
     public String getIsAdmin() {
-        return isAdmin;
+        return is_admin;
     }
 
-    public void setIsAdmin(String isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setIsAdmin(String is_admin) {
+        this.is_admin = is_admin;
     }
 
     public String getHead() {
@@ -122,7 +122,7 @@ public class User {
                 ", phone=" + phone +
                 ", address='" + address + '\'' +
                 ", work='" + work + '\'' +
-                ", isAdmin='" + isAdmin + '\'' +
+                ", isAdmin='" + is_admin + '\'' +
                 '}';
     }
 }
