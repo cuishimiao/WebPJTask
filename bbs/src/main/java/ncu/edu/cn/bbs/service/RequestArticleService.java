@@ -38,8 +38,8 @@ public class RequestArticleService {
         return articleDao.findAllr();
     }
 
-    public String deleteby(int uid){
-        int temp = articleDao.deleteby(uid);
+    public String deleteby(int question_id){
+        int temp = articleDao.deleteby(question_id);
         if(temp ==1 ){
             return "成功";
         }

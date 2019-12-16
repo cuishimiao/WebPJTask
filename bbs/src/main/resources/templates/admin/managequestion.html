@@ -239,8 +239,8 @@
                     <td th:text="${p.question_title}"></td>
                     <td th:text="${p.uhead}"></td>
                     <td>
-                        <a th:href="@{/getArticle/} + ${p.uid}+'?type=managemodify'" type="button" class="btn btn-success">编辑</a>
-                        <a th:href="@{/deleteRequest/} + ${p.uid}" type="button" class="btn btn-danger">删除</a>
+                        <a th:href="@{/getArticle/} + ${p.question_id}+'?type=managemodify'" type="button" class="btn btn-success">编辑</a>
+                        <a th:href="@{/deleteRequest/} + ${p.question_id}" type="button" class="btn btn-danger">删除</a>
                     </td>
                 </tr>
                 </tbody>

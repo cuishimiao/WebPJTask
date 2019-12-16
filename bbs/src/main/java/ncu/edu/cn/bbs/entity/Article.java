@@ -6,18 +6,44 @@ import java.sql.Timestamp;
 
 @Alias("postArticle")
 public class Article {
-    private Integer article_id;
+    private Integer articleId;
     private Integer uid;
     private String title;
     private String content;
     private int category_id;
     private Integer count;
-    private Timestamp create_time;
+    private Timestamp createTime;
     private Integer top;
     private String uhead;
     private Integer like;
     private Integer score;
     private String uname;
+    private Integer categoryId;
+
+
+    public Integer getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
 
 
     public int getCategory_id() {
@@ -36,13 +62,6 @@ public class Article {
         this.count = count;
     }
 
-    public Integer getArticle_id() {
-        return article_id;
-    }
-
-    public void setArticle_id(Integer article_id) {
-        this.article_id = article_id;
-    }
 
     public Integer getUid() {
         return uid;
@@ -68,13 +87,6 @@ public class Article {
         this.content = content;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
-    }
-
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
-    }
 
     public Integer getTop() {
         return top;
@@ -116,19 +128,23 @@ public class Article {
         this.uname = uname;
     }
 
+
     @Override
     public String toString() {
-        return "article{" +
-                "article_id=" + article_id +
+        return "Article{" +
+                "articleId=" + articleId +
                 ", uid=" + uid +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", create_time=" + create_time +
+                ", category_id=" + category_id +
+                ", count=" + count +
+                ", createTime=" + createTime +
                 ", top=" + top +
                 ", uhead='" + uhead + '\'' +
-                ", like='" + like + '\'' +
-                ", score='" + score + '\'' +
+                ", like=" + like +
+                ", score=" + score +
                 ", uname='" + uname + '\'' +
+                ", categoryId=" + categoryId +
                 '}';
     }
 }
