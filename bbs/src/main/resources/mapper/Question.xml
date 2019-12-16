@@ -16,7 +16,7 @@
     </select>
 
     <delete id="deleteby">
-        delete from question where uid =#{uid}
+        delete from question where question_id =#{question_id}
     </delete>
 
     <select id="findAllr" resultType="requestArticle">
