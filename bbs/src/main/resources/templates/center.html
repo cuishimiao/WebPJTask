@@ -191,7 +191,7 @@
                                             <li><a href="javascript:void(0)" class="tab-a" id="avatar">我的头像</a></li>
                                             <li><a href="javascript:void(0)" class="tab-a" id="security">账号安全</a></li>
                                         </ul>
-                                        <div class="tab-content">
+                                        <div class="tab-content" id="tab-content">
                                             <div class="tab-pane active">
                                                 <form class="form-horizontal userForm">
                                                     <div class="box-body">
@@ -297,7 +297,7 @@
     </div><!-- /.modal -->
 </div>
 
-
+<script src="js/account.js"></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
@@ -321,6 +321,33 @@
                     $("#myModal").modal()
                 }
             });
+        });
+        
+        $(document).on("click","#security",function () {
+            var content=
+                '<div class="tab-pane active" id="security-tab">'+
+                '<table class="table" border="0">'+
+                '<tbody> <tr> <td>'
+                '<i class="glyphicon glyphicon-ok-sign text-success"></i>'+"绑定邮箱"+
+                '</td><td>'
+                '<span th:text="${user.email}"></span>'+
+                '<span class="text-success">'+"已验证"+'</span>'+
+                '</td> <td>'
+                '<a href="javascript:void(0)" data-toggle="modal" data-target="#emailModal" data-backdrop="static">'+"更换邮箱"+'</a>'+
+                '</td> </tr>'+
+                '<tr>'+
+                '<td><i class="glyphicon glyphicon-ok-sign text-success"></i>'+
+                "设置密码"+
+                '</td>'+
+                '<td>'+"已设置"+'</td>'
+                '<td><a href="javascript:void(0)" data-toggle="modal" data-target="#passwordModal" data-backdrop="static">'+"修改密码"+'</a>'+
+                '</td>'+
+                '</tr>'+
+                '</tbody>'+
+                '</table>'+
+                '</div>'+
+                '</div>';
+            $("#tab-content").html(content);
         });
     });
 
