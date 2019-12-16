@@ -19,6 +19,7 @@ public class UserMainController {
         else
             return "/";
     }
+<<<<<<< HEAD
     @RequestMapping("/center")
     public String showCenter(Model model,HttpSession session){
         if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null){
@@ -30,4 +31,19 @@ public class UserMainController {
         }
 
     }
+=======
+    @RequestMapping("/manage/articles")
+    public String showArticle()
+    {
+        return "/manage/articles";
+    }
+
+    @RequestMapping("/manage/comments")
+    public String showCategory()
+    {
+        return "/manage/comments";
+    }
+
+
+>>>>>>> de449c133c4d8271a54c307c1bfa65bac21d6e80
 }

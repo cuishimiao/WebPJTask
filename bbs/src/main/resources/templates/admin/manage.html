@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发布 - cBBS</title>
+    <head th:insert="~{/import :: head}"></head>
+    <head th:insert="~{/import :: markdown}"></head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skin-blue.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/script.js"></script>
+
+</head>
+<body>
+
+<!--<div th:insert="~{/navigation :: nav}"></div>-->
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!--                <a href="/" class="navbar-brand">-->
+                <!--                    <img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
+                <!--                </a>-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/" class="active">首页</a></li>
+                    <li><a href="#">问答</a></li>
+                    <li><a href="/main">我的主页</a></li>
+                </ul>
+
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/articles_manage">文章管理 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/qustion_manage">问答管理</a></li>
+                    <li><a href="/user_manage">用户管理</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--        &lt;!&ndash;sidebar&ndash;&gt;-->
+        <!--        <div th:replace="commons/bar::sidebar(actionUri='meetlist.html')"></div>-->
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>文章标题</th>
+                    <th></th>
+                    <th>作者姓名</th>
+                    <th>创建时间</th>
+                    <th>访问量</th>>
+                </tr>
+                </thead>
+<!--                显示所有文章-->
+<!--                <tbody>-->
+<!--                <tr th:each="tmp:${session.meetings}">-->
+<!--                    <td th:text="${tmp.mid}"></td>-->
+<!--                    <td th:text="${tmp.meetingname}"></td>-->
+<!--                    <td th:text="${tmp.meetingplace}">-->
+<!--                    <td th:text="${tmp.meetingtime}"></td>-->
+<!--                    <td th:text="${tmp.pernum}"></td>-->
+<!--                    <td>-->
+<!--                        &lt;!&ndash;查看按钮&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        "@{/meetingadd(uid=${session.user.uid}, mid=${session.meeting.mid})}"&ndash;&gt;-->
+<!--                        <a class="btn btn-sm btn-primary" th:href="@{/meetingpermt(mid=${tmp.mid}, uid=${session.user.uid})}">查看</a>-->
+<!--                        &lt;!&ndash;删除按钮&ndash;&gt;-->
+<!--                        <button th:attr="del_uri=@{/meeting/}+${tmp.mid}" th:disabled="${session.user.uid!=tmp.createid&&session.user.flag==2}?'true'" class="btn btn-sm btn-danger deleteBtn">删除</button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+            </table>
+        </main>
+        <form id="deleteEmpForm"  method="post">
+            <input type="hidden" name="_method" value = "delete" />
+        </form>
+    </div>
+</div>
+
+
+<div th:insert="~{/footer :: foot}"></div>
+
+
+</body>
+</html>

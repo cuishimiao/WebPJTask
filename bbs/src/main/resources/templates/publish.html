@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>发布 - cBBS</title>
+    <title>发布文章 -BBS</title>
     <head th:insert="~{import :: head}"></head>
     <head th:insert="~{import :: markdown}"></head>
+
     <script src="/js/jquery.min.js"></script>
     <script>
         $(function () {
@@ -30,17 +31,71 @@
 </head>
 <body>
 
-<div th:insert="~{navigation :: nav}"></div>
+<!--<div th:insert="~{navigation :: nav}"></div>-->
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+<!--                <a href="/" class="navbar-brand">-->
+<!--                    <img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
+<!--                </a>-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/" class="active">首页</a></li>
+                    <li><a href="#">问答</a></li>
+                    <li><a href="/main">我的主页</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li><a href="/publish">写文章 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/ask">提问</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-custom-menu" id="user-nav-wrapper">
+                <ul class="nav navbar-nav" id="user-nav">
+                    <li><a data-toggle="modal" data-target="#login">登录 </a></li>
+                    <li><a href="#"  id="eroll">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
 <div class="container-fluid main">
+    <ul class="nav nav-tabs">
+        <li><a href="/manage/articles" target="_blank">文章管理</a></li>
+        <li><a href="/manage/comments" target="_blank">评论管理</a></li>
+
+        <li class="pull-right"><a href="#" class="text-muted" title="个人中心" target="_blank"><i class="fa fa-gear"></i></a></li>
+        <li class="pull-right"><a href="#" target="_blank">我的主页</a></li>
+    </ul>
+</div>
+<div class="container-fluid main">
+
+
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发起</h2>
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发布文章</h2>
             <hr>
+            <!--管理导航 -->
+
+
 
             <form action="/#" method="post">
                 <input type="hidden" name="id" th:value="${id}">
                 <div class="form-group">
-                    <label for="title">问题标题（简单扼要）:</label>
+                    <label for="title">帖子标题（简单扼要）:</label>
                     <input type="text" class="form-control" th:value="${title}" id="title" name="title"
                            placeholder="问题标题……"
                            autocomplete="off">
@@ -49,12 +104,29 @@
                     <input type="hidden" value="1" id="categoryId">
                 </div>
                 <div class="form-group" id="question-editor">
-                    <label for="description">问题补充 (必填，请参照右侧提示):</label>
+                    <label for="description">文章内容 (必填，请参照右侧提示):</label>
                     <textarea name="description" id="description" th:text="${description}" style="display:none;"
                               class="form-control"
                               cols="30"
                               rows="10"></textarea>
                 </div>
+
+                <!--类别组件  -->
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Dropdown
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+
+
                 <script type="text/javascript">
                     $(function () {
                         var editor = editormd("question-editor", {
@@ -63,43 +135,14 @@
                             path: "/js/lib/",
                             delay: 0,
                             watch: false,
-                            placeholder: "请输入问题描述",
+                            placeholder: "请输入文章内容",
                             imageUpload: true,
                             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                             imageUploadURL: "/file/upload",
                         });
                     });
                 </script>
-<!--                <div class="form-group">-->
-<!--                    <label for="tag">添加标签:</label>-->
-<!--                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag"-->
-<!--                           autocomplete="off"-->
-<!--                           placeholder="输入标签，以，号分隔"-->
-<!--                           onclick="showSelectTag()">-->
-<!--                    <div id="select-tag" class="publish-tag-tab">-->
-<!--                        <ul class="nav nav-tabs" role="tablist">-->
-<!--                            <li role="presentation" th:each="selectCategory,selectCategoryStat: ${tags}"-->
-<!--                                th:class="${selectCategoryStat.first ? 'active':''}">-->
-<!--                                <a th:href="${'#'+selectCategory.categoryName}" aria-controls="home" role="tab"-->
-<!--                                   data-toggle="tab" th:text="${selectCategory.categoryName}"></a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                        <div class="tab-content">-->
-<!--                            <div role="tabpanel" th:id="${selectCategory.categoryName}"-->
-<!--                                 th:each="selectCategory: ${tags}"-->
-<!--                                 th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">-->
-<!--                                <span>-->
-<!--                                    <span th:each="selectTag: ${selectCategory.tags}">-->
-<!--                                    <span class="community-tag" onclick="selectTag(this)"-->
-<!--                                          th:data-tag="${selectTag}"-->
-<!--                                          th:text="${' '+selectTag}">-->
-<!--                                    </span>-->
-<!--                                </span>-->
-<!--                                </span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+
 
                 <div class="container-fluid main ">
                     <div class="row">
