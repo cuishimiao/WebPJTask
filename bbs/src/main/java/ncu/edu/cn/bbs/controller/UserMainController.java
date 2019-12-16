@@ -19,4 +19,17 @@ public class UserMainController {
         else
             return "/";
     }
+    @RequestMapping("/manage/articles")
+    public String showArticle()
+    {
+        return "/manage/articles";
+    }
+
+    @RequestMapping("/manage/comments")
+    public String showCategory()
+    {
+        return "/manage/comments";
+    }
+
+
 }
