@@ -18,46 +18,49 @@
     .cont{margin-left: 25px;}
 </style>
 <body style="background-color: #E6E6E6">
-<div>
-    <nav class="navbar navbar-static-top" style="background-color:#777777; ">
-        <div class="container" style="height: 20px">
-            <div class="navbar-header">
-                <a href="/" class="navbar-brand">
-                    <!--codegroup图片地址-->
-                    <!--<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
-                </a>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#" class="active top">首页</a></li>
-                    <li><a href="/article" class="active top">文章 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/askandanswer" class="top">问答</a></li>
-                    <li><a href="#" class="top">我的主页</a></li>
-                </ul>
 
-                <form class="navbar-form navbar-left" action="" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
-                    </div>
-                </form>
-                <ul class="nav navbar-nav">
-                    <li><a href="#"  class="top">写文章 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#" class="top">提问</a></li>
-                </ul>
-            </div>
-            <div class="navbar-custom-menu" id="user-nav-wrapper" style="float: right">
-                <ul class="nav navbar-nav">
-                    <li><a id="loginModalBtn"  class="top" >登录 </a></li>
-                    <li><a href="/register" target="_blank" class="top">注册</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
+<!--导航 -->
+<div th:insert="~{navigation :: nav}"></div>
+<!--<div>-->
+<!--    <nav class="navbar navbar-static-top" style="background-color:#777777; ">-->
+<!--        <div class="container" style="height: 20px">-->
+<!--            <div class="navbar-header">-->
+<!--                <a href="/" class="navbar-brand">-->
+<!--                    &lt;!&ndash;codegroup图片地址&ndash;&gt;-->
+<!--                    &lt;!&ndash;<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">&ndash;&gt;-->
+<!--                </a>-->
+<!--                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">-->
+<!--                    <i class="fa fa-bars"></i>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+<!--            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">-->
+<!--                <ul class="nav navbar-nav">-->
+<!--                    <li><a href="#" class="active top">首页</a></li>-->
+<!--                    <li><a href="/article" class="active top">文章 <span class="sr-only">(current)</span></a></li>-->
+<!--                    <li><a href="/askandanswer" class="top">问答</a></li>-->
+<!--                    <li><a href="#" class="top">我的主页</a></li>-->
+<!--                </ul>-->
+
+<!--                <form class="navbar-form navbar-left" action="" role="search">-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--                <ul class="nav navbar-nav">-->
+<!--                    <li><a href="#"  class="top">写文章 <span class="sr-only">(current)</span></a></li>-->
+<!--                    <li><a href="#" class="top">提问</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="navbar-custom-menu" id="user-nav-wrapper" style="float: right">-->
+<!--                <ul class="nav navbar-nav">-->
+<!--                    <li><a id="loginModalBtn"  class="top" >登录 </a></li>-->
+<!--                    <li><a href="/register" target="_blank" class="top">注册</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</div>-->
 <!---->
 <div>
     <div class="container-fluid main profile" >
