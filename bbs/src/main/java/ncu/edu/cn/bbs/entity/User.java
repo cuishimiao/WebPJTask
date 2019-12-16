@@ -4,14 +4,14 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("user")
 public class User {
-    private int user_id;
+    private int userId;
     private String username;
     private String password;
     private String email;
     private String phone;
     private String address;
     private String work;
-    private String is_admin;
+    private String isAdmin;
     private String head;
     private Integer gold;
     private String description;
@@ -30,14 +30,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
     }
 
     public String getName() {
@@ -88,14 +80,6 @@ public class User {
         this.work = work;
     }
 
-    public String getIsAdmin() {
-        return is_admin;
-    }
-
-    public void setIsAdmin(String is_admin) {
-        this.is_admin = is_admin;
-    }
-
     public String getHead() {
         return head;
     }
@@ -112,17 +96,39 @@ public class User {
         this.gold = gold;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
     @Override
-    public String toString() {
+    public String
+
+
+    toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", work='" + work + '\'' +
-                ", isAdmin='" + is_admin + '\'' +
+                ", isAdmin='" + isAdmin + '\'' +
+                ", head='" + head + '\'' +
+                ", gold=" + gold +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
