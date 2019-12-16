@@ -28,4 +28,5 @@ public interface UserDao {
      * @description:实现用户注册功能
      */
     int addUser(User user);
+    int modifyUserInfo(User user);
 }

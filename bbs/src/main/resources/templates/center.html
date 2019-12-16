@@ -302,7 +302,6 @@
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
 <script type="text/javascript" src="/js/adminlte.min.js"></script>
-<script type="text/javascript" src="/js/account.js"></script>
 <script>
     $(function () {
         $(document).on("click","#profile-btn",function () {
@@ -313,10 +312,10 @@
                 "description":$("#profile option:selected").text()
             };
             $.ajax({
-                url:"/modifyUserInfo",
-                ContentType:"application/json",
-                data:JSON.stringify(param),
                 method:"POST",
+                url:"/modifyUserInfo",
+                contentType:"application/json;charset=utf-8",
+                data:JSON.stringify(param),
                 success:function (msg) {
                     $("#modalText").html(msg);
                     $("#myModal").modal()

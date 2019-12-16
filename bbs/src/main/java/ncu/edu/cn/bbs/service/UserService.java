@@ -22,4 +22,5 @@ public class UserService {
         return userDao.addUser(user);
     }
 
+    public int ModifyUserInfo(User user){return userDao.modifyUserInfo(user);}
 }

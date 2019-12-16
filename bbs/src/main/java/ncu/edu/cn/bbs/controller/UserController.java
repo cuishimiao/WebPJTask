@@ -75,6 +75,18 @@ public class UserController {
         return "redirect:/";
     }
 
+    @RequestMapping("/modifyUserInfo")
+    @ResponseBody
+    public String modifyUserInfo(@RequestBody User user){
+        int temp = service.ModifyUserInfo(user);
+        if(temp ==1){
+            return "信息修改成功!";
+        }
+        else{
+            return "信息修改失败!";
+        }
+    }
+
 
 
 }
