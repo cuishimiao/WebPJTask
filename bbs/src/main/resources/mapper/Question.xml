@@ -15,13 +15,11 @@
         select * from question where question_id = #{id}
     </select>
 
-<<<<<<< HEAD
     <delete id="deleteByUid">
-        delete from question where uid =#{uid}git
-=======
+        delete from question where uid =#{uid}
+    </delete>
     <delete id="deleteby">
         delete from question where question_id =#{question_id}
->>>>>>> ccc5c9fdc9bb7b9f803fdb6e8545692c1eef759c
     </delete>
 
     <select id="findAll" resultType="requestArticle">
