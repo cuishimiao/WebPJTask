@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../static/css/3.3.7bootstrap.min.css">
     <script src="../static/js/2.1.1jquery.min.js"></script>
     <script src="../static/js/bootstrap3.3.7.min.js"></script>
+    <script src="../static/js/comment.js"></script>
 </head>
 
 <style>
@@ -20,48 +21,48 @@
 <body style="background-color: #E6E6E6">
 
 <!--导航 -->
-<div th:insert="~{navigation :: nav}"></div>
-<!--<div>-->
-<!--    <nav class="navbar navbar-static-top" style="background-color:#777777; ">-->
-<!--        <div class="container" style="height: 20px">-->
-<!--            <div class="navbar-header">-->
-<!--                <a href="/" class="navbar-brand">-->
-<!--                    &lt;!&ndash;codegroup图片地址&ndash;&gt;-->
-<!--                    &lt;!&ndash;<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">&ndash;&gt;-->
-<!--                </a>-->
-<!--                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">-->
-<!--                    <i class="fa fa-bars"></i>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
-<!--            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">-->
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a href="#" class="active top">首页</a></li>-->
-<!--                    <li><a href="/article" class="active top">文章 <span class="sr-only">(current)</span></a></li>-->
-<!--                    <li><a href="/askandanswer" class="top">问答</a></li>-->
-<!--                    <li><a href="#" class="top">我的主页</a></li>-->
-<!--                </ul>-->
+<!--<div th:insert="~{navigation :: nav}"></div>-->
+<div>
+    <nav class="navbar navbar-static-top" style="background-color:#777777; ">
+        <div class="container" style="height: 20px">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">
+                    <!--codegroup图片地址-->
+                    <!--<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/index" class="active top">首页</a></li>
+                    <li><a href="/article" class="active top">文章 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/askandanswer" class="top">问答</a></li>
+                    <li><a href="/main" class="top">我的主页</a></li>
+                </ul>
 
-<!--                <form class="navbar-form navbar-left" action="" role="search">-->
-<!--                    <div class="form-group">-->
-<!--                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a href="#"  class="top">写文章 <span class="sr-only">(current)</span></a></li>-->
-<!--                    <li><a href="#" class="top">提问</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--            <div class="navbar-custom-menu" id="user-nav-wrapper" style="float: right">-->
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a id="loginModalBtn"  class="top" >登录 </a></li>-->
-<!--                    <li><a href="/register" target="_blank" class="top">注册</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </nav>-->
-<!--</div>-->
-<!---->
+                <form class="navbar-form navbar-left" action="" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
+                    </div>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li><a href="#"  class="top">写文章 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#" class="top">提问</a></li>
+                </ul>
+            </div>
+            <div class="navbar-custom-menu" id="user-nav-wrapper" style="float: right">
+                <ul class="nav navbar-nav">
+                    <li><a id="loginModalBtn"  class="top" >登录 </a></li>
+                    <li><a href="/register" target="_blank" class="top">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
 <div>
     <div class="container-fluid main profile" >
         <div class="row">
@@ -69,11 +70,12 @@
             <div class="col-md-9"style="margin-top: 0px; width: 750px;margin-left: 70px;  ;border-radius: 5px;" >
                 <div  style="width: 720px;background-color: white;border-radius: 5px;">
                     <!--帖子标题-->
-                    <h4 style="margin-top: 10px" class="cont"><span th:text="${article.title}"></span></h4>
+                    <h4 style="padding-top: 21px; margin-top: 10px" class="cont"><span th:text="${article.title}"></span></h4>
                     <span  class="text-desc cont">
                         作者：<span th:text="${article.uname}"></span>
                         <!--发布时间：<span th:text="${#dates.format(card.getCardTime(),'yyyy-MM-dd HH:mm')}"></span> |-->
                         <span style="margin-left: 10px">发布时间：</span>
+                        <span th:text="${article.create_time}"></span>
                         <span style="margin-left: 10px">阅读数：</span>
                         <span th:text="${article.count}"></span>
                         <a style="margin-left: 10px" th:href="@{'/Articlelike/'+${article.article_id}}" class="glyphicon glyphicon-heart" >喜欢<span span th:text="${article.like}"></span></a>
@@ -93,37 +95,33 @@
                 </div>
                 <!--评论-->
                  <div  style="width: 720px;margin-top:20px;background-color: white;border-radius: 5px;">
-                    <h4 class="cont">发表评论<br/>
-                        <textarea style="margin-right: 5px" class="form-control comment" rows="5" id="comment_content"></textarea>
-                        <button type="button" class="btn btn-default" style="float: right">回复</button>
-                        <hr class="col-lg-12 col-md-12 col-xs-12">
-                    </h4>
+                    <div id="comment_div">
+                     <h4 class="cont">发表评论<br/>
+                         <input type="hidden" id="articleId" th:value="${article.article_id}">
+                         <textarea style="margin-right: 5px" class="form-control comment" rows="5" id="comment_content"></textarea>
+                         <button type="button" class="btn btn-default" style="float: right" onclick="Article_Comment()">回复</button>
+                         <hr class="col-lg-12 col-md-12 col-xs-12">
+                     </h4>
+                 </div>
                      <br>
                      <h4 class="cont">
-                         <span>2</span>条评论
+                         <span th:text="${Count}"></span>条评论
                      </h4>
                      <!---->
-                     <div class="media cont">
+                     <!--评论循环体-->
+                     <div class="media cont" th:each="replyDto:${replyDtos}">
                          <hr>
                          <div class="media-left">
                              <!--头像-->
                              <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
                          </div>
                          <div class="media-body">
-                             <h5 class="media-heading">Media heading</h5>
-                             <h6 class="media-heading">此处是回答</h6>
-                             <span style="font-size: 8px;color: #9ea6b9">2019-1-1</span>
-                         </div>
-                     </div>
-                     <div class="media cont">
-                         <div class="media-left">
-                             <!--头像-->
-                             <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
-                         </div>
-                         <div class="media-body">
-                             <h5 class="media-heading">Media heading</h5>
-                             <h6 class="media-heading">此处是回答</h6>
-                             <span style="font-size: 8px;color: #9ea6b9">2019-1-1</span>
+                             <!--用户名-->
+                             <h5 class="media-heading" th:text="${replyDto.getUser().username}"></h5>
+                             <!--评论内容-->
+                             <h6 class="media-heading" th:text="${replyDto.getReplyArticle().getContext()}"></h6>
+                             <!--评论时间-->
+                             <span style="font-size: 8px;color: #9ea6b9" th:text="${replyDto.getReplyArticle().getReply_time()}"></span>
                          </div>
                      </div>
                      <!---->

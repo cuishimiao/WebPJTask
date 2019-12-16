@@ -32,6 +32,7 @@ public class ArticleController1 {
                           @RequestParam(name = "sort", required = false) String sort){
         Integer offset=size*(page-1);
         List<Article> Articles=articleMapper.getArticle(offset,size);
+        //处理分页数据
         Integer totalcount = articleMapper.count();
         Integer totalpage=totalcount/size;
         if(totalcount%size==0){

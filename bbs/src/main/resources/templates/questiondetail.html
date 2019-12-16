@@ -60,14 +60,13 @@
         <!--box-->
         <!--th:each="article:${Articles}"-->
         <div class="post-box-item" style="background: white;border-radius:5px">
-            <h4 class="post-box-header">
-                <!--标题-->
-                <span th:text="${question.question_title}"></span><br>
-                时间：2019.12.13
-                <br>
-                <textarea style="background-color: white;border:none;" disabled="disabled" cols="77" rows="10"  th:text="${question.content}"></textarea>
-                <hr style="margin: 5px">
-            </h4>
+            <div  style="width: 720px;background-color: white;border-radius: 5px;">
+                <!--帖子标题-->
+                <h4 style="margin-left: 10px;padding-top: 21px; margin-top: 10px" class="cont"><span th:text="${question.question_title}"></span></h4>
+                <span style="margin-left: 10px">发布时间：<span th:text="${question.time}"></span></span>
+                <hr class="col-lg-12 col-md-12 col-xs-12 ">
+                <textarea class="cont" style="margin-left: 10px;background-color: white;border:none;" disabled="disabled" cols="77" rows="10"  th:text="${question.content}"></textarea>
+            </div>
             <div class="post-box-footer">
                 <div id="article-info-ul">
                 </div>

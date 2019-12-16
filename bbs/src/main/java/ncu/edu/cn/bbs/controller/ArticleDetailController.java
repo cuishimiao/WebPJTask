@@ -1,7 +1,12 @@
 package ncu.edu.cn.bbs.controller;
 
 import ncu.edu.cn.bbs.dao.ArticleMapper;
+import ncu.edu.cn.bbs.dao.ReplyArticleMaper;
+import ncu.edu.cn.bbs.dao.ReplyDto;
+import ncu.edu.cn.bbs.dao.Userdao1;
 import ncu.edu.cn.bbs.entity.Article;
+import ncu.edu.cn.bbs.entity.ReplyArticle;
+import ncu.edu.cn.bbs.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -17,18 +23,49 @@ public class ArticleDetailController {
 //    @Autowired
     @Resource
     private ArticleMapper articleMapper;
+    @Autowired
+    private ReplyArticleMaper replyArticleMaper;
+    @Autowired
+    private Userdao1 userdao;
+
+
     boolean flag=true;
 
     @GetMapping("/Articledetail/{id}")
     public String articledetail(@PathVariable(name="id") Integer id, Model model){
         Article article = articleMapper.getArticleById(id);
-        //累加阅读数
-        System.out.println(article.toString());
-        articleMapper.plusbyid(id);
-        Integer uid=article.getUid();
-        List<Article> hisArticles=articleMapper.getAllHisArticle(uid);
         model.addAttribute("article",article);
+        //累加阅读数
+        articleMapper.plusbyid(id);
+
+        Integer uid=article.getUid();
+        //获取他分数最高的前4篇文章
+        List<Article> hisArticles=articleMapper.getAllHisArticle(uid);
         model.addAttribute("hisArticles",hisArticles);
+
+
+        //获取文章作者
+        User articleuser=userdao.findById(uid);
+        model.addAttribute("articleuser",articleuser);
+        if(articleuser==null){
+            System.out.println("对象为空"+uid);
+        }else
+            System.out.println(articleuser.toString()+"____________________________________");
+
+        //获取所有评论,以及评论数
+        List<ReplyDto> replyDtos=new ArrayList<>();
+        List<ReplyArticle> replyArticles=replyArticleMaper.findAllReply(id);
+        //将用户对象和评论对象封装到replyDto中
+        for (ReplyArticle replyArticle : replyArticles) {
+            ReplyDto replyDto=new ReplyDto();
+            replyDto.setReplyArticle(replyArticle);
+            replyDto.setUser(userdao.findById(replyArticle.getResponder_id()));
+            replyDtos.add(replyDto);
+        }
+        Integer Count=replyArticleMaper.countReply(id);
+
+        model.addAttribute("replyDtos",replyDtos);
+        model.addAttribute("Count",Count);
         return "articledetail";
     }
 
