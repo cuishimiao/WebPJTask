@@ -18,6 +18,7 @@ public class Article {
     private Integer score;
     private String uname;
 
+
     public Integer getCount() {
         return count;
     }

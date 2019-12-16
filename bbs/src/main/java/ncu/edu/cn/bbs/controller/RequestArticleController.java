@@ -1,13 +1,20 @@
 package ncu.edu.cn.bbs.controller;
 
+//import jdk.nashorn.internal.ir.RuntimeNode;
 import ncu.edu.cn.bbs.entity.Question;
 import ncu.edu.cn.bbs.service.RequestArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +25,17 @@ import java.util.Map;
  * @Date:Createed in 2019/12/10 17:34
  **/
 @RestController
+
 public class RequestArticleController {
     @Autowired
     private RequestArticleService articleService;
 
     @RequestMapping("/generateRequest")
-    public String generate(@RequestBody Question article){
-        return articleService.generateRequest(article);
+    public String generate(@RequestBody Question article) throws  IOException {
+         articleService.generateRequest(article);
+
+         return "/main";
+
     }
 
     @RequestMapping("/findAllRequest/{user_id}")

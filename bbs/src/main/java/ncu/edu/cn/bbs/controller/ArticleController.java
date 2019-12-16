@@ -43,6 +43,7 @@ public class ArticleController {
     }
 
 
+    //写完文章后的界面
     @RequestMapping("/writeArticle")
     public ModelAndView write(@RequestBody Article article, ModelAndView modelAndView){
         modelAndView.setViewName("index");
@@ -99,9 +100,6 @@ public class ArticleController {
     public String modify(@RequestBody Article article){
         return service.modifyArticle(article);
     }
-
-
-
 
 
 }
