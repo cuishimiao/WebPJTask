@@ -19,10 +19,7 @@ public class UserMainController {
         else
             return "/";
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> d887ef3a5373dce7961155f19393f9827d27b6b5
     @RequestMapping("/center")
     public String showCenter(Model model,HttpSession session){
         if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null){
@@ -34,15 +31,14 @@ public class UserMainController {
         }
 
     }
-<<<<<<< HEAD
+
 
     @RequestMapping("/manage/articles")
     public String showArticle()
     {
         return "/manage/articles";
     }
-=======
->>>>>>> d887ef3a5373dce7961155f19393f9827d27b6b5
+
 
     @RequestMapping("/manage/comments")
     public String showCategory()
@@ -51,8 +47,4 @@ public class UserMainController {
     }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d887ef3a5373dce7961155f19393f9827d27b6b5
 }
