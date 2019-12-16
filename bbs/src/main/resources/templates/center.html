@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"  href="css/AdminLTE.min.css">
+</head>
+<body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="height: auto; min-height: 100%;">
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">
+                    </a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/" class="active">首页</a></li>
+                        <li><a href="/#" class="active">文章 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="/question">问答</a></li>
+                        <li><a href="/main">我的主页</a></li>
+                    </ul>
+
+                    <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/publish">写文章 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="/ask">提问</a></li>
+                    </ul>
+                </div>
+
+                <div class="navbar-custom-menu" id="user-nav-wrapper">
+                    <ul class="nav navbar-nav" id="user-nav">
+                        <!-- 私信-->
+                        <li class="dropdown messages-menu open">
+                            <!-- Menu toggle button -->
+                            <a href="#" id="message-size-btn" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li class="header">
+                                    您没有未读私信
+                                </li>
+                                <li id="not-read-message-list"><ul class="menu"></ul></li>
+                                <li class="footer"><a href="#" target="_blank">查看所有私信</a></li>
+                            </ul>
+                        </li>
+                        <!-- 通知-->
+                        <li class="dropdown notifications-menu">
+                            <a href="#" id="notice-size-btn" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li class="header">
+                                    您没有未读通知
+                                </li>
+                                <li id="not-read-notice-list"><ul class="menu"></ul></li>
+                                <li class="footer"><a href="/#">查看所有通知</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 用户 -->
+                        <li class="dropdown user user-menu" id="user-menu">
+                            <a href="/manage/account/avatar" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="/images/logn.png" class="user-image" >
+                                <span class="hidden-xs">iring</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-header">
+                                    <img src="/images/logn.png" alt="" onclick="window.location.href='/manage/account/avatar'">
+                                    <p>
+                                        <span th:text="${user.username}">name</span>
+                                        <small th:text="${user.email}">email</small>
+                                    </p>
+                                </li>
+                                <li class="user-body">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">文章</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">问答</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="/main">我的主页</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/center" class="btn btn-default btn-flat">个人中心</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/logout" class="btn btn-default btn-flat">退出</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content-wrapper" style="min-height: 67px;">
+        <div class="container">
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">个人中心</h3>
+                            </div>
+                            <div class="box-body no-padding">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="/main">我的主页</a></li>
+                                    <li class="active"><a href="/manage/account">我的账号</a>
+                                    </li>
+                                    <li><a href="#">关系管理</a></li>
+                                    <li><a href="#">通知管理</a></li>
+                                    <li><a href="#" target="_blank">私信管理</a></li>
+
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                        <div class="box box-solid  collapsed-box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">文章管理</h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding" style="display: none;">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="/post-new">发表文章</a></li>
+                                    <li><a href="/manage/articles">文章管理</a></li>
+                                    <li><a href="/manage/categorys"><i></i>个人分类管理</a></li>
+                                    <li><a href="/manage/comments"><i></i>评论管理</a></li>
+                                    <li><a href="/manage/bookmarks">收藏夹</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="box box-solid collapsed-box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">问答管理</h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body no-padding" style="display: none;">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="/manage/questions">我的问题</a></li>
+                                    <li><a href="/manage/answers">我的回答</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">我的账号</h3>
+                            </div>
+                            <div class="box-body" id="right-box-body">
+                                <div id="right-box-body-replace">
+                                    <div class="nav-tabs-custom" style="box-shadow: 0 0;">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="javascript:void(0)" class="tab-a" id="profile">基本资料</a></li>
+                                            <li><a href="javascript:void(0)" class="tab-a" id="avatar">我的头像</a></li>
+                                            <li><a href="javascript:void(0)" class="tab-a" id="security">账号安全</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active">
+                                                <form class="form-horizontal userForm">
+                                                    <div class="box-body">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">用户名</label>
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label" th:text="${user.username}">name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="contact" class="col-sm-2 control-label">联系方式</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control" id="contact" name="contact"  placeholder="如 QQ: 666666（微信同号）">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="contact" class="col-sm-2 control-label">地址</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control" id="address" name="address"  placeholder="南昌">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="job" class="col-sm-2 control-label">职业</label>
+                                                            <div class="col-sm-6">
+                                                                <select class="form-control" id="job" name="job">
+                                                                    <option value="1" selected="selected">未设置</option>
+                                                                    <option value="2">学生</option>
+                                                                    <option value="3">Java工程师</option>
+                                                                    <option value="4">PHP工程师</option>
+                                                                    <option value="5">JS工程师</option>
+                                                                    <option value="6">WEB前端工程师</option>
+                                                                    <option value="7">Phython工程师</option>
+                                                                    <option value="8">移动开发工程师</option>
+                                                                    <option value="9">Linux系统工程师</option>
+                                                                    <option value="10">交互设计师</option>
+                                                                    <option value="11">软件测试工程师</option>
+                                                                    <option value="12">UI设计师</option>
+                                                                    <option value="13">算法工程师</option>
+                                                                    <option value="14">全栈工程师</option>
+                                                                    <option value="15">CG影视动画师</option>
+                                                                    <option value="16">数据库工程师</option>
+                                                                    <option value="17">产品经理</option>
+                                                                    <option value="18">页面重构设计</option>
+                                                                    <option value="19">其他</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">用户说明</label>
+
+                                                            <div class="col-sm-6">
+                                                                <textarea class="form-control" name="profile"  rows="4" placeholder="关于我的一些事儿..."></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-offset-2 col-sm-10">
+                                                                <button type="button" class="btn btn-primary" id="profile-btn">保存
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<footer class="main-footer">
+    <div class="container" style="text-align: center;">
+        <strong>Copyright © 2019 <a href="http://codergroup.cn">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
+    </div>
+</footer>
+<input type="hidden" id="uid" th:value="${user.user_id}">
+
+<!-- 提示框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="modalTitle" style="text-align: center;">
+                    提示框
+                </h4>
+            </div>
+            <div id="modalText" class="modal-body">
+                提示内容
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="/js/adminlte.min.js"></script>
+<script type="text/javascript" src="/js/account.js"></script>
+<script>
+    $(function () {
+        $(document).on("click","#profile-btn",function () {
+            var param ={
+                "user_id":$("#uid").val(),
+                "phone":$("#contact").val(),
+                "address":$("#address").val(),
+                "description":$("#profile option:selected").text()
+            };
+            $.ajax({
+                url:"/modifyUserInfo",
+                ContentType:"application/json",
+                data:JSON.stringify(param),
+                method:"POST",
+                success:function (msg) {
+                    $("#modalText").html(msg);
+                    $("#myModal").modal()
+                }
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>
+
