@@ -54,4 +54,10 @@ public class ReplyArticleService {
             return "评论修改失败";
         }
     }
+
+
+    public List<ReplyArticle> findAll(){
+        return replyArticleDao.findAll();
+    }
+
 }

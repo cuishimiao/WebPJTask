@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+            input{
+                width: 400px;
+                height: 25px;
+            }
+    </style>
+</head>
+<body>
+	<div  align="center">
+
+            <form id="updateForm" th:action="@{/modifyArticle}"  th:method="post" >
+                <h3 align="center">文章 >> 信息修改</h3>
+                <br>
+                <table border="2">
+                <!--th:action="@{/modifyArticle}"-->
+                <input th:type="hidden" name="_method" value="put">
+
+                <tr>
+                   <td><span >文章编号</span></td>
+                   <td><input type="text" th:value="${msg.article_id}" id="article_id" name="article_id" size="50px"/></td>
+
+                </tr>
+
+                <tr>
+                    <td><span >用户编号</span></td>
+                    <td><input type="text" th:value="${msg.uid}" id="uid"  name="uid" placeholder="韩露"/></td>
+
+                </tr>
+
+                <tr>
+                    <td><span >标题</span></td>
+                    <td><input type="text" th:value="${msg.title}" id="title" name="title"  placeholder="标题"/></td>
+
+                </tr>
+
+
+
+                <tr>
+                   <td><span >创建时间</span></td>
+                   <td><input type="text" th:value="${msg.create_time}" id="create_time" name="create_time"  placeholder="创建时间" /></td>
+
+
+                </tr>
+
+                <tr>
+                   <td> <span >种类编号</span></td>
+                   <td> <input type="text" th:value="${msg.category_id}" id="category_id"  name="category_id" placeholder="种类编号"/></td>
+
+
+                </tr>
+
+                <tr>
+                   <td><span >是否置顶</span></td>
+                   <td><input type="text" th:value="${msg.top}" id="top" name="top"  placeholder="是否置顶"/></td>
+
+
+                </tr>
+
+                <tr>
+                   <td><span >用户头像</span></td>
+                   <td><input type="text" th:value="${msg.uhead}" id="uhead" name="uhead" placeholder="用户头像"/></td>
+
+                </tr>
+
+
+                <tr>
+                    <td><span >内容</span></td>
+                    <td><textarea th:text="${msg.content}" name="content" id="content" cols="54" rows="10"></textarea>
+                        <!--<input type="textarea" th:value="${msg.content}" id="content" name="content"  placeholder="内容"/></td>-->
+                </tr>
+
+                </table>
+
+                <input style="width: 100px;height: 50px;margin-right: 50px;" type="submit" value="保存" id="btn"   />
+                <input style="width: 100px;height: 50px"  type="button" value="返回" onclick="history.back(-1)"/>
+            </form>
+
+        </div>
+</body>
+</html>

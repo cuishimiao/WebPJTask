@@ -5,6 +5,8 @@
     <head th:insert="~{import :: head}"></head>
     <head th:insert="~{import :: markdown}"></head>
     <script src="/js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
     <script>
         $(function () {
             $(document).on('click','#btn1',function () {
@@ -12,7 +14,6 @@
                     question_title:$("#title").val(),
                     content:$("#description").val(),
                     uid:$("#uid").val()
-
                 };
                 $.ajax({
                     url:"/generateRequest",
@@ -20,8 +21,13 @@
                     method:"POST",
                     data:JSON.stringify(param),
                     success:function (msg) {
+
                         $("#arid").text(msg),
                         $("#myModal").modal()
+
+                        $("#modalText").html(msg);
+                        $("#myModal").modal('show');
+
                     }
                 });
             });
@@ -30,46 +36,30 @@
 </head>
 <body>
 
+
+
 <div th:insert="~{navigation :: nav}"></div>
-<!--<header class="main-header">-->
-<!--    <nav class="navbar navbar-static-top">-->
-<!--        <div class="container">-->
-<!--            <div class="navbar-header">-->
-<!--&lt;!&ndash;                <a href="/" class="navbar-brand">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">-->
-<!--                    <i class="fa fa-bars"></i>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
-<!--            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">-->
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a href="/" class="active">首页</a></li>-->
-<!--                    <li><a href="#">问答</a></li>-->
-<!--                    <li><a href="/main">我的主页</a></li>-->
-<!--                </ul>-->
 
-<!--                <form class="navbar-form navbar-left" action="/search/articles" role="search">-->
-<!--                    <div class="form-group">-->
-<!--                        <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a href="/publish">写文章 <span class="sr-only">(current)</span></a></li>-->
-<!--                    <li><a href="/ask">提问</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-
-<!--            <div class="navbar-custom-menu" id="user-nav-wrapper">-->
-<!--                <ul class="nav navbar-nav" id="user-nav">-->
-<!--                    <li><a data-toggle="modal" data-target="#login">登录 </a></li>-->
-<!--                    <li><a href="#"  id="eroll">注册</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </nav>-->
-<!--</header>-->
+<!-- 提示框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="modalTitle" style="text-align: center;">
+                    提示框
+                </h4>
+            </div>
+            <div id="modalText" class="modal-body">
+                提示内容
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
 <div class="container-fluid main">
     <div class="row">

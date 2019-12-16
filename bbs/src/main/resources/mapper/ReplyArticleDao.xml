@@ -25,4 +25,9 @@
 <delete id="deleteReply">
     delete from reply_article where id =#{id}
 </delete>
+
+<select id="findAll" resultType="replyArticle">
+    select * from reply_article
+</select>
+
 </mapper>

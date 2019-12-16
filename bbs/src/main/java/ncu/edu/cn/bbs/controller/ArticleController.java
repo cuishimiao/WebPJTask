@@ -21,8 +21,6 @@ public class ArticleController {
     ArticleService service;
 
 
-
-
     @RequestMapping("/articles")
     @ResponseBody
     public List<Article> findAll(){
@@ -52,12 +50,8 @@ public class ArticleController {
 
     }
 
-//    @RequestMapping("/publish")
-//    public String publish(HttpSession session,Model m)
-//    {
-//        m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
-//        return "publish";
-//    }
+
+
 
     @RequestMapping("/publish")
     public String publish(HttpSession session,Model m)
@@ -86,7 +80,6 @@ public class ArticleController {
             return "/index";
         }
     }
-
 
 
     @RequestMapping("/deleteArticle")
