@@ -14,6 +14,15 @@ public class User {
     private String isAdmin;
     private String head;
     private Integer gold;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getUsername() {
         return username;
