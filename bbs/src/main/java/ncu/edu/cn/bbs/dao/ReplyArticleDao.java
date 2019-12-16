@@ -14,6 +14,9 @@ public interface ReplyArticleDao {
     int generateReply(ReplyArticle replyArticle);
     //查看某文章的所有评论
     List<ReplyArticle>findAllReply(int id);
+
+    List<ReplyArticle>findAll();
+
     //查看某一个评论
     ReplyArticle getReply(int id);
     //删除某评论

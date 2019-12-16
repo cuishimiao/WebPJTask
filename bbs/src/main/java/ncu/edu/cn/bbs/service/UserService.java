@@ -5,6 +5,8 @@ import ncu.edu.cn.bbs.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -23,4 +25,23 @@ public class UserService {
     }
 
     public int ModifyUserInfo(User user){return userDao.modifyUserInfo(user);}
+
+    public List<User> findAll(){
+        return userDao.findAll();
+    }
+
+    public List<User> findby(String username){
+        return userDao.findby(username);
+    }
+
+    public String delete(String username){
+        int temp = userDao.delete(username);
+        if(temp ==1 ){
+            return "成功";
+        }
+        else{
+            return "失败";
+        }
+    }
+
 }

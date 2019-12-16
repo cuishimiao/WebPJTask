@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class
 Question {
     private Integer question_id;
-    private String uid;
+    private int uid;
     private Timestamp time;
     private String content;
     private String question_title;
@@ -30,11 +30,11 @@ Question {
         this.question_id = question_id;
     }
 
-    public String getUid() {
+    public int getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
 

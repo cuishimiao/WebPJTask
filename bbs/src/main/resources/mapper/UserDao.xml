@@ -17,4 +17,17 @@
     <update id="modifyUserInfo" >
         update user set phone =#{phone},work=#{work},address=#{address},description=#{description} where user_id =#{user_id}
     </update>
+
+    <select id="findAll" resultType="user">
+    select * from user
+</select>
+
+    <select id="findby" resultType="user">
+    select * from user where username = #{username}
+</select>
+
+    <delete id="delete">
+    delete from user where username =#{username}
+</delete>
+
 </mapper>

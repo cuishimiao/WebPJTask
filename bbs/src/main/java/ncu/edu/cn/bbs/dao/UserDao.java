@@ -5,6 +5,8 @@ import ncu.edu.cn.bbs.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface UserDao {
@@ -29,4 +31,10 @@ public interface UserDao {
      */
     int addUser(User user);
     int modifyUserInfo(User user);
+
+    List<User> findby(String username);
+
+    List<User> findAll();
+
+    int delete(String username);
 }

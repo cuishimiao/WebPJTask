@@ -15,4 +15,12 @@
         select * from question where question_id = #{id}
     </select>
 
+    <delete id="deleteby">
+        delete from question where uid =#{uid}
+    </delete>
+
+    <select id="findAllr" resultType="requestArticle">
+        select * from question
+    </select>
+
 </mapper>

@@ -34,4 +34,19 @@ public class RequestArticleService {
         return articleDao.getRequest(id);
     }
 
+    public List<Question>findAllr(){
+        return articleDao.findAllr();
+    }
+
+    public String deleteby(int uid){
+        int temp = articleDao.deleteby(uid);
+        if(temp ==1 ){
+            return "成功";
+        }
+        else{
+            return "失败";
+        }
+    }
+
+
 }
