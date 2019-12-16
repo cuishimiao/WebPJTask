@@ -79,43 +79,11 @@ $(function () {
                 }
                 else{
                     var content = '<ul class="nav navbar-nav" id="user-nav">'+
-                            '<li class="dropdown user user-menu" id="user-menu">'+
-                            '<a href="/manage/accoount/avatar" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">'+
-                            '<img src="../images/logn.png" width="25" height="25" class="user-image">'+
-                            '<span class="hidden-xs">'+data["msg"].username+'</span>' +'</a>'+
-                            '<ul class="dropdown-menu">'+
-                            '<li class="user-header">'+
-                            '<img src="../images/logn.png" width="90" height="90" class="user-image" alt="" onclick="window.location.href=\'/manage/account/avatar\'">'+
-                            '<p>'+
-                            '<span>'+data["msg"].username+'</span>'+
-                            '<small>'+data["msg"].email+'</small>'+
-                            '</p>'+
-                            '</li>'+
-                            '<li class="user-body">'+
-                            '<div class="row">'+
-                            '<div class="col-xs-4 text-center">'+
-                            '<a href="/manage/articles">'+"文章"+'</a>'+
-                            '</div>'+
-                            '<div class="col-xs-4 text-center">'+
-                            '<a href="/manage/questions">'+"问答"+'</a>'+
-                            '</div>'+
-                            '<div class="col-xs-4 text-center">'+
-                            '<a href="/iring">'+"我的主页"+'</a>'+
-                            '</div>'+
-                            '</div>'+
-                            '</li>'+
-                            '<li class="user-footer">'+
-                            '<div class="pull-left">'+
-                            '<a href="/manage/account" class="btn btn-default btn-flat">'+'个人中心'+'</a>'+
-                            '</div>'+
-                            '<div class="pull-right">'+
-                            '<a href="/logout" class="btn btn-default btn-flat">'+'退出'+'</a>'+
-                            '</div>'+
-                            '</li>'+
-                            '</ul>'+
-                            '</li>'+ '</ul>';
+                        '<li class="dropdown user user-menu" id="user-menu">'+
+                        '<img src="../images/logn.png" width="25" height="25" class="user-image">'+
+                        '<span class="hidden-xs">'+data["msg"].username+'</span>'+'</li></ul>'
+                    $("#login").modal("hide");
                 }$("#user-nav-wrapper").html(content);
-                $("#login").modal("hide")
 
             }
         });
@@ -168,32 +136,3 @@ $(function () {
     });
 });
 
-// '<li class="dropdown messages-menu">'+
-// <!-- Menu toggle button -->
-// '<a href="#" id="message-size-btn" class="dropdown-toggle" data-toggle="dropdown">'+
-// '<i class="fa fa-envelope-o">'
-// '</i>'+
-// '<span class="label label-success">'+'</span>'+
-// '</a>'+
-// '<ul class="dropdown-menu">'+
-// '<li class="header">'+ "您没有未读私信"+
-// '</li>'+
-// '<li id="not-read-message-list">'+ "加载中..."+
-// '</li>'+
-// '<li class="footer">'+'<a href="/manage/messages" target="_blank">'+
-// "查看所有私信"+'</a>'+'</li>'+
-// '</ul>'+
-// '</li>'+
-// <!-- 通知-->
-// '<li class="dropdown notifications-menu">'+
-// '<a href="#" id="notice-size-btn" class="dropdown-toggle" data-toggle="dropdown"aria-expanded="true">'+
-// '<i class="fa fa-bell-o">'+'</i>'+
-// '<span class="label label-warning">'+'</span>'+
-// '</a>'+
-// '<ul class="dropdown-menu">'+
-// '<li class="header">'+ "您没有未读通知"+
-// '</li>'+ '<li id="not-read-notice-list">'+ "加载中..."+
-// '</li>'+
-// '<li class="footer">'+'<a href="/manage/notices">'+"查看所有通知"+'</a>'+'</li>'+
-// '</ul>' +'</li>'+
-// '</li>'+
