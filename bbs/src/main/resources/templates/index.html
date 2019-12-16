@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>BBS</title>
@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="navbar-custom-menu" id="user-nav-wrapper">
-                    <ul class="nav navbar-nav" id="user-nav">
-                        <li><a data-toggle="modal" data-target="#login">登录 </a></li>
+                    <ul class="nav navbar-nav" id="mode">
+                        <li><a data-toggle="modal" data-target="#login" id="loginModalBtn">登录 </a></li>
                         <li><a href="#"  id="eroll">注册</a></li>
                     </ul>
                 </div>
@@ -364,5 +364,101 @@
 <script src="/js/index.js"></script>
 <script src="/js/script.js"></script>
 
+<script>
+    $(function () {
+        $(document).ready(function () {
+            $.ajax({
+                url:"/isLogin",
+                method:"POST",
+                success:function (data) {
+                    if(data['msg'] != null){
+                        var content =
+                          '<li class ="dropdown user user-menu" id="user-menu">'+
+                          '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
+                         '<img src="../images/logn.png" width="25" height="25" class="user-image">'+
+                          '<span class="hidden-xs">'+data['msg'].username+ '</span></a></li></ul>';
+                        $("#mode").html(content);
+                    }
+                }
+            });
+        });
+
+        //登录提交
+        $(document).on("click", "#login_btn", function () {
+            var param={
+                username:$("#username").val(),
+                password:$("#password").val()
+            };
+
+            $.ajax({
+                url: "/login",
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify(param),
+                success: function (data) {
+                    if (typeof (data["msg"]) == "string")
+                        $("#message").html(data["msg"]);
+                   else{
+                       $("#login").modal("hide");
+                        var content =
+                            '<li class ="dropdown user user-menu" id="user-menu">'+
+                            '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
+                            '<img src="../images/logn.png" width="25" height="25" class="user-image">'+
+                            '<span class="hidden-xs">'+data['msg'].username+ '</span></a></li></ul>';
+                        $("#mode").html(content);
+                    }
+                }
+            });
+        });
+
+        // 加载推荐文章
+        $(document).ready(function () {
+            $.ajax({
+                url: "/articles",
+                type: 'GET',
+                dataType:"json",
+                success: function (msg) {
+                    var obj = msg;
+                    var content='<div class="profile-mine__content mb0">';
+                    for(var i in obj ){
+                        content+=
+                            '<li>'+
+                            '<div class="row">'+
+                            '<div class="col-md-12 profile-mine__content--title-warp">'+
+                            '<p class="nowrap bold" style="font-size:16px;">'+
+                            '<a class="link-primary" target="_blank" href=/getArticle/'+obj[i].article_id+'>'+obj[i].title+'</a>'+
+                            '</p>'+
+                            '<ul class="list-inline" style="font-size: 12px!important;line-height: 30px;">'+
+                            '<li>'+
+                            '<a href="#" target="_blank">'+
+                            '<img src="/static/images/head.jpeg" alt="" class="img-circle" width="30" height="30">'+
+                            '<span>'+obj[i].uname+'</span>'+'</a>'+
+                            '</li>'+
+                            '<li class="pull-right">'+
+                            '<a href="#" class="link-black" target="_blank">'+
+                            '<i class="margin-r-5"></i>'+'评论(5)'+'</a>'+
+                            '</li>'+
+                            '<li class="pull-right">'+
+                            '<a href="#" class="link-black" target="_blank">'+
+                            '<i class="margin-r-5"></i>'+'阅读(123)'+'</a>'+
+                            '</li>'+
+                            '<li>'+
+                            '<a href="#" class="link-black disabled">'+
+                            '<i class="margin-r-5"></i>'+obj[i].create_time+'</a>'+
+                            '</li>'+
+                            '</ul>'+
+                            '</div>'+
+                            '</div>'+
+                            '</li>'
+                    }
+                    $("#box-body").html(content)
+                }
+            });
+        });
+
+
+
+    })
+</script>
 </body>
 </html>

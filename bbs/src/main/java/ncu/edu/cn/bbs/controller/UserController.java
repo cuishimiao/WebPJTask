@@ -87,6 +87,12 @@ public class UserController {
         }
     }
 
-
+    @RequestMapping("/isLogin")
+    @ResponseBody
+    public Map<String,Object> isLogin(HttpSession session){
+        Map<String,Object> map = new HashMap<>();
+        map.put("msg",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+        return map;
+    }
 
 }
