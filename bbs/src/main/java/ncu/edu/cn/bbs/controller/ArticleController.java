@@ -21,8 +21,6 @@ public class ArticleController {
     ArticleService service;
 
 
-
-
     @RequestMapping("/articles")
     @ResponseBody
     public List<Article> findAll(){
@@ -43,6 +41,7 @@ public class ArticleController {
     }
 
 
+    //写完文章后的界面
     @RequestMapping("/writeArticle")
     public ModelAndView write(@RequestBody Article article, ModelAndView modelAndView){
         modelAndView.setViewName("index");
@@ -51,12 +50,8 @@ public class ArticleController {
 
     }
 
-//    @RequestMapping("/publish")
-//    public String publish(HttpSession session,Model m)
-//    {
-//        m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
-//        return "publish";
-//    }
+
+
 
     @RequestMapping("/publish")
     public String publish(HttpSession session,Model m)
@@ -87,7 +82,6 @@ public class ArticleController {
     }
 
 
-
     @RequestMapping("/deleteArticle")
     @ResponseBody
     public String delete(int id){
@@ -99,9 +93,6 @@ public class ArticleController {
     public String modify(@RequestBody Article article){
         return service.modifyArticle(article);
     }
-
-
-
 
 
 }

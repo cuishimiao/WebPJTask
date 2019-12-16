@@ -24,9 +24,15 @@ public class ManageRequest {
         return "admin/managequestion";
     }
 
+<<<<<<< HEAD
     @RequestMapping("/deleteRequest/{id}")
     public String delete(@PathVariable int id){
         articleService.deleteByUid(id);
+=======
+    @RequestMapping("/deleteRequest/{question_id}")
+    public String delete(@PathVariable int question_id){
+        articleService.deleteby(question_id);
+>>>>>>> ccc5c9fdc9bb7b9f803fdb6e8545692c1eef759c
         return "redirect:/Requests";
     }
 

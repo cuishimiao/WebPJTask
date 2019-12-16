@@ -36,6 +36,7 @@ public class Article {
         this.create_time = create_time;
     }
 
+
     public int getCategory_id() {
         return category_id;
     }

@@ -15,6 +15,10 @@ public interface QuestionDao {
 
     List<Question> findAll();
 
+<<<<<<< HEAD
     int deleteByUid(int uid);
+=======
+    int deleteby(int question_id);
+>>>>>>> ccc5c9fdc9bb7b9f803fdb6e8545692c1eef759c
 
 }

@@ -38,8 +38,13 @@ public class QuestionArticleService {
         return articleDao.findAll();
     }
 
+<<<<<<< HEAD:bbs/src/main/java/ncu/edu/cn/bbs/service/QuestionArticleService.java
     public String deleteByUid(int uid){
         int temp = articleDao.deleteByUid(uid);
+=======
+    public String deleteby(int question_id){
+        int temp = articleDao.deleteby(question_id);
+>>>>>>> ccc5c9fdc9bb7b9f803fdb6e8545692c1eef759c:bbs/src/main/java/ncu/edu/cn/bbs/service/RequestArticleService.java
         if(temp ==1 ){
             return "成功";
         }
