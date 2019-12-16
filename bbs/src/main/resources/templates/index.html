@@ -328,30 +328,31 @@
     </div>
 </footer>
 
-<div class="modal fade"id="login">
-    <div class="modal-dialog modal-sm " style="width: 350px">
+<!--登录框-->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-title">
-                <h4 class="center" style="font-size: 18px" >快速登录</h4>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="myModalLabel">登录提示：</h4>
             </div>
             <div class="modal-body">
-                <form class="form-group" action="/">
-                    <div class="form-group">
-                        <label for="">用户名</label>
-                        <input class="form-control" type="text" placeholder="用户名" id="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="">密码</label>
-                        <input class="form-control" type="password" placeholder="密码" id="password">
-                    </div>
-                    还没有账号?<a href="#" id="btnRegister">立即注册</a>
-                    <div id="message">
-                    </div>
-                    <div class="text-right">
-                        <button class="btn btn-primary" id="login_btn">登录</button>
-                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                    </div>
-                </form>
+                <div class="input-group">
+                    <span class="input-group-addon" >帐号：</span>
+                    <input type="text" class="input-lg" id="username" aria-describedby="basic-addon3" >
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">密码：</span>
+                    <input type="password" class="input-lg" id="password" aria-describedby="basic-addon3">
+                </div>
+                还没有账号?<a href="#" id="btnRegister">立即注册</a>
+                <div id="message">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="login_btn">登录</button>
             </div>
         </div>
     </div>

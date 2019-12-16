@@ -115,7 +115,7 @@ $(function () {
                             '</ul>'+
                             '</li>'+ '</ul>';
                 }$("#user-nav-wrapper").html(content);
-
+                $("#login").modal("hide")
 
             }
         });
