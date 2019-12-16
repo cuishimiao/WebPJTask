@@ -7,11 +7,11 @@ import java.sql.Timestamp;
 @Alias("requestArticle")
 public class
 Question {
-    private Integer questionId;
+    private Integer question_id;
     private int uid;
     private Timestamp time;
     private String content;
-    private String questionTitle;
+    private String question_title;
     private String uhead;
 
     public String getUhead() {
@@ -46,30 +46,30 @@ Question {
         this.content = content;
     }
 
-    public Integer getQuestionId() {
-        return questionId;
+    public Integer getQuestion_id() {
+        return question_id;
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public void setQuestion_id(Integer question_id) {
+        this.question_id = question_id;
     }
 
-    public String getQuestionTitle() {
-        return questionTitle;
+    public String getQuestion_title() {
+        return question_title;
     }
 
-    public void setQuestionTitle(String questionTitle) {
-        this.questionTitle = questionTitle;
+    public void setQuestion_title(String question_title) {
+        this.question_title = question_title;
     }
 
     @Override
     public String toString() {
         return "Question{" +
-                "questionId=" + questionId +
+                "question_id=" + question_id +
                 ", uid=" + uid +
                 ", time=" + time +
                 ", content='" + content + '\'' +
-                ", questionTitle='" + questionTitle + '\'' +
+                ", question_title='" + question_title + '\'' +
                 ", uhead='" + uhead + '\'' +
                 '}';
     }

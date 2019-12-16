@@ -7,10 +7,10 @@ import java.sql.Timestamp;
 @Alias("replyArticle")
 public class ReplyArticle {
     private int id;
-    private int articleId;
-    private int responderId;
+    private int article_id;
+    private int responder_id;
     private String context;
-    private Timestamp replyTime;
+    private Timestamp reply_time;
 
     public int getId() {
         return id;
@@ -20,21 +20,7 @@ public class ReplyArticle {
         this.id = id;
     }
 
-    public int getArticleId() {
-        return articleId;
-    }
 
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
-    }
-
-    public int getResponderId() {
-        return responderId;
-    }
-
-    public void setResponderId(int responderId) {
-        this.responderId = responderId;
-    }
 
     public String getContext() {
         return context;
@@ -44,22 +30,38 @@ public class ReplyArticle {
         this.context = context;
     }
 
-    public Timestamp getReplyTime() {
-        return replyTime;
+    public int getArticle_id() {
+        return article_id;
     }
 
-    public void setReplyTime(Timestamp replyTime) {
-        this.replyTime = replyTime;
+    public void setArticle_id(int article_id) {
+        this.article_id = article_id;
+    }
+
+    public int getResponder_id() {
+        return responder_id;
+    }
+
+    public void setResponder_id(int responder_id) {
+        this.responder_id = responder_id;
+    }
+
+    public Timestamp getReply_time() {
+        return reply_time;
+    }
+
+    public void setReply_time(Timestamp reply_time) {
+        this.reply_time = reply_time;
     }
 
     @Override
     public String toString() {
         return "ReplyArticle{" +
                 "id=" + id +
-                ", articleId=" + articleId +
-                ", responderId=" + responderId +
+                ", article_id=" + article_id +
+                ", responder_id=" + responder_id +
                 ", context='" + context + '\'' +
-                ", replyTime=" + replyTime +
+                ", reply_time=" + reply_time +
                 '}';
     }
 }

@@ -1,7 +1,7 @@
 package ncu.edu.cn.bbs.controller;
 
 import ncu.edu.cn.bbs.entity.Question;
-import ncu.edu.cn.bbs.service.RequestArticleService;
+import ncu.edu.cn.bbs.service.QuestionArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +18,9 @@ import java.util.Map;
  * @Date:Createed in 2019/12/10 17:34
  **/
 @RestController
-public class RequestArticleController {
+public class QuestionArticleController {
     @Autowired
-    private RequestArticleService articleService;
+    private QuestionArticleService articleService;
 
     @RequestMapping("/generateRequest")
     public String generate(@RequestBody Question article){

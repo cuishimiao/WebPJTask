@@ -13,7 +13,7 @@ import java.util.List;
  * @Date:Createed in 2019/12/10 17:28
  **/
 @Service
-public class RequestArticleService {
+public class QuestionArticleService {
     @Autowired
     private QuestionDao articleDao;
     public List<Question>findAllRequest(int user_id){
@@ -35,11 +35,11 @@ public class RequestArticleService {
     }
 
     public List<Question>findAllr(){
-        return articleDao.findAllr();
+        return articleDao.findAll();
     }
 
-    public String deleteby(int uid){
-        int temp = articleDao.deleteby(uid);
+    public String deleteByUid(int uid){
+        int temp = articleDao.deleteByUid(uid);
         if(temp ==1 ){
             return "成功";
         }

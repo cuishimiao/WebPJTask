@@ -11,10 +11,10 @@ import java.util.List;
 public interface QuestionDao {
     int generateRequest(Question article);
     List<Question> findAllRequest(int uid);
-    Question getRequest(int question_id);
+    Question getRequest(int questionId);
 
-    List<Question> findAllr();
+    List<Question> findAll();
 
-    int deleteby(int uid);
+    int deleteByUid(int uid);
 
 }

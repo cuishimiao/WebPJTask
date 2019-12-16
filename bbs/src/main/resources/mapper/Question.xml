@@ -15,11 +15,11 @@
         select * from question where question_id = #{id}
     </select>
 
-    <delete id="deleteby">
-        delete from question where uid =#{uid}
+    <delete id="deleteByUid">
+        delete from question where uid =#{uid}git
     </delete>
 
-    <select id="findAllr" resultType="requestArticle">
+    <select id="findAll" resultType="requestArticle">
         select * from question
     </select>
 

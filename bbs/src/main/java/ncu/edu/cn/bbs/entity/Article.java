@@ -6,43 +6,34 @@ import java.sql.Timestamp;
 
 @Alias("postArticle")
 public class Article {
-    private Integer articleId;
+    private Integer article_id;
     private Integer uid;
     private String title;
     private String content;
     private int category_id;
     private Integer count;
-    private Timestamp createTime;
+    private Timestamp create_time;
     private Integer top;
     private String uhead;
     private Integer like;
     private Integer score;
     private String uname;
-    private Integer categoryId;
 
 
-    public Integer getArticleId() {
-        return articleId;
+    public Integer getArticle_id() {
+        return article_id;
     }
 
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticle_id(Integer article_id) {
+        this.article_id = article_id;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
+    public Timestamp getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCreate_time(Timestamp create_time) {
+        this.create_time = create_time;
     }
 
     public int getCategory_id() {
@@ -131,19 +122,18 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "articleId=" + articleId +
+                "article_id=" + article_id +
                 ", uid=" + uid +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", category_id=" + category_id +
                 ", count=" + count +
-                ", createTime=" + createTime +
+                ", create_time=" + create_time +
                 ", top=" + top +
                 ", uhead='" + uhead + '\'' +
                 ", like=" + like +
                 ", score=" + score +
                 ", uname='" + uname + '\'' +
-                ", categoryId=" + categoryId +
                 '}';
     }
 }

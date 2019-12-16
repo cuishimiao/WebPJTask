@@ -4,30 +4,30 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("category")
 public class Category {
-    private int categoryId;
-    private String categoryName;
+    private int category_id;
+    private String category_name;
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getCategory_id() {
+        return category_id;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
     @Override
     public String toString() {
         return "Category{" +
-                "categoryId=" + categoryId +
-                ", categoryName='" + categoryName + '\'' +
+                "category_id=" + category_id +
+                ", category_name='" + category_name + '\'' +
                 '}';
     }
 }

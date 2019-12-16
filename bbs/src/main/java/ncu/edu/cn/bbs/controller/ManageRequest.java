@@ -1,24 +1,21 @@
 package ncu.edu.cn.bbs.controller;
 
 import ncu.edu.cn.bbs.entity.Question;
-import ncu.edu.cn.bbs.service.RequestArticleService;
+import ncu.edu.cn.bbs.service.QuestionArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ManageRequest {
 
     @Autowired
-    private RequestArticleService articleService;
+    private QuestionArticleService articleService;
 
     @RequestMapping("/Requests")
     public String findAll(Model m){
@@ -29,7 +26,7 @@ public class ManageRequest {
 
     @RequestMapping("/deleteRequest/{id}")
     public String delete(@PathVariable int id){
-        articleService.deleteby(id);
+        articleService.deleteByUid(id);
         return "redirect:/Requests";
     }
 

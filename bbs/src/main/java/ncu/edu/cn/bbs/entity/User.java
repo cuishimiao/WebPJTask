@@ -4,14 +4,14 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("user")
 public class User {
-    private int userId;
+    private int user_id;
     private String username;
     private String password;
     private String email;
     private String phone;
     private String address;
     private String work;
-    private String isAdmin;
+    private String is_admin;
     private String head;
     private Integer gold;
     private String description;
@@ -96,36 +96,33 @@ public class User {
         this.gold = gold;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public String getIsAdmin() {
-        return isAdmin;
+    public String getIs_admin() {
+        return is_admin;
     }
 
-    public void setIsAdmin(String isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setIs_admin(String is_admin) {
+        this.is_admin = is_admin;
     }
 
     @Override
-    public String
-
-
-    toString() {
+    public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "user_id=" + user_id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", work='" + work + '\'' +
-                ", isAdmin='" + isAdmin + '\'' +
+                ", is_admin='" + is_admin + '\'' +
                 ", head='" + head + '\'' +
                 ", gold=" + gold +
                 ", description='" + description + '\'' +
