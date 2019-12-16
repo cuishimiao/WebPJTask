@@ -44,4 +44,6 @@ public class UserService {
         }
     }
 
+    public int modifyPassword(User user){return userDao.updatePassword(user);}
+
 }

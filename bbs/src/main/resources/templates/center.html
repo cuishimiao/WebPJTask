@@ -321,6 +321,7 @@
                             <input type="password" id="confirm_password" name="confirm_password" class="form-control" required="required">
                         </div>
                     </div>
+                    <div id="msg1"></div>
 
                 </div>
                 <div class="modal-footer">
@@ -358,6 +359,7 @@
                             <input type="text" id="email" name="email" class="form-control" placeholder="请输入新的邮箱" required="required">
                         </div>
                     </div>
+                    <div id="msg2"></div>
 
                 </div>
                 <div class="modal-footer">
@@ -371,14 +373,14 @@
     </div>
 </div>
 
-<script src="js/bootstrap.validate.js"></script>
-<script src="js/account.js"></script>
+
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
 <script type="text/javascript" src="/js/adminlte.min.js"></script>
 <script>
     $(function () {
+        //修改个人信息
         $(document).on("click","#profile-btn",function () {
             var param ={
                 "user_id":$("#uid").val(),
@@ -397,6 +399,32 @@
                 }
             });
         });
+
+        //修改密码
+        $(document).on("click","#password-form-submit",function () {
+            var password = $("#password").val();
+            var confirm_password = $("#confirm_password").val();
+            if(password !== confirm_password){
+                $("#msg1").html("两次密码不一致");
+            }
+            else{
+                var param ={
+                    "user_id":$("#user_id").val(),
+                    "password":password
+                };
+                $.ajax({
+                    url:"/modifyPassword",
+                    method:"POST",
+                    contentType:"application/json",
+                    data:JSON.stringify(param),
+                    success:function (msg) {
+                        $("#msg1").html(msg);
+                    }
+
+                });
+            }
+        });
+
         
         $(document).on("click","#security",function () {
             var content=

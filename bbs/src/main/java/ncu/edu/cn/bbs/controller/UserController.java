@@ -95,4 +95,14 @@ public class UserController {
         return map;
     }
 
+    @RequestMapping("/modifyPassword")
+    @ResponseBody
+    public String modifyPassword(@RequestBody User user){
+        if(service.modifyPassword(user)==1){
+            return "密码修改成功!";
+        }
+        else{
+            return "密码修改失败";
+        }
+    }
 }

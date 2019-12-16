@@ -14,20 +14,24 @@
 <insert id="addUser">
     insert into user(username,password,email) values (#{username},#{password},#{email})
 </insert>
-    <update id="modifyUserInfo" >
-        update user set phone =#{phone},work=#{work},address=#{address},description=#{description} where user_id =#{user_id}
-    </update>
 
-    <select id="findAll" resultType="user">
+<update id="modifyUserInfo" >
+     update user set phone =#{phone},work=#{work},address=#{address},description=#{description} where user_id =#{user_id}
+</update>
+
+<select id="findAll" resultType="user">
     select * from user
 </select>
 
-    <select id="findby" resultType="user">
+<select id="findby" resultType="user">
     select * from user where username = #{username}
 </select>
 
-    <delete id="delete">
+<delete id="delete">
     delete from user where username =#{username}
 </delete>
 
+<update id="updatePassword">
+    update user set password = #{password} where user_id = #{user_id}
+</update>
 </mapper>
