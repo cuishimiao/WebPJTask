@@ -13,6 +13,7 @@ Question {
     private String content;
     private String question_title;
     private String uhead;
+    //    新增
     private int wealthy;
 
     public int getWealthy() {

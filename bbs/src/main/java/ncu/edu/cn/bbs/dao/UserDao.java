@@ -40,4 +40,6 @@ public interface UserDao {
     int delete(String username);
 
     int updatePassword(User user);
+
+    int saveuser(User user);
 }
