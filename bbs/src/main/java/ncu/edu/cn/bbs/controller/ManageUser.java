@@ -45,9 +45,16 @@ public class ManageUser {
     public String adduser(Model m){
         return "admin/manageadd";
     }
+
     @PostMapping("/save")
-    public String save(User user){
-        service.addUser(user);
+    public String save(User user,Model m){
+        if(user.getUsername().isEmpty()||user.getPassword().isEmpty())
+        {
+            m.addAttribute("wrong","wrong");
+            return "admin/manageadd";
+        }
+        user.setIsAdmin("false");
+        service.saveuser(user);
         return "redirect:/Users";
     }
 
@@ -84,4 +91,5 @@ public class ManageUser {
         service.delete(name);
         return "redirect:/Users";
     }
+
 }

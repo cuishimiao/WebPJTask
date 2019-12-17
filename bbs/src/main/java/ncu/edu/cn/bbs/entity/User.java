@@ -13,6 +13,8 @@ public class User {
     private String work;
     private String is_admin;
     private String head;
+
+//    新增
     private Integer gold;
     private String description;
 
@@ -122,7 +124,7 @@ public class User {
                 ", phone=" + phone +
                 ", address='" + address + '\'' +
                 ", work='" + work + '\'' +
-                ", isAdmin='" + is_admin + '\'' +
+                ", is_admin='" + is_admin + '\'' +
                 '}';
     }
 }

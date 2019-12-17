@@ -9,15 +9,16 @@ public class Article {
     private Integer article_id;
     private Integer uid;
     private String title;
-    private String content;
     private int category_id;
     private Integer count;
     private Timestamp create_time;
     private Integer top;
     private String uhead;
+    private String uname;
+    //    新增
     private Integer like;
     private Integer score;
-    private String uname;
+    private String content;
 
 
     public int getCategory_id() {
