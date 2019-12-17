@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.register {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+}
+
+#check {
+    display: block;
+    margin: 0 auto;
+}
+
+#username {
+    margin-top: 10px;
+}
+
+#password {
+    margin-top: 10px;
+}
+
+.input-group {
+    margin-top: 10px;
+}
+
+.item {
+    font-size: large;
+    font-weight: bold;
+    color: brown;
+    margin-bottom: 10px;
+}
+
+.item2 {
+    position: absolute;
+    top: 80px;
+    margin-top: 10px;
+}
+
+
+

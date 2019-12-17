@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html" charset="UTF-8">
+    <title>注册界面</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<script src="js/particle.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $("#check").click(function () {
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var email = $("#email").val();
+            page = "/register";
+            $.post({
+                url: page,
+                data: {"username": username, "password": password, "email": email},
+                success: function (msg) {
+                    if (msg==="注册成功") {
+                        location.href = msg;
+                    } else {
+                        $("#Result").html("<p style='color:red'>" + msg + "</p>");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<div class="register">
+    <div class="well" style="height: 400px">
+        <div class="item"><h3>注册界面</h3></div>
+        <div class="item2">
+            <input type="text" class="form-control" name="username" id="username" placeholder="用户名"><br>
+            <input type="password" class="form-control" name="password" id="password" placeholder="密码"><br>
+            <div class="input-group">
+                <input type="text" class="form-control" name="email" id="email" placeholder="邮箱">
+            </div>
+            <input type="button" class="btn btn-primary" id="check" value="注册">
+            <div id="Result">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
