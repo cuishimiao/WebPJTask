@@ -51,16 +51,6 @@
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="label label-success"></span>
                             </a>
-                            <ul class="dropdown-menu">
-
-                                <li class="header">
-                                    您没有未读私信
-                                </li>
-                                <li id="not-read-message-list">
-                                    加载中...
-                                </li>
-                                <li class="footer"><a href="/manage/messages" target="_blank">查看所有私信</a></li>
-                            </ul>
                         </li>
                         <!-- 通知-->
                         <li class="dropdown notifications-menu">
@@ -69,16 +59,6 @@
                                 <i class="fa fa-bell-o"></i>
                                 <span class="label label-warning"></span>
                             </a>
-                            <ul class="dropdown-menu">
-
-                                <li class="header">
-                                    您没有未读通知
-                                </li>
-                                <li id="not-read-notice-list">
-                                    加载中...
-                                </li>
-                                <li class="footer"><a href="/manage/notices">查看所有通知</a></li>
-                            </ul>
                         </li>
 
                         <!-- 用户 -->
@@ -225,27 +205,13 @@
                                 <div class="tab-pane active" id="tab-pane">
 
                                     <div class="profile-mine">
-                                        <h4 class="profile-mine__heading"><span>TA 的文章</span>
-                                            <div class="pull-right profile-mine__heading--filter">
-                                                <span>排序: </span>
-                                                <div class="btn-group btn-group-xs" id="sort-list">
-                                                    <a class="btn btn-default active" href="javascript:void(0)" role="button" data-orderby="createTime">时间</a>
-                                                    <a class="btn btn-default" href="javascript:void(0)"
-                                                       role="button" data-orderby="zanSize">得票</a>
-                                                    <a class="btn btn-default" href="javascript:void(0)"
-                                                       role="button" data-orderby="viewSize">阅读</a>
-                                                    <a class="btn btn-default" href="javascript:void(0)"
-                                                       role="button" data-orderby="commentSize">评论</a>
-                                                </div>
-                                            </div>
-                                        </h4>
+                                        <h4 class="profile-mine__heading"><span>TA 的文章</span></h4>
                                         <ul class="profile-mine__content">
 
                                         </ul>
                                     </div>
 
                                     <div class="empty-data" id="data">
-                                        空空如也！
                                     </div>
                                 </div>
 

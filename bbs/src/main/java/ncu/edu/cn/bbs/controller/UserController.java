@@ -5,6 +5,7 @@ import ncu.edu.cn.bbs.service.UserService;
 import ncu.edu.cn.bbs.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,10 +74,9 @@ public class UserController {
      * @description:退出销毁session
      */
     @RequestMapping("/logout")
-    @ResponseBody
-    public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request, Model model){
         request.getSession().removeAttribute(ConstantUtils.USER_SESSION_KEY);
-        return "redirect:/";
+        return "index";
     }
 
     @RequestMapping("/modifyUserInfo")
