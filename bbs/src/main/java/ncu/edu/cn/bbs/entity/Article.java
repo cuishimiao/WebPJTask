@@ -20,7 +20,6 @@ public class Article {
     private Integer score;
     private String content;
 
-
     public int getCategory_id() {
         return category_id;
     }

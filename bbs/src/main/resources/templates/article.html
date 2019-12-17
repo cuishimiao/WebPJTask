@@ -165,7 +165,7 @@
             <a href="#" class="list-group-item active">
                 <span style="font-size: 13px">精品文章</span>
             </a>
-            <a href="#" class="list-group-item" th:each="goodArticle:${goodArticles}" th:text="${goodArticle.title}"></a>
+            <a class="list-group-item" th:each="goodArticle:${goodArticles}" th:href="@{'/Articledetail/'+${goodArticle.article_id}}" th:text="${goodArticle.title}"></a>
         </div>
 
         <div class="list-group" style="margin-top: 15px">
@@ -181,8 +181,8 @@
                         </a>
                     </div>
                     <div class="media-body" style="margin-left: 10px;">
-                        <h5 class="media-heading" style="margin-top: 3px"><span th:text="${golduser.username}"></span></h5>
-                        <h5 class="media-heading" style="margin-bottom:3px"><span th:text="${golduser.gold}"></span></h5>
+                        <h5 class="media-heading" style="margin-top: 3px"> 昵 称：<span th:text="${golduser.username}"></span></h5>
+                        <h5 class="media-heading" style="margin-bottom:3px">赏金值：<span th:text="${golduser.gold}"></span></h5>
                     </div>
                 </div>
             </a>

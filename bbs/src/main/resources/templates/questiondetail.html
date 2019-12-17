@@ -104,7 +104,7 @@
                     <div class="media-body">
                         <!--用户名-->
                         <span class="media-heading" th:text="${reply.username}"></span>
-                        <span style="float: right;font-size:28px;color: #9f191f;margin-left:13px;" th:if="${reply.is_adopt gt 0}">[被采纳 赏金++]</span>
+                        <span style="float: right;font-size:25px;color: #9f191f;margin-left:13px;" th:if="${reply.is_adopt gt 0}">[被采纳 赏金已发放]</span>
                         <!--评论内容-->
                         <h6 class="media-heading" th:text="${reply.reply_content}"></h6>
                         <!--评论时间-->

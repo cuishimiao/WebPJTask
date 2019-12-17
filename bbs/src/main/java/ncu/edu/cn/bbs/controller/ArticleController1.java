@@ -66,6 +66,12 @@ public class ArticleController1 {
         articleDto.setPagination(1,1);
         model.addAttribute("articleDto",articleDto);
 
+        List<Article> goodArticles=articleMapper.findGoodArticle();
+        model.addAttribute("goodArticles",goodArticles);
+
+        List<User> goldUsers=uerDao.findGoldUser();
+        model.addAttribute("goldUsers",goldUsers);
+
         return "article";
     }
 

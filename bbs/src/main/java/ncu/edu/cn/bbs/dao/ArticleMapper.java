@@ -39,4 +39,16 @@ public interface ArticleMapper {
     @Update("update article set `like`=`like`+1 where article_id = #{id}")
     void pluslike(Integer id);
 
+    @Update("update article set top=1 where article_id = #{id}")
+    void setTop(Integer id);
+
+    @Update("update article set top=0 where article_id = #{id}")
+    void canselTop(Integer id);
+
+    @Update("update article set contend=#{newContend} where article_id = #{id}")
+    void alterContend(@Param(value = "newContend")String newContend);
+
+    @Update("update article set score=#{newscore} where article_id = #{id}")
+    void updateScore(@Param(value = "newscore")String newscore);
+
 }
