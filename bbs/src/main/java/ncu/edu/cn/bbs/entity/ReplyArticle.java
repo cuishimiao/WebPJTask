@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 
 @Alias("replyArticle")
 public class ReplyArticle {
+
     private int id;
     private int article_id;
     private int responder_id;

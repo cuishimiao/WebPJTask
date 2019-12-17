@@ -49,4 +49,6 @@ public class RequestArticleController {
         map.put("msg",articleService.getRequestArticle(id));
         return map;
     }
+
+
 }

@@ -73,13 +73,13 @@
 
                         <!-- 用户 -->
                         <li class="dropdown user user-menu" id="user-menu">
-                            <a href="/manage/account/avatar" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/images/logn.png" class="user-image" >
-                                <span class="hidden-xs">iring</span>
+                                <span class="hidden-xs" th:text="${user.username}">iring</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="/images/logn.png" alt="" onclick="window.location.href='/manage/account/avatar'">
+                                    <img src="/images/logn.png" alt="">
                                     <p>
                                         <span th:text="${user.username}">name</span>
                                         <small th:text="${user.email}">email</small>
@@ -88,10 +88,10 @@
                                 <li class="user-body">
                                     <div class="row">
                                         <div class="col-xs-4 text-center">
-                                            <a href="#">文章</a>
+                                            <a href="/article">文章</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
-                                            <a href="#">问答</a>
+                                            <a href="/askandanswer">问答</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
                                             <a href="/main">我的主页</a>
@@ -149,11 +149,11 @@
                             </div>
                             <div class="box-body no-padding" style="display: none;">
                                 <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="/post-new">发表文章</a></li>
-                                    <li><a href="/manage/articles">文章管理</a></li>
-                                    <li><a href="/manage/categorys"><i></i>个人分类管理</a></li>
-                                    <li><a href="/manage/comments"><i></i>评论管理</a></li>
-                                    <li><a href="/manage/bookmarks">收藏夹</a></li>
+                                    <li><a href="#">发表文章</a></li>
+                                    <li><a href="#">文章管理</a></li>
+                                    <li><a href="#"><i></i>个人分类管理</a></li>
+                                    <li><a href="#"><i></i>评论管理</a></li>
+                                    <li><a href="#">收藏夹</a></li>
                                 </ul>
                             </div>
                         </div>

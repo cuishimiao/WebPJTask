@@ -34,9 +34,6 @@ public class RequestArticleService {
         return articleDao.getRequest(id);
     }
 
-    public List<Question>findAllr(){
-        return articleDao.findAllr();
-    }
 
     public String deleteby(int uid){
         int temp = articleDao.deleteby(uid);

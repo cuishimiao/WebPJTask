@@ -4,6 +4,7 @@ package ncu.edu.cn.bbs.entity;
 import java.sql.Timestamp;
 
 public class QuestionReply {
+    //    新增
     private int id;
     private int question_id;//回复的问题编号
     private String username;//回复者姓名

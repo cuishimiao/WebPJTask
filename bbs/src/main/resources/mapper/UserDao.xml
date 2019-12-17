@@ -34,4 +34,8 @@
 <update id="updatePassword">
     update user set password = #{password} where user_id = #{user_id}
 </update>
+
+    <insert id="saveuser">
+    insert into user(username,password,email,phone,work,address,is_admin) values (#{username},#{password},#{email},#{phone},#{work},#{address},#{is_admin})
+</insert>
 </mapper>
