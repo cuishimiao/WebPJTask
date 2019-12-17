@@ -20,12 +20,12 @@ public class ManageRequest {
     @Autowired
     private RequestArticleService articleService;
 
-    @RequestMapping("/Requests")
-    public String findAll(Model m){
-        List<Question> all = articleService.findAllr();
-        m.addAttribute("msg",all);
-        return "admin/managequestion";
-    }
+//    @RequestMapping("/Requests")
+//    public String findAll(Model m){
+//        List<Question> all = articleService.findAllr();
+//        m.addAttribute("msg",all);
+//        return "admin/managequestion";
+//    }
 
     @RequestMapping("/deleteRequest/{id}")
     public String delete(@PathVariable int id){
@@ -52,7 +52,5 @@ public class ManageRequest {
         m.addAttribute("msg",articles);
         return "admin/managequestion";
     }
-
-
 
 }
