@@ -2,8 +2,10 @@ package ncu.edu.cn.bbs.controller;
 
 
 import ncu.edu.cn.bbs.dao.QuestionMapper;
+import ncu.edu.cn.bbs.dao.QuestionReplyMapper;
 import ncu.edu.cn.bbs.dao.Userdao1;
 import ncu.edu.cn.bbs.entity.Question;
+import ncu.edu.cn.bbs.entity.QuestionReply;
 import ncu.edu.cn.bbs.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,8 @@ public class AskAndAnswerDetailController {
     private QuestionMapper questionMapper;
     @Autowired
     private Userdao1 uerDao;
-
+    @Autowired
+    private QuestionReplyMapper questionReplyMapper;
     @GetMapping("/questiondetail/{id}")
     public String askandanswerdetail(@PathVariable(name="id") Integer questionid, Model model){
 
@@ -37,6 +40,14 @@ public class AskAndAnswerDetailController {
             System.out.println(goldUser.toString());
         }
         model.addAttribute("goldUsers",goldUsers);
+
+        //添加所有该问题的回答到model
+        List<QuestionReply> questionReplies=questionReplyMapper.getQuestionReplyById(questionid);
+        model.addAttribute("questionReplies",questionReplies);
+        //添加问题回复数到model
+        Integer questionReplyCount=questionReplyMapper.getQuestionReplyCountById(questionid);
+        model.addAttribute("questionReplyCount",questionReplyCount);
+
         return "questiondetail";
     }
 }

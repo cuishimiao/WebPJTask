@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="../static/css/3.3.7bootstrap.min.css">
     <script src="../static/js/2.1.1jquery.min.js"></script>
     <script src="../static/js/bootstrap3.3.7.min.js"></script>
+    <script src="../static/js/comment.js"></script>
 </head>
 <style>
     .top{color: white}
+    .cont{margin-left: 25px;}
 </style>
 <body class="hold-transition skin-blue layout-top-nav" style="background-color: #E6E6E6">
 <div>
@@ -56,19 +58,55 @@
 <!--------------------------------------------------------------->
 <div>
     <div class="col-md-9"style="width: 750px;margin-left: 70px;" >
-
-        <!--box-->
+        <div>
+    <!--box-->
         <!--th:each="article:${Articles}"-->
-        <div class="post-box-item" style="background: white;border-radius:5px">
-            <div  style="width: 720px;background-color: white;border-radius: 5px;">
-                <!--帖子标题-->
-                <h4 style="margin-left: 10px;padding-top: 21px; margin-top: 10px" class="cont"><span th:text="${question.question_title}"></span></h4>
-                <span style="margin-left: 10px">发布时间：<span th:text="${question.time}"></span></span>
-                <hr class="col-lg-12 col-md-12 col-xs-12 ">
-                <textarea class="cont" style="margin-left: 10px;background-color: white;border:none;" disabled="disabled" cols="77" rows="10"  th:text="${question.content}"></textarea>
+            <div class="post-box-item" style="background: white;border-radius:5px">
+                <div  style="width: 720px;background-color: white;border-radius: 5px;">
+                    <!--帖子标题-->
+                    <h4 style="margin-left: 10px;padding-top: 21px; margin-top: 10px" class="cont"><span th:text="${question.question_title}"></span></h4>
+                    <span style="margin-left: 10px">发布时间：<span th:text="${question.time}"></span></span>
+                    <hr class="col-lg-12 col-md-12 col-xs-12 ">
+                    <textarea class="cont" style="margin-left: 10px;background-color: white;border:none;" disabled="disabled" cols="77" rows="10"  th:text="${question.content}"></textarea>
+                </div>
+                <div class="post-box-footer">
+                    <div id="article-info-ul">
+                    </div>
+                </div>
             </div>
-            <div class="post-box-footer">
-                <div id="article-info-ul">
+
+            <!--评论-->
+            <div  style="width: 720px;margin-top:20px;background-color: white;border-radius: 5px;">
+                <div style="margin-top: 25px" id="comment__div">
+                    <div>
+                        <h4 style="padding-top: 20px" class="cont">发布回答<br/>
+                            <input type="hidden" id="questionId" th:value="${question.question_id}">
+                            <textarea style="margin-right: 5px" class="form-control comment" rows="5" id="question_reply"></textarea>
+                            <button type="button" class="btn btn-default" style="float: right" onclick="Question_Comment()">回复</button>
+                            <hr class="col-lg-12 col-md-12 col-xs-12">
+                        </h4>
+                    </div>
+                </div>
+                <br>
+                <h4 class="cont">
+                    <span th:text="${questionReplyCount}"></span>条回答
+                </h4>
+                <!---->
+                <!--评论循环体-->
+                <div class="media cont" th:each="reply:${questionReplies}">
+                    <hr>
+                    <div class="media-left">
+                        <!--头像-->
+                        <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
+                    </div>
+                    <div class="media-body">
+                        <!--用户名-->
+                        <h5 class="media-heading" th:text="${reply.username}"></h5>
+                        <!--评论内容-->
+                        <h6 class="media-heading" th:text="${reply.reply_content}"></h6>
+                        <!--评论时间-->
+                        <span style="font-size: 8px;color: #9ea6b9" th:text="${reply.time}"></span>
+                    </div>
                 </div>
             </div>
         </div>

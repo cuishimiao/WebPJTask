@@ -73,14 +73,16 @@
                     <h4 style="padding-top: 21px; margin-top: 10px" class="cont"><span th:text="${article.title}"></span></h4>
                     <span  class="text-desc cont">
                         作者：<span th:text="${article.uname}"></span>
-                        <!--发布时间：<span th:text="${#dates.format(card.getCardTime(),'yyyy-MM-dd HH:mm')}"></span> |-->
                         <span style="margin-left: 10px">发布时间：</span>
                         <span th:text="${article.create_time}"></span>
                         <span style="margin-left: 10px">阅读数：</span>
                         <span th:text="${article.count}"></span>
-                        <a style="margin-left: 10px" th:href="@{'/Articlelike/'+${article.article_id}}" class="glyphicon glyphicon-heart" >喜欢<span span th:text="${article.like}"></span></a>
+                        <a th:href="@{'/Articlelike/'+${article.article_id}}" style="margin-left: 10px" class="glyphicon glyphicon-heart" >喜欢</a>
+                        <span th:text="${article.like}"></span>
+                        <input type="hidden" id="aid" th:value="${article.article_id}">
+                        <a style="margin-left: 10px" class="glyphicon glyphicon-heart" onclick="lk()">喜欢</a>
+                        <span th:text="${article.like}"></span><span>人喜欢</span>
                     </span>
-
                     <hr>
 
                     <span  class="text-desc cont">
@@ -146,8 +148,8 @@
                             <h4 class="media-heading">
                                 <span th:text="${article.uname}"></span>
                             </h4>
-                            <h6>工作地点：</h6>
-                            <h6>工作性质：</h6>
+                            <h6>工作地点：<span th:text="${articleuser.address}"></span></h6>
+                            <h6>工作性质：<span th:text="${articleuser.work}"></span></h6>
                         </div>
                     </div>
                 </div>
