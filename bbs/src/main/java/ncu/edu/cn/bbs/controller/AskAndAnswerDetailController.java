@@ -1,6 +1,5 @@
 package ncu.edu.cn.bbs.controller;
 
-
 import ncu.edu.cn.bbs.dao.QuestionMapper;
 import ncu.edu.cn.bbs.dao.QuestionReplyMapper;
 import ncu.edu.cn.bbs.dao.Userdao1;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.List;
 
 @Controller

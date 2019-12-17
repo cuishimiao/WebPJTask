@@ -34,6 +34,7 @@ public class UserController {
             if(service.validate(user)>0){
                 map.put("msg",temp);
                 session.setAttribute(ConstantUtils.USER_SESSION_KEY,temp);
+                session.setAttribute("curuser",temp);
                 return map;
             }
             else{

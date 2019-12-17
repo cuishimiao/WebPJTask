@@ -103,12 +103,25 @@
                     </div>
                     <div class="media-body">
                         <!--用户名-->
-                        <h5 class="media-heading" th:text="${reply.username}"></h5>
+                        <span class="media-heading" th:text="${reply.username}"></span>
+                        <span style="float: right;font-size:28px;color: #9f191f;margin-left:13px;" th:if="${reply.is_adopt gt 0}">[被采纳 赏金++]</span>
                         <!--评论内容-->
                         <h6 class="media-heading" th:text="${reply.reply_content}"></h6>
                         <!--评论时间-->
                         <span style="font-size: 8px;color: #9ea6b9" th:text="${reply.time}"></span>
-                        <div th:if="${question.uid} eq">
+                        <!--只有作者进入自己的文章并且问题没被采纳，才出现采纳按钮-->
+                        <input type="hidden" id="ajaxquestion_Id" th:value="${question.question_id}">
+                        <input type="hidden" id="responserName" th:value="${reply.username}">
+                        <input type="hidden" id="replyId" th:value="${reply.id}">
+                        <div th:if="${question.uid} eq ${session.curuser.user_id}">
+                            <div th:if="${question.wealthy gt 0}">
+
+                                <!--<a th:href="@{'/Articledetail/'+${article.article_id}}" class="title" th:text="${article.title}"></a>-->
+                                <!--<button type="button" class="btn btn-default" style="float: right" onclick="accepted()">采纳</button>-->
+                                <a th:href="@{'/Accept'+'_'+${question.question_id} + '_' + ${reply.username} + '_' + ${reply.id}}">
+                                    <span class="glyphicon glyphicon-heart"></span> 采纳
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class commentController {
@@ -20,13 +21,14 @@ public class commentController {
 
     @ResponseBody
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
-    public Object post(@RequestBody CommentDto commentDto) {
+    public Object post(@RequestBody CommentDto commentDto,
+                      HttpServletRequest request) {
         ReplyArticle replyArticle=new ReplyArticle();
         replyArticle.setContext(commentDto.getContent());
         replyArticle.setArticle_id(commentDto.getArticleId());
-//        User user =(User) request.getSession().getAttribute("user");需要session
-//        replyArticle.setResponder_id(user.getUser_id());
-        replyArticle.setResponder_id(1);
+        User user =(User) request.getSession().getAttribute("curuser");//需要session
+        replyArticle.setResponder_id(user.getUser_id());
+//        replyArticle.setResponder_id(1);
 
         if(commentDto.getContent().equals(null)){
             return 0;

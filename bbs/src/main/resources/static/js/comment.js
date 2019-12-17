@@ -67,6 +67,36 @@ function Question_Comment() {
     });
 }
 
+// function accepted(){
+//     var ajaxquestion_Id = $("#ajaxquestion_Id").val();
+//     var replyId = $("#replyId").val();
+//     var responserName=$("#responserName").val();
+//     console.log(ajaxquestion_Id);
+//     console.log(replyId);
+//     console.log(responserName);
+//     alert("问题ID"+ajaxquestion_Id+"回复ID"+replyId+"回复者名字"+responserName)
+//     $.ajax({
+//         type: "POST",
+//         url: "/Accept",
+//         contentType: 'application/json',
+//         data: JSON.stringify({
+//             "ajaxquestion_Id":ajaxquestion_Id,
+//             "replyId":replyId,
+//             "c":responserName
+//         }),
+//         success:function (response) {
+//             if(response==1){
+//                 window.location.reload();
+//             }
+//             else{
+//                 alert("Error");
+//             }
+//             console.log(response);
+//         },
+//         dataType:"json"
+//     });
+// }
+
 // function lk() {
 //     var aid = $("#aid").val();
 //     console.log(aid);

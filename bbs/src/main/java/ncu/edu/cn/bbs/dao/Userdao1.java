@@ -4,6 +4,7 @@ import ncu.edu.cn.bbs.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface Userdao1 {
     @Select("select * from user where user_id = #{id}")
     User findById(@Param("id") Integer id);
 
+    @Update("update user set gold=gold+#{wealthy} where username = #{responserName}")
+    void addWealthyByName(@Param("responserName")String responserName, @Param("wealthy")Integer wealthy);
 }

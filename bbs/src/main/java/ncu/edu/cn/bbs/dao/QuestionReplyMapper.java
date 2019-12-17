@@ -1,10 +1,7 @@
 package ncu.edu.cn.bbs.dao;
 
 import ncu.edu.cn.bbs.entity.QuestionReply;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -19,5 +16,6 @@ public interface QuestionReplyMapper {
     @Select("SELECT count(1) FROM question_reply where question_id=#{questionid}")
     Integer getQuestionReplyCountById(@Param(value = "questionid")Integer questionid);
 
-
+    @Update("update question_reply set is_adopt=1 where id=#{acceptReplyId}")
+    void setAcceptById(Integer acceptReplyId);
 }

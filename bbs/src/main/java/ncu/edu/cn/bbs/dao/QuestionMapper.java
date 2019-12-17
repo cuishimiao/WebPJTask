@@ -4,6 +4,7 @@ import ncu.edu.cn.bbs.entity.Question;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -17,4 +18,8 @@ public interface QuestionMapper {
 
     @Select("SELECT * FROM question where question_id=#{questionid}")
     Question getQuestionById(@Param(value = "questionid") Integer questionid);
+
+    @Update("update question set wealthy=0 where question_id=#{curquestionId}")
+    void UpdateWeathyById(Integer curquestionId);
+
 }
