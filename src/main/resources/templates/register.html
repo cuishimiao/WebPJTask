@@ -2,21 +2,248 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>账户注册</title>
+    <style type="text/css">
+        body,input{
+            margin: 0;
+            padding: 0;
+            background: #65caff;
+        }
+        input{
+            display: inline-block;
+            background: #fff;
+        }
+        .container{
+            width: 100%;
+        }
+        .register-box{
+            position: relative;
+            height: 800px;
+            width: 800px;
+            top: 50px;
+            margin: 0 auto;
+            z-index: 99999;
+            background:#ffffff;
+            border: 7px solid #ccc;
+        }
+        .title-box{
+            position: absolute;
+            width: 300px;
+            height: 50px;
+            margin-left: 250px;
+            margin-top: 5px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: black;
+            line-height: 50px;
+        }
+        .username-box{
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top:100px;
+            margin-left:80px;
+            font-weight: 700;
+        }
+        .username-input{
+            display: inline-block;
+            margin-left: 45px;
+            /*background: green;*/
+        }
+        #username{
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .userPassword-box{
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top:180px;
+            margin-left:80px;
+            font-weight: 700;
+        }
+        .userPassword-input{
+            display: inline-block;
+            margin-left: 61px;
+        }
+        #userPassword{
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .userRePassword-box{
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top:260px;
+            margin-left:80px;
+            font-weight: 700;
+        }
+        .userRePassword-input{
+            display: inline-block;
+            margin-left: 28px;
+        }
+        #userRePassword{
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .userPhone-box{
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top:340px;
+            margin-left:80px;
+            font-weight: 700;
+        }
+        .userPhone-input{
+            display: inline-block;
+            margin-left: 28px;
+        }
+        #userPhone{
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .userEmail-box{
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top:420px;
+            margin-left:80px;
+            font-weight: 700;
+        }
+        .userEmail-input{
+            display: inline-block;
+            margin-left: 28px;
+        }
+        #userEmail{
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .userGender-box{
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top:500px;
+            margin-left:82px;
+            font-weight: 700;
+        }
+        .userGender-input{
+            display: inline-block;
+            margin-left: 62px;
+        }
+        .require{
+            color: red;
+        }
+        .submit-box{
+            position:absolute;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 580px;
+            margin-left:200px;
+            border-radius: 5px;
+            background: grey;
+        }
+        #submit-button{
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            background: #f1eafe;
+        }
+        .goLogin-box{
+            position:absolute;
+            width: 150px;
+            height: 20px;
+            margin-top: 600px;
+            margin-left:320px;
+
+        }
+
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="register-box">
+        <div class="title-box">
+            <span>用户注册</span>
+        </div>
+        <form action="#" method="post">
+            <div class="username-box">
+                <span class="require">*</span>
+                <label for="username">用户名</label>
+                <div class="username-input">
+                    <input type="text" id="username" name="username" placeholder="请输入用户名 长度:6-12个字符" />
+                </div>
+            </div>
 
-<div>
-    <ul class="nav nav-tabs">
-        <li><a href="/manage/articles" target="_blank">文章管理</a></li>
-        <li><a href="/manage/categorys" target="_blank">分类管理</a></li>
-        <li><a href="/manage/comments" target="_blank">评论管理</a></li>
-        <li><a href="/manage/bookmarks" target="_blank">收藏夹</a></li>
-        <li class="pull-right"><a href="/manage/account" class="text-muted" title="个人中心" target="_blank"><i class="fa fa-gear"></i></a></li>
-        <li class="pull-right"><a href="/phantom2" target="_blank">我的主页</a></li>
-    </ul>
+            <div class="userPassword-box">
+                <span class="require">*</span>
+                <label for="userPassword">密码</label>
+                <div class="userPassword-input">
+                    <input type="password" id="userPassword" name="userPassword" placeholder="请输入密码 长度:6-12个字符" />
+                </div>
+            </div>
+
+            <div class="userRePassword-box">
+                <span class="require">*</span>
+                <label for="userRePassword">确认密码</label>
+                <div class="userRePassword-input">
+                    <input type="password" id="userRePassword" name="userRePassword" placeholder="请重复输入密码" />
+                </div>
+            </div>
+
+            <div class="userPhone-box">
+                <span class="require">*</span>
+                <label for="userPhone">手机号码</label>
+                <div class="userPhone-input">
+                    <input type="text" id="userPhone" name="userPhone" placeholder="请输入您的手机号码，11位有效数字" />
+                </div>
+            </div>
+
+            <div class="userEmail-box">
+                <span class="require">*</span>
+                <label for="userEmail">电子邮箱</label>
+                <div class="userEmail-input">
+                    <input type="text" id="userEmail" name="userEmail" placeholder="请输入您的邮箱地址，如：123@qq.com" />
+                </div>
+            </div>
+
+            <div class="userGender-box">
+                <span class="require">*</span>
+                <label for="userGender">性别</label>
+                <div class="userGender-input">
+                    <input type="radio" id="userGender_01" name="userGender" value="0" checked="checked" />男   
+                    <input type="radio" id="userGender_02" name="userGender" value="1" />女
+                </div>
+            </div>
+
+            <div class="submit-box">
+                <input id = "submit-button" type="submit" value="注册">
+            </div>
+
+            <div class="goLogin-box">
+                <a href="#" style="text-decoration: none;">已有账号？去登录</a>
+            </div>
+        </form>
+    </div>
 </div>
-
-
 </body>
 </html>
