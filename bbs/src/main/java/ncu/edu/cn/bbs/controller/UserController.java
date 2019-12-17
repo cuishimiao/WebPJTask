@@ -46,8 +46,12 @@ public class UserController {
             return map;
         }
     }
-
     @RequestMapping("/register")
+    public String showRegister(){
+        return "register";
+    }
+
+    @RequestMapping("/reg")
     @ResponseBody
     public String register(@RequestBody User user){
         User temp = service.findByName(user);

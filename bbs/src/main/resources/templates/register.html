@@ -6,7 +6,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 <script src="js/particle.js"></script>
@@ -14,16 +14,19 @@
 
     $(function () {
         $("#check").click(function () {
-            var username = $("#username").val();
-            var password = $("#password").val();
-            var email = $("#email").val();
-            page = "/register";
+            var param ={
+                username : $("#username").val(),
+                password : $("#password").val(),
+                email : $("#email").val()
+            };
+            page = "/reg";
             $.post({
                 url: page,
-                data: {"username": username, "password": password, "email": email},
+                data: JSON.stringify(param),
+                contentType:"application/json",
                 success: function (msg) {
                     if (msg==="注册成功") {
-                        location.href = msg;
+                        countTime();
                     } else {
                         $("#Result").html("<p style='color:red'>" + msg + "</p>");
                     }
@@ -31,19 +34,32 @@
             });
         });
     });
+    function countTime() {
+        var seconds = 3;
+        $("#Result").html(seconds+"秒后到主界面");
+        setInterval(function () {
+            seconds--;
+            $("#Result").html(seconds+"秒后到主界面");
+            if(seconds===0){
+                $("#Result").hide();
+                window.location="/index";
+            }
+        },1000);
+    }
+    
 </script>
 <div class="register">
     <div class="well" style="height: 400px">
         <div class="item"><h3>注册界面</h3></div>
         <div class="item2">
-            <input type="text" class="form-control" name="username" id="username" placeholder="用户名"><br>
-            <input type="password" class="form-control" name="password" id="password" placeholder="密码"><br>
+            <input type="text" class="form-control input-lg" name="username" id="username" placeholder="用户名"><br>
+            <input type="password" class="form-control input-lg" name="password" id="password" placeholder="密码"><br>
             <div class="input-group">
-                <input type="text" class="form-control" name="email" id="email" placeholder="邮箱">
+                <input type="text" class="form-control input-lg" name="email" id="email" placeholder="邮箱">
             </div>
-            <input type="button" class="btn btn-primary" id="check" value="注册">
             <div id="Result">
             </div>
+            <input type="button" class="btn btn-primary" id="check" value="注册">
         </div>
     </div>
 </div>
