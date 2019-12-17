@@ -24,8 +24,8 @@
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="/" class="active">首页</a></li>
-                        <li><a href="/articles" class="active">文章 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="/questions">问答</a></li>
+                        <li><a href="/article" class="active">文章 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="/askandanswer">问答</a></li>
                         <li><a href="/main">我的主页</a></li>
                     </ul>
 
@@ -181,37 +181,21 @@
                                 <li class="active">
                                     <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false">文章</a>
                                 </li>
-                                <li><a th:value='|/questions/${user.user_id}|' id="user_Question" aria-expanded="false">提问</a></li>
-                                <li><a th:value="|/answers/${user.user_id}|" id="user_Reply" aria-expanded="false">回答</a></li>
+                                <li>
+                                    <a th:value='|/findAllRequest/${user.user_id}|' id="user_Question" aria-expanded="false">提问</a>
+                                </li>
+                                <li>
+                                    <a th:value="|/replyAll/${user.user_id}|" id="user_Reply" aria-expanded="false">回答</a>
+                                </li>
                             </ul>
-                            <div class="blank"></div>
-                            <form action="#" method="get" id="article-search-form"
-                                  class="input-group input-group-lg search">
-                                <input type="hidden" value=""name="category" id="search-category" class="form-control" autocomplete="off">
-                                <input type="text" value="" name="keywords"
-                                       class="form-control"
-                                       id="search-keyword" autocomplete="off"
-                                       placeholder="在 TA 的文章中搜索...">
-                                <input type="hidden" name="orderby" id="search-order" value="createTime"
-                                       class="form-control"
-                                       autocomplete="off">
-                                <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-primary" id="search-btn">搜索一下</button>
-                                        </span>
-                            </form>
-                            <div class="blank"></div>
 
                             <div class="tab-content" id="tab-content">
                                 <div class="tab-pane active" id="tab-pane">
-
                                     <div class="profile-mine">
                                         <h4 class="profile-mine__heading"><span>TA 的文章</span></h4>
-                                        <ul class="profile-mine__content">
-
-                                        </ul>
                                     </div>
+                                    <div id="content">
 
-                                    <div class="empty-data" id="data">
                                     </div>
                                 </div>
 
@@ -236,26 +220,121 @@
     <!-- /.container -->
 </footer>
 
-<div class="modal fade in" id="loginModal">
-    <div class="modal-dialog modal-sm" style="width:350px;">
-        <div class="modal-content" style="border:none;">
-            <div class="modal-header">
-                <button type="button" id="login_close" class="close" data-dismiss="modal"><span
-                        aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="loginModalLabel" style="font-size: 18px;">快速登录</h4>
-            </div>
-            <div class="modal-body" id="login-modal-body">
-            </div>
-        </div>
-    </div>
-</div>
-
-
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/adminlte.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
+<script>
+    $(function () {
+        $(document).on('click',"#user_Article",function () {
+            var page = $("#user_Article").attr("value");
+            var content ='';
+            $.ajax({
+                url:page,
+                type:"GET",
+                success:function (msg) {
+                    var obj = msg;
+                    var content = '<table class="table table-hover">' +
+                        '<thead>' +
+                        '<th>文章编号</th><th>文章标题</th><th>文章内容</th><th>创作时间</th><th>操作</th></thead>' + '<tbody>';
+                    for (var i in obj) {
+                        var text;
+                        var time = obj[i].create_time.substring(0,10);
+                        if (obj[i].content.length > 8)
+                            text = obj[i].content.substring(0, 7) + "...";
+                        else
+                            text = obj[i].content;
+                        content += '<tr><td>' + obj[i].article_id + '</td><td>' + obj[i].title + '</td>' +
+                            '<td>' + text + '</td>' +
+                            '<td>' + time + '</td>' +
+                            '<td>' +
+                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                        '</td></tr>'
+                    }
+                    content += '</tbody></table>';
+                    $("#content").html(content);
+                    }
+            });
+        });
+
+        $(document).on('click',"#user_Question",function () {
+            var page = $("#user_Question").attr("value");
+            var content ='';
+            $.ajax({
+                url:page,
+                type:"GET",
+                success:function (msg) {
+                    var obj = msg;
+                    var content = '<table class="table table-hover">' +
+                        '<thead>' +
+                        '<th>提问编号</th><th>提问标题</th><th>提问内容</th><th>时间</th><th>操作</th></thead>' + '<tbody>';
+                    for (var i in obj) {
+                        var text;
+                        console.log(obj[i].time);
+                        var time = obj[i].time.substring(0,10);
+                        if (obj[i].content.length > 8)
+                            text = obj[i].content.substring(0, 7) + "...";
+                        else
+                            text = obj[i].content;
+                        content += '<tr><td>' + obj[i].question_id + '</td><td>' + obj[i].question_title + '</td>' +
+                            '<td>' + text + '</td>' +
+                            '<td>' + time + '</td>' +
+                            '<td>' +
+                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '</td></tr>'
+                    }
+                    content += '</tbody></table>';
+                    $("#content").html(content);
+                }
+            });
+        });
+
+
+        $(document).on('click',"#user_Reply",function () {
+            var page = $("#user_Reply").attr("value");
+            var content ='';
+            $.ajax({
+                url:page,
+                type:"GET",
+                success:function (msg) {
+                    for(var i in msg){
+                        console.log(msg[i].id);
+                    }
+                    var obj = msg;
+                    var content = '<table class="table table-hover">' +
+                        '<thead>' +
+                        '<th>文章编号</th><th>回复者编号</th><th>回复内容</th><th>回复时间</th><th>操作</th></thead>' + '<tbody>';
+                    for (var i in obj) {
+                        var text;
+                        var time = obj[i].reply_time.substring(0,10);
+                        if (obj[i].context.length > 8)
+                            text = obj[i].context.substring(0, 7) + "...";
+                        else
+                            text = obj[i].context;
+                        content += '<tr><td>' + obj[i].article_id + '</td><td>' + obj[i].responder_id + '</td>' +
+                            '<td>' + text + '</td>' +
+                            '<td>' + time + '</td>' +
+                            '<td>' +
+                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '</td></tr>'
+                    }
+                    content += '</tbody></table>';
+                    $("#content").html(content);
+                }
+            });
+        });
+
+    });
+</script>
+
+
 </body>
 </html>
