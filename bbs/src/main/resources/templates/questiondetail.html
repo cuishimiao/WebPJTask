@@ -63,8 +63,10 @@
         <!--th:each="article:${Articles}"-->
             <div class="post-box-item" style="background: white;border-radius:5px">
                 <div  style="width: 720px;background-color: white;border-radius: 5px;">
-                    <!--帖子标题-->
+                    <!--问题标题-->
                     <h4 style="margin-left: 10px;padding-top: 21px; margin-top: 10px" class="cont"><span th:text="${question.question_title}"></span></h4>
+                    <span style="color: #9f191f;margin-left:13px;" th:if="${question.wealthy gt 0}">[未解决]</span>
+                    <span style="color: #9f191f;margin-left:13px;" th:if="${question.wealthy eq 0}">[已解决]</span>
                     <span style="margin-left: 10px">发布时间：<span th:text="${question.time}"></span></span>
                     <hr class="col-lg-12 col-md-12 col-xs-12 ">
                     <textarea class="cont" style="margin-left: 10px;background-color: white;border:none;" disabled="disabled" cols="77" rows="10"  th:text="${question.content}"></textarea>
@@ -106,6 +108,8 @@
                         <h6 class="media-heading" th:text="${reply.reply_content}"></h6>
                         <!--评论时间-->
                         <span style="font-size: 8px;color: #9ea6b9" th:text="${reply.time}"></span>
+                        <div th:if="${question.uid} eq">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,8 +142,8 @@
                         </a>
                     </div>
                     <div class="media-body" style="margin-left: 10px;">
-                        <h5 class="media-heading" style="margin-top: 3px"><span th:text="${golduser.username}"></span></h5>
-                        <h5 class="media-heading" style="margin-bottom:3px"><span th:text="${golduser.gold}"></span></h5>
+                        <h5 class="media-heading" style="margin-top: 3px">昵  称：<span th:text="${golduser.username}"></span></h5>
+                        <h5 class="media-heading" style="margin-bottom:3px">赏金值：<span th:text="${golduser.gold}"></span></h5>
                     </div>
                 </div>
             </a>
