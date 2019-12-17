@@ -75,6 +75,34 @@ public class UserController {
         return "redirect:/";
     }
 
+    @RequestMapping("/modifyUserInfo")
+    @ResponseBody
+    public String modifyUserInfo(@RequestBody User user){
+        int temp = service.ModifyUserInfo(user);
+        if(temp ==1){
+            return "信息修改成功!";
+        }
+        else{
+            return "信息修改失败!";
+        }
+    }
 
+    @RequestMapping("/isLogin")
+    @ResponseBody
+    public Map<String,Object> isLogin(HttpSession session){
+        Map<String,Object> map = new HashMap<>();
+        map.put("msg",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+        return map;
+    }
 
+    @RequestMapping("/modifyPassword")
+    @ResponseBody
+    public String modifyPassword(@RequestBody User user){
+        if(service.modifyPassword(user)==1){
+            return "密码修改成功!";
+        }
+        else{
+            return "密码修改失败";
+        }
+    }
 }
