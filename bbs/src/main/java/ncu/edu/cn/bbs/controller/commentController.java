@@ -20,10 +20,8 @@ public class commentController {
 
     @ResponseBody
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
-    public Object post(@RequestBody CommentDto commentDto,
-                       HttpServletRequest request) {
+    public Object post(@RequestBody CommentDto commentDto) {
         ReplyArticle replyArticle=new ReplyArticle();
-//        replyArticle.setReply_time();
         replyArticle.setContext(commentDto.getContent());
         replyArticle.setArticle_id(commentDto.getArticleId());
 //        User user =(User) request.getSession().getAttribute("user");需要session
@@ -36,6 +34,5 @@ public class commentController {
             commentMapper.insertcomment(replyArticle);
             return 1;
         }
-
     }
 }

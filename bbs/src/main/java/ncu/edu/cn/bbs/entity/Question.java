@@ -13,6 +13,15 @@ Question {
     private String content;
     private String question_title;
     private String uhead;
+    private int wealthy;
+
+    public int getWealthy() {
+        return wealthy;
+    }
+
+    public void setWealthy(int wealthy) {
+        this.wealthy = wealthy;
+    }
 
     public String getUhead() {
         return uhead;

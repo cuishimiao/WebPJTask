@@ -72,11 +72,11 @@ public class ArticleDetailController {
     @GetMapping("/Articlelike/{id}")
     public String Articlelike(@PathVariable(name="id") Integer id, Model model){
         //增加喜欢数
-        Article article = articleMapper.getArticleById(id);
         if(flag) {
             articleMapper.pluslike(id);
             flag=false;
         }
+        Article article = articleMapper.getArticleById(id);
         model.addAttribute("article",article);
         return "articledetail";
     }

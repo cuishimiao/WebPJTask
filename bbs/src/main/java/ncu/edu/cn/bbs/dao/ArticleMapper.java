@@ -37,6 +37,6 @@ public interface ArticleMapper {
     List<Article> getAllHisArticle(@Param(value = "uid") Integer uid);
 
     @Update("update article set `like`=`like`+1 where article_id = #{id}")
-    void pluslike(@Param("id")Integer id);
+    void pluslike(Integer id);
 
 }

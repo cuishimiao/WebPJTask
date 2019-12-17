@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        body{
+            background-color: deepskyblue;
+        }
+        .wrap{
+            width: 414px;
+            height: 312px;
+            border: solid rgb(238,238,238) 2px;
+            background-color: white;
+            /*margin: 0px auto;*/
+        }
+        .wrap .title{
+            margin-top: 6px;
+            margin-bottom: 16px;
+            font-size: 20px;
+            color: rgb(51,51,51);
+            text-align: center;/*居中*/
+
+        }
+        .wrap .infor{
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 36px;
+
+        }
+        .wrap .infor a{
+            text-decoration: none;
+            color:#3481cf;
+        }
+        .wrap #form{
+            text-align: center;
+            height:150px ;
+            width: 272px;
+            margin: 0px auto;
+
+        }
+        .wrap #form .input{
+            height: 38px;
+            width: 268px;
+            box-sizing: border-box;
+            padding: 10px;
+            padding-right: 0px;
+            margin-bottom: 17px;
+            border-radius: 3px;
+            border: solid grey 1px;
+        }
+        .wrap #form #btn{
+            border-radius: 3px;
+            height: 37px;
+            width: 258px;
+            padding: 1px 7px 2px 7px;
+            box-sizing: content-box;
+            border: none;
+            background-color: deepskyblue;
+            color: white;
+            font-size: 17px;
+        }
+    </style>
 </head>
 <body>
-
+<center style="margin: 10%">
+<div class="wrap"><!--登录框的外部框-->
+    <div class="title"><!--账号密码字体存放的div-->
+        <h1>登录</h1>
+    </div>
+    <form action="" method="post" id="form"> <!--账号密码登录的一个from表单-->
+        <input type="text" class="input" placeholder="支持QQ号/邮箱/手机号登录"/>
+        <input type="text"class="input" placeholder="密码"/>
+        <button type="button" id="btn">登 录</button>
+    </form>
+</div>
+</center>
 </body>
 </html>
