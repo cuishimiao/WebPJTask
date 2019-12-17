@@ -53,6 +53,4 @@ public class ManageRequest {
         return "admin/managequestion";
     }
 
-
-
 }
