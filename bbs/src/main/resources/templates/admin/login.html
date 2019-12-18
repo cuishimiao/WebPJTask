@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <style>
+        label{
+            margin-left: 200px;
+            margin-right: -140px;
+        }
+    </style>
+</head>
+<body>
+
+<form  id="sdai" th:action="@{/managelogin}"  th:method="post">
+
+    <input th:type="hidden" name="_method" value="put">
+
+    <h3 align="center">管理员 >> 登录界面</h3>
+    <div>
+        <a th:if="${wrong}!=null" class="col-sm-2 control-label" aline="center" style="color: red;">[[${wrong}]]</a>
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="password" name="password" placeholder="密码">
+            </div>
+        </div>
+        <input th:type="hidden" class="form-control" id="lastname" placeholder="住址">
+
+
+
+        <br>
+        <br>
+        <div class="form-group" >
+            <div class="col-sm-offset-5 col-sm-4">
+                <button type="submit" class="btn btn-default" style="margin-left:35px ">登录</button>
+                <a th:href="@{/Users}" type="button" class="btn btn-default" style="margin-left:60px ">返回</a>
+            </div>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
