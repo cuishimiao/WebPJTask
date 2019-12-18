@@ -1,98 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title></title>
-	<link href="./css/bootstrap.min.css" rel="stylesheet">
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <!--主要样式控制-->
-        <!-- <link href="./css/main.css" rel="stylesheet"> -->
-        <style type="text/css">
-			.navbar-collapse{
-    padding-left: 5px;
-    padding-right: 5px;
- }
- .nav>li{
-     text-align: center;
- }
- .nav>li>a{
-     color:#444;
-     margin: 0 5px;
- }
- .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-     background-color: #222222;
- }
- .dropdown-menu{
-     float: none;
-     position: initial;
-     min-width: 200px;
-     margin-left: 0;
-     background-color: #E3E3E3;
-     box-shadow: none;
-     text-align: center;
- }
- .dropdown-menu>li>a{
-     padding: 10px 15px;
- }
+    <title></title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--主要样式控制-->
+    <!-- <link href="./css/main.css" rel="stylesheet"> -->
+    <style type="text/css">
+        .navbar-collapse{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .nav>li{
+            text-align: center;
+        }
+        .nav>li>a{
+            color:#444;
+            margin: 0 5px;
+        }
+        .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+            background-color: #222222;
+        }
+        .dropdown-menu{
+            float: none;
+            position: initial;
+            min-width: 200px;
+            margin-left: 0;
+            background-color: #E3E3E3;
+            box-shadow: none;
+            text-align: center;
+        }
+        .dropdown-menu>li>a{
+            padding: 10px 15px;
+        }
 
- /* 主体样式 */
- body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    background-color: #FFFFFF;
-    font-family: "Microsoft YaHei", sans-serif;
- }
- .pageSidebar{
-    width: 240px;
-    height:100%;
-    padding-bottom: 30px;
-    overflow: auto;
-    background-color: #e3e3e3;
- }
- .splitter {
-     width: 5px;
-     height: 100%;
-     bottom: 0;
-     left: 240px;
-     position: absolute; 
-     overflow: hidden;
-     background-color: #fff;
- }
- .pageContent{
-     height: 100%;
-     min-width: 768px;
-     left: 246px;
-     top: 0;
-     right: 0;
-     z-index: 3;
-     padding-bottom: 30px;
-     position: absolute;
- }
- .pageContainer{
-     bottom: 0;
-     left:0;
-     right: 0;
-     top: 53px;
-     overflow: auto;
-     position: absolute;
-     width: 100%;
- }
- .footer {
-     width: 100%;
-     height: 30px;
-     line-height: 30px;
-     margin-top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     position: absolute; 
-     z-index: 10;
-     background-color:#DFDFDF;
- }
+        /* 主体样式 */
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: #FFFFFF;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        .pageSidebar{
+            width: 240px;
+            height:100%;
+            padding-bottom: 30px;
+            overflow: auto;
+            background-color: #e3e3e3;
+        }
+        .splitter {
+            width: 5px;
+            height: 100%;
+            bottom: 0;
+            left: 240px;
+            position: absolute;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .pageContent{
+            height: 100%;
+            min-width: 768px;
+            left: 246px;
+            top: 0;
+            right: 0;
+            z-index: 3;
+            padding-bottom: 30px;
+            position: absolute;
+        }
+        .pageContainer{
+            bottom: 0;
+            left:0;
+            right: 0;
+            top: 53px;
+            overflow: auto;
+            position: absolute;
+            width: 100%;
+        }
+        .footer {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            z-index: 10;
+            background-color:#DFDFDF;
+        }
 
-    	</style>
+    </style>
 </head>
 
 <body>
@@ -101,172 +101,177 @@
     <div class="container-fluid">
         <div class="navbar-header" style="width: 220px">
             <a class="navbar-brand" title="logoTitle" href="#" style="margin-left: 30px">CoderGroup</a>
-       </div>
-       
-       <div class="collapse navbar-collapse">
-       		 <ul class="nav navbar-nav navbar-left">
-               <li role="presentation">
-                   <a href="#">返回首页</a>
-               </li>
-               <!-- <li>
-                   <a href="../login/logout">
-                         <span class="glyphicon glyphicon-lock"></span>退出登录</a>
-                </li> -->
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li role="presentation">
+                    <a th:href="@{/logoutandreturn}">退出登录并返回首页</a>
+                </li>
+                <!-- <li>
+                    <a href="../login/logout">
+                          <span class="glyphicon glyphicon-lock"></span>退出登录</a>
+                 </li> -->
             </ul>
-           <ul class="nav navbar-nav navbar-right">
-               <li role="presentation">
-                   <a href="#">当前用户：<span class="badge">管理员</span></a>
-               </li>
-               <li>
-                   <a href="../login/logout">
-                         <span class="glyphicon glyphicon-lock"></span>退出登录</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li role="presentation">
+                    <a href="#">当前用户：<span class="badge" th:text="${session.username}"></span></a>
+                </li>
+                <li>
+                    <a th:href="@{/managelogout}">
+                        <span class="glyphicon glyphicon-lock" ></span>退出登录</a>
                 </li>
             </ul>
-       </div>
-    </div>      
+        </div>
+    </div>
 </nav>
 
 <!-- 中间主体内容部分 -->
 <div class="pageContainer">
-     <!-- 左侧导航栏 -->
-     <div class="pageSidebar">
-         <ul class="nav nav-stacked nav-pills">
-         	
-                 <h3 align="center">管理操作</h3>
-                 <hr>
-           
-             
-             <li role="presentation">
-                 <a href="manageuser.html" target="mainFrame">用户管理</a>
-             </li>
-             <li role="presentation">
-                 <a href="managearticle.html" target="mainFrame">文章管理</a>
-             </li>
-             
-             <li role="presentation">
-                 <a href="managecomment.html" target="mainFrame">评论管理</a>
-             </li>
-            
-             <li role="presentation">
-                 <a href="managequestion.html" target="mainFrame">问答管理</a>
-             </li>
-            
-             <!-- 开始 -->
-             <!-- <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="nav4.html" target="mainFrame">
-                     设置<span class="caret"></span>
-                 </a> 
-                 <ul class="dropdown-menu">
-                     <li>
-                         <a href="nav1.html" target="mainFrame">修改密码</a>
-                     </li>
-                     <li>
-                         <a href="nav2.html" target="mainFrame">退出系统</a>
-                     </li>
-                     <li>
-                         <a href="nav3.html" target="mainFrame">查看个人信息</a>
-                     </li>
-                 </ul>
-              </li> -->
-			<li role="presentation" class="active">
-                 <a href="manageset.html" target="mainFrame">个人设置</a>
-             </li>
-               
-             
-             <!-- 结束 -->
-            
-         </ul>
-     </div>
-    <div class="splitter"></div>
-     <!-- 正文内容部分 -->
-     <div class="pageContent">
-        <div class="row-fluid" style="margin: auto 15px; ">
-        <div class="span12">
+    <!-- 左侧导航栏 -->
+    <div class="pageSidebar">
+        <ul class="nav nav-stacked nav-pills">
 
-        <h3 style="margin-left: 30px;">
-                个人设置 
-            </h3> 
-
-    <div class="box-body" id="right-box-body"><div id="right-box-body-replace">
+            <h3 align="center">管理操作</h3>
             <hr>
-                 <div class="nav-tabs-custom" style="box-shadow: 0 0;">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#" class="tab-a" id="profile">基本资料</a></li>
-                                <li><a href="#" class="tab-a" id="avatar">我的头像</a></li>
-                                <li><a href="#" class="tab-a" id="security">修改密码</a></li>
-                    </ul>
-                    <br>
-                            <div class="tab-content">
-                                <div class="tab-pane active">
-                                    <form class="form-horizontal userForm" id="profileForm">
-                                        <div class="box-body">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">用户名</label>
-                                                <div class="col-sm-6">
-                                                    <label class="control-label">sada</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nickname" class="col-sm-2 control-label">昵称</label>
-                                                <div class="col-sm-6">
-                                                     <input type="text" class="form-control" id="nickname" name="nickname" value="sdasd">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="homepage" class="col-sm-2 control-label">个人主页</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="homepage" name="homepage" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="github" class="col-sm-2 control-label">Github</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="github" name="github" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="contact" class="col-sm-2 control-label">联系方式</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="contact" name="contact" value="" placeholder="如 QQ: 666666（微信同号）">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group">
-                                                            <div class="col-sm-offset-2 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary" id="profile-form-submit">保存
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                    
-                                                </form>
 
+            <li role="presentation">
+                <a th:href="@{/Users}" target="mainFrame">用户管理</a>
+            </li>
+            <li role="presentation">
+                <a th:href="@{/manageart}" target="mainFrame">文章管理</a>
+            </li>
+
+            <li role="presentation">
+                <a th:href="@{/Replys}" target="mainFrame">文章回复</a>
+            </li>
+
+            <li role="presentation">
+                <a th:href="@{/Requests}" target="mainFrame">问题管理</a>
+            </li>
+
+            <li role="presentation">
+                <a th:href="@{/Replyques}" target="mainFrame">问题回复</a>
+            </li>
+
+            <li role="presentation" class="active">
+                <a th:href="@{/managesetting}" target="mainFrame">个人设置</a>
+            </li>
+
+
+            <!-- 结束 -->
+
+        </ul>
+    </div>
+    <div class="splitter"></div>
+    <!-- 正文内容部分 -->
+    <div class="pageContent">
+        <div class="row-fluid" style="margin: auto 15px; ">
+            <div class="span12">
+
+                <h3 style="margin-left: 30px;">
+                    个人设置
+                </h3>
+
+                <div class="box-body" id="right-box-body"><div id="right-box-body-replace">
+                    <hr>
+                    <div class="nav-tabs-custom" style="box-shadow: 0 0;">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#" class="tab-a" id="profile">修改密码</a></li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+                                <form class="form-horizontal userForm" th:action="@{/modifypassword}"  th:method="post" id="profileForm">
+
+                                    <input th:type="hidden" name="_method" value="put">
+
+
+                                    <div class="box-body">
+
+                                        <div class="form-group" th:if="${wrong}!=null">
+                                            <label class="col-sm-2 control-label" style="color: red;">提示错误：</label>
+                                            <div class="col-sm-6">
+                                                <label class="control-label" style="color: red;">[[${wrong}]]</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" th:if="${right}!=null">
+                                            <label class="col-sm-2 control-label" style="color: green;">提示信息：</label>
+                                            <div class="col-sm-6">
+                                                <label class="control-label" style="color: green;">[[${right}]]</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">用户名</label>
+                                            <div class="col-sm-6">
+                                                <label class="control-label" th>sada</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="usernamee" class="col-sm-2 control-label">用户名</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="usernamee" name="usernamee" th:value="${session.username}" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="original" class="col-sm-2 control-label">原密码</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="original" name="original" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="present" class="col-sm-2 control-label">修改密码</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="present" name="present" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirm" class="col-sm-2 control-label">确认密码</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="confirm" name="confirm" value="" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-primary" id="profile-form-submit">保存
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                             </div>
-                            </div>
-    </div>
-   
-</div>
-  <!-- 底部页脚部分 -->
- <div class="footer">
-     <p class="text-center">
-         管理员界面
-     </p>
- </div>
 
- <script type="text/javascript">
- $(".nav li").click(function() {
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- 底部页脚部分 -->
+<div class="footer">
+    <p class="text-center">
+        管理员界面
+    </p>
+</div>
+
+<script type="text/javascript">
+    $(".nav li").click(function() {
         $(".active").removeClass('active');
         $(this).addClass("active");
-    }); 
+    });
 
 
- </script>
+</script>
 </body>
 </html>
 
