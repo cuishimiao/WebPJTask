@@ -21,12 +21,12 @@
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="/" class="active">首页</a></li>
-                        <li><a href="/#" class="active">文章 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="/question">问答</a></li>
+                        <li><a href="/article" class="active">文章 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="/askandanswer">问答</a></li>
                         <li><a href="/main">我的主页</a></li>
                     </ul>
 
-                    <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                    <form class="navbar-form navbar-left" action="#" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
                         </div>
@@ -39,38 +39,6 @@
 
                 <div class="navbar-custom-menu" id="user-nav-wrapper">
                     <ul class="nav navbar-nav" id="user-nav">
-                        <!-- 私信-->
-                        <li class="dropdown messages-menu open">
-                            <!-- Menu toggle button -->
-                            <a href="#" id="message-size-btn" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="label label-success"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-
-                                <li class="header">
-                                    您没有未读私信
-                                </li>
-                                <li id="not-read-message-list"><ul class="menu"></ul></li>
-                                <li class="footer"><a href="#" target="_blank">查看所有私信</a></li>
-                            </ul>
-                        </li>
-                        <!-- 通知-->
-                        <li class="dropdown notifications-menu">
-                            <a href="#" id="notice-size-btn" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-
-                                <li class="header">
-                                    您没有未读通知
-                                </li>
-                                <li id="not-read-notice-list"><ul class="menu"></ul></li>
-                                <li class="footer"><a href="/#">查看所有通知</a></li>
-                            </ul>
-                        </li>
-
                         <!-- 用户 -->
                         <li class="dropdown user user-menu" id="user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -109,7 +77,6 @@
                             </ul>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>
@@ -127,7 +94,7 @@
                             <div class="box-body no-padding">
                                 <ul class="nav nav-pills nav-stacked">
                                     <li><a href="/main">我的主页</a></li>
-                                    <li class="active"><a href="/manage/account">我的账号</a>
+                                    <li class="active"><a href="#">我的账号</a>
                                     </li>
                                     <li><a href="#">关系管理</a></li>
                                     <li><a href="#">通知管理</a></li>
@@ -169,8 +136,8 @@
                             </div>
                             <div class="box-body no-padding" style="display: none;">
                                 <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="/manage/questions">我的问题</a></li>
-                                    <li><a href="/manage/answers">我的回答</a></li>
+                                    <li><a href="#">我的问题</a></li>
+                                    <li><a href="#">我的回答</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -329,7 +296,7 @@
                         <div class="col-sm-12">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭
                             </button>
-                            <button type="submit" class="btn btn-primary" id="password-form-submit">提交
+                            <button type="button" class="btn btn-primary" id="password-form-submit">提交
                             </button>
                         </div>
                     </div>
@@ -364,7 +331,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary" id="email-form-submit">提交
+                        <button type="button" class="btn btn-primary" id="email-form-submit">提交
                         </button>
                     </div>
                 </div>
@@ -418,7 +385,7 @@
                     contentType:"application/json",
                     data:JSON.stringify(param),
                     success:function (msg) {
-                        $("#msg1").html(msg);
+                        $("#msg1").text(msg);
                     }
 
                 });

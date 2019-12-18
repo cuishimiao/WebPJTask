@@ -179,7 +179,7 @@
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" id="nav">
                                 <li >
-                                    <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false">文章</a>
+                                    <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false" onclick="fx()">文章</a>
                                 </li>
                                 <li>
                                     <a th:value='|/findAllRequest/${user.user_id}|' id="user_Question" aria-expanded="false">提问</a>
@@ -253,16 +253,49 @@
                             '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
                             '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
                             '<a type="button" class="btn btn-danger" href="/deleteArticleById/'+obj[i].article_id+'">'+"删除"+'</a>'+
-                        '</td></tr>'
+                            '</td></tr>'
                     }
                     content += '</tbody></table>';
                     $("#content").html(content);
+                }
+            });
+
+        });
+
+        $(document).on("click","#user_Article",function(){
+            var page = $("#user_Article").attr("value");
+            var content ='';
+            $.ajax({
+                url:page,
+                type:"GET",
+                success:function (msg) {
+                    var obj = msg;
+                    var content = '<table class="table table-hover">' +
+                        '<thead>' +
+                        '<th>文章编号</th><th>文章标题</th><th>文章内容</th><th>创作时间</th><th>操作</th></thead>' + '<tbody>';
+                    for (var i in obj) {
+                        var text;
+                        var time = obj[i].create_time.substring(0,10);
+                        if (obj[i].content.length > 8)
+                            text = obj[i].content.substring(0, 7) + "...";
+                        else
+                            text = obj[i].content;
+                        content += '<tr><td>' + obj[i].article_id + '</td><td>' + obj[i].title + '</td>' +
+                            '<td>' + text + '</td>' +
+                            '<td>' + time + '</td>' +
+                            '<td>' +
+                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-danger" href="/deleteArticleById/'+obj[i].article_id+'">'+"删除"+'</a>'+
+                            '</td></tr>'
                     }
+                    content += '</tbody></table>';
+                    $("#content").html(content);
+                }
             });
         });
 
         $(document).on('click',"#user_Question",function () {
-
             var page = $("#user_Question").attr("value");
             var content ='';
             $.ajax({
@@ -333,15 +366,13 @@
 
 
         $(document).on("click",".btn btn-danger",function(){
-           var tr = $(this).parentNode.parentNode;
-           $(".table table-honver").removeChild(tr);
+            var tr = $(this).parentNode.parentNode;
+            $(".table table-honver").removeChild(tr);
         });
 
-
-
-
-
     });
+
+
 </script>
 
 
