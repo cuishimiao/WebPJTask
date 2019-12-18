@@ -5,6 +5,7 @@ import ncu.edu.cn.bbs.entity.Question;
 import ncu.edu.cn.bbs.service.RequestArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +31,23 @@ public class RequestArticleController {
     @Autowired
     private RequestArticleService articleService;
 
+    //发问题
     @RequestMapping("/generateRequest")
     public String generate(@RequestBody Question article) throws  IOException {
+
+        if(article.getQuestion_title()==null || article.getQuestion_title()=="")
+        {
+
+            return "问题标题不能为空";
+        }
+        if(article.getContent()==null || article.getContent()=="")
+        {
+
+            return "文章内容不能为空";
+
+        }
+
+
         String msg = articleService.generateRequest(article);
         return msg;
 
