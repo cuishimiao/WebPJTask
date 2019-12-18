@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ncu.edu.cn.bbs.dao.QuestionReplyDao">
+
+
+<delete id="deletequerep">
+    delete from question_reply where id =#{id}
+</delete>
+
+<select id="findbyid" resultType="replyQuestion">
+    select * from question_reply where id=#{id}
+</select>
+
+<update id="updatequereply">
+    update question_reply user set id = #{id},question_id = #{question_id},username=#{username},reply_content = #{reply_content},is_adopt=#{is_adopt},time = #{time} where id =#{id}
+</update>
+
+<select id="findAllre" resultType="replyQuestion">
+    select * from question_reply
+</select>
+</mapper>
