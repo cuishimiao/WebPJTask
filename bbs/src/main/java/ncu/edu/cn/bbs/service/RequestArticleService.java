@@ -44,6 +44,14 @@ public class RequestArticleService {
             return "失败";
         }
     }
-
-
+    
+    public String deleteByQId(int question_id){
+        int temp = articleDao.deleteByQId(question_id);
+        if(temp ==1 ){
+            return "成功";
+        }
+        else{
+            return "失败";
+        }
+    }
 }

@@ -177,8 +177,8 @@
                     </div>
                     <div class="col-md-9">
                         <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
-                                <li class="active">
+                            <ul class="nav nav-tabs" id="nav">
+                                <li >
                                     <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false">文章</a>
                                 </li>
                                 <li>
@@ -228,7 +228,7 @@
 
 <script>
     $(function () {
-        $(document).on('click',"#user_Article",function () {
+        $(document).ready(function () {
             var page = $("#user_Article").attr("value");
             var content ='';
             $.ajax({
@@ -252,7 +252,7 @@
                             '<td>' +
                             '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
                             '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-danger" href="/deleteArticleById/'+obj[i].article_id+'">'+"删除"+'</a>'+
                         '</td></tr>'
                     }
                     content += '</tbody></table>';
@@ -262,6 +262,7 @@
         });
 
         $(document).on('click',"#user_Question",function () {
+
             var page = $("#user_Question").attr("value");
             var content ='';
             $.ajax({
@@ -285,8 +286,7 @@
                             '<td>' + time + '</td>' +
                             '<td>' +
                             '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-danger" href="/deleteByQId/'+obj[i].question_id+'">' + "删除" + '</a>'+
                             '</td></tr>'
                     }
                     content += '</tbody></table>';
@@ -322,8 +322,7 @@
                             '<td>' + time + '</td>' +
                             '<td>' +
                             '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].article_id+'">' + "删除" + '</a>'+
                             '</td></tr>'
                     }
                     content += '</tbody></table>';
@@ -331,6 +330,16 @@
                 }
             });
         });
+
+
+        $(document).on("click",".btn btn-danger",function(){
+           var tr = $(this).parentNode.parentNode;
+           $(".table table-honver").removeChild(tr);
+        });
+
+
+
+
 
     });
 </script>

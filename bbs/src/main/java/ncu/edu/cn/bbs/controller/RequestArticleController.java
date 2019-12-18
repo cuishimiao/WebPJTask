@@ -32,9 +32,8 @@ public class RequestArticleController {
 
     @RequestMapping("/generateRequest")
     public String generate(@RequestBody Question article) throws  IOException {
-         articleService.generateRequest(article);
-
-         return "/main";
+        String msg = articleService.generateRequest(article);
+        return msg;
 
     }
 
@@ -48,6 +47,11 @@ public class RequestArticleController {
         Map<String,Object> map = new HashMap<>();
         map.put("msg",articleService.getRequestArticle(id));
         return map;
+    }
+    
+    @RequestMapping("/deleteByQId/{id}")
+    public String deleteByQid(@PathVariable int id){
+        return articleService.deleteByQId(id);
     }
 
 

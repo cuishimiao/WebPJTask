@@ -18,5 +18,7 @@ public interface QuestionDao {
     List<Question> findAllr();
 
     int deleteby(int uid);
+    
+    int deleteByQId(int question_id);
 
 }
