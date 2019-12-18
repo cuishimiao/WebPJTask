@@ -32,9 +32,8 @@ public class RequestArticleController {
 
     @RequestMapping("/generateRequest")
     public String generate(@RequestBody Question article) throws  IOException {
-         articleService.generateRequest(article);
-
-         return "/main";
+        String msg = articleService.generateRequest(article);
+        return msg;
 
     }
 
