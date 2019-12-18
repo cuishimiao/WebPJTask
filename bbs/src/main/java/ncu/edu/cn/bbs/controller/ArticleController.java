@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+//import sun.text.normalizer.NormalizerBase;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -46,7 +47,18 @@ public class ArticleController {
     //写文章
     @RequestMapping("/writeArticle")
     @ResponseBody
-    public String write(@RequestBody Article article){
+    public String write(@RequestBody Article article,Model model){
+        if(article.getTitle()==null || article.getTitle()=="")
+        {
+            model.addAttribute("error","标题不能为空");
+            return "publish";
+        }
+        if (article.getContent()==null || article.getContent()=="")
+        {
+            model.addAttribute("error","文章内容不能为空");
+            return  "publish";
+        }
+
         String msg = service.generateArticle(article);
         return msg;
     }
@@ -55,15 +67,19 @@ public class ArticleController {
 
 
     @RequestMapping("/publish")
-    public String publish(HttpSession session,Model m)
+    public String publish(HttpSession session,Model model)
     {
         if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null)
         {
-            m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+            model.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+
             return "publish";
         }
         else
+        {
+            model.addAttribute("error","请先登录");
             return "/index";
+        }
 
     }
 
@@ -74,10 +90,12 @@ public class ArticleController {
         if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null)
         {
             m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+
             return "question";
         }
         else
         {
+            m.addAttribute("error","请先登录");
             return "/index";
         }
     }
