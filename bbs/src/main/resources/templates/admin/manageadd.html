@@ -22,7 +22,7 @@
 
     <h3 align="center">用户 >> 用户添加</h3>
     <div>
-        <a th:if="${wrong=='wrong'}" class="col-sm-2 control-label" aline="center">账户或密码不能为空</a>
+        <a th:if="${wrong}==1" class="col-sm-2 control-label" aline="center">账户或密码不能为空</a>
         <br>
         <br>
         <div class="form-group">
@@ -80,7 +80,7 @@
         <br>
         <br>
         <input th:type="hidden" class="form-control" id="lastname" placeholder="住址">
-        <input th:type="hidden" type="text" class="form-control" id="is_admin" name="is_admin" placeholder="" value="false">
+        <input th:type="hidden" class="form-control" id="is_admin" name="is_admin" placeholder="" value="false">
 
 
         <!-- <div class="form-group" th:if="${p.is_admin=='superadmin'}">
