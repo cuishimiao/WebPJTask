@@ -25,9 +25,7 @@
                     data:JSON.stringify(param),
                     success:function (msg) {
 
-                        $("#arid").text(msg),
-
-                        $("#modalText").html(msg);
+                        $("#modalText").text(msg);
 
                         $("#myModal").modal()
                     }
@@ -148,23 +146,7 @@
 
             </form>
         </div>
-        <div class="modal" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title">提示</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p id="arid"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">保存</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <h3>问题发起指南</h3>
             • 问题标题: 请用精简的语言描述您发布的问题，不超过25字 <br>

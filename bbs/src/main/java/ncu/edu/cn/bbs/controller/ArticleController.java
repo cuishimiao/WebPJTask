@@ -41,13 +41,12 @@ public class ArticleController {
     }
 
 
-    //写完文章后的界面
+    //写文章
     @RequestMapping("/writeArticle")
-    public ModelAndView write(@RequestBody Article article, ModelAndView modelAndView){
-        modelAndView.setViewName("index");
-        modelAndView.addObject("article",service.generateArticle(article));
-        return modelAndView;
-
+    @ResponseBody
+    public String write(@RequestBody Article article){
+        String msg = service.generateArticle(article);
+        return msg;
     }
 
 
