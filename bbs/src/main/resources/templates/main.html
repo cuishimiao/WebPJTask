@@ -29,7 +29,7 @@
                         <li><a href="/main">我的主页</a></li>
                     </ul>
 
-                    <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                    <form class="navbar-form navbar-left" action="#" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control global-search-input" name="keywords"
                                    id="main-search-input"
@@ -70,7 +70,7 @@
                             <ul class="dropdown-menu">
                                 <li class="user-header">
                                     <img src="images/logn.png"
-                                         class="user-image" alt=""  onclick="window.location.href='/manage/account/avatar'">
+                                         class="user-image" alt="">
                                     <p>
                                         <span th:text="${user.username}">name</span>
                                         <small th:text="${user.email}"></small>
@@ -79,10 +79,10 @@
                                 <li class="user-body">
                                     <div class="row">
                                         <div class="col-xs-4 text-center">
-                                            <a href="#">文章</a>
+                                            <a href="/article">文章</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
-                                            <a href="#">问答</a>
+                                            <a href="/askandanswer">问答</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
                                             <a href="/main">我的主页</a>
@@ -91,8 +91,7 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="center"
-                                           class="btn btn-default btn-flat">个人中心</a>
+                                        <a href="/center" class="btn btn-default btn-flat">个人中心</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="/logout" class="btn btn-default btn-flat">退出</a>
