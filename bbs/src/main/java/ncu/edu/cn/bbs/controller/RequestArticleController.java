@@ -37,17 +37,13 @@ public class RequestArticleController {
 
         if(article.getQuestion_title()==null || article.getQuestion_title()=="")
         {
-
             return "问题标题不能为空";
         }
         if(article.getContent()==null || article.getContent()=="")
         {
 
             return "文章内容不能为空";
-
         }
-
-
         String msg = articleService.generateRequest(article);
         return msg;
 
