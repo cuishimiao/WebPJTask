@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        input{
+            width: 400px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div  align="center">
+
+    <form id="updateForm" th:action="@{/modifyuser}"  th:method="post">
+        <h3 align="center">用户 >> 用户编辑</h3>
+        <br>
+        <table border="2">
+            <!--th:action="@{/modifyArticle}"-->
+            <input th:type="hidden" name="_method" value="put">
+
+            <tr>
+                <td><span >用户编号<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.user_id}" id="user_id" name="user_id" size="50px" readonly="readonly" /> </td>
+            </tr>
+
+            <tr>
+                <td><span >用户名</span></td>
+                <td><input type="text" th:value="${msg.username}" id="username"  name="username" placeholder="韩露"/></td>
+
+            </tr>
+
+            <tr>
+                <td><span >用户密码</span></td>
+                <td><input type="text" th:value="${msg.password}" id="password" name="password"  placeholder="标题"/></td>
+
+            </tr>
+
+
+
+            <tr>
+                <td><span >用户邮箱</span></td>
+                <td><input type="text" th:value="${msg.email}" id="email" name="email"  placeholder="创建时间" /></td>
+
+
+            </tr>
+
+            <tr>
+                <td> <span >电话号码</span></td>
+                <td> <input type="text" th:value="${msg.phone}" id="phone"  name="phone" placeholder="种类编号"/></td>
+
+
+            </tr>
+
+            <tr>
+                <td><span >工作</span></td>
+                <td><input type="text" th:value="${msg.work}" id="work" name="work"  placeholder="是否置顶"/></td>
+
+
+            </tr>
+
+            <tr>
+                <td><span >地址</span></td>
+                <td><input type="text" th:value="${msg.address}" id="address" name="address" placeholder="用户头像"/></td>
+
+            </tr>
+
+            <tr>
+                <td><span >是否为管理员<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.is_admin}" id="is_admin" name="is_admin" placeholder="用户头像" readonly="readonly"/></td>
+
+            </tr>
+
+
+        </table>
+
+        <input style="width: 100px;height: 50px;margin-right: 50px;" type="submit" value="保存" id="btn"   />
+        <input style="width: 100px;height: 50px"  type="button" value="返回" onclick="history.back(-1)"/>
+    </form>
+
+</div>
+</body>
+</html>
