@@ -27,4 +27,12 @@
         delete from question where question_id = #{question_id}
     </delete>
 
+    <update id="modifyqu">
+        update question set question_id = #{question_id},uid = #{uid},content=#{content},time = #{time},question_title=#{question_title},uhead = #{uhead} where question_id =#{question_id}
+    </update>
+
+    <select id="findrequest" resultType="requestArticle">
+        select * from question where question_id = #{question_id}
+    </select>
+
 </mapper>

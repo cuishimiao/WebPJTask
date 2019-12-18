@@ -54,4 +54,15 @@ public class RequestArticleService {
             return "失败";
         }
     }
+    //manage
+    public List<Question>findAllr(){
+        return articleDao.findAllr();
+    }
+    public int modifyqu(Question article){
+        return articleDao.modifyqu(article);
+    }
+
+    public Question findrequest(int question_id){
+        return articleDao.findrequest(question_id);
+    }
 }

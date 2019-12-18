@@ -21,4 +21,8 @@ public interface QuestionDao {
     
     int deleteByQId(int question_id);
 
+    //manage
+    int modifyqu(Question article);
+    Question findrequest(int question_id);
+
 }
