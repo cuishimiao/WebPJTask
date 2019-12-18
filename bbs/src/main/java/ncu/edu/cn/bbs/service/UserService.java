@@ -51,4 +51,15 @@ public class UserService {
     }
 
     public int modifyEmail(String email,String uid){return userDao.modifyEmail(email,uid);}
+
+    //manage
+    public User findusername(String username){
+        return userDao.findusername(username);
+    }
+    public int updateuser(User user){
+        return userDao.updateuser(user);
+    }
+    public int modifypass(String username,String password){
+        return userDao.modifypass(username,password);
+    }
 }

@@ -1,98 +1,98 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title></title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <!--主要样式控制-->
-        <!-- <link href="./css/main.css" rel="stylesheet"> -->
-        <style type="text/css">
-			.navbar-collapse{
-    padding-left: 5px;
-    padding-right: 5px;
- }
- .nav>li{
-     text-align: center;
- }
- .nav>li>a{
-     color:#444;
-     margin: 0 5px;
- }
- .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-     background-color: #222222;
- }
- .dropdown-menu{
-     float: none;
-     position: initial;
-     min-width: 200px;
-     margin-left: 0;
-     background-color: #E3E3E3;
-     box-shadow: none;
-     text-align: center;
- }
- .dropdown-menu>li>a{
-     padding: 10px 15px;
- }
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--主要样式控制-->
+    <!-- <link href="./css/main.css" rel="stylesheet"> -->
+    <style type="text/css">
+        .navbar-collapse{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .nav>li{
+            text-align: center;
+        }
+        .nav>li>a{
+            color:#444;
+            margin: 0 5px;
+        }
+        .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+            background-color: #222222;
+        }
+        .dropdown-menu{
+            float: none;
+            position: initial;
+            min-width: 200px;
+            margin-left: 0;
+            background-color: #E3E3E3;
+            box-shadow: none;
+            text-align: center;
+        }
+        .dropdown-menu>li>a{
+            padding: 10px 15px;
+        }
 
- /* 主体样式 */
- body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    background-color: #FFFFFF;
-    font-family: "Microsoft YaHei", sans-serif;
- }
- .pageSidebar{
-    width: 240px;
-    height:100%;
-    padding-bottom: 30px;
-    overflow: auto;
-    background-color: #e3e3e3;
- }
- .splitter {
-     width: 5px;
-     height: 100%;
-     bottom: 0;
-     left: 240px;
-     position: absolute; 
-     overflow: hidden;
-     background-color: #fff;
- }
- .pageContent{
-     height: 100%;
-     min-width: 768px;
-     left: 246px;
-     top: 0;
-     right: 0;
-     z-index: 3;
-     padding-bottom: 30px;
-     position: absolute;
- }
- .pageContainer{
-     bottom: 0;
-     left:0;
-     right: 0;
-     top: 53px;
-     overflow: auto;
-     position: absolute;
-     width: 100%;
- }
- .footer {
-     width: 100%;
-     height: 30px;
-     line-height: 30px;
-     margin-top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     position: absolute; 
-     z-index: 10;
-     background-color:#DFDFDF;
- }
+        /* 主体样式 */
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: #FFFFFF;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        .pageSidebar{
+            width: 240px;
+            height:100%;
+            padding-bottom: 30px;
+            overflow: auto;
+            background-color: #e3e3e3;
+        }
+        .splitter {
+            width: 5px;
+            height: 100%;
+            bottom: 0;
+            left: 240px;
+            position: absolute;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .pageContent{
+            height: 100%;
+            min-width: 768px;
+            left: 246px;
+            top: 0;
+            right: 0;
+            z-index: 3;
+            padding-bottom: 30px;
+            position: absolute;
+        }
+        .pageContainer{
+            bottom: 0;
+            left:0;
+            right: 0;
+            top: 53px;
+            overflow: auto;
+            position: absolute;
+            width: 100%;
+        }
+        .footer {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            z-index: 10;
+            background-color:#DFDFDF;
+        }
 
-    	</style>
+    </style>
 </head>
 
 <body>
@@ -101,114 +101,101 @@
     <div class="container-fluid">
         <div class="navbar-header" style="width: 220px">
             <a class="navbar-brand" title="logoTitle" href="#" style="margin-left: 30px">CoderGroup</a>
-       </div>
-       
-       <div class="collapse navbar-collapse">
-       		 <ul class="nav navbar-nav navbar-left">
-               <li role="presentation">
-                   <a href="#">返回首页</a>
-               </li>
-               <!-- <li>
-                   <a href="../login/logout">
-                         <span class="glyphicon glyphicon-lock"></span>退出登录</a>
-                </li> -->
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li role="presentation">
+                    <a th:href="@{/logoutandreturn}">退出登录并返回首页</a>
+                </li>
+                <!-- <li>
+                    <a href="../login/logout">
+                          <span class="glyphicon glyphicon-lock"></span>退出登录</a>
+                 </li> -->
             </ul>
-           <ul class="nav navbar-nav navbar-right">
-               <li role="presentation">
-                   <a href="#">当前用户：<span class="badge">管理员</span></a>
-               </li>
-               <li>
-                   <a href="../login/logout">
-                         <span class="glyphicon glyphicon-lock"></span>退出登录</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li role="presentation">
+                    <a href="#">当前用户：<span class="badge" th:text="${session.username}"></span></a>
+                </li>
+                <li>
+                    <a th:href="@{/managelogout}">
+                        <span class="glyphicon glyphicon-lock"></span>退出登录</a>
                 </li>
             </ul>
-       </div>
-    </div>      
+        </div>
+    </div>
 </nav>
 
 <!-- 中间主体内容部分 -->
 <div class="pageContainer">
-     <!-- 左侧导航栏 -->
-     <div class="pageSidebar">
-         <ul class="nav nav-stacked nav-pills">
-         	
-                 <h3 align="center">管理操作</h3>
-                 <hr>
+    <!-- 左侧导航栏 -->
+    <div class="pageSidebar">
+        <ul class="nav nav-stacked nav-pills">
 
-
-             <li role="presentation" class="active">
-                 <a th:href="@{/Users}" target="mainFrame">用户管理</a>
-             </li>
-             <li role="presentation">
-                 <a th:href="@{/manageart}" target="mainFrame">文章管理</a>
-             </li>
-
-             <li role="presentation">
-                 <a th:href="@{/Replys}" target="mainFrame">评论管理</a>
-             </li>
-
-             <li role="presentation">
-                 <a th:href="@{/Requests}" target="mainFrame">问答管理</a>
-             </li>
-             
-             <!-- 开始 -->
-             <!-- <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="nav4.html" target="mainFrame">
-                     设置<span class="caret"></span>
-                 </a> 
-                 <ul class="dropdown-menu">
-                     <li>
-                         <a href="nav1.html" target="mainFrame">修改密码</a>
-                     </li>
-                     <li>
-                         <a href="nav2.html" target="mainFrame">退出系统</a>
-                     </li>
-                     <li>
-                         <a href="nav3.html" target="mainFrame">查看个人信息</a>
-                     </li>
-                 </ul>
-              </li> -->
-			<li role="presentation">
-                 <a href="manageset.html" target="mainFrame">个人设置</a>
-             </li>
-               
-             
-             <!-- 结束 -->
-            
-
-         </ul>
-     </div>
-
-      <!-- 左侧导航和正文内容的分隔线 -->
-     <div class="splitter"></div>
-     <!-- 正文内容部分 -->
-     <div class="pageContent">
-       <!-- <iframe src="welcome.jsp" id="mainFrame" name="mainFrame" 
-       frameborder="0" width="100%"  height="100%" frameBorder="0">
-       </iframe>  -->
-        <div class="row-fluid" style="margin: auto 15px; ">
-        <div class="span12">
-            
-          
-            <h3 style="margin-left: 30px;">
-                用户管理 
-            </h3> 
+            <h3 align="center">管理操作</h3>
             <hr>
-            <div>
-                <span class="label" style="color: black; margin-left:10px;" align="right">用户（[[${user}]]） | 管理员（[[${admin}]]）</span>
 
-                <button class="btn"  type="button" style="margin-left:50px;"><a th:href="@{/adduser}">添加用户</a> </button>
 
-                <form class="form-search form-inline center-block" th:action="@{/findAllByname}" th:method="get" style="display: inline-block;  margin-left:150px;"  >
-                    <input size="50" th:value="${searchname}" name="searchname" class="input-medium search-query" type="text" />
-                    <button type="submit" class="btn">查找</button>
-                </form>
+            <li role="presentation" class="active">
+                <a th:href="@{/Users}" target="mainFrame">用户管理</a>
+            </li>
+            <li role="presentation">
+                <a th:href="@{/manageart}" target="mainFrame">文章管理</a>
+            </li>
 
-            </div>
-          	<br>
+            <li role="presentation">
+                <a th:href="@{/Replys}" target="mainFrame">文章回复</a>
+            </li>
 
-            <table class="table" style="margin-bottom: 5px;">
-                <thead>
+            <li role="presentation">
+                <a th:href="@{/Requests}" target="mainFrame">问题管理</a>
+            </li>
+
+            <li role="presentation">
+                <a th:href="@{/Replyques}" target="mainFrame">问题回复</a>
+            </li>
+
+            <li role="presentation">
+                <a th:href="@{/managesetting}" target="mainFrame">个人设置</a>
+            </li>
+
+
+            <!-- 结束 -->
+
+
+        </ul>
+    </div>
+
+    <!-- 左侧导航和正文内容的分隔线 -->
+    <div class="splitter"></div>
+    <!-- 正文内容部分 -->
+    <div class="pageContent">
+        <!-- <iframe src="welcome.jsp" id="mainFrame" name="mainFrame"
+        frameborder="0" width="100%"  height="100%" frameBorder="0">
+        </iframe>  -->
+        <div class="row-fluid" style="margin: auto 15px; ">
+            <div class="span12">
+
+
+                <h3 style="margin-left: 30px;">
+                    用户管理
+                </h3>
+                <hr>
+                <div>
+                    <span class="label" style="color: black; margin-left:10px;" align="right">用户（[[${user}]]） | 管理员（[[${admin}]]）</span>
+
+                    <button class="btn"  type="button" style="margin-left:50px;"><a th:href="@{/adduser}">添加用户</a> </button>
+
+                    <form class="form-search form-inline center-block" th:action="@{/findAllByname}" th:method="get" style="display: inline-block;  margin-left:150px;"  >
+                        <input size="50" th:value="${searchname}" name="searchname" class="input-medium search-query" type="text" />
+                        <button type="submit" class="btn">查找</button>
+                    </form>
+
+                </div>
+                <br>
+
+                <table class="table" style="margin-bottom: 5px;">
+                    <thead>
                     <tr class="success">
                         <th>
                             用户编号
@@ -238,81 +225,93 @@
                             操作
                         </th>
                     </tr>
-                </thead>
-                <tbody>
-                <tr th:each="p : ${msg}" class="info">
-                    <td th:text="${p.user_id}"></td>
-                    <td th:text="${p.username}"></td>
-                    <td th:if="${p.getIsAdmin()!='true'}" th:text="${p.password}"></td>
-                    <td th:if="${p.getIsAdmin()=='true'}">******
-                    </td>
-                    <td th:text="${p.email}"></td>
-                    <td th:text="${p.phone}"></td>
-                    <td th:text="${p.work}"></td>
-                    <td th:text="${p.address}"></td>
-                    <td th:text="${p.getIsAdmin()}"></td>
-                    <td th:if="${p.getIsAdmin()!='true'}">
-                        <a th:href="@{/getArticle/} + ${p.username}+'?type=managemodify'" type="button" class="btn btn-success">编辑</a>
-                        <a th:href="@{/deleteUser/} + ${p.username}" type="button" class="btn btn-danger">删除</a>
-                    </td>
-                    <td th:if="${p.getIsAdmin()=='true'}">
-                        <a type="button" class="btn btn-danger">无权限</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            
-            <nav aria-label="Page navigation" class="center-block">
-                  <ul class="pagination pagination-lg">
-				<li>
-					 <a href="#">上一页</a>
-				</li>
-				<li>
-					 <a href="#">1</a>
-				</li>
-				<li>
-					 <a href="#">2</a>
-				</li>
-				<li>
-					 <a href="#">3</a>
-				</li>
-				<li>
-					 <a href="#">4</a>
-				</li>
-				<li>
-					 <a href="#">5</a>
-				</li>
-				<li>
-					 <a href="#">下一页</a>
-				</li>
-				</ul>
-            </nav>
-           <!--  <blockquote>
-                <p>
-                    github是一个全球化的开源社区.
-                </p> <small>关键词 <cite>开源</cite></small>
-            </blockquote> -->
+                    </thead>
+                    <tbody>
+                    <tr th:each="p : ${msg}" class="info">
+                        <td th:text="${p.user_id}"></td>
+                        <td th:text="${p.username}"></td>
+                        <!--||${session.username}=='superadmin'-->
+                        <td th:if="${p.is_admin!='true'}" th:text="${p.password}"></td>
+                        <!--&&${session.username}!='superadmin'-->
+                        <td th:if="${p.is_admin=='true'}">******
+                        </td>
+                        <td th:text="${p.email}"></td>
+                        <td th:text="${p.phone}"></td>
+                        <td th:text="${p.work}"></td>
+                        <td th:text="${p.address}"></td>
+                        <td th:text="${p.is_admin}"></td>
+                        <!--||${session.username}=='superadmin'-->
+                        <td th:if="${p.is_admin!='true'}">
+                            <a th:href="@{/modifyu/} + ${p.username}" type="button" class="btn btn-success">编辑</a>
+                            <a th:href="@{/deleteUser/} + ${p.username}" type="button" class="btn btn-danger">删除</a>
+                        </td>
+                        <td th:if="${p.is_admin=='true'}">
+                            <a type="button" class="btn btn-danger">无权限</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <nav aria-label="Page navigation" class="center-block" >
+                    <ul class="pagination pagination-lg">
+                        <li>
+                            <a th:href="@{/Users}+'?page='+${currentpage}+'&tag=0'" name="page">上一页</a>
+                        </li>
+                        <td th:each="p : ${num}">
+                            <li th:class="${currentpage}==${p}? 'active':'#'">
+                                <a  th:href="@{/Users}+'?page='+${p}+'&tag=1'" th:text="${p}" name="page"></a>
+                            </li>
+                        </td>
+                        <li th:if="${find}==1" class="active">
+                            <a>1</a>
+                        </li>
+
+                        <!--<li th:class="${currentpage}==1? 'active':'#'">-->
+                        <!--<a  th:href="@{/sspage}+'?page=1'+'&tag=1'" name="page">1</a>-->
+                        <!--</li>-->
+                        <!--<li th:class="${currentpage}==2? 'active':'#'">-->
+                        <!--<a th:href="@{/sspage}+'?page=2'+'&tag=1'" name="page">2</a>-->
+                        <!--</li>-->
+                        <!--<li th:class="${currentpage}==3? 'active':'#'">-->
+                        <!--<a th:href="@{/sspage}+'?page=3'+'&tag=1'" name="page">3</a>-->
+                        <!--</li>-->
+                        <!--<li th:class="${currentpage}==4? 'active':'#'">-->
+                        <!--<a th:href="@{/sspage}+'?page=4'+'&tag=1'" name="page">4</a>-->
+                        <!--</li>-->
+                        <!--<li th:class="${currentpage}==5? 'active':'#'">-->
+                        <!--<a th:href="@{/sspage}+'?page=5'+'&tag=1'" name="page">5</a>-->
+                        <!--</li>-->
+                        <li>
+                            <a th:href="@{/Users}+'?page='+${currentpage}+'&tag=2'" name="page">下一页</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!--  <blockquote>
+                     <p>
+                         github是一个全球化的开源社区.
+                     </p> <small>关键词 <cite>开源</cite></small>
+                 </blockquote> -->
+            </div>
         </div>
     </div>
 </div>
-     </div>
 
- </div>
-  <!-- 底部页脚部分 -->
- <div class="footer">
-     <p class="text-center">
-         管理员界面
-     </p>
- </div>
+</div>
+<!-- 底部页脚部分 -->
+<div class="footer">
+    <p class="text-center">
+        管理员界面
+    </p>
+</div>
 
- <script type="text/javascript">
- $(".nav li").click(function() {
+<script type="text/javascript">
+    $(".nav li").click(function() {
         $(".active").removeClass('active');
         $(this).addClass("active");
-    }); 
+    });
 
 
- </script>
+</script>
 </body>
 </html>
 

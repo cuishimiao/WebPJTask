@@ -44,4 +44,8 @@ public interface UserDao {
     int saveuser(User user);
 
     int modifyEmail(String email,String uid);
+    //manage
+    User findusername(String username);
+    int updateuser(User user);
+    int modifypass(String username,String password);
 }

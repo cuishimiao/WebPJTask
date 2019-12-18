@@ -41,4 +41,17 @@
 <update id="modifyEmail" >
     update user set email = #{email} where user_id = #{uid}
 </update>
+
+    <!--//manage-->
+    <select id="findusername" resultType="user">
+    select * from user where username = #{username}
+</select>
+
+    <update id="updateuser">
+     update user set username = #{username},password = #{password},email=#{email},phone = #{phone},work=#{work},address = #{address} where user_id =#{user_id}
+ </update>
+
+    <update id="modifypass">
+    update user set password = #{password} where username =#{username}
+</update>
 </mapper>
