@@ -28,4 +28,8 @@ public class CategoryService {
             return "失败";
         }
     }
+
+    public int  insertCategory(String category_name){
+        return categoryDao.insertCategory(category_name);
+    }
 }

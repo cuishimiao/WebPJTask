@@ -154,9 +154,8 @@
                                 <div id="right-box-body-replace">
                                     <div class="nav-tabs-custom" style="box-shadow: 0 0;">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="javascript:void(0)" class="tab-a" id="profile">基本资料</a></li>
-                                            <li><a href="javascript:void(0)" class="tab-a" id="avatar">我的头像</a></li>
-                                            <li><a href="javascript:void(0)" class="tab-a" id="security">账号安全</a></li>
+                                            <li ><a class="tab-a" id="profile">基本资料</a></li>
+                                            <li><a class="tab-a" id="security">账号安全</a></li>
                                         </ul>
                                         <div class="tab-content" id="tab-content">
                                             <div class="tab-pane active">
@@ -220,10 +219,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
@@ -347,6 +343,8 @@
 <script type="text/javascript" src="/js/adminlte.min.js"></script>
 <script>
     $(function () {
+
+
         //修改个人信息
         $(document).on("click","#profile-btn",function () {
             var param ={
@@ -376,7 +374,7 @@
             }
             else{
                 var param ={
-                    "user_id":$("#user_id").val(),
+                    "user_id":$("#uid").val(),
                     "password":password
                 };
                 $.ajax({
@@ -392,7 +390,19 @@
             }
         });
 
-        
+        //修改邮箱
+        $(document).on("click","#email-form-submit",function () {
+           var email = $("#email").val();
+           var uid = $("#uid").val();
+           $.ajax({
+               url:"/modifyEmail",
+               data:{"email":email,"uid":uid},
+               success:function (msg) {
+                   $("#msg2").text(msg);
+               }
+           })
+        });
+
         $(document).on("click","#security",function () {
             var content=
                 '<div class="tab-pane active" id="security-tab">'+
@@ -403,7 +413,7 @@
                 '<span th:text="${user.email}">'+'</span>'+
                 '<span class="text-success">'+"已验证"+'</span>'+
                 '</td> <td>'+
-                '<a href="javascript:void(0)" data-toggle="modal" data-target="#emailModal" data-backdrop="static">'+"更换邮箱"+'</a>'+
+                '<a data-toggle="modal" data-target="#emailModal" data-backdrop="static">'+"更换邮箱"+'</a>'+
                 '</td> </tr>'+
                 '<tr>'+
                 '<td><i class="glyphicon glyphicon-ok-sign text-success"></i>'+

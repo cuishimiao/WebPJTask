@@ -42,4 +42,6 @@ public interface UserDao {
     int updatePassword(User user);
 
     int saveuser(User user);
+
+    int modifyEmail(String email,String uid);
 }
