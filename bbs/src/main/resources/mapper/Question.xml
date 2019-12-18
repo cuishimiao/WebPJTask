@@ -22,5 +22,9 @@
     <select id="findAllr" resultType="requestArticle">
         select * from question
     </select>
+    
+    <delete id="deleteByQId">
+        delete from question where question_id = #{question_id}
+    </delete>
 
 </mapper>

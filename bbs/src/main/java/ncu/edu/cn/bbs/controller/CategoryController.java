@@ -19,9 +19,4 @@ public class CategoryController {
         return categoryService.findAllCategory();
     }
 
-    @RequestMapping("/index")
-    public String showIndex(){
-        return "index";
-    }
-
 }

@@ -48,6 +48,11 @@ public class RequestArticleController {
         map.put("msg",articleService.getRequestArticle(id));
         return map;
     }
+    
+    @RequestMapping("/deleteByQId/{id}")
+    public String deleteByQid(@PathVariable int id){
+        return articleService.deleteByQId(id);
+    }
 
 
 }

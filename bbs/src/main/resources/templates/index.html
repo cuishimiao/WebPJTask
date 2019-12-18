@@ -67,7 +67,7 @@
                                 <div class="item active left">
                                     <a href="#" target="_blank">
                                         <img src="/images/lb1.jpg" width="760" height="300" alt="欢迎加入 CoderGroup">
-                                        <div class="carousel-caption">欢迎加入 CoderGroup</div>
+                                        <div class="carousel-caption">欢迎加入 BBS论坛</div>
                                     </a>
                                 </div>
                                 <div class="item next left">
@@ -99,6 +99,34 @@
                                         <h3 class="box-title">推荐文章</h3>
                                     </div>
                                     <div class="box-body" id="box-body" style="padding: 0 10px;">
+                                        <ul  class="profile-mine__content mb0">
+                                            <li th:each="goodArticle:${goodArticles}">
+                                                <div class="row">
+                                                    <div class="col-md-12 profile-mine__content--title-warp">
+                                                        <p class="nowrap bold" style="font-size:16px;">
+                                                            <a th:href="@{'/Articledetail/'+${goodArticle.article_id}}" class="link-primary" th:text="${goodArticle.title}"></a>
+                                                        </p>
+                                                        <ul class="list-inline" style="font-size: 12px!important;line-height: 30px;">
+                                                            <li>
+                                                                    <img src="/images/logn.png" alt="" class="img-circle" width="30">
+                                                                    <span th:text="${goodArticle.getUname()}"></span>
+                                                            </li>
+                                                            <li class="pull-right">
+                                                                <i class="margin-r-5" th:text="|赞同数(${goodArticle.getLike()})|"></i>
+                                                            </li>
+                                                            <li class="pull-right">
+                                                                <i class="margin-r-5"th:text="|阅读数(${goodArticle.getCount()})|"></i>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="link-black disabled">
+                                                                    <i class="margin-r-5" th:text="|时间${goodArticle.getCreate_time()}|"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
 
                                     </div>
                                 </div>
@@ -179,7 +207,7 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/questions/11507" target="_blank">
+                                                <a class="profile-mine__content--title" href="#" target="_blank">
                                                     很厉害的网站
                                                 </a>
                                             </div>
@@ -188,7 +216,7 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/questions/11506" target="_blank">
+                                                <a class="profile-mine__content--title" href="#" target="_blank">
                                                     SG飞艇稳赢计划群822444
                                                 </a>
                                             </div>
@@ -197,7 +225,7 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/questions/11505" target="_blank">
+                                                <a class="profile-mine__content--title" href="#" target="_blank">
                                                     极速赛车七码雪球计划交流群822444
                                                 </a>
                                             </div>
@@ -206,7 +234,7 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/questions/11504" target="_blank">
+                                                <a class="profile-mine__content--title" href="#" target="_blank">
                                                     澳洲幸运10精准计划交流群822444
                                                 </a>
                                             </div>
@@ -215,7 +243,7 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/questions/11503" target="_blank">
+                                                <a class="profile-mine__content--title" href="#" target="_blank">
                                                     SG飞艇稳定五码计划群822444
                                                 </a>
                                             </div>
@@ -410,54 +438,6 @@
                 }
             });
         });
-
-        // 加载推荐文章
-        $(document).ready(function () {
-            $.ajax({
-                url: "/articles",
-                type: 'GET',
-                dataType:"json",
-                success: function (msg) {
-                    var obj = msg;
-                    var content='<div class="profile-mine__content mb0">';
-                    for(var i in obj ){
-                        content+=
-                            '<li>'+
-                            '<div class="row">'+
-                            '<div class="col-md-12 profile-mine__content--title-warp">'+
-                            '<p class="nowrap bold" style="font-size:16px;">'+
-                            '<a class="link-primary" target="_blank" href=/getArticle/'+obj[i].article_id+'>'+obj[i].title+'</a>'+
-                            '</p>'+
-                            '<ul class="list-inline" style="font-size: 12px!important;line-height: 30px;">'+
-                            '<li>'+
-                            '<a href="#" target="_blank">'+
-                            '<img src="/static/images/head.jpeg" alt="" class="img-circle" width="30" height="30">'+
-                            '<span>'+obj[i].uname+'</span>'+'</a>'+
-                            '</li>'+
-                            '<li class="pull-right">'+
-                            '<a href="#" class="link-black" target="_blank">'+
-                            '<i class="margin-r-5"></i>'+'评论(5)'+'</a>'+
-                            '</li>'+
-                            '<li class="pull-right">'+
-                            '<a href="#" class="link-black" target="_blank">'+
-                            '<i class="margin-r-5"></i>'+'阅读(123)'+'</a>'+
-                            '</li>'+
-                            '<li>'+
-                            '<a href="#" class="link-black disabled">'+
-                            '<i class="margin-r-5"></i>'+obj[i].create_time+'</a>'+
-                            '</li>'+
-                            '</ul>'+
-                            '</div>'+
-                            '</div>'+
-                            '</li>'
-                    }
-                    $("#box-body").html(content)
-                }
-            });
-        });
-
-
-
     })
 </script>
 </body>

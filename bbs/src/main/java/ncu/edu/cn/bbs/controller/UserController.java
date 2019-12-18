@@ -1,5 +1,7 @@
 package ncu.edu.cn.bbs.controller;
 
+import ncu.edu.cn.bbs.dao.ArticleMapper;
+import ncu.edu.cn.bbs.entity.Article;
 import ncu.edu.cn.bbs.entity.User;
 import ncu.edu.cn.bbs.service.UserService;
 import ncu.edu.cn.bbs.utils.ConstantUtils;
@@ -13,16 +15,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class UserController {
     @Autowired
     UserService service;
+    @Autowired
+    ArticleMapper articleMapper;
 
 
-    @RequestMapping(value = "")
-    public String showPage(){
+    @RequestMapping(value = {"","/index"})
+    public String showPage(Model model){
+        List<Article> goodArticles=articleMapper.findGoodArticle();
+        model.addAttribute("goodArticles",goodArticles);
         return "index";
     }
 

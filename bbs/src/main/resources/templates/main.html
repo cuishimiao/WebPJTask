@@ -252,7 +252,7 @@
                             '<td>' +
                             '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
                             '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-danger" href="/deleteArticleById"'+obj[i].article_id+'>'+"删除"+'</a>'+
                         '</td></tr>'
                     }
                     content += '</tbody></table>';
@@ -285,8 +285,7 @@
                             '<td>' + time + '</td>' +
                             '<td>' +
                             '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-danger" href="/deleteByQId"'+obj[i].question_id+'>' + "删除" + '</a>'+
                             '</td></tr>'
                     }
                     content += '</tbody></table>';
@@ -322,14 +321,20 @@
                             '<td>' + time + '</td>' +
                             '<td>' +
                             '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-danger" href="/deleteReply"'+obj[i].article_id+'>' + "删除" + '</a>'+
                             '</td></tr>'
                     }
                     content += '</tbody></table>';
                     $("#content").html(content);
                 }
             });
+        });
+
+
+        $(document).on("click",".btn btn-danger",function(){
+           var tr = $(this).parentNode.parentNode;
+           $(".table table-honver").removeChild(tr);
+
         });
 
     });

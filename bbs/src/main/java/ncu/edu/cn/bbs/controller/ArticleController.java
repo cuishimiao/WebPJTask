@@ -1,5 +1,6 @@
 package ncu.edu.cn.bbs.controller;
 
+import ncu.edu.cn.bbs.dao.ArticleMapper;
 import ncu.edu.cn.bbs.entity.Article;
 import ncu.edu.cn.bbs.service.ArticleService;
 import ncu.edu.cn.bbs.utils.ConstantUtils;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     ArticleService service;
+
 
 
     @RequestMapping("/articles")
@@ -81,9 +83,9 @@ public class ArticleController {
     }
 
 
-    @RequestMapping("/deleteArticle")
+    @RequestMapping("/deleteArticleById/{id}")
     @ResponseBody
-    public String delete(int id){
+    public String delete(@PathVariable int id){
         return service.deleteArticle(id);
     }
 
