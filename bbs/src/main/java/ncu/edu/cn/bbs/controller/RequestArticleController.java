@@ -33,17 +33,17 @@ public class RequestArticleController {
 
     //发问题
     @RequestMapping("/generateRequest")
-    public String generate(@RequestBody Question article, Model model) throws  IOException {
+    public String generate(@RequestBody Question article) throws  IOException {
 
         if(article.getQuestion_title()==null || article.getQuestion_title()=="")
         {
-            model.addAttribute("error","问题标题不能为空");
-            return "question";
+
+            return "问题标题不能为空";
         }
         if(article.getContent()==null || article.getContent()=="")
         {
-            model.addAttribute("error","文章内容不能为空");
-            return "question";
+
+            return "文章内容不能为空";
 
         }
 

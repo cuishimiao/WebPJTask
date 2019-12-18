@@ -47,19 +47,21 @@ public class ArticleController {
     //写文章
     @RequestMapping("/writeArticle")
     @ResponseBody
-    public String write(@RequestBody Article article,Model model){
+    public String write(@RequestBody Article article){
+        String msg;
         if(article.getTitle()==null || article.getTitle()=="")
         {
-            model.addAttribute("error","标题不能为空");
-            return "publish";
+
+           msg="文章标题不能为空";
+           return msg;
         }
         if (article.getContent()==null || article.getContent()=="")
         {
-            model.addAttribute("error","文章内容不能为空");
-            return  "publish";
+            msg="文章内容不能为空";
+            return msg;
         }
 
-        String msg = service.generateArticle(article);
+         msg = service.generateArticle(article);
         return msg;
     }
 
