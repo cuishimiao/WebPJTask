@@ -116,7 +116,8 @@
                          <hr>
                          <div class="media-left">
                              <!--头像-->
-                             <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
+                             <!--<img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">-->
+                             <img th:src="@{'../static/images/'+${replyDto.getUser().getHead()}}" alt="" class="img-circle" width="40">
                          </div>
                          <div class="media-body">
                              <!--用户名-->
@@ -142,7 +143,8 @@
                             <a href="#">
                                 <!--<img class="media-object img-circle" th:src="${card.getUser().getHead()}">-->
                                 <!--头像-->
-                                <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
+                                <!--<img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">-->
+                                <img th:src="@{'../static/images/'+${article.uhead}}" alt="" class="img-circle" width="50">
                             </a>
                         </div>
                         <div class="media-body">

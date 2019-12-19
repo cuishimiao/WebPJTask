@@ -154,11 +154,15 @@
                     <hr style="margin: 9px">
                     <div class="media-left">
                         <!--头像-->
-                        <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
+                        <!--<img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">-->
+                        <!--<img th:src="@{'../static/images/'+${golduser.head}}" alt="" class="img-circle" width="40">-->
+                        <img class="media-object img-circle" th:src="@{'../static/images/'+${questionCommentDto.getUser().getHead()}}" width="50">
+
                     </div>
                     <div class="media-body">
                         <!--用户名-->
                         <span class="media-heading" th:text="${questionCommentDto.getQuestionReply().getUsername()}"></span>
+                        <span style="font-size: 10px;color:#9f191f;">&nbsp;&nbsp;&nbsp;赏金值：</span><span style="font-size: 10px;color:#9f191f;" th:text="${questionCommentDto.getUser().getGold()}"></span>
                         <span style="float: right;font-size:25px;color: #9f191f;margin-left:13px;" th:if="${questionCommentDto.getQuestionReply().getIs_adopt() gt 0}"><span class="glyphicon glyphicon-ok"></span>[被采纳 赏金已发放]</span>
                         <!--评论内容-->
                         <h6 class="media-heading" th:text="${questionCommentDto.getQuestionReply().getReply_content()}"></h6>
@@ -213,7 +217,8 @@
                 <div style="margin-top: 2px;border-radius: 3px;background-color: white" >
                     <div class="media-left">
                         <a href="#">
-                            <img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">
+                            <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">-->
+                            <img th:src="@{'../static/images/'+${golduser.head}}" alt="" class="img-circle" width="40">
                         </a>
                     </div>
                     <div class="media-body" style="margin-left: 10px;">

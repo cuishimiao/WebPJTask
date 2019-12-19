@@ -106,7 +106,8 @@
                     <ul class="list-inline box-head">
                         <li>
                             <a href="">
-                                <img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="30">
+                                <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="30">-->
+                                <img th:src="@{'../static/images/'+${askandanswer.getUhead()}}" alt="" class="img-circle" width="30">
                                 <!--发布人-->
                             </a>
                             <!--描述-->
@@ -175,7 +176,8 @@
                     <div class="media-left">
                         <a href="#">
                             <!--<img class="media-object" src="..." alt="...">-->
-                            <img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">
+                            <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">-->
+                            <img th:src="@{'../static/images/'+${golduser.head}}" alt="" class="img-circle" width="40">
                         </a>
                     </div>
                     <div class="media-body" style="margin-left: 10px;">
@@ -184,6 +186,7 @@
                     </div>
                 </div>
             </a>
+
         </div>
     </div>
 </div>
