@@ -84,6 +84,12 @@ public class UserController {
     @RequestMapping("/reg")
     @ResponseBody
     public String register(@RequestBody User user){
+        if(user.getUsername()==null || user.getUsername().equals("")){
+            return "用户名不能为空";
+        }
+        if(user.getPassword()==null || user.getPassword().equals("")){
+            return "密码不能为空";
+        }
         User temp = service.findByName(user);
         if(temp != null){
             return "用户名已存在";
