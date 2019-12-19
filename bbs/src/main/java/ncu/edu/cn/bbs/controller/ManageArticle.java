@@ -64,7 +64,7 @@ public class ManageArticle {
     //修改后的文章修改
     @PostMapping("/modifyArticle")
     public String modify( Article article){
-        service.modifyArticle(article);
+        service.modiarticle(article);
         return "redirect:/manageart";
     }
 
@@ -83,7 +83,7 @@ public class ManageArticle {
         }
         else
             return "redirect:/manageart";
-        List<Article> articles = service.findAllByUid(i);
+        Article articles = service.findAllByarticleid(i);
         m.addAttribute("searchname",searchname);
         m.addAttribute("msg",articles);
         int find=1;
@@ -92,22 +92,34 @@ public class ManageArticle {
     }
 
     //置顶与取消置顶
-//    @RequestMapping("/managesettop/{article_id}")
-//    public String getArticle(@PathVariable int article_id,Model m){
-//        System.out.println(article_id);
-//        if(article_id==0)
-//        {
-//            mapp.setTop(article_id);
-//            System.out.println("******"+article_id);
-//        }
-//        if(article_id==1)
-//        {
-//            mapp.canselTop(article_id);
-//            System.out.println("--------"+article_id);
-//        }
-//        //如果没传参数，则type为managesearch，传了参数则为则type为managemodify
-//        return "redirect:/manageart";
-//    }
+    @RequestMapping("/managesettop/{article_id}")
+    public String getArticle(@PathVariable int article_id, Model m){
+        System.out.println("文章编号"+article_id);
+        List<Article> all = service.findAll();
+        int top=0;
+        for(Article h:all)
+        {
+            if(h.getArticle_id()==article_id)
+            {
+               top=h.getTop();
+            }
+        }
+        System.out.println(top);
+        if(top==0)
+        {
+            top=1;
+            service.setaatop(article_id,top);
+            System.out.println("******"+article_id);
+        }
+        else if(top==1)
+        {
+            top=0;
+            service.canseaatTop(article_id,top);
+            System.out.println("--------"+article_id);
+        }
+        //如果没传参数，则type为managesearch，传了参数则为则type为managemodify
+        return "redirect:/manageart";
+    }
 
 //查询所有的文章
     @RequestMapping("/manageart")
@@ -167,7 +179,6 @@ public class ManageArticle {
             System.out.println(k);
         }
         m.addAttribute("num",num);//页面数
-        System.out.println(num.get(0));
 
         m.addAttribute("currentpage",j+1);  //当前页面
         System.out.println(j+1);

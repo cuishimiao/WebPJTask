@@ -55,14 +55,15 @@ public class UserService {
     public int modifyHead(User user){return userDao.modifyHeader(user);}
 
 
+    //manage修改密码
     public int modifypass(String username,String password){
         return userDao.modifypass(username,password);
     }
-
+    //manage更新用户信息
     public int updateuser(User user){
         return userDao.updateuser(user);
     }
-
+    //manage根据用户名查找
     public User findusername(String username){
         return userDao.findusername(username);
     }

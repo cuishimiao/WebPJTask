@@ -57,6 +57,17 @@ public class ManageUser {
             m.addAttribute("wrong",1);
             return "admin/manageadd";
         }
+        List<User> user1 = service.findby(user.getUsername());
+
+        for(User h:user1)
+        {
+            if(h.getUsername().equals(user.getUsername()))
+            {
+                m.addAttribute("wrong",2);
+                return "admin/manageadd";
+            }
+        }
+
         service.saveuser(user);
         return "redirect:/Users";
     }
@@ -173,7 +184,6 @@ public class ManageUser {
             System.out.println(k);
         }
         m.addAttribute("num",num);//页面数
-        System.out.println(num.get(0));
 
         m.addAttribute("currentpage",j+1);  //当前页面
         System.out.println(j+1);
@@ -206,7 +216,7 @@ public class ManageUser {
     //登录管理
     @PostMapping("/managelogin")
     public String login(User user, HttpServletRequest request, Model m){
-
+        System.out.println("sdseriuhgurehgregerg"+user);
         if(user.getUsername().isEmpty()||user.getPassword().isEmpty())
         {
             m.addAttribute("wrong","不能为空！！！");
@@ -259,7 +269,15 @@ public class ManageUser {
         if(!user.getPresent().equals(user.getConfirm()))
         {
             m.addAttribute("wrong","修改密码与确认密码不一致！！！");
+            return  "admin/manageset";
         }
+
+        if(user.getOriginal().equals(user.getPresent()))
+        {
+            m.addAttribute("wrong","原密码与修改密码需要不一致！！！");
+            return  "admin/manageset";
+        }
+
         if(user.getUsernamee().equals(username)&&user.getOriginal().equals(password))
         {
             service.modifypass(username,user.getPresent());

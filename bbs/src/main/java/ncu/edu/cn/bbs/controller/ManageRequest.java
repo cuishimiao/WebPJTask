@@ -33,6 +33,7 @@ public class ManageRequest {
         return "redirect:/Requests";
     }
 
+
     @GetMapping("/findAllByque")
     public String findAllByque(String searchname,Model m){
         Integer i = null;
@@ -55,7 +56,7 @@ public class ManageRequest {
         return "admin/managequestion";
     }
 
-
+    //根据问题编号修改问题
     @RequestMapping("/modifyq/{question_id}")
     public String modifyu(@PathVariable int question_id, Model m){
         m.addAttribute("msg",articleService.findrequest(question_id));
@@ -66,6 +67,13 @@ public class ManageRequest {
     public String modifyuser(Question question){
         System.out.println("dufhiaushfdiu");
         articleService.modifyqu(question);
+        return "redirect:/Requests";
+    }
+
+    //根据问题编号删除问题
+    @RequestMapping("/deleterep/{question_id}")
+    public String deleteUser(@PathVariable int question_id){
+        articleService.deleteByQId(question_id);
         return "redirect:/Requests";
     }
 
@@ -127,7 +135,6 @@ public class ManageRequest {
             System.out.println(k);
         }
         m.addAttribute("num",num);//页面数
-        System.out.println(num.get(0));
 
         m.addAttribute("currentpage",j+1);  //当前页面
         System.out.println(j+1);

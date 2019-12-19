@@ -26,25 +26,25 @@
 
             <tr>
                 <td><span >文章编号<strong>(*只读)</strong></span></td>
-                <td><input type="text" th:value="${msg.article_id}" id="article_id" name="article_id" size="50px"  /> </td>
+                <td><input type="text" th:value="${msg.article_id}" id="article_id" name="article_id" size="50px"  readonly="readonly"/> </td>
             </tr>
 
             <tr>
-                <td><span >回复者编号</span></td>
-                <td><input type="text" th:value="${msg.responder_id}" id="responder_id"  name="responder_id" placeholder="韩露" / ></td>
-
-            </tr>
-
-            <tr>
-                <td><span >回复时间</span></td>
-                <td><input type="text" th:value="${msg.reply_time}" id="reply_time" name="reply_time"  placeholder="创建时间" /></td>
-
+                <td><span >回复者编号<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.responder_id}" id="responder_id"  name="responder_id" readonly="readonly" /></td>
 
             </tr>
 
             <tr>
-                <td> <span >序号</span></td>
-                <td> <input type="text" th:value="${msg.id}" id="id"  name="id" placeholder="种类编号"/></td>
+                <td><span >回复时间<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.reply_time}" id="reply_time" name="reply_time"  readonly="readonly" /></td>
+
+
+            </tr>
+
+            <tr>
+                <td> <span >序号<strong>(*只读)</strong></span></td>
+                <td> <input type="text" th:value="${msg.id}" id="id"  name="id" placeholder="种类编号" readonly="readonly" /></td>
             </tr>
 
             <tr>

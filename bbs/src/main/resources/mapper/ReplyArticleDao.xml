@@ -10,6 +10,7 @@
 (#{article_id},#{responder_id},#{context},#{reply_time})
 </insert>
 
+    <!--//管理员查找回复文章-->
 <select id="findAllReply" resultType="replyArticle">
     select * from reply_table where article_id = #{id}
 </select>
@@ -18,14 +19,17 @@
     select * from reply_table where id = #{id}
 </select>
 
+    <!--//管理员编辑回复文章-->
 <update id="modifyReply">
     update reply_table set context = #{context} where id =#{id}
 </update>
 
+    <!--//管理员删除回复文章-->
 <delete id="deleteReply">
     delete from reply_table where id =#{id}
 </delete>
 
+    <!--//管理员查找所有回复文章-->
 <select id="findAll" resultType="replyArticle">
     select * from reply_table
 </select>
