@@ -35,7 +35,6 @@
     }
 </style>
 <body class="hold-transition skin-blue layout-top-nav" style="background-color: #E6E6E6">
-<div>
     <!--<nav class="navbar navbar-static-top" style="background-color:#777777; ">-->
         <!--<div class="container" style="height: 20px">-->
             <!--<div class="navbar-header">-->
@@ -74,48 +73,50 @@
             <!--</div>-->
         <!--</div>-->
     <!--</nav>-->
-    <header>
-        <nav class="navbar navbar-static-top" style="background-color: #3c8dbc;">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="/" class="navbar-brand">
-                        <img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">
-                    </a>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a  class="fontnav active" href="/">首页</a></li>
-                        <li><a  class="fontnav" href="/article">文章</a></li>
-                        <li><a  class="fontnav" href="/askandanswer">问答</a></li>
-                        <li><a  class="fontnav" href="/main">我的主页</a></li>
-                    </ul>
+<!--<div>-->
+    <!--<header>-->
+        <!--<nav class="navbar navbar-static-top" style="background-color: #3c8dbc;">-->
+            <!--<div class="container">-->
+                <!--<div class="navbar-header">-->
+                    <!--<a href="/" class="navbar-brand">-->
+                        <!--<img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">-->
+                    <!--</a>-->
+                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">-->
+                        <!--<i class="fa fa-bars"></i>-->
+                    <!--</button>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+                <!--<div class="collapse navbar-collapse pull-left" id="navbar-collapse">-->
+                    <!--<ul class="nav navbar-nav">-->
+                        <!--<li><a  class="fontnav active" href="/">首页</a></li>-->
+                        <!--<li><a  class="fontnav" href="/article">文章</a></li>-->
+                        <!--<li><a  class="fontnav" href="/askandanswer">问答</a></li>-->
+                        <!--<li><a  class="fontnav" href="/main">我的主页</a></li>-->
+                    <!--</ul>-->
 
-                    <form class="navbar-form navbar-left" th:action="@{/check}" method="get" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control global-search-input" name="key" id="main-search-input" placeholder="Search...">
-                        </div>
-                    </form>
-                    <ul class="nav navbar-nav">
-                        <li><a class="fontnav" href="/publish">写文章 <span class="sr-only">(current)</span></a></li>
-                        <li><a class="fontnav" href="/ask">提问</a></li>
-                    </ul>
-                </div>
+                    <!--<form class="navbar-form navbar-left" th:action="@{/check}" method="get" role="search">-->
+                        <!--<div class="form-group">-->
+                            <!--<input type="text" class="form-control global-search-input" name="key" id="main-search-input" placeholder="Search...">-->
+                        <!--</div>-->
+                    <!--</form>-->
+                    <!--<ul class="nav navbar-nav">-->
+                        <!--<li><a class="fontnav" href="/publish">写文章 <span class="sr-only">(current)</span></a></li>-->
+                        <!--<li><a class="fontnav" href="/ask">提问</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
 
-                <div class="navbar-custom-menu" id="user-nav-wrapper">
-                    <ul class="nav navbar-nav" id="mode">
-                        <li><a class="fontnav" data-toggle="modal" data-target="#login" id="loginModalBtn">登录 </a></li>
-                        <li><a class="fontnav" href="/register"  id="eroll">注册</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-</div>
-
+                <!--<div class="navbar-custom-menu" id="user-nav-wrapper">-->
+                    <!--<ul class="nav navbar-nav" id="mode">-->
+                        <!--<li><a class="fontnav" data-toggle="modal" data-target="#login" id="loginModalBtn">登录 </a></li>-->
+                        <!--<li><a class="fontnav" href="/register"  id="eroll">注册</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</nav>-->
+    <!--</header>-->
+<!--</div>-->
+<!--导航条-->
+<div th:insert="~{nav :: copy}"></div>
 <!--------------------------------------------------------------->
 <div>
     <div class="col-md-9"style="width: 750px;margin-left: 70px;" >
