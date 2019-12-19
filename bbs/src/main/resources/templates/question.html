@@ -35,8 +35,7 @@
         });
     </script>
 </head>
-<body style="background-color: #E6E6E6">
-
+<body class="skin-blue layout-top-nav" style="transform: none; height: auto; min-height: 100%;">
 
 
 <div th:insert="~{navigation :: nav}"></div>
@@ -93,7 +92,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">$</span>
 
-                    <input type="text" class="form-control" id="wealthy" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="wealthy" οninput="value=value.replace(/[^\d]/g,'')" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-addon">.00</span>
                 </div>
 
