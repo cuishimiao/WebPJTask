@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title></title>
-	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <!--主要样式控制-->
@@ -108,8 +108,6 @@
                <li role="presentation">
                    <a th:href="@{/logoutandreturn}">退出登录并返回首页</a>
                </li>
-
-
                <!-- <li>
                    <a href="../login/logout">
                          <span class="glyphicon glyphicon-lock"></span>退出登录</a>
@@ -136,33 +134,33 @@
          	
                  <h3 align="center">管理操作</h3>
                  <hr>
-           
+
+
              <li role="presentation">
                  <a th:href="@{/Users}" target="mainFrame">用户管理</a>
              </li>
-             <li role="presentation" class="active">
+             <li role="presentation">
                  <a th:href="@{/manageart}" target="mainFrame">文章管理</a>
              </li>
-             
+
              <li role="presentation">
                  <a th:href="@{/Replys}" target="mainFrame">文章回复</a>
              </li>
-             
+
              <li role="presentation">
                  <a th:href="@{/Requests}" target="mainFrame">问题管理</a>
              </li>
 
-             <li role="presentation">
+             <li role="presentation" class="active">
                  <a th:href="@{/Replyques}" target="mainFrame">问题回复</a>
              </li>
 
 			<li role="presentation">
                  <a th:href="@{/managesetting}" target="mainFrame">个人设置</a>
-             </li>              
+             </li>
+               
              
              <!-- 结束 -->
-             
-
          </ul>
      </div>
 
@@ -175,113 +173,99 @@
        </iframe>  -->
         <div class="row-fluid" style="margin: auto 15px; ">
         <div class="span12">
-
-
+            
           
             <h3 style="margin-left: 30px;">
-                文章管理 
+                问答管理 
             </h3> 
             <hr>
             <div>
-                <form class="form-search form-inline center-block" th:action="@{/findAllByid}" th:method="get" style="display: inline-block;  margin-left:150px;"  >
+
+                <form class="form-search form-inline center-block" th:action="@{/findquerep}" th:method="get" style="display: inline-block;  margin-left:150px;"  >
                     <span>用户编号：</span>
                     <input size="50" th:value="${searchname}" name="searchname" class="input-medium search-query" type="text" />
                     <button type="submit" class="btn">查找</button>
                 </form>
+
             </div>
           	<br>
 
             <table class="table" style="margin-bottom: 5px;">
                 <thead>
                     <tr class="success">
-                        <th width="100px">
-                            文章编号
-                        </th>
-                        <th width="100px">
-                            用户编号
-                        </th>
-                        <th width="100px">
-                            标题
+                        <th>
+                            序号
                         </th>
                         <th>
-                            内容
+                            问题编号
                         </th>
-                        <th width="100px">
-                            创建时间
+                        <th>
+                            用户名
                         </th>
-                        <th width="100px">
-                            种类编号
+                        <th>
+                            回复内容
                         </th>
-                        <th width="100px">
-                            置顶编号
+                        <th>
+                            是否被采纳
                         </th>
-                        <th width="100px">
-                            置顶操作
+                        <th>
+                            回复时间
                         </th>
-                        <th width="100px">
-                            用户头像
-                        </th>
-                        <th width="200px">
+                        <th>
                             操作
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                 <tr th:each="p : ${msg}" class="info">
-                    <td th:text="${p.getArticle_id()}"></td>
-                    <td th:text="${p.uid}"></td>
-                    <td th:text="${p.title}"></td>
-                    <td th:text="${#strings.abbreviate(p.content,100)}"></td>
-                    <td th:text="${#dates.format(p.create_time, 'yyyy-MM-dd')}"></td>
-                    <td th:text="${p.getCategory_id()}"></td>
-                    <td th:text="${p.top}"></td>
-                    <td><a th:href="@{/managesettop/} + ${p.article_id}" type="button" class="btn btn-primary">是/否</a></td>
-                    <td th:text="${p.uhead}"></td>
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.question_id}"></td>
+                    <td th:text="${p.username}"></td>
+                    <td th:text="${#strings.abbreviate(p.reply_content,100)}"></td>
+                    <td th:text="${p.is_adopt}"></td>
+                    <td th:text="${#dates.format(p.time, 'yyyy-MM-dd')}"></td>
                     <td>
-                        <a th:href="@{/managegetArt/} + ${p.article_id}" type="button" class="btn btn-primary">查看</a>
-                        <a th:href="@{/managegetArt/} + ${p.article_id}+'?type=managemodify'" type="button" class="btn btn-success">编辑</a>
-                        <a th:href="@{/deleteArticle/} + ${p.article_id}" type="button" class="btn btn-danger">删除</a>
+                        <a th:href="@{/modifyquere/} + ${p.id}" type="button" class="btn btn-success">编辑</a>
+                        <a th:href="@{/deletequerep/} + ${p.id}" type="button" class="btn btn-danger">删除</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
 
-
             <nav aria-label="Page navigation" class="center-block" >
-                  <ul class="pagination pagination-lg">
-				<li>
-					 <a th:href="@{/manageart}+'?page='+${currentpage}+'&tag=0'" name="page">上一页</a>
-				</li>
-                 <td th:each="p : ${num}">
-                           <li th:class="${currentpage}==${p}? 'active':'#'">
-				   	        <a  th:href="@{/manageart}+'?page='+${p}+'&tag=1'" th:text="${p}" name="page"></a>
-                           </li>
-                 </td>
-                  <li th:if="${find}==1" class="active">
-                      <a>1</a>
-                  </li>
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a th:href="@{/Replyques}+'?page='+${currentpage}+'&tag=0'" name="page">上一页</a>
+                    </li>
+                    <td th:each="p : ${num}">
+                        <li th:class="${currentpage}==${p}? 'active':'#'">
+                            <a  th:href="@{/Replyques}+'?page='+${p}+'&tag=1'" th:text="${p}" name="page"></a>
+                        </li>
+                    </td>
+                    <li th:if="${find}==1" class="active">
+                        <a>1</a>
+                    </li>
 
-				<!--<li th:class="${currentpage}==1? 'active':'#'">-->
-					 <!--<a  th:href="@{/sspage}+'?page=1'+'&tag=1'" name="page">1</a>-->
-				<!--</li>-->
-				<!--<li th:class="${currentpage}==2? 'active':'#'">-->
-					 <!--<a th:href="@{/sspage}+'?page=2'+'&tag=1'" name="page">2</a>-->
-				<!--</li>-->
-				<!--<li th:class="${currentpage}==3? 'active':'#'">-->
-					 <!--<a th:href="@{/sspage}+'?page=3'+'&tag=1'" name="page">3</a>-->
-				<!--</li>-->
-				<!--<li th:class="${currentpage}==4? 'active':'#'">-->
-					 <!--<a th:href="@{/sspage}+'?page=4'+'&tag=1'" name="page">4</a>-->
-				<!--</li>-->
-				<!--<li th:class="${currentpage}==5? 'active':'#'">-->
-					 <!--<a th:href="@{/sspage}+'?page=5'+'&tag=1'" name="page">5</a>-->
-				<!--</li>-->
-				<li>
-					 <a th:href="@{/manageart}+'?page='+${currentpage}+'&tag=2'" name="page">下一页</a>
-				</li>
-				</ul>
+                    <!--<li th:class="${currentpage}==1? 'active':'#'">-->
+                    <!--<a  th:href="@{/sspage}+'?page=1'+'&tag=1'" name="page">1</a>-->
+                    <!--</li>-->
+                    <!--<li th:class="${currentpage}==2? 'active':'#'">-->
+                    <!--<a th:href="@{/sspage}+'?page=2'+'&tag=1'" name="page">2</a>-->
+                    <!--</li>-->
+                    <!--<li th:class="${currentpage}==3? 'active':'#'">-->
+                    <!--<a th:href="@{/sspage}+'?page=3'+'&tag=1'" name="page">3</a>-->
+                    <!--</li>-->
+                    <!--<li th:class="${currentpage}==4? 'active':'#'">-->
+                    <!--<a th:href="@{/sspage}+'?page=4'+'&tag=1'" name="page">4</a>-->
+                    <!--</li>-->
+                    <!--<li th:class="${currentpage}==5? 'active':'#'">-->
+                    <!--<a th:href="@{/sspage}+'?page=5'+'&tag=1'" name="page">5</a>-->
+                    <!--</li>-->
+                    <li>
+                        <a th:href="@{/Replyques}+'?page='+${currentpage}+'&tag=2'" name="page">下一页</a>
+                    </li>
+                </ul>
             </nav>
-            </form>
            <!--  <blockquote>
                 <p>
                     github是一个全球化的开源社区.

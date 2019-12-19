@@ -1,7 +1,8 @@
 package ncu.edu.cn.bbs.controller;
 
-import ncu.edu.cn.bbs.entity.Question;
-import ncu.edu.cn.bbs.service.RequestArticleService;
+
+import ncu.edu.cn.bbs.entity.QuestionReply;
+import ncu.edu.cn.bbs.service.QuestionReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,29 +14,31 @@ import java.util.List;
 /**
  * @Author:wzh
  * @Description:
- * @Date:Createed in 2019/12/10 17:34
+ * @Date:Createed in 2019/12/10 16:01
  **/
 @Controller
-public class ManageRequest {
-    @Autowired
-    private RequestArticleService articleService;
+public class ManageQuestionreply {
 
-//    @RequestMapping("/Requests")
-//    public String findAll(Model m){
-//        List<Question> all = articleService.findAllr();
+    @Autowired
+    private QuestionReplyService questionReplyService;
+
+//    @RequestMapping("/Replyques")
+//    public String findAllre(Model m){
+//        List<QuestionReply> all = questionReplyService.findAllre();
 //        m.addAttribute("msg",all);
-//        return "admin/managequestion";
+//        return "admin/managequereply";
 //    }
 
-    @RequestMapping("/deleteRequest/{question_id}")
-    public String delete(@PathVariable int question_id){
-        articleService.deleteby(question_id);
-        return "redirect:/Requests";
+    @RequestMapping("/deletequerep/{id}")
+    public String deleteque(@PathVariable int id){
+        questionReplyService.deleteque(id);
+        return "redirect:/Replyques";
     }
 
-    @GetMapping("/findAllByque")
-    public String findAllByque(String searchname,Model m){
+    @GetMapping("/findquerep")
+    public String findbyid(String searchname, Model m){
         Integer i = null;
+        System.out.println("******************");
         if(!searchname.isEmpty()){
             try {
                 i=Integer.parseInt(searchname);
@@ -46,35 +49,37 @@ public class ManageRequest {
             System.out.println(i);
         }
         else
-            return "redirect:/Requests";
-        List<Question> articles = articleService.findAllRequest(i);
-        m.addAttribute("searchname",searchname);
-        m.addAttribute("msg",articles);
+            return "redirect:/Replyques";
+        QuestionReply quereply = questionReplyService.findbyid(i);
+        m.addAttribute("msg",quereply);
+        m.addAttribute("searchname", searchname);
 
-        m.addAttribute("find",1);
-        return "admin/managequestion";
+        m.addAttribute("find", 1);
+        return "admin/managequereply";
     }
 
 
-    @RequestMapping("/modifyq/{question_id}")
-    public String modifyu(@PathVariable int question_id, Model m){
-        m.addAttribute("msg",articleService.findrequest(question_id));
-        return "admin/managemodifyque";
+    @RequestMapping("/modifyquere/{id}")
+    public String modifyquere(@PathVariable int id, Model m){
+        System.out.println("fsfasg******************"+id);
+        QuestionReply quereply = questionReplyService.findbyid(id);
+        m.addAttribute("msg",quereply);
+        System.out.println("fsfasg******************"+quereply);
+        return "admin/managemodifyquereply";
     }
 
-    @PostMapping("/modifyque")
-    public String modifyuser(Question question){
-        System.out.println("dufhiaushfdiu");
-        articleService.modifyqu(question);
-        return "redirect:/Requests";
+    @PostMapping("/modifyquereply")
+    public String modifyuser(QuestionReply reply){
+
+        questionReplyService.updatequereply(reply);
+        return "redirect:/Replyques";
     }
 
-
-    @RequestMapping("/Requests")
-    public String Requests(@RequestParam(value = "page",defaultValue = "1")String page,@RequestParam(value = "tag",defaultValue = "1")String tag,Model m){
+    @RequestMapping("/Replyques")
+    public String Replyques(@RequestParam(value = "page",defaultValue = "1")String page, @RequestParam(value = "tag",defaultValue = "1")String tag, Model m){
         int size=2; //一页的大小
         int j=1;    //初始值
-        System.out.println("查询问题***************");
+        System.out.println("查询文章***************");
         if(tag.equals("1")) //当前页面
         {
             j=Integer.parseInt(page);
@@ -92,7 +97,7 @@ public class ManageRequest {
         if(j<0)     //不能小于0
             j=0;
 
-        List<Question> all = articleService.findAllr();  //所有内容
+        List<QuestionReply> all = questionReplyService.findAllre();  //所有内容
 
         int pagenum=all.size()/size;
         if(all.size()%size>0)
@@ -104,9 +109,9 @@ public class ManageRequest {
             j=pagenum-1;    //j允许的最大页数
         }
 
-        List<Question> apage = new ArrayList<Question>(); //每页要显示的内容
+        List<QuestionReply> apage = new ArrayList<QuestionReply>(); //每页要显示的内容
         int i=0;
-        for(Question h:all)
+        for(QuestionReply h:all)
         {
             i++;
             if(i>j*size&&i<=(j+1)*size)
@@ -133,7 +138,7 @@ public class ManageRequest {
         System.out.println(j+1);
         System.out.println("当前"+(j+1));
         //如果没传参数，则type为managesearch，传了参数则为则type为managemodify
-        return "admin/managequestion";
+        return "admin/managequereply";
     }
 
 }

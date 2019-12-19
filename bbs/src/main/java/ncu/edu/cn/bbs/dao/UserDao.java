@@ -32,4 +32,11 @@ public interface UserDao {
     int modifyEmail(String email,String uid);
 
     int modifyHeader(User user);
+
+
+    int updateuser(User user);
+
+    User findusername(String username);;
+
+    int modifypass(String username,String password);
 }
