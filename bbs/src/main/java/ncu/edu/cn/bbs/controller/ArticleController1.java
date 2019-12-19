@@ -2,8 +2,10 @@ package ncu.edu.cn.bbs.controller;
 
 import ncu.edu.cn.bbs.dao.ArticleDto;
 import ncu.edu.cn.bbs.dao.ArticleMapper;
+import ncu.edu.cn.bbs.dao.QuestionMapper;
 import ncu.edu.cn.bbs.dao.Userdao1;
 import ncu.edu.cn.bbs.entity.Article;
+import ncu.edu.cn.bbs.entity.Question;
 import ncu.edu.cn.bbs.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class ArticleController1 {
 
     @Autowired
     private Userdao1 uerDao;
+
+    @Autowired
+    private QuestionMapper questionMapper;
 
     @RequestMapping("/article")
     public String article(Model model,
