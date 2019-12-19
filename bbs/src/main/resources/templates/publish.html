@@ -18,8 +18,8 @@
                     title:$("#title").val(),
                     content:$("#description").val(),
                     uid:$("#uid").val(),
-                    category_id:$("#tag").val()
-
+                    category_id:$("#tag").val(),
+                    uhead:$("#uhead").val()
                 };
                 $.ajax({
                     url:"/writeArticle",
@@ -39,7 +39,11 @@
 </head>
 <body  class="skin-blue layout-top-nav" style="transform: none; height: auto; min-height: 100%;">
 
+
 <div th:insert="~{navigation :: nav}"></div>
+
+<input type="hidden" id="uhead" th:value="${session.user.getHead()}">
+
 
 
 <!-- 提示框 -->
@@ -143,10 +147,10 @@
         </div>
 
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3>问题发起指南</h3>
-            • 问题标题: 请用精简的语言描述您发布的问题，不超过25字 <br>
-            • 问题补充: 详细补充您的问题内容，并确保问题描述清晰直观, 并提供一些相关的资料<br>
-            • 选择标签: 选择一个或者多个合适的标签，用逗号隔开，每个标签不超过10个字<br>
+            <h3>文章发起指南</h3>
+            • 文章标题: 请用精简的语言描述您的文章标题，不超过20字 <br>
+            • 文章内容: 内容需要积极正能量,教程需要详细 并提供一些相关的资料<br>
+            • 选择标签: 选择一个合适的标签<br>
         </div>
     </div>
 </div>
