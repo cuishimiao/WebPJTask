@@ -129,4 +129,15 @@ public class UserController {
             return "邮箱修改失败!";
         }
     }
+
+    @RequestMapping("/chooseHead")
+    @ResponseBody
+    public String chooseHead(@RequestBody User user){
+        if(service.modifyHead(user)==1){
+            return "头像选择成功";
+        }
+        else{
+            return "头像选择失败";
+        }
+    }
 }

@@ -51,4 +51,6 @@ public class UserService {
     }
 
     public int modifyEmail(String email,String uid){return userDao.modifyEmail(email,uid);}
+
+    public int modifyHead(User user){return userDao.modifyHeader(user);}
 }

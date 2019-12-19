@@ -64,12 +64,12 @@
                         <!-- 用户 -->
                         <li class="dropdown user user-menu" id="user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="images/logn.png" class="user-image" width="25" height="25">
+                                <img th:src="@{${user.head}}" class="user-image" width="25" height="25">
                                 <span class="hidden-xs" th:text="${user.username}">name</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="images/logn.png"
+                                    <img th:src="@{${user.head}}"
                                          class="user-image" alt="">
                                     <p>
                                         <span th:text="${user.username}">name</span>
@@ -115,7 +115,7 @@
                         <div class="box box-solid">
                             <div class="box-body box-profile">
                                 <a href="#">
-                                    <img class="profile-user-img img-responsive img-circle" src="images/logn.png"
+                                    <img class="profile-user-img img-responsive img-circle" src="../static/images/head3.png"
                                          alt="User profile picture">
                                 </a>
                                 <h3 class="profile-username text-center" th:text="${user.username}"></h3>
@@ -249,8 +249,8 @@
                             '<td>' + text + '</td>' +
                             '<td>' + time + '</td>' +
                             '<td>' +
-                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-primary" href="/showArticle/'+obj[i].article_id+'">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success" href="/modifyArticle/'+obj[i].article_id+'">' + "编辑" + '</a>' +
                             '<a type="button" class="btn btn-danger" href="/deleteArticleById/'+obj[i].article_id+'">'+"删除"+'</a>'+
                             '</td></tr>'
                     }

@@ -71,4 +71,10 @@ public class RequestArticleController {
     }
 
 
+    @RequestMapping("/showQuestion/{id}")
+    public String showQuestion(@PathVariable int id ,Model model){
+        Question question = articleService.getRequestArticle(id);
+        model.addAttribute("request",question);
+        return "user/showQuestion";
+    }
 }

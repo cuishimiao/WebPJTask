@@ -41,4 +41,8 @@
 <update id="modifyEmail" >
     update user set email = #{email} where user_id = #{uid}
 </update>
+
+<update id="modifyHeader">
+    update user set head = #{head} where user_id = #{user_id}
+</update>
 </mapper>
