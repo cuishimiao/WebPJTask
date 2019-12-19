@@ -34,6 +34,7 @@ public class ManageReply {
         return "redirect:/Replys";
     }
 
+    //根据文章编号查找
     @GetMapping("/findAllBycom")
     public String findAllBycom(String searchname,Model m){
         Integer i = null;
@@ -57,6 +58,7 @@ public class ManageReply {
     }
 
 
+    //根据序号修改
     @RequestMapping("/modifym/{id}")
     public String modifyu(@PathVariable int id, Model m){
         m.addAttribute("msg",articleService.getReply(id));
@@ -127,7 +129,6 @@ public class ManageReply {
             System.out.println(k);
         }
         m.addAttribute("num",num);//页面数
-        System.out.println(num.get(0));
 
         m.addAttribute("currentpage",j+1);  //当前页面
         System.out.println(j+1);

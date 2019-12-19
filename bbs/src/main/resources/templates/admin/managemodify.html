@@ -25,28 +25,28 @@
                 <input th:type="hidden" name="_method" value="put">
 
                 <tr>
-                   <td><span >文章编号</span></td>
-                   <td><input type="text" th:value="${msg.article_id}" id="article_id" name="article_id" size="50px"/></td>
+                   <td><span >文章编号<strong>(*只读)</strong></span></td>
+                   <td><input type="text" th:value="${msg.article_id}" id="article_id" name="article_id" size="50px" readonly="readonly" /></td>
 
                 </tr>
 
                 <tr>
-                    <td><span >用户编号</span></td>
-                    <td><input type="text" th:value="${msg.uid}" id="uid"  name="uid" placeholder="韩露"/></td>
+                    <td><span >用户编号<strong>(*只读)</strong></span></td>
+                    <td><input type="text" th:value="${msg.uid}" id="uid"  name="uid" placeholder="韩露" readonly="readonly" /></td>
 
                 </tr>
 
                 <tr>
                     <td><span >标题</span></td>
-                    <td><input type="text" th:value="${msg.title}" id="title" name="title"  placeholder="标题"/></td>
+                    <td><input type="text" th:value="${msg.title}" id="title" name="title"  placeholder="标题" /></td>
 
                 </tr>
 
 
 
                 <tr>
-                   <td><span >创建时间</span></td>
-                   <td><input type="text" th:value="${msg.create_time}" id="create_time" name="create_time"  placeholder="创建时间" /></td>
+                   <td><span >创建时间<strong>(*只读)</strong></span></td>
+                   <td><input type="text" th:value="${msg.create_time}" id="create_time" name="create_time"  placeholder="创建时间" readonly="readonly"/></td>
 
 
                 </tr>
@@ -59,15 +59,15 @@
                 </tr>
 
                 <tr>
-                   <td><span >是否置顶</span></td>
-                   <td><input type="text" th:value="${msg.top}" id="top" name="top"  placeholder="是否置顶"/></td>
+                   <td><span >是否置顶<strong>(*只读)</strong></span></td>
+                   <td><input type="text" th:value="${msg.top}" id="top" name="top"  placeholder="是否置顶" readonly="readonly"/></td>
 
 
                 </tr>
 
                 <tr>
-                   <td><span >用户头像</span></td>
-                   <td><input type="text" th:value="${msg.uhead}" id="uhead" name="uhead" placeholder="用户头像"/></td>
+                   <td><span >用户头像<strong>(*只读)</strong></span></td>
+                   <td><input type="text" th:value="${msg.uhead}" id="uhead" name="uhead" placeholder="用户头像" readonly="readonly" /></td>
 
                 </tr>
 

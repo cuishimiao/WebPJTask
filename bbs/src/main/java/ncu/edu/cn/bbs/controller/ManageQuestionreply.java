@@ -132,7 +132,6 @@ public class ManageQuestionreply {
             System.out.println(k);
         }
         m.addAttribute("num",num);//页面数
-        System.out.println(num.get(0));
 
         m.addAttribute("currentpage",j+1);  //当前页面
         System.out.println(j+1);
