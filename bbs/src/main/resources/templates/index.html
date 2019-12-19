@@ -203,53 +203,16 @@
                             </div>
                             <div class="box-body" style="padding: 0 10px;">
                                 <ul class="profile-mine__content mb0">
-                                    <li>
+                                    <li th:each="each:${questionDtos}">
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    很厉害的网站
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    SG飞艇稳赢计划群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    极速赛车七码雪球计划交流群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    澳洲幸运10精准计划交流群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    SG飞艇稳定五码计划群822444
+                                                <a class="profile-mine__content--title" th:href="@{'/showQuestion/'+${each.getQuestion().getQuestion_id()}}" target="_blank" th:text="${each.getQuestion().getQuestion_title()}">
                                                 </a>
                                             </div>
                                         </div>
                                     </li>
                                     <li style="border-bottom: 0;">
-                                        <a href="/questions" target="_blank">查看更多</a>
+                                        <a href="/askandanswer" target="_blank">查看更多</a>
                                     </li>
                                 </ul>
                             </div>
@@ -266,42 +229,16 @@
                                 <div class="ranking-card-base false">
                                     <div class="ranking-list-base true">
                                         <div class="ranking-list">
-                                            <div class="ranking-list-item">
+                                            <div th:each="p,status:${questionDtos}" class="ranking-list-item">
                                                 <div class="list-inner">
-                                                    <div class="ranking">1</div>
+                                                    <div class="ranking" th:text="${status.count}"></div>
                                                     <div class="avatar">
                                                         <a href="#" target="_blank">
-                                                            <img src="/images/head3.png" style="height: 30px; width: 30px;" class="img-circle"></a>
+                                                            <img th:src="@{'/images/'+${p.getUser().getHead()}}" style="height: 30px; width: 30px;" class="img-circle"></a>
                                                     </div>
                                                     <div class="name-info">
-                                                        <div class="name">yu7788</div>
-                                                        <div class="info">32115 声望</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ranking-list-item">
-                                                <div class="list-inner">
-                                                    <div class="ranking">2</div>
-                                                    <div class="avatar">
-                                                        <a href="/dx3303" target="_blank">
-                                                            <img src="/images/" style="height: 30px; width: 30px;" class="img-circle"></a>
-                                                    </div>
-                                                    <div class="name-info">
-                                                        <div class="name">dx3303</div>
-                                                        <div class="info">25260 声望</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ranking-list-item hide">
-                                                <div class="list-inner">
-                                                    <div class="ranking">10</div>
-                                                    <div class="avatar">
-                                                        <a href="/115044810052" target="_blank">
-                                                            <img src="http://cdn2.codergroup.cn/uploads/2018/11/1/115044810052/1541070111410" style="height: 30px; width: 30px;" class="img-circle"></a>
-                                                    </div>
-                                                    <div class="name-info">
-                                                        <div class="name">哈哈哈哈</div>
-                                                        <div class="info">66 声望</div>
+                                                        <div class="name" th:text="${p.getUser().getName()}"></div>
+                                                        <div class="info" th:text="|${p.getUser().getGold()} 声望|"></div>
                                                     </div>
                                                 </div>
                                             </div>
