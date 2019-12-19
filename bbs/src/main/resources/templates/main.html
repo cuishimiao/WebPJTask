@@ -329,33 +329,31 @@
 
 
         $(document).on('click',"#user_Reply",function () {
+            console.log("hello");
             var page = $("#user_Reply").attr("value");
             var content ='';
             $.ajax({
                 url:page,
                 type:"GET",
                 success:function (msg) {
-                    for(var i in msg){
-                        console.log(msg[i].id);
-                    }
-                    var obj = msg;
-                    var content = '<table class="table table-hover">' +
-                        '<thead>' +
-                        '<th>文章编号</th><th>回复者编号</th><th>回复内容</th><th>回复时间</th><th>操作</th></thead>' + '<tbody>';
-                    for (var i in obj) {
-                        var text;
-                        var time = obj[i].reply_time;
-                        if (obj[i].context.length > 8)
-                            text = obj[i].context.substring(0, 7) + "...";
-                        else
-                            text = obj[i].context;
-                        content += '<tr><td>' + obj[i].id + '</td><td>' + obj[i].responder_id + '</td>' +
-                            '<td>' + text + '</td>' +
-                            '<td>' + time + '</td>' +
-                            '<td>' +
-                            '<a type="button" class="btn btn-primary" href="/showReplyById/'+obj[i].id+'">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].id+'">' + "删除" + '</a>'+
-                            '</td></tr>'
+                        var obj = msg;
+                        var content = '<table class="table table-hover">' +
+                            '<thead>' +
+                            '<th>文章编号</th><th>回复者编号</th><th>回复内容</th><th>回复时间</th><th>操作</th></thead>' + '<tbody>';
+                        for (var i in obj) {
+                            var text;
+                            var time = obj[i].reply_time;
+                            if (obj[i].context.length > 8)
+                                text = obj[i].context.substring(0, 7) + "...";
+                            else
+                                text = obj[i].context;
+                            content += '<tr><td>' + obj[i].id + '</td><td>' + obj[i].responder_id + '</td>' +
+                                '<td>' + text + '</td>' +
+                                '<td>' + time + '</td>' +
+                                '<td>' +
+                                '<a type="button" class="btn btn-primary" href="/showReplyById/'+obj[i].id+'">' + "查看" + '</a>' +
+                                '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].id+'">' + "删除" + '</a>'+
+                                '</td></tr>'
                     }
                     content += '</tbody></table>';
                     $("#content").html(content);
