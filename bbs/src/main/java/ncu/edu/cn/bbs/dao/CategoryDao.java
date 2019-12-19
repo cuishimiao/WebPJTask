@@ -15,8 +15,9 @@ public interface CategoryDao {
      * @return: java.util.List<com.example.demo.entity.Category>
      * @description:查询所有帖子分类
      */
-
-    int deletebyid(int category_id);
-
     List<Category> findAll();
+    int deletebyid(int category_id);
+    int insertCategory(String  category_name);
+
+
 }

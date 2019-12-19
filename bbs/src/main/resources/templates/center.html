@@ -42,12 +42,12 @@
                         <!-- 用户 -->
                         <li class="dropdown user user-menu" id="user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/images/logn.png" class="user-image" >
+                                <img src="/static/images/head3.png" class="user-image" >
                                 <span class="hidden-xs" th:text="${user.username}">name</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="/images/logn.png" alt="">
+                                    <img th:src="@{${user.head}}" alt="">
                                     <p>
                                         <span th:text="${user.username}">name</span>
                                         <small th:text="${user.email}">email</small>
@@ -154,9 +154,9 @@
                                 <div id="right-box-body-replace">
                                     <div class="nav-tabs-custom" style="box-shadow: 0 0;">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="javascript:void(0)" class="tab-a" id="profile">基本资料</a></li>
-                                            <li><a href="javascript:void(0)" class="tab-a" id="avatar">我的头像</a></li>
-                                            <li><a href="javascript:void(0)" class="tab-a" id="security">账号安全</a></li>
+                                            <li ><a class="tab-a" id="profile">基本资料</a></li>
+                                            <li><a class="tab-b" id="head">头像选择</a></li>
+                                            <li><a class="tab-a" id="security">账号安全</a></li>
                                         </ul>
                                         <div class="tab-content" id="tab-content">
                                             <div class="tab-pane active">
@@ -220,10 +220,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
@@ -238,7 +235,7 @@
 </div>
 <footer class="main-footer">
     <div class="container" style="text-align: center;">
-        <strong>Copyright © 2019 <a href="http://codergroup.cn">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
+        <strong>Copyright © 2019 <a href="#">BBS</a></strong> <a href="#" class="text-black" target="_blank">赣ICP备17002430号-2</a>
     </div>
 </footer>
 <input type="hidden" id="uid" th:value="${user.user_id}">
@@ -340,13 +337,14 @@
     </div>
 </div>
 
-
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
 <script type="text/javascript" src="/js/adminlte.min.js"></script>
 <script>
     $(function () {
+
+
         //修改个人信息
         $(document).on("click","#profile-btn",function () {
             var param ={
@@ -376,7 +374,7 @@
             }
             else{
                 var param ={
-                    "user_id":$("#user_id").val(),
+                    "user_id":$("#uid").val(),
                     "password":password
                 };
                 $.ajax({
@@ -392,18 +390,48 @@
             }
         });
 
-        
+        //修改邮箱
+        $(document).on("click","#email-form-submit",function () {
+           var email = $("#email").val();
+           var uid = $("#uid").val();
+           $.ajax({
+               url:"/modifyEmail",
+               data:{"email":email,"uid":uid},
+               success:function (msg) {
+                   $("#msg2").text(msg);
+               }
+           })
+        });
+
+        //选择头像
+        $(document).on("click","#head-btn",function () {
+           var val = "/images/"+$('input[name="head"]:checked').val();
+           var param = {"user_id":$("#uid").val(),"head":val};
+           $.ajax({
+               type:"POST",
+               url:"/chooseHead",
+               contentType:"application/json",
+               data:JSON.stringify(param),
+               success:function (msg) {
+                   $("#modalText").html(msg);
+                   $("#myModal").modal()
+               }
+           })
+        });
+
+
+        //切换
         $(document).on("click","#security",function () {
             var content=
                 '<div class="tab-pane active" id="security-tab">'+
-                '<table class="table" border="0">'+
+                '<table class="table">'+
                 '<tbody> <tr> <td>'+
                 '<i class="glyphicon glyphicon-ok-sign text-success"></i>'+"绑定邮箱"+
                 '</td><td>'+
                 '<span th:text="${user.email}">'+'</span>'+
                 '<span class="text-success">'+"已验证"+'</span>'+
                 '</td> <td>'+
-                '<a href="javascript:void(0)" data-toggle="modal" data-target="#emailModal" data-backdrop="static">'+"更换邮箱"+'</a>'+
+                '<a data-toggle="modal" data-target="#emailModal" data-backdrop="static">'+"更换邮箱"+'</a>'+
                 '</td> </tr>'+
                 '<tr>'+
                 '<td><i class="glyphicon glyphicon-ok-sign text-success"></i>'+
@@ -419,6 +447,35 @@
                 '</div>';
             $("#tab-content").html(content);
         });
+
+        $(document).on("click","#head",function () {
+            var content =
+                '<div class="radio">'+
+                '<label>'+
+                '<input type="radio" name="head" id="head1" value="head1.png" checked><img src="/images/head1.png" height="30" width="30">'+
+                '</label>'+
+                '</div>'+
+                '<div class="radio">'+
+                '<label>'+
+                '<input type="radio" name="head" id="head2" value="head2.png" checked><img src="/images/head2.png" height="30" width="30">'+
+                '</label>'+
+                '</div>'+
+                '<div class="radio">'+
+                '<label>'+
+                '<input type="radio" name="head" id="head3" value="head3.png" checked><img src="/images/head3.png" height="30" width="30">'+
+                '</label>'+
+                '</div>'+
+                '<div class="radio">'+
+                '<label>'+
+                '<input type="radio" name="head" id="head4" value="head4.png" checked><img src="/images/head4.png" height="30" width="30">'+
+                '</label>'+
+                '</div>'+
+                 '<input type="button" class="btn btn-success" id="head-btn" value="提交"/>' ;
+            $("#tab-content").html(content);
+
+        });
+
+
     });
 
 </script>

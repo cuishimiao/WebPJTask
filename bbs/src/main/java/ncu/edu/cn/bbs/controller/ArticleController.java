@@ -1,5 +1,6 @@
 package ncu.edu.cn.bbs.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import ncu.edu.cn.bbs.dao.ArticleMapper;
 import ncu.edu.cn.bbs.entity.Article;
 import ncu.edu.cn.bbs.entity.Category;
@@ -54,13 +55,13 @@ public class ArticleController {
 
 
         String msg;
-        if(article.getTitle()==null || article.getTitle()=="")
+        if(article.getTitle()==null || article.getTitle().equals(""))
         {
 
            msg="文章标题不能为空";
            return msg;
         }
-        if (article.getContent()==null || article.getContent()=="")
+        if (article.getContent()==null || article.getContent().equals(""))
         {
             msg="文章内容不能为空";
             return msg;
@@ -117,11 +118,23 @@ public class ArticleController {
         return service.deleteArticle(id);
     }
 
-    @RequestMapping("/modifyArticle")
+    @RequestMapping("/modifyArt")
     @ResponseBody
     public String modify(@RequestBody Article article){
         return service.modifyArticle(article);
     }
 
+    @RequestMapping("/showArticle/{article_id}")
+    public String publish(@PathVariable int article_id,Model model){
+        Article article = service.getArticle(article_id);
+        model.addAttribute("article",article);
+        return "/user/showArticle";
+    }
 
+    @RequestMapping("/modifyArticle/{article_id}")
+    public String modifyArticle(@PathVariable int article_id, Model model){
+        Article article = service.getArticle(article_id);
+        model.addAttribute("article",article);
+        return "/user/modifyArticle";
+    }
 }

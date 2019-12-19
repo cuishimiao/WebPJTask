@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -115,6 +116,28 @@ public class UserController {
         }
         else{
             return "密码修改失败";
+        }
+    }
+
+    @RequestMapping("/modifyEmail")
+    @ResponseBody
+    public String modifyEmail(@RequestParam String email,@RequestParam String uid){
+        if(service.modifyEmail(email,uid)==1){
+            return "邮箱修改成功!";
+        }
+        else{
+            return "邮箱修改失败!";
+        }
+    }
+
+    @RequestMapping("/chooseHead")
+    @ResponseBody
+    public String chooseHead(@RequestBody User user){
+        if(service.modifyHead(user)==1){
+            return "头像选择成功";
+        }
+        else{
+            return "头像选择失败";
         }
     }
 }
