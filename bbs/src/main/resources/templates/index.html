@@ -229,16 +229,16 @@
                                 <div class="ranking-card-base false">
                                     <div class="ranking-list-base true">
                                         <div class="ranking-list">
-                                            <div th:each="p,status:${questionDtos}" class="ranking-list-item">
+                                            <div th:each="p,status:${users}" class="ranking-list-item">
                                                 <div class="list-inner">
                                                     <div class="ranking" th:text="${status.count}"></div>
                                                     <div class="avatar">
                                                         <a href="#" target="_blank">
-                                                            <img th:src="@{'/images/'+${p.getUser().getHead()}}" style="height: 30px; width: 30px;" class="img-circle"></a>
+                                                            <img th:src="@{'/images/'+${p.getHead()}}" style="height: 30px; width: 30px;" class="img-circle"></a>
                                                     </div>
                                                     <div class="name-info">
-                                                        <div class="name" th:text="${p.getUser().getName()}"></div>
-                                                        <div class="info" th:text="|${p.getUser().getGold()} 声望|"></div>
+                                                        <div class="name" th:text="${p.getName()}"></div>
+                                                        <div class="info" th:text="|${p.getGold()} 声望|"></div>
                                                     </div>
                                                 </div>
                                             </div>

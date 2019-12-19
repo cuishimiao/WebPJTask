@@ -51,6 +51,8 @@ public class UserController {
         }
         model.addAttribute("questionDtos",questionDtos);
 
+        List<User> users = userdao.findGoldUser();
+        model.addAttribute("users",users);
         return "index";
     }
 
