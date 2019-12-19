@@ -64,16 +64,16 @@
                         <!-- 用户 -->
                         <li class="dropdown user user-menu" id="user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img th:src="@{${user.head}}" class="user-image" width="25" height="25">
-                                <span class="hidden-xs" th:text="${user.username}">name</span>
+                                <img th:src="@{'/images/'+${session.user.head}}" class="user-image" width="25" height="25">
+                                <span class="hidden-xs" th:text="${session.user.username}">name</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img th:src="@{${user.head}}"
+                                    <img th:src="@{'/images/'+${session.user.head}}"
                                          class="user-image" alt="">
                                     <p>
-                                        <span th:text="${user.username}">name</span>
-                                        <small th:text="${user.email}"></small>
+                                        <span th:text="${session.user.username}">name</span>
+                                        <small th:text="${session.user.email}"></small>
                                     </p>
                                 </li>
                                 <li class="user-body">
@@ -115,10 +115,10 @@
                         <div class="box box-solid">
                             <div class="box-body box-profile">
                                 <a href="#">
-                                    <img class="profile-user-img img-responsive img-circle" th:src="@{${user.head}}"
+                                    <img class="profile-user-img img-responsive img-circle" th:src="@{'/images/'+${session.user.head}}"
                                          alt="User profile picture">
                                 </a>
-                                <h3 class="profile-username text-center" th:text="${user.username}"></h3>
+                                <h3 class="profile-username text-center" th:text="${session.user.username}"></h3>
                                 <p class="text-muted text-center">未设置</p>
 
                                 <ul class="list-group list-group-unbordered">
@@ -134,9 +134,9 @@
                                 </ul>
 
                                 <div class="clear"></div>
-                                <a href="javascript:void(0)" class="btn btn-primary btn-block follow col-md-6" data-uid="202" data-isFollow="0">
-                                    <span class="default-text"><b>关注</b></span>
-                                    <span class="hover-text"><b>关注</b></span>
+                                <a href="/center" class="btn btn-primary btn-block follow col-md-6" data-uid="202" data-isFollow="0">
+                                    <span class="default-text"><b>个人中心</b></span>
+                                    <span class="hover-text"><b>个人中心</b></span>
                                 </a>
 
                             </div>
@@ -178,13 +178,13 @@
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" id="nav">
                                 <li >
-                                    <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false">文章</a>
+                                    <a th:value='|/articles/${session.user.user_id}|' id="user_Article" aria-expanded="false">文章</a>
                                 </li>
                                 <li>
-                                    <a th:value='|/findAllRequest/${user.user_id}|' id="user_Question" aria-expanded="false">提问</a>
+                                    <a th:value='|/findAllRequest/${session.user.user_id}|' id="user_Question" aria-expanded="false">提问</a>
                                 </li>
                                 <li>
-                                    <a th:value="|/replyAll/${user.user_id}|" id="user_Reply" aria-expanded="false">回答</a>
+                                    <a th:value="|/replyAll/${session.user.user_id}|" id="user_Reply" aria-expanded="false">回答</a>
                                 </li>
                             </ul>
 

@@ -6,7 +6,6 @@ import ncu.edu.cn.bbs.entity.Article;
 import ncu.edu.cn.bbs.entity.Category;
 import ncu.edu.cn.bbs.service.ArticleService;
 import ncu.edu.cn.bbs.service.CategoryService;
-import ncu.edu.cn.bbs.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 //import sun.text.normalizer.NormalizerBase;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -78,9 +75,9 @@ public class ArticleController {
     public String publish(HttpSession session,Model model)
     {
 
-        if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null)
+        if(session.getAttribute("user")!=null)
         {
-            model.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+            model.addAttribute("user",session.getAttribute("user"));
 
             List<Category> allCategory = categoryService.findAllCategory();
             model.addAttribute("tags",allCategory);
@@ -98,9 +95,9 @@ public class ArticleController {
     @RequestMapping("/ask")
     public  String ask(HttpSession session, Model m)
     {
-        if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null)
+        if(session.getAttribute("user")!=null)
         {
-            m.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+            m.addAttribute("user",session.getAttribute("user"));
 
             return "question";
         }

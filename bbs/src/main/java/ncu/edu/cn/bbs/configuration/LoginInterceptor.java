@@ -1,9 +1,7 @@
 package ncu.edu.cn.bbs.configuration;
 
 import ncu.edu.cn.bbs.entity.User;
-import ncu.edu.cn.bbs.utils.ConstantUtils;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        User user = (User) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        User user = (User) request.getSession().getAttribute("user");
         if(user == null){
             response.sendRedirect(request.getContextPath()+"/");
             return false;
