@@ -11,6 +11,7 @@
 <select id="validate" resultType="int">
     select count(*) from user where username =#{username} and password = #{password}
 </select>
+
 <insert id="addUser">
     insert into user(username,password,email) values (#{username},#{password},#{email})
 </insert>

@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 
 </head>
+
 <body class="skin-blue layout-top-nav" style="transform: none; height: auto; min-height: 100%;">
-<li><a th:href="@{/manageart}">登录管测试接口</a></li>
+
 <div class="wrapper" style="transform: none; height: auto; min-height: 100%;">
     <header class="main-header">
         <nav class="navbar navbar-static-top">
@@ -29,7 +30,6 @@
                         <li><a href="/article">文章</a></li>
                         <li><a href="/askandanswer">问答</a></li>
                         <li><a href="/main">我的主页</a></li>
-                        <li><a th:href="@{/loginconvert}">登录管理员</a></li>
                     </ul>
 
                     <form class="navbar-form navbar-left" action="/search/articles" role="search">
@@ -109,7 +109,7 @@
                                                         </p>
                                                         <ul class="list-inline" style="font-size: 12px!important;line-height: 30px;">
                                                             <li>
-                                                                    <img src="/static/images/head3.png" alt="" class="img-circle" width="30">
+                                                                    <img th:src="@{'/images/'+${goodArticle.uhead}}" alt="" class="img-circle" width="30">
                                                                     <span th:text="${goodArticle.getUname()}"></span>
                                                             </li>
                                                             <li class="pull-right">
@@ -404,7 +404,7 @@
                         var content =
                           '<li class ="dropdown user user-menu" id="user-menu">'+
                           '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
-                         '<img width="25" height="25" class="user-image" src="'+data['msg'].head+'">'+
+                         '<img width="25" height="25" class="user-image" src="/images/'+data['msg'].head+'">'+
                           '<span class="hidden-xs">'+data['msg'].username+ '</span></a></li></ul>';
                         $("#mode").html(content);
                     }
@@ -432,7 +432,7 @@
                         var content =
                             '<li class ="dropdown user user-menu" id="user-menu">'+
                             '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
-                            '<img width="25" height="25" class="user-image" href="'+data['msg'].head+'">'+
+                            '<img width="25" height="25" class="user-image" href=/images/"'+data['msg'].head+'">'+
                             '<span class="hidden-xs">'+data['msg'].username+ '</span></a></li></ul>';
                         $("#mode").html(content);
                     }

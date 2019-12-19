@@ -96,6 +96,8 @@
                                 <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&ammp;r=PG" alt="" class="img-circle" width="30">-->
                                 <img th:src="@{'../static/images/'+${article.getUhead()}}" alt="" class="img-circle" width="30">
                                 <!--<img th:src="@{${article.getUhead()}}" alt="" class="img-circle" width="30">-->
+                                <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="30">-->
+                                <img th:src="@{${session.user.head}}" class="user-image" width="25" height="25">
                                 <!--发布人-->
                             </a>
                             <!--描述-->
