@@ -187,6 +187,7 @@
                 <button class="btn"  type="button" style="margin-left:50px;"><a th:href="@{/adduser}">添加用户</a> </button>
 
                 <form class="form-search form-inline center-block" th:action="@{/findAllByname}" th:method="get" style="display: inline-block;  margin-left:150px;"  >
+                    <span>用户编号：</span>
                     <input size="50" th:value="${searchname}" name="searchname" class="input-medium search-query" type="text" />
                     <button type="submit" class="btn">查找</button>
                 </form>
