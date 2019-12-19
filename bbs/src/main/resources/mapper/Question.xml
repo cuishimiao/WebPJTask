@@ -8,8 +8,8 @@
         select * from question where uid = #{uid}
     </select>
     <insert id="generateRequest">
-        insert into question(uid,content,question_title) VALUES
-        (#{uid},#{content},#{question_title})
+        insert into question(uid,content,question_title,wealthy) VALUES
+        (#{uid},#{content},#{question_title},#{wealthy})
     </insert>
     <select id="getRequest" resultType="requestArticle">
         select * from question where question_id = #{id}
