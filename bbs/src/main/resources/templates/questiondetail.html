@@ -12,6 +12,24 @@
 <style>
     .top{color: white}
     .cont{margin-left: 25px;}
+     .sel_btn{
+         height: 21px;
+         line-height: 21px;
+         padding: 0 11px;
+         background: #02bafa;
+         border: 1px #26bbdb solid;
+         border-radius: 3px;
+         /*color: #fff;*/
+         display: inline-block;
+         text-decoration: none;
+         font-size: 12px;
+         outline: none;
+         float: right;
+     }
+    .ch_cls{
+        background: #e4e4e4;
+    }
+    .dd{visibility: hidden}
 </style>
 <body class="hold-transition skin-blue layout-top-nav" style="background-color: #E6E6E6">
 <div>
@@ -65,7 +83,9 @@
                 <div  style="width: 720px;background-color: white;border-radius: 5px;">
                     <!--问题标题-->
                     <h4 style="margin-left: 10px;padding-top: 21px; margin-top: 10px" class="cont"><span th:text="${question.question_title}"></span></h4>
-                    <span style="color: #9f191f;margin-left:13px;" th:if="${question.wealthy gt 0}">[未解决]</span>
+                    <span style="color: #9f191f;margin-left:13px;" th:if="${question.wealthy gt 0}">[未解决 &nbsp;&nbsp;赏金：
+                        <span th:text="${question.wealthy}"></span><span>]</span>
+                    </span>
                     <span style="color: #9f191f;margin-left:13px;" th:if="${question.wealthy eq 0}">[已解决]</span>
                     <span style="margin-left: 10px">发布时间：<span th:text="${question.time}"></span></span>
                     <hr class="col-lg-12 col-md-12 col-xs-12 ">
@@ -94,42 +114,84 @@
                     <span th:text="${questionReplyCount}"></span>条回答
                 </h4>
                 <!---->
+
+
                 <!--评论循环体-->
-                <div class="media cont" th:each="reply:${questionReplies}">
-                    <hr>
+                <!--<div class="media cont" th:each="reply:${questionReplies}">-->
+                    <!--<hr>-->
+                    <!--<div class="media-left">-->
+                        <!--&lt;!&ndash;头像&ndash;&gt;-->
+                        <!--<img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">-->
+                    <!--</div>-->
+                    <!--<div class="media-body">-->
+                        <!--&lt;!&ndash;用户名&ndash;&gt;-->
+                        <!--<span class="media-heading" th:text="${reply.username}"></span>-->
+                        <!--<span style="float: right;font-size:25px;color: #9f191f;margin-left:13px;" th:if="${reply.is_adopt gt 0}">[被采纳 赏金已发放]</span>-->
+                        <!--&lt;!&ndash;评论内容&ndash;&gt;-->
+                        <!--<h6 class="media-heading" th:text="${reply.reply_content}"></h6>-->
+                        <!--&lt;!&ndash;评论时间&ndash;&gt;-->
+                        <!--<span style="font-size: 8px;color: #9ea6b9" th:text="${reply.time}"></span>-->
+                        <!--&lt;!&ndash;只有作者进入自己的文章并且问题没被采纳，才出现采纳按钮&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="hidden" id="ajaxquestion_Id" th:value="${question.question_id}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="hidden" id="responserName" th:value="${reply.username}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="hidden" id="replyId" th:value="${reply.id}">&ndash;&gt;-->
+                        <!--<div th:if="${question.uid} eq ${session.curuser.user_id}">-->
+                            <!--<div th:if="${question.wealthy gt 0}">-->
+                                <!--&lt;!&ndash;<a th:href="@{'/Articledetail/'+${article.article_id}}" class="title" th:text="${article.title}"></a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button type="button" class="btn btn-default" style="float: right" onclick="accepted()">采纳</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div th:class="${question.uid == session.curuser.user_id}? 'dd' : ''">&ndash;&gt;-->
+                                <!--<div>-->
+                                    <!--<a  class="sel_btn ch_cls" th:href="@{'/Accept'+'_'+${question.question_id} + '_' + ${reply.username} + '_' + ${reply.id}}">-->
+                                        <!--采纳-->
+                                    <!--</a>-->
+                                 <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="media cont" th:each="questionCommentDto:${questionCommentDtos}">
+                    <hr style="margin: 9px">
                     <div class="media-left">
                         <!--头像-->
                         <img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">
                     </div>
                     <div class="media-body">
                         <!--用户名-->
-                        <span class="media-heading" th:text="${reply.username}"></span>
-                        <span style="float: right;font-size:25px;color: #9f191f;margin-left:13px;" th:if="${reply.is_adopt gt 0}">[被采纳 赏金已发放]</span>
+                        <span class="media-heading" th:text="${questionCommentDto.getQuestionReply().getUsername()}"></span>
+                        <span style="float: right;font-size:25px;color: #9f191f;margin-left:13px;" th:if="${questionCommentDto.getQuestionReply().getIs_adopt() gt 0}"><span class="glyphicon glyphicon-ok"></span>[被采纳 赏金已发放]</span>
                         <!--评论内容-->
-                        <h6 class="media-heading" th:text="${reply.reply_content}"></h6>
+                        <h6 class="media-heading" th:text="${questionCommentDto.getQuestionReply().getReply_content()}"></h6>
                         <!--评论时间-->
-                        <span style="font-size: 8px;color: #9ea6b9" th:text="${reply.time}"></span>
+                        <span style="font-size: 8px;color: #9ea6b9" th:text="${questionCommentDto.getQuestionReply().getTime()}"></span>
                         <!--只有作者进入自己的文章并且问题没被采纳，才出现采纳按钮-->
-                        <input type="hidden" id="ajaxquestion_Id" th:value="${question.question_id}">
-                        <input type="hidden" id="responserName" th:value="${reply.username}">
-                        <input type="hidden" id="replyId" th:value="${reply.id}">
+                        <!--<input type="hidden" id="ajaxquestion_Id" th:value="${question.question_id}">-->
+                        <!--<input type="hidden" id="responserName" th:value="${reply.username}">-->
+                        <!--<input type="hidden" id="replyId" th:value="${reply.id}">-->
                         <div th:if="${question.uid} eq ${session.curuser.user_id}">
                             <div th:if="${question.wealthy gt 0}">
-
                                 <!--<a th:href="@{'/Articledetail/'+${article.article_id}}" class="title" th:text="${article.title}"></a>-->
                                 <!--<button type="button" class="btn btn-default" style="float: right" onclick="accepted()">采纳</button>-->
-                                <a th:href="@{'/Accept'+'_'+${question.question_id} + '_' + ${reply.username} + '_' + ${reply.id}}">
-                                    <span class="glyphicon glyphicon-heart"></span> 采纳
-                                </a>
+                                <!--<div th:class="${question.uid == session.curuser.user_id}? 'dd' : ''">-->
+                                <!--<div th:if="${questionCommentDto.getUser().getUser_id()==question.uid}">-->
+                                <div th:class="${questionCommentDto.getUser().getUser_id()==question.uid}? 'dd' : ''">
+                                    <a  class="sel_btn ch_cls" th:href="@{'/Accept'+'_'+${question.question_id} + '_' + ${questionCommentDto.getQuestionReply().getUsername()} + '_' + ${questionCommentDto.getQuestionReply().getId()}}">
+                                        采纳
+                                    </a>
+                                </div>
+                                <div th:if="${questionCommentDto.getUser().getUser_id()==question.uid}">
+                                    <span style="font-size: 12px;color: darkred">不能采纳自己的回复!</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!---->
+
+
             </div>
         </div>
     </div>
-
-
 
     <div class="col-md-3" style="margin-left: 20px;margin-right: 20px;background-color: whitesmoke">
         <div class="list-group" style="margin-top: 15px">

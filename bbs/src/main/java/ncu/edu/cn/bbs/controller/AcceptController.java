@@ -36,8 +36,7 @@ public class AcceptController {
         //将被采纳的回复的标志位设为1
 //        return "redirect:/allquestion.html";
         questionReplyMapper.setAcceptById(acceptReplyId);
-        String adress="questiondetial/"+qid.toString();
-        System.out.println(adress);
-        return "redirect:/askandanswer";
+//        return "redirect:/askandanswer";
+        return "redirect:/questiondetail/"+qid;
     }
 }

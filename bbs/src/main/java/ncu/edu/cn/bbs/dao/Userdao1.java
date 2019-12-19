@@ -19,4 +19,7 @@ public interface Userdao1 {
 
     @Update("update user set gold=gold+#{wealthy} where username = #{responserName}")
     void addWealthyByName(@Param("responserName")String responserName, @Param("wealthy")Integer wealthy);
+
+    @Select("select * from user where username = #{username}")
+    User findByname(@Param("username")String username);
 }

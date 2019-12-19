@@ -1,5 +1,6 @@
 package ncu.edu.cn.bbs.controller;
 
+import ncu.edu.cn.bbs.dao.QuestionCommentDto;
 import ncu.edu.cn.bbs.dao.QuestionMapper;
 import ncu.edu.cn.bbs.dao.QuestionReplyMapper;
 import ncu.edu.cn.bbs.dao.Userdao1;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -41,7 +44,21 @@ public class AskAndAnswerDetailController {
 
         //添加所有该问题的回答到model
         List<QuestionReply> questionReplies=questionReplyMapper.getQuestionReplyById(questionid);
-        model.addAttribute("questionReplies",questionReplies);
+
+        List <QuestionCommentDto> questionCommentDtos=new ArrayList<>();
+        for (QuestionReply questionReply : questionReplies) {
+            QuestionCommentDto questionCommentDto =new QuestionCommentDto();
+            questionCommentDto.setQuestionReply(questionReply);
+            User user=uerDao.findByname(questionReply.getUsername());
+            questionCommentDto.setUser(user);
+            questionCommentDtos.add(questionCommentDto);
+        }
+//        model.addAttribute("questionReplies",questionReplies);
+        model.addAttribute("questionCommentDtos",questionCommentDtos);
+
+        for (QuestionCommentDto questionCommentDto : questionCommentDtos) {
+            System.out.println(questionCommentDto.getUser().toString()+"--------------------------");
+        }
         //添加问题回复数到model
         Integer questionReplyCount=questionReplyMapper.getQuestionReplyCountById(questionid);
         model.addAttribute("questionReplyCount",questionReplyCount);
