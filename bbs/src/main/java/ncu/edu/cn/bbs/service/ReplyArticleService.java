@@ -60,4 +60,6 @@ public class ReplyArticleService {
         return replyArticleDao.findAll();
     }
 
+    public ReplyArticle showReplyById(int id){return replyArticleDao.showReplyById(id);}
+
 }

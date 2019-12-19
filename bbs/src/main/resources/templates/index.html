@@ -399,7 +399,6 @@
                 url:"/isLogin",
                 method:"POST",
                 success:function (data) {
-                    console.log(data['msg'].head)
                     if(data['msg'] != null){
                         var content =
                           '<li class ="dropdown user user-menu" id="user-menu">'+
@@ -436,6 +435,7 @@
                             '<span class="hidden-xs">'+data['msg'].username+ '</span></a></li></ul>';
                         $("#mode").html(content);
                     }
+                   history.go(0);
                 }
             });
         });

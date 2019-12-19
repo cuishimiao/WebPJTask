@@ -30,4 +30,8 @@
     select * from reply_table
 </select>
 
+<select id="showReplyById" resultType="replyArticle">
+    select * from reply_table where id = #{id}
+</select>
+
 </mapper>
