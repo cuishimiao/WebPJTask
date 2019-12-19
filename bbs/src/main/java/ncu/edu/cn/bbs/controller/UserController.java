@@ -1,7 +1,11 @@
 package ncu.edu.cn.bbs.controller;
 
 import ncu.edu.cn.bbs.dao.ArticleMapper;
+import ncu.edu.cn.bbs.dao.QuestionDto;
+import ncu.edu.cn.bbs.dao.QuestionMapper;
+import ncu.edu.cn.bbs.dao.Userdao1;
 import ncu.edu.cn.bbs.entity.Article;
+import ncu.edu.cn.bbs.entity.Question;
 import ncu.edu.cn.bbs.entity.User;
 import ncu.edu.cn.bbs.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +29,28 @@ public class UserController {
     UserService service;
     @Autowired
     ArticleMapper articleMapper;
+    @Autowired
+    QuestionMapper questionMapper;
+    @Autowired
+    Userdao1 userdao;
 
 
     @RequestMapping(value = {"","/index"})
     public String showPage(Model model){
         List<Article> goodArticles=articleMapper.findGoodArticle();
         model.addAttribute("goodArticles",goodArticles);
+
+        List<QuestionDto> questionDtos=new ArrayList<>();
+        List<Question> questions=questionMapper.findLeastQuestion();
+        for (Question question : questions) {
+            QuestionDto questionDto=new QuestionDto();
+            User user=userdao.findById(question.getUid());
+            questionDto.setQuestion(question);
+            questionDto.setUser(user);
+            questionDtos.add(questionDto);
+        }
+        model.addAttribute("questionDtos",questionDtos);
+
         return "index";
     }
 

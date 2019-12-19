@@ -35,7 +35,24 @@ public class ArticleDetailController {
     public String articledetail(@PathVariable(name="id") Integer id, Model model){
         Article article = articleMapper.getArticleById(id);
         model.addAttribute("article",article);
+        int tag=article.getCategory_id();
+        //添加文章标签
+        String Category;
+        if(tag==1)
+            Category="公告";
+        else if(tag==2)
+            Category="科技";
+        else if(tag==3)
+            Category="IT";
+        else if(tag==4)
+            Category="娱乐";
+        else if(tag==5)
+            Category="文学";
+        else if(tag==6)
+            Category="体育";
+        else Category=" ";
         //累加阅读数
+        model.addAttribute("articleCategory",Category);
         articleMapper.plusbyid(id);
 
         Integer uid=article.getUid();
