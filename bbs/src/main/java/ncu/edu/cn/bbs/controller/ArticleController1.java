@@ -73,8 +73,4 @@ public class ArticleController1 {
         return "article";
     }
 
-
-
-
-
 }

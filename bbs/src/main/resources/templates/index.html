@@ -109,7 +109,7 @@
                                                         </p>
                                                         <ul class="list-inline" style="font-size: 12px!important;line-height: 30px;">
                                                             <li>
-                                                                    <img src="/static/images/head3.png" alt="" class="img-circle" width="30">
+                                                                    <img th:src="@{'/images/'+${goodArticle.uhead}}" alt="" class="img-circle" width="30">
                                                                     <span th:text="${goodArticle.getUname()}"></span>
                                                             </li>
                                                             <li class="pull-right">
@@ -404,7 +404,7 @@
                         var content =
                           '<li class ="dropdown user user-menu" id="user-menu">'+
                           '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
-                         '<img width="25" height="25" class="user-image" src="'+data['msg'].head+'">'+
+                         '<img width="25" height="25" class="user-image" src="/images/'+data['msg'].head+'">'+
                           '<span class="hidden-xs">'+data['msg'].username+ '</span></a></li></ul>';
                         $("#mode").html(content);
                     }
@@ -432,7 +432,7 @@
                         var content =
                             '<li class ="dropdown user user-menu" id="user-menu">'+
                             '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'+
-                            '<img width="25" height="25" class="user-image" href="'+data['msg'].head+'">'+
+                            '<img width="25" height="25" class="user-image" href=/images/"'+data['msg'].head+'">'+
                             '<span class="hidden-xs">'+data['msg'].username+ '</span></a></li></ul>';
                         $("#mode").html(content);
                     }
