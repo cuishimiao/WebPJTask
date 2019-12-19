@@ -90,11 +90,11 @@ public class User {
         this.work = work;
     }
 
-    public String getIsAdmin() {
+    public String getIs_admin() {
         return is_admin;
     }
 
-    public void setIsAdmin(String is_admin) {
+    public void setIs_admin(String is_admin) {
         this.is_admin = is_admin;
     }
 

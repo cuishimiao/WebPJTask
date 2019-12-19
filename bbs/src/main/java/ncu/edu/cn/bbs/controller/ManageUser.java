@@ -88,8 +88,8 @@ public class ManageUser {
         int user=0;
         for (int i = 0; i <user1.size() ; i++) {
             User temp = user1.get(i);
-            System.out.println(temp.getIsAdmin());
-            String a=temp.getIsAdmin();
+            System.out.println(temp.getIs_admin());
+            String a=temp.getIs_admin();
             if(a== null)
                 continue;
             if(a.equals("true"))
@@ -184,8 +184,8 @@ public class ManageUser {
         int user=0;
         for (int x = 0; x <all.size() ; x++) {
             User temp = all.get(x);
-            System.out.println(temp.getIsAdmin());
-            String a=temp.getIsAdmin();
+            System.out.println(temp.getIs_admin());
+            String a=temp.getIs_admin();
             if(a== null)
                 continue;
             if(a.equals("true"))
@@ -215,7 +215,7 @@ public class ManageUser {
         List<User> all = service.findAll();  //所有内容
         for(User h:all)
         {
-            if(user.getUsername().equals(h.getUsername())&&user.getPassword().equals(h.getPassword())&&h.getIsAdmin().equals("true"))
+            if(user.getUsername().equals(h.getUsername())&&user.getPassword().equals(h.getPassword())&&h.getIs_admin().equals("true"))
             {
                 HttpSession session1=request.getSession();
                 session1.setAttribute("username",h.getUsername());
