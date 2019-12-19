@@ -210,7 +210,7 @@
                                                             <label class="col-sm-2 control-label">用户说明</label>
 
                                                             <div class="col-sm-6">
-                                                                <textarea class="form-control" name="profile"  rows="4" placeholder="关于我的一些事儿..."></textarea>
+                                                                <textarea class="form-control" id="desc"  rows="4" placeholder="关于我的一些事儿..."></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -349,10 +349,11 @@
         //修改个人信息
         $(document).on("click","#profile-btn",function () {
             var param ={
-                "user_id":$("#uid").val(),
-                "phone":$("#contact").val(),
-                "address":$("#address").val(),
-                "description":$("#profile option:selected").text()
+                user_id:$("#uid").val(),
+                phone:$("#contact").val(),
+                address:$("#address").val(),
+                work:$("#job").find("option:selected").text(),
+                description:document.getElementById("desc").value
             };
             $.ajax({
                 method:"POST",

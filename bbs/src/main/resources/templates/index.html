@@ -68,20 +68,20 @@
                             <div class="carousel-inner">
                                 <div class="item active left">
                                     <a href="#" target="_blank">
-                                        <img src="/images/lb1.jpg" width="760" height="300" alt="欢迎加入 CoderGroup">
+                                        <img src="/images/lb1.jpg" width="760" height="300" alt="欢迎加入BBS论坛">
                                         <div class="carousel-caption">欢迎加入BBS论坛</div>
                                     </a>
                                 </div>
                                 <div class="item next left">
                                     <a href="#" target="_blank">
-                                        <img src="/images/lb2.jpg" width="760" height="300" alt="技术分享，疑难求助，简单而方便">
-                                        <div class="carousel-caption">技术分享，疑难求助，简单而方便</div>
+                                        <img src="/images/lb2.jpg" width="760" height="300" alt="谈天说地,畅所欲言">
+                                        <div class="carousel-caption">谈天说地,畅所欲言</div>
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a href="#" target="_blank">
-                                        <img src="/images/lb3.jpg" width="760" height="300" alt="程序人生，义无反顾">
-                                        <div class="carousel-caption">程序人生，义无反顾</div>
+                                        <img src="/images/lb3.jpg" width="760" height="300" alt="分享点滴，记录美好">
+                                        <div class="carousel-caption">分享点滴，记录美好</div>
                                     </a>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
                                                 <a class="profile-mine__content--title" href="/bulletins/sell" target="_blank">
-                                                    <span class="text-maroon">[置顶]</span>本站源码出售
+                                                    <span class="text-maroon">[置顶]</span>注意事项
                                                 </a>
                                             </div>
                                         </div>
@@ -183,21 +183,18 @@
                                 <div class="row">
                                     <div class="col-md-12" style="margin: 5px 0;">
                                         <a class="btn btn-default btn-xs" href="/article?keywords=面试" target="_blank" style="margin: 3px;">
-                                            面试
+                                            公告
                                         </a><a class="btn btn-default btn-xs" href="/article?keywords=源码" target="_blank" style="margin: 3px;">
-                                        源码
+                                        文学
                                     </a><a class="btn btn-default btn-xs" href="/article?keywords=Java" target="_blank" style="margin: 3px;">
-                                        Java
+                                        IT
                                     </a><a class="btn btn-default btn-xs" href="/article?keywords=算法" target="_blank" style="margin: 3px;">
-                                        算法
+                                       体育
                                     </a><a class="btn btn-default btn-xs" href="/article?keywords=数据结构" target="_blank" style="margin: 3px;">
-                                        数据结构
+                                        娱乐
                                     </a><a class="btn btn-default btn-xs" href="/article?keywords=计算机网络" target="_blank" style="margin: 3px;">
-                                        计算机网络
-                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=操作系统" target="_blank" style="margin: 3px;">
-                                        操作系统
-                                    </a>
-                                    </div>
+                                        科技
+                                    </a></div>
                                 </div>
                             </div>
                         </div><div class="box box-solid">
@@ -206,53 +203,16 @@
                             </div>
                             <div class="box-body" style="padding: 0 10px;">
                                 <ul class="profile-mine__content mb0">
-                                    <li>
+                                    <li th:each="each:${questionDtos}">
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    很厉害的网站
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    SG飞艇稳赢计划群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    极速赛车七码雪球计划交流群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    澳洲幸运10精准计划交流群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    SG飞艇稳定五码计划群822444
+                                                <a class="profile-mine__content--title" th:href="@{'/showQuestion/'+${each.getQuestion().getQuestion_id()}}" target="_blank" th:text="${each.getQuestion().getQuestion_title()}">
                                                 </a>
                                             </div>
                                         </div>
                                     </li>
                                     <li style="border-bottom: 0;">
-                                        <a href="/questions" target="_blank">查看更多</a>
+                                        <a href="/askandanswer" target="_blank">查看更多</a>
                                     </li>
                                 </ul>
                             </div>
@@ -269,42 +229,16 @@
                                 <div class="ranking-card-base false">
                                     <div class="ranking-list-base true">
                                         <div class="ranking-list">
-                                            <div class="ranking-list-item">
+                                            <div th:each="p,status:${users}" class="ranking-list-item">
                                                 <div class="list-inner">
-                                                    <div class="ranking">1</div>
+                                                    <div class="ranking" th:text="${status.count}"></div>
                                                     <div class="avatar">
-                                                        <a href="/yu7788" target="_blank">
-                                                            <img src="http://www.gravatar.com/avatar/f3f150bee831811e25c8ed677c37c76c?s=128&amp;d=identicon&amp;r=PG" style="height: 30px; width: 30px;" class="img-circle"></a>
+                                                        <a href="#" target="_blank">
+                                                            <img th:src="@{'/images/'+${p.getHead()}}" style="height: 30px; width: 30px;" class="img-circle"></a>
                                                     </div>
                                                     <div class="name-info">
-                                                        <div class="name">yu7788</div>
-                                                        <div class="info">32115 声望</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ranking-list-item">
-                                                <div class="list-inner">
-                                                    <div class="ranking">2</div>
-                                                    <div class="avatar">
-                                                        <a href="/dx3303" target="_blank">
-                                                            <img src="http://www.gravatar.com/avatar/a7cf42c2c6084336d93895100ddc0ebb?s=128&amp;d=identicon&amp;r=PG" style="height: 30px; width: 30px;" class="img-circle"></a>
-                                                    </div>
-                                                    <div class="name-info">
-                                                        <div class="name">dx3303</div>
-                                                        <div class="info">25260 声望</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ranking-list-item hide">
-                                                <div class="list-inner">
-                                                    <div class="ranking">10</div>
-                                                    <div class="avatar">
-                                                        <a href="/115044810052" target="_blank">
-                                                            <img src="http://cdn2.codergroup.cn/uploads/2018/11/1/115044810052/1541070111410" style="height: 30px; width: 30px;" class="img-circle"></a>
-                                                    </div>
-                                                    <div class="name-info">
-                                                        <div class="name">哈哈哈哈</div>
-                                                        <div class="info">66 声望</div>
+                                                        <div class="name" th:text="${p.getName()}"></div>
+                                                        <div class="info" th:text="|${p.getGold()} 声望|"></div>
                                                     </div>
                                                 </div>
                                             </div>

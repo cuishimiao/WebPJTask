@@ -51,6 +51,8 @@ public class UserController {
         }
         model.addAttribute("questionDtos",questionDtos);
 
+        List<User> users = userdao.findGoldUser();
+        model.addAttribute("users",users);
         return "index";
     }
 
@@ -84,6 +86,12 @@ public class UserController {
     @RequestMapping("/reg")
     @ResponseBody
     public String register(@RequestBody User user){
+        if(user.getUsername()==null || user.getUsername().equals("")){
+            return "用户名不能为空";
+        }
+        if(user.getPassword()==null || user.getPassword().equals("")){
+            return "密码不能为空";
+        }
         User temp = service.findByName(user);
         if(temp != null){
             return "用户名已存在";
@@ -104,8 +112,9 @@ public class UserController {
      */
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request, Model model){
-        request.getSession().removeAttribute("session");
-        return "index";
+        request.getSession().removeAttribute("user");
+        request.getSession().removeAttribute("curuser");
+        return "/";
     }
 
     @RequestMapping("/modifyUserInfo")

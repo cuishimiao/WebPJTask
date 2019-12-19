@@ -6,10 +6,7 @@ import ncu.edu.cn.bbs.service.RequestArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,14 +22,14 @@ import java.util.Map;
  * @Description:
  * @Date:Createed in 2019/12/10 17:34
  **/
-@RestController
-
+@Controller
 public class RequestArticleController {
     @Autowired
     private RequestArticleService articleService;
 
     //发问题
     @RequestMapping("/generateRequest")
+    @ResponseBody
     public String generate(@RequestBody Question article) throws  IOException {
 
         if(article.getQuestion_title()==null || article.getQuestion_title()=="")
@@ -50,11 +47,13 @@ public class RequestArticleController {
     }
 
     @RequestMapping("/findAllRequest/{user_id}")
+    @ResponseBody
     public List<Question> findAll(@PathVariable int user_id){
         return articleService.findAllRequest(user_id);
     }
 
     @RequestMapping("/getRequest/{id}")
+    @ResponseBody
     public Map<String,Object>getRequest(@PathVariable int id){
         Map<String,Object> map = new HashMap<>();
         map.put("msg",articleService.getRequestArticle(id));
@@ -62,6 +61,7 @@ public class RequestArticleController {
     }
     
     @RequestMapping("/deleteByQId/{id}")
+    @ResponseBody
     public String deleteByQid(@PathVariable int id){
         return articleService.deleteByQId(id);
     }
