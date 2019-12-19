@@ -14,7 +14,8 @@
                     question_title:$("#title").val(),
                     content:$("#description").val(),
                     uid:$("#uid").val(),
-                    wealthy:$("#wealthy").val()
+                    wealthy:$("#wealthy").val(),
+                    uhead:$("#uhead").val()
 
                 };
                 $.ajax({
@@ -33,9 +34,7 @@
     </script>
 </head>
 <body style="background-color: #E6E6E6">
-
-
-
+<input type="hidden" id="uhead" th:value="${session.user.getHead()}">
 <div th:insert="~{navigation :: nav}"></div>
 
 <!-- 提示框 -->

@@ -15,8 +15,8 @@
                     title:$("#title").val(),
                     content:$("#description").val(),
                     uid:$("#uid").val(),
-                    category_id:$("#tag").val()
-
+                    category_id:$("#tag").val(),
+                    uhead:$("#uhead").val()
                 };
                 $.ajax({
                     url:"/writeArticle",
@@ -35,7 +35,7 @@
     </script>
 </head>
 <body  class="skin-blue layout-top-nav" style="transform: none; height: auto; min-height: 100%;">
-
+<input type="hidden" id="uhead" th:value="${session.user.getHead()}">
 
 <header class="main-header">
     <nav class="navbar navbar-static-top">

@@ -10,8 +10,8 @@
     </select>
 
     <insert id="generateArticle">
-        insert into article(uid, title, content, create_time, category_id, uname,top)
-        values (#{uid},#{title},#{content},#{create_time},#{category_id},#{uname},#{top})
+        insert into article(uid, title, content, create_time, category_id, uname,top,uhead)
+        values (#{uid},#{title},#{content},#{create_time},#{category_id},#{uname},#{top},#{uhead})
     </insert>
 
     <update id="modifyArticle">
