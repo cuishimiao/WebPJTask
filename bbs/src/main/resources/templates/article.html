@@ -93,7 +93,10 @@
                     <ul class="list-inline box-head">
                         <li>
                             <a href="">
-<!--                                <img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="30">-->
+                                <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&ammp;r=PG" alt="" class="img-circle" width="30">-->
+                                <img th:src="@{'../static/images/'+${article.getUhead()}}" alt="" class="img-circle" width="30">
+                                <!--<img th:src="@{${article.getUhead()}}" alt="" class="img-circle" width="30">-->
+                                <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="30">-->
                                 <img th:src="@{${session.user.head}}" class="user-image" width="25" height="25">
                                 <!--发布人-->
                             </a>
@@ -156,7 +159,7 @@
             <a href="#" class="list-group-item active">
                 <span style="font-size: 13px">公告栏</span>
             </a>
-            <a href="#" class="list-group-item"><span style="color: #a94442">[置顶]</span>白日依山尽</a>
+            <a href="/Articledetail/5" class="list-group-item"><span style="color: #a94442">[置顶]</span>白日依山尽</a>
             <a href="#" class="list-group-item">黄河入海流</a>
             <a href="#" class="list-group-item">欲穷千里目</a>
             <a href="#" class="list-group-item">更上一层楼</a>
@@ -177,9 +180,12 @@
                 <div style="margin-top: 2px;border-radius: 3px;background-color: white" >
                     <div class="media-left">
                         <a href="#">
-                            <!--<img class="media-object" src="..." alt="...">-->
-                            <img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">
+                            <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">-->
+                            <img th:src="@{'../static/images/'+${golduser.head}}" alt="" class="img-circle" width="40">
                         </a>
+                            <!--<img th:src="@{${session.curuser.head}}" class="user-image" width="25" height="25">-->
+                        <!--<img th:src="@{'../static/images/'+${golduser.head}}"/></a>-->
+                        <!--<img src="../static/images/head2.png"  class="img-circle" width="40"/>-->
                     </div>
                     <div class="media-body" style="margin-left: 10px;">
                         <h5 class="media-heading" style="margin-top: 3px"> 昵 称：<span th:text="${golduser.username}"></span></h5>
