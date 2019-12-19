@@ -82,9 +82,9 @@
                         <li><a class="fontnav" href="/main">我的主页</a></li>
                     </ul>
 
-                    <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                    <form class="navbar-form navbar-left" th:action="@{/check}" method="get" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
+                            <input type="text" class="form-control global-search-input" name="key" id="main-search-input" placeholder="Search...">
                         </div>
                     </form>
                     <ul class="nav navbar-nav">
