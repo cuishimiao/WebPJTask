@@ -4,7 +4,6 @@ import ncu.edu.cn.bbs.dao.ArticleMapper;
 import ncu.edu.cn.bbs.entity.Article;
 import ncu.edu.cn.bbs.entity.User;
 import ncu.edu.cn.bbs.service.UserService;
-import ncu.edu.cn.bbs.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +41,7 @@ public class UserController {
         if(temp !=null){
             if(service.validate(user)>0){
                 map.put("msg",temp);
-                session.setAttribute(ConstantUtils.USER_SESSION_KEY,temp);
+                session.setAttribute("user",temp);
                 session.setAttribute("curuser",temp);
                 return map;
             }
@@ -84,7 +83,7 @@ public class UserController {
      */
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request, Model model){
-        request.getSession().removeAttribute(ConstantUtils.USER_SESSION_KEY);
+        request.getSession().removeAttribute("session");
         return "index";
     }
 
@@ -104,7 +103,7 @@ public class UserController {
     @ResponseBody
     public Map<String,Object> isLogin(HttpSession session){
         Map<String,Object> map = new HashMap<>();
-        map.put("msg",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
+        map.put("msg",session.getAttribute("user"));
         return map;
     }
 
@@ -131,13 +130,13 @@ public class UserController {
     }
 
     @RequestMapping("/chooseHead")
-    @ResponseBody
-    public String chooseHead(@RequestBody User user){
-        if(service.modifyHead(user)==1){
-            return "头像选择成功";
-        }
-        else{
-            return "头像选择失败";
-        }
+    public String chooseHead(@RequestBody User user,Model model,HttpSession session,HttpServletRequest request){
+        service.modifyHead(user);
+        User temp = service.findByName(user);
+        request.getSession().removeAttribute("user");
+        request.getSession().removeAttribute("curuser");
+        session.setAttribute("user",temp);
+        session.setAttribute("curuser",temp);
+        return "/center";
     }
 }

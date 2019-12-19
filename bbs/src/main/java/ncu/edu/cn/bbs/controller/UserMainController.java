@@ -1,13 +1,12 @@
 package ncu.edu.cn.bbs.controller;
 
 import ncu.edu.cn.bbs.entity.User;
-import ncu.edu.cn.bbs.utils.ConstantUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -15,8 +14,7 @@ import javax.servlet.http.HttpSession;
 public class UserMainController {
     @RequestMapping("/main")
     public String showMain(Model model, HttpSession session){
-        if(session.getAttribute(ConstantUtils.USER_SESSION_KEY )!=null){
-            model.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY) );
+        if(session.getAttribute("user")!=null){
             return "main";
         }
         else
@@ -25,9 +23,8 @@ public class UserMainController {
 
     @RequestMapping("/center")
     public String showCenter(Model model,HttpSession session){
-        if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null){
-            model.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
-            return "center";
+        if(session.getAttribute("user")!=null){
+                return "center";
         }
         else{
             return "/";

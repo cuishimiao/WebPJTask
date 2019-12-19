@@ -4,6 +4,9 @@
     <title>发布 - 问题</title>
     <head th:insert="~{import :: head}"></head>
     <head th:insert="~{import :: markdown}"></head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skin-blue.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <script src="/js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -14,7 +17,8 @@
                     question_title:$("#title").val(),
                     content:$("#description").val(),
                     uid:$("#uid").val(),
-                    wealthy:$("#wealthy").val()
+                    wealthy:$("#wealthy").val(),
+                    uhead:$("#uhead").val()
 
                 };
                 $.ajax({
@@ -33,9 +37,7 @@
     </script>
 </head>
 <body style="background-color: #E6E6E6">
-
-
-
+<input type="hidden" id="uhead" th:value="${session.user.getHead()}">
 <div th:insert="~{navigation :: nav}"></div>
 
 <!-- 提示框 -->
