@@ -115,7 +115,7 @@
                         <div class="box box-solid">
                             <div class="box-body box-profile">
                                 <a href="#">
-                                    <img class="profile-user-img img-responsive img-circle" src="../static/images/head3.png"
+                                    <img class="profile-user-img img-responsive img-circle" th:src="@{${user.head}}"
                                          alt="User profile picture">
                                 </a>
                                 <h3 class="profile-username text-center" th:text="${user.username}"></h3>
@@ -178,7 +178,7 @@
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs" id="nav">
                                 <li >
-                                    <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false" onclick="fx()">文章</a>
+                                    <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false">文章</a>
                                 </li>
                                 <li>
                                     <a th:value='|/findAllRequest/${user.user_id}|' id="user_Question" aria-expanded="false">提问</a>
@@ -214,7 +214,7 @@
 </div>
 <footer class="main-footer">
     <div class="container" style="text-align: center;">
-        <strong>Copyright &copy; 2018 <a href="http://codergroup.cn">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
+        <strong>Copyright &copy; 2018 <a href="#">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
     </div>
     <!-- /.container -->
 </footer>
@@ -240,7 +240,7 @@
                         '<th>文章编号</th><th>文章标题</th><th>文章内容</th><th>创作时间</th><th>操作</th></thead>' + '<tbody>';
                     for (var i in obj) {
                         var text;
-                        var time = obj[i].create_time.substring(0,10);
+                        var time = obj[i].create_time;
                         if (obj[i].content.length > 8)
                             text = obj[i].content.substring(0, 7) + "...";
                         else
@@ -274,7 +274,7 @@
                         '<th>文章编号</th><th>文章标题</th><th>文章内容</th><th>创作时间</th><th>操作</th></thead>' + '<tbody>';
                     for (var i in obj) {
                         var text;
-                        var time = obj[i].create_time.substring(0,10);
+                        var time = obj[i].create_time;
                         if (obj[i].content.length > 8)
                             text = obj[i].content.substring(0, 7) + "...";
                         else
@@ -283,8 +283,8 @@
                             '<td>' + text + '</td>' +
                             '<td>' + time + '</td>' +
                             '<td>' +
-                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-primary" href="/showArticle/'+obj[i].article_id+'">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success"href="/modifyArticle/'+obj[i].article_id+'">'+ "编辑" + '</a>' +
                             '<a type="button" class="btn btn-danger" href="/deleteArticleById/'+obj[i].article_id+'">'+"删除"+'</a>'+
                             '</td></tr>'
                     }
@@ -308,7 +308,7 @@
                     for (var i in obj) {
                         var text;
                         console.log(obj[i].time);
-                        var time = obj[i].time.substring(0,10);
+                        var time = obj[i].time;
                         if (obj[i].content.length > 8)
                             text = obj[i].content.substring(0, 7) + "...";
                         else
@@ -317,7 +317,7 @@
                             '<td>' + text + '</td>' +
                             '<td>' + time + '</td>' +
                             '<td>' +
-                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-primary" href="/showQuestion/'+obj[i].question_id+'">' + "查看" + '</a>' +
                             '<a type="button" class="btn btn-danger" href="/deleteByQId/'+obj[i].question_id+'">' + "删除" + '</a>'+
                             '</td></tr>'
                     }
@@ -344,17 +344,17 @@
                         '<th>文章编号</th><th>回复者编号</th><th>回复内容</th><th>回复时间</th><th>操作</th></thead>' + '<tbody>';
                     for (var i in obj) {
                         var text;
-                        var time = obj[i].reply_time.substring(0,10);
+                        var time = obj[i].reply_time;
                         if (obj[i].context.length > 8)
                             text = obj[i].context.substring(0, 7) + "...";
                         else
                             text = obj[i].context;
-                        content += '<tr><td>' + obj[i].article_id + '</td><td>' + obj[i].responder_id + '</td>' +
+                        content += '<tr><td>' + obj[i].id + '</td><td>' + obj[i].responder_id + '</td>' +
                             '<td>' + text + '</td>' +
                             '<td>' + time + '</td>' +
                             '<td>' +
-                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].article_id+'">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-primary" href="/showReplyById/'+obj[i].id+'">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].id+'">' + "删除" + '</a>'+
                             '</td></tr>'
                     }
                     content += '</tbody></table>';

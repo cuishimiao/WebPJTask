@@ -22,7 +22,7 @@ public class CategoryController {
         return categoryService.findAllCategory();
     }
 
-<<<<<<< HEAD
+
     @RequestMapping("/addCategory")
     @ResponseBody
     public String addCategory(@RequestParam String category_name){
@@ -34,7 +34,7 @@ public class CategoryController {
         }
 
     }
-=======
+
     //标签管理
     @RequestMapping("/tags")
     public String manageTags(Model model)
@@ -50,5 +50,5 @@ public class CategoryController {
         return "/admin/tagsInput";
     }
 
->>>>>>> 1f1aace1cd6a16495383b9e17c5c9954c2b0b16b
+
 }

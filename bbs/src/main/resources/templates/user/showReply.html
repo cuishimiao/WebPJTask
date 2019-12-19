@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>回复详情</title>
+</head>
+<body>
+<h4 th:text="|回帖编号: ${reply.article_id}|"></h4>
+<p th:text="|回复时间: ${reply.reply_time}|"></p>
+<p th:text="|回复内容: ${reply.context}|"></p>
+</body>
+</html>
