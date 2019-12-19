@@ -55,6 +55,10 @@ public class AskAndAnswerController {
         model.addAttribute("goldUsers",goldUsers);
         model.addAttribute("askandanswerDto",askandanswerDto);
 
+        //搜索最新问题
+        List<Question> leastQuestion=questionMapper.findLeastQuestion();
+        model.addAttribute("leastQuestion",leastQuestion);
+
         return "askandanswer";
     }
 }
