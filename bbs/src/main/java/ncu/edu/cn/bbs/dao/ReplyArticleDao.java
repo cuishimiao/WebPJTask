@@ -23,4 +23,6 @@ public interface ReplyArticleDao {
     int deleteReply(int id);
     //修改某评论
     int modifyReply(ReplyArticle replyArticle);
+
+    ReplyArticle showReplyById(int id);
 }

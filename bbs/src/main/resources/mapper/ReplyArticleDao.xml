@@ -6,28 +6,32 @@
 <mapper namespace="ncu.edu.cn.bbs.dao.ReplyArticleDao">
 
 <insert id="generateReply">
-    insert into reply_article(article_id, responder_id, context, reply_time) values
+    insert into reply_table(article_id, responder_id, context, reply_time) values
 (#{article_id},#{responder_id},#{context},#{reply_time})
 </insert>
 
 <select id="findAllReply" resultType="replyArticle">
-    select * from reply_article where article_id = #{id}
+    select * from reply_table where article_id = #{id}
 </select>
 
 <select id="getReply" resultType="replyArticle">
-    select * from reply_article where id = #{id}
+    select * from reply_table where id = #{id}
 </select>
 
 <update id="modifyReply">
-    update reply_article set context = #{context},reply_time=#{reply_time} where id =#{id}
+    update reply_table set context = #{context} where id =#{id}
 </update>
 
 <delete id="deleteReply">
-    delete from reply_article where id =#{id}
+    delete from reply_table where id =#{id}
 </delete>
 
 <select id="findAll" resultType="replyArticle">
-    select * from reply_article
+    select * from reply_table
+</select>
+
+<select id="showReplyById" resultType="replyArticle">
+    select * from reply_table where id = #{id}
 </select>
 
 </mapper>

@@ -5,6 +5,7 @@ import ncu.edu.cn.bbs.entity.Question;
 import ncu.edu.cn.bbs.service.RequestArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +31,21 @@ public class RequestArticleController {
     @Autowired
     private RequestArticleService articleService;
 
+    //发问题
     @RequestMapping("/generateRequest")
     public String generate(@RequestBody Question article) throws  IOException {
-         articleService.generateRequest(article);
 
-         return "/main";
+        if(article.getQuestion_title()==null || article.getQuestion_title()=="")
+        {
+            return "问题标题不能为空";
+        }
+        if(article.getContent()==null || article.getContent()=="")
+        {
+
+            return "文章内容不能为空";
+        }
+        String msg = articleService.generateRequest(article);
+        return msg;
 
     }
 
@@ -49,6 +60,17 @@ public class RequestArticleController {
         map.put("msg",articleService.getRequestArticle(id));
         return map;
     }
+    
+    @RequestMapping("/deleteByQId/{id}")
+    public String deleteByQid(@PathVariable int id){
+        return articleService.deleteByQId(id);
+    }
 
 
+    @RequestMapping("/showQuestion/{id}")
+    public String showQuestion(@PathVariable int id ,Model model){
+        Question question = articleService.getRequestArticle(id);
+        model.addAttribute("request",question);
+        return "user/showQuestion";
+    }
 }

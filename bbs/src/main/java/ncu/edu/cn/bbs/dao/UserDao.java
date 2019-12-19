@@ -10,25 +10,11 @@ import java.util.List;
 @Repository
 @Mapper
 public interface UserDao {
-    /*
-     * @param: [user]
-     * @return: com.example.demo.entity.User
-     * @description:根据用户名查找用户
-     */
+
     User findByName(User user);
 
-    /*
-     * @param: [user]
-     * @return: int
-     * @description:根据用户名和密码去查找用户
-     */
     int validate(User user);
 
-    /*
-     * @param: [user]
-     * @return: int
-     * @description:实现用户注册功能
-     */
     int addUser(User user);
 
     int modifyUserInfo(User user);
@@ -42,4 +28,15 @@ public interface UserDao {
     int updatePassword(User user);
 
     int saveuser(User user);
+
+    int modifyEmail(String email,String uid);
+
+    int modifyHeader(User user);
+
+
+    int updateuser(User user);
+
+    User findusername(String username);;
+
+    int modifypass(String username,String password);
 }

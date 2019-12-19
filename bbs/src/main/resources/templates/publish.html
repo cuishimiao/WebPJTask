@@ -15,7 +15,7 @@
                     title:$("#title").val(),
                     content:$("#description").val(),
                     uid:$("#uid").val(),
-                    category_id:$("#categoryId").val()
+                    category_id:$("#tag").val()
 
                 };
                 $.ajax({
@@ -25,9 +25,7 @@
                     data:JSON.stringify(param),
                     success:function (msg) {
 
-                        $("#arid").text(msg),
-
-                        $("#modalText").html(msg);
+                        $("#modalText").text(msg);
 
                         $("#myModal").modal()
                     }
@@ -36,7 +34,7 @@
         });
     </script>
 </head>
-<body>
+<body >
 
 
 <div th:insert="~{navigation :: nav}"></div>
@@ -64,11 +62,11 @@
 
 <div class="container-fluid main">
     <ul class="nav nav-tabs">
-        <li><a href="/manage/articles" target="_blank">文章管理</a></li>
-        <li><a href="/manage/comments" target="_blank">评论管理</a></li>
+        <li><a href="/main " target="_blank">我的主页</a></li>
+        <li><a href="/index" target="_blank">首页</a></li>
 
-        <li class="pull-right"><a href="#" class="text-muted" title="个人中心" target="_blank"><i class="fa fa-gear"></i></a></li>
-        <li class="pull-right"><a href="#" target="_blank">我的主页</a></li>
+<!--        <li class="pull-right"><a href="#" class="text-muted" title="个人中心" target="_blank"><i class="fa fa-gear"></i></a></li>-->
+<!--        <li class="pull-right"><a href="#" target="_blank">我的主页</a></li>-->
     </ul>
 </div>
 <div class="container-fluid main">
@@ -89,7 +87,7 @@
                            autocomplete="off">
 
                     <input type="hidden" th:value="${user.user_id}" id="uid">
-                    <input type="hidden" value="1" id="categoryId">
+<!--                    <input type="hidden" value="1" id="categoryId">-->
                 </div>
                 <div class="form-group" id="question-editor">
                     <label for="description">文章内容 (必填，请参照右侧提示):</label>
@@ -98,21 +96,35 @@
                               cols="30"
                               rows="10"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="tag" class="col-sm-2 control-label">标签</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="tag" name="job">
 
-                <!--类别组件  -->
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Dropdown
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+                            <option value="1" selected="selected">科技</option>
+                            <option value="2">学生</option>
+                            <option value="3">Java工程师</option>
+                            <option value="4">PHP工程师</option>
+                            <option value="5">JS工程师</option>
+                            <option value="6">WEB前端工程师</option>
+                            <option value="7">Phython工程师</option>
+                            <option value="8">移动开发工程师</option>
+                            <option value="9">Linux系统工程师</option>
+                            <option value="10">交互设计师</option>
+                            <option value="11">软件测试工程师</option>
+                            <option value="12">UI设计师</option>
+                            <option value="13">算法工程师</option>
+                            <option value="14">全栈工程师</option>
+                            <option value="15">CG影视动画师</option>
+                            <option value="16">数据库工程师</option>
+                            <option value="17">产品经理</option>
+                            <option value="18">页面重构设计</option>
+                            <option value="19">其他</option>
+                        </select>
+                    </div>
                 </div>
+
+
 
                 <script type="text/javascript">
                     $(function () {
@@ -148,23 +160,7 @@
 
             </form>
         </div>
-        <div class="modal" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title">提示</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p id="arid"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">保存</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <h3>问题发起指南</h3>
             • 问题标题: 请用精简的语言描述您发布的问题，不超过25字 <br>

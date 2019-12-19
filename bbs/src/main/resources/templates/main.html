@@ -29,7 +29,7 @@
                         <li><a href="/main">我的主页</a></li>
                     </ul>
 
-                    <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                    <form class="navbar-form navbar-left" action="#" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control global-search-input" name="keywords"
                                    id="main-search-input"
@@ -64,13 +64,13 @@
                         <!-- 用户 -->
                         <li class="dropdown user user-menu" id="user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="images/logn.png" class="user-image" width="25" height="25">
+                                <img th:src="@{${user.head}}" class="user-image" width="25" height="25">
                                 <span class="hidden-xs" th:text="${user.username}">name</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="images/logn.png"
-                                         class="user-image" alt=""  onclick="window.location.href='/manage/account/avatar'">
+                                    <img th:src="@{${user.head}}"
+                                         class="user-image" alt="">
                                     <p>
                                         <span th:text="${user.username}">name</span>
                                         <small th:text="${user.email}"></small>
@@ -79,10 +79,10 @@
                                 <li class="user-body">
                                     <div class="row">
                                         <div class="col-xs-4 text-center">
-                                            <a href="#">文章</a>
+                                            <a href="/article">文章</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
-                                            <a href="#">问答</a>
+                                            <a href="/askandanswer">问答</a>
                                         </div>
                                         <div class="col-xs-4 text-center">
                                             <a href="/main">我的主页</a>
@@ -91,8 +91,7 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="center"
-                                           class="btn btn-default btn-flat">个人中心</a>
+                                        <a href="/center" class="btn btn-default btn-flat">个人中心</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="/logout" class="btn btn-default btn-flat">退出</a>
@@ -116,7 +115,7 @@
                         <div class="box box-solid">
                             <div class="box-body box-profile">
                                 <a href="#">
-                                    <img class="profile-user-img img-responsive img-circle" src="images/logn.png"
+                                    <img class="profile-user-img img-responsive img-circle" th:src="@{${user.head}}"
                                          alt="User profile picture">
                                 </a>
                                 <h3 class="profile-username text-center" th:text="${user.username}"></h3>
@@ -177,8 +176,8 @@
                     </div>
                     <div class="col-md-9">
                         <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
-                                <li class="active">
+                            <ul class="nav nav-tabs" id="nav">
+                                <li >
                                     <a th:value='|/articles/${user.user_id}|' id="user_Article" aria-expanded="false">文章</a>
                                 </li>
                                 <li>
@@ -215,7 +214,7 @@
 </div>
 <footer class="main-footer">
     <div class="container" style="text-align: center;">
-        <strong>Copyright &copy; 2018 <a href="http://codergroup.cn">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
+        <strong>Copyright &copy; 2018 <a href="#">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
     </div>
     <!-- /.container -->
 </footer>
@@ -228,7 +227,7 @@
 
 <script>
     $(function () {
-        $(document).on('click',"#user_Article",function () {
+        $(document).ready(function () {
             var page = $("#user_Article").attr("value");
             var content ='';
             $.ajax({
@@ -241,7 +240,7 @@
                         '<th>文章编号</th><th>文章标题</th><th>文章内容</th><th>创作时间</th><th>操作</th></thead>' + '<tbody>';
                     for (var i in obj) {
                         var text;
-                        var time = obj[i].create_time.substring(0,10);
+                        var time = obj[i].create_time;
                         if (obj[i].content.length > 8)
                             text = obj[i].content.substring(0, 7) + "...";
                         else
@@ -250,14 +249,48 @@
                             '<td>' + text + '</td>' +
                             '<td>' + time + '</td>' +
                             '<td>' +
-                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
-                        '</td></tr>'
+                            '<a type="button" class="btn btn-primary" href="/showArticle/'+obj[i].article_id+'">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success" href="/modifyArticle/'+obj[i].article_id+'">' + "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-danger" href="/deleteArticleById/'+obj[i].article_id+'">'+"删除"+'</a>'+
+                            '</td></tr>'
                     }
                     content += '</tbody></table>';
                     $("#content").html(content);
+                }
+            });
+
+        });
+
+        $(document).on("click","#user_Article",function(){
+            var page = $("#user_Article").attr("value");
+            var content ='';
+            $.ajax({
+                url:page,
+                type:"GET",
+                success:function (msg) {
+                    var obj = msg;
+                    var content = '<table class="table table-hover">' +
+                        '<thead>' +
+                        '<th>文章编号</th><th>文章标题</th><th>文章内容</th><th>创作时间</th><th>操作</th></thead>' + '<tbody>';
+                    for (var i in obj) {
+                        var text;
+                        var time = obj[i].create_time;
+                        if (obj[i].content.length > 8)
+                            text = obj[i].content.substring(0, 7) + "...";
+                        else
+                            text = obj[i].content;
+                        content += '<tr><td>' + obj[i].article_id + '</td><td>' + obj[i].title + '</td>' +
+                            '<td>' + text + '</td>' +
+                            '<td>' + time + '</td>' +
+                            '<td>' +
+                            '<a type="button" class="btn btn-primary" href="/showArticle/'+obj[i].article_id+'">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-success"href="/modifyArticle/'+obj[i].article_id+'">'+ "编辑" + '</a>' +
+                            '<a type="button" class="btn btn-danger" href="/deleteArticleById/'+obj[i].article_id+'">'+"删除"+'</a>'+
+                            '</td></tr>'
                     }
+                    content += '</tbody></table>';
+                    $("#content").html(content);
+                }
             });
         });
 
@@ -275,7 +308,7 @@
                     for (var i in obj) {
                         var text;
                         console.log(obj[i].time);
-                        var time = obj[i].time.substring(0,10);
+                        var time = obj[i].time;
                         if (obj[i].content.length > 8)
                             text = obj[i].content.substring(0, 7) + "...";
                         else
@@ -284,9 +317,8 @@
                             '<td>' + text + '</td>' +
                             '<td>' + time + '</td>' +
                             '<td>' +
-                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-primary" href="/showQuestion/'+obj[i].question_id+'">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-danger" href="/deleteByQId/'+obj[i].question_id+'">' + "删除" + '</a>'+
                             '</td></tr>'
                     }
                     content += '</tbody></table>';
@@ -312,18 +344,17 @@
                         '<th>文章编号</th><th>回复者编号</th><th>回复内容</th><th>回复时间</th><th>操作</th></thead>' + '<tbody>';
                     for (var i in obj) {
                         var text;
-                        var time = obj[i].reply_time.substring(0,10);
+                        var time = obj[i].reply_time;
                         if (obj[i].context.length > 8)
                             text = obj[i].context.substring(0, 7) + "...";
                         else
                             text = obj[i].context;
-                        content += '<tr><td>' + obj[i].article_id + '</td><td>' + obj[i].responder_id + '</td>' +
+                        content += '<tr><td>' + obj[i].id + '</td><td>' + obj[i].responder_id + '</td>' +
                             '<td>' + text + '</td>' +
                             '<td>' + time + '</td>' +
                             '<td>' +
-                            '<a type="button" class="btn btn-primary">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-success">' + "编辑" + '</a>' +
-                            '<a type="button" class="btn btn-danger">' + "删除" + '</a>'+
+                            '<a type="button" class="btn btn-primary" href="/showReplyById/'+obj[i].id+'">' + "查看" + '</a>' +
+                            '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].id+'">' + "删除" + '</a>'+
                             '</td></tr>'
                     }
                     content += '</tbody></table>';
@@ -332,7 +363,15 @@
             });
         });
 
+
+        $(document).on("click",".btn btn-danger",function(){
+            var tr = $(this).parentNode.parentNode;
+            $(".table table-honver").removeChild(tr);
+        });
+
     });
+
+
 </script>
 
 

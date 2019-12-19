@@ -12,4 +12,8 @@
     delete from category where category_id =#{category_id}
 </delete>
 
+<insert id="insertCategory">
+    insert into category(category_name) values (#{category_name})
+</insert>
+
 </mapper>
