@@ -25,21 +25,24 @@
             <input th:type="hidden" name="_method" value="put">
 
             <tr>
-                <td><span >序号<strong></strong></span></td>
-                <td><input type="text" th:value="${msg.id}" id="id" name="id" size="50px"  /> </td>
+                <td><span >序号<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.id}" id="id" name="id" size="50px"  readonly="readonly"/> </td>
             </tr>
 
             <tr>
-                <td><span >问题编号</span></td>
-                <td><input type="text" th:value="${msg.question_id}" id="question_id"  name="question_id" placeholder="韩露" / ></td>
+                <td><span >问题编号<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.question_id}" id="question_id"  name="question_id" readonly="readonly" /></td>
 
             </tr>
 
             <tr>
-                <td><span >用户名</span></td>
-                <td><input type="text" th:value="${msg.username}" id="username" name="username"  placeholder="创建时间" /></td>
+                <td><span >用户名<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.username}" id="username" name="username"   readonly="readonly" /></td>
+            </tr>
 
-
+            <tr>
+                <td><span >是否被采纳<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.is_adopt}" id="is_adopt" name="is_adopt"  readonly="readonly" /></td>
             </tr>
 
             <tr>
@@ -49,8 +52,8 @@
             </tr>
 
             <tr>
-                <td> <span >回复时间</span></td>
-                <td> <input type="text" th:value="${msg.time}" id="time"  name="time" placeholder="种类编号"/></td>
+                <td> <span >回复时间<strong>(*只读)</strong></span></td>
+                <td> <input type="text" th:value="${msg.time}" id="time"  name="time" readonly="readonly" /></td>
             </tr>
 
         </table>

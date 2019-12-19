@@ -29,4 +29,21 @@
     <select id="findAllByUid" resultType="postArticle">
         select * from article where uid = #{uid}
     </select>
+
+    <!--//manage-->
+    <select id="findAllByarticleid" resultType="postArticle">
+        select * from article where article_id = #{article_id}
+    </select>
+    <!--//manage-->
+    <update id="modiarticle">
+        update article set content = #{content},title = #{title},category_id=#{category_id},top=#{top} where article_id =#{article_id}
+    </update>
+
+    <update id="setaatop">
+        update article set top=#{top} where article_id =#{article_id}
+    </update>
+
+    <update id="canseaatTop">
+        update article set top=#{top} where article_id =#{article_id}
+    </update>
 </mapper>

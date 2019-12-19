@@ -54,4 +54,23 @@ public class ArticleService {
         return articleDao.findAllByUid(uid);
     }
 
+    public Article findAllByarticleid(int article_id){
+        return articleDao.findAllByarticleid(article_id);
+    }
+    //manage
+    public int modiarticle(Article article){
+        int temp = articleDao.modiarticle(article);
+        return 1;
+    }
+
+    public int setaatop(int article_id,int top){
+        int temp = articleDao.setaatop(article_id,top);
+        return 1;
+    }
+
+    public int canseaatTop(int article_id,int top){
+        int temp = articleDao.canseaatTop(article_id,top);
+        return 1;
+    }
+
 }

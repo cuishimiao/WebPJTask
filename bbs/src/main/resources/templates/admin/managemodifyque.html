@@ -26,18 +26,18 @@
 
             <tr>
                 <td><span >问题编号<strong>(*只读)</strong></span></td>
-                <td><input type="text" th:value="${msg.question_id}" id="question_id" name="question_id" size="50px"  /> </td>
+                <td><input type="text" th:value="${msg.question_id}" id="question_id" name="question_id" size="50px"  readonly="readonly"/> </td>
             </tr>
 
             <tr>
-                <td><span >用户编号</span></td>
-                <td><input type="text" th:value="${msg.uid}" id="uid"  name="uid" placeholder="韩露" / ></td>
+                <td><span >用户编号<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.uid}" id="uid"  name="uid" placeholder="韩露" readonly="readonly" /></td>
 
             </tr>
 
             <tr>
-                <td><span >时间</span></td>
-                <td><input type="text" th:value="${msg.time}" id="time" name="time"  placeholder="创建时间" /></td>
+                <td><span >时间<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.time}" id="time" name="time"  placeholder="创建时间" readonly="readonly" /></td>
 
 
             </tr>
@@ -48,8 +48,8 @@
             </tr>
 
             <tr>
-                <td> <span >头像</span></td>
-                <td> <input type="text" th:value="${msg.uhead}" id="uhead"  name="uhead" placeholder="种类编号"/></td>
+                <td> <span >头像<strong>(*只读)</strong></span></td>
+                <td> <input type="text" th:value="${msg.uhead}" id="uhead"  name="uhead" placeholder="种类编号" readonly="readonly" /></td>
             </tr>
 
             <tr>
@@ -60,7 +60,7 @@
 
         </table>
 
-        <input style="width: 100px;height: 50px;margin-right: 50px;" type="submit" value="保存" id="btn"   />
+        <input style="width: 100px;height: 50px;margin-right: 50px;" type="submit" value="保存" id="btn" />
         <input style="width: 100px;height: 50px"  type="button" value="返回" onclick="history.back(-1)"/>
     </form>
 

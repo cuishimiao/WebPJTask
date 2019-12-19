@@ -35,6 +35,7 @@ public interface ArticleDao {
      * @return: int
      * @description:根据帖子id删除帖子
      */
+    //manage删除文章
     int deleteArticle(int id);
 
     /*
@@ -42,9 +43,19 @@ public interface ArticleDao {
      * @return: java.util.List<ncu.edu.cn.bbs.entity.PostArticle>
      * @description:查看所有帖子
      */
+    //manage查看文章
     List<Article> findAll();
 
-
     List<Article> findAllByUid(int uid);
+
+
+    //manage查找文章
+    Article findAllByarticleid(int article_id);
+    //manage修改文章
+    int modiarticle(Article article);
+    //manage置顶
+    int setaatop(int article_id,int top);
+    //manage取消置顶
+    int canseaatTop(int article_id,int top);
 
 }
