@@ -19,6 +19,8 @@ public class CategoryService {
     CategoryDao categoryDao;
     public List<Category> findAllCategory(){return categoryDao.findAll();}
 
+
+
     public String deletebyid(int category_id){
         int temp = categoryDao.deletebyid(category_id);
         if(temp ==1 ){

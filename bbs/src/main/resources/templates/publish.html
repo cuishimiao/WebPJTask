@@ -15,7 +15,7 @@
                     title:$("#title").val(),
                     content:$("#description").val(),
                     uid:$("#uid").val(),
-                    category_id:$("#categoryId").val()
+                    category_id:$("#tag").val()
 
                 };
                 $.ajax({
@@ -87,7 +87,7 @@
                            autocomplete="off">
 
                     <input type="hidden" th:value="${user.user_id}" id="uid">
-                    <input type="hidden" value="1" id="categoryId">
+<!--                    <input type="hidden" value="1" id="categoryId">-->
                 </div>
                 <div class="form-group" id="question-editor">
                     <label for="description">文章内容 (必填，请参照右侧提示):</label>
@@ -96,21 +96,35 @@
                               cols="30"
                               rows="10"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="tag" class="col-sm-2 control-label">标签</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="tag" name="job">
 
-                <!--类别组件  -->
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Dropdown
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+                            <option value="1" selected="selected">科技</option>
+                            <option value="2">学生</option>
+                            <option value="3">Java工程师</option>
+                            <option value="4">PHP工程师</option>
+                            <option value="5">JS工程师</option>
+                            <option value="6">WEB前端工程师</option>
+                            <option value="7">Phython工程师</option>
+                            <option value="8">移动开发工程师</option>
+                            <option value="9">Linux系统工程师</option>
+                            <option value="10">交互设计师</option>
+                            <option value="11">软件测试工程师</option>
+                            <option value="12">UI设计师</option>
+                            <option value="13">算法工程师</option>
+                            <option value="14">全栈工程师</option>
+                            <option value="15">CG影视动画师</option>
+                            <option value="16">数据库工程师</option>
+                            <option value="17">产品经理</option>
+                            <option value="18">页面重构设计</option>
+                            <option value="19">其他</option>
+                        </select>
+                    </div>
                 </div>
+
+
 
                 <script type="text/javascript">
                     $(function () {

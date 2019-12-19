@@ -3,7 +3,9 @@ package ncu.edu.cn.bbs.controller;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import ncu.edu.cn.bbs.dao.ArticleMapper;
 import ncu.edu.cn.bbs.entity.Article;
+import ncu.edu.cn.bbs.entity.Category;
 import ncu.edu.cn.bbs.service.ArticleService;
+import ncu.edu.cn.bbs.service.CategoryService;
 import ncu.edu.cn.bbs.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,8 @@ public class ArticleController {
     @Autowired
     ArticleService service;
 
-
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping("/articles")
     @ResponseBody
@@ -49,6 +52,8 @@ public class ArticleController {
     @RequestMapping("/writeArticle")
     @ResponseBody
     public String write(@RequestBody Article article){
+
+
         String msg;
         if(article.getTitle()==null || article.getTitle().equals(""))
         {
@@ -72,10 +77,13 @@ public class ArticleController {
     @RequestMapping("/publish")
     public String publish(HttpSession session,Model model)
     {
+
         if(session.getAttribute(ConstantUtils.USER_SESSION_KEY)!=null)
         {
             model.addAttribute("user",session.getAttribute(ConstantUtils.USER_SESSION_KEY));
 
+            List<Category> allCategory = categoryService.findAllCategory();
+            model.addAttribute("tags",allCategory);
             return "publish";
         }
         else
