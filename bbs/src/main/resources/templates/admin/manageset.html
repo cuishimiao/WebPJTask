@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title></title>
 	<link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -106,7 +106,7 @@
        <div class="collapse navbar-collapse">
        		 <ul class="nav navbar-nav navbar-left">
                <li role="presentation">
-                   <a href="#">返回首页</a>
+                   <a th:href="@{/logoutandreturn}">退出登录并返回首页</a>
                </li>
                <!-- <li>
                    <a href="../login/logout">
@@ -115,11 +115,11 @@
             </ul>
            <ul class="nav navbar-nav navbar-right">
                <li role="presentation">
-                   <a href="#">当前用户：<span class="badge">管理员</span></a>
+                   <a href="#">当前用户：<span class="badge" th:text="${session.username}"></span></a>
                </li>
                <li>
-                   <a href="../login/logout">
-                         <span class="glyphicon glyphicon-lock"></span>退出登录</a>
+                   <a th:href="@{/managelogout}">
+                       <span class="glyphicon glyphicon-lock" ></span>退出登录</a>
                 </li>
             </ul>
        </div>
@@ -137,39 +137,26 @@
            
              
              <li role="presentation">
-                 <a href="manageuser.html" target="mainFrame">用户管理</a>
+                 <a th:href="@{/Users}" target="mainFrame">用户管理</a>
              </li>
              <li role="presentation">
-                 <a href="managearticle.html" target="mainFrame">文章管理</a>
+                 <a th:href="@{/manageart}" target="mainFrame">文章管理</a>
              </li>
              
              <li role="presentation">
-                 <a href="managecomment.html" target="mainFrame">评论管理</a>
+                 <a th:href="@{/Replys}" target="mainFrame">文章回复</a>
              </li>
             
              <li role="presentation">
-                 <a href="managequestion.html" target="mainFrame">问答管理</a>
+                 <a th:href="@{/Requests}" target="mainFrame">问题管理</a>
              </li>
-            
-             <!-- 开始 -->
-             <!-- <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="nav4.html" target="mainFrame">
-                     设置<span class="caret"></span>
-                 </a> 
-                 <ul class="dropdown-menu">
-                     <li>
-                         <a href="nav1.html" target="mainFrame">修改密码</a>
-                     </li>
-                     <li>
-                         <a href="nav2.html" target="mainFrame">退出系统</a>
-                     </li>
-                     <li>
-                         <a href="nav3.html" target="mainFrame">查看个人信息</a>
-                     </li>
-                 </ul>
-              </li> -->
+
+             <li role="presentation">
+                 <a th:href="@{/Replyques}" target="mainFrame">问题回复</a>
+             </li>
+
 			<li role="presentation" class="active">
-                 <a href="manageset.html" target="mainFrame">个人设置</a>
+                 <a th:href="@{/managesetting}" target="mainFrame">个人设置</a>
              </li>
                
              
@@ -191,43 +178,61 @@
             <hr>
                  <div class="nav-tabs-custom" style="box-shadow: 0 0;">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#" class="tab-a" id="profile">基本资料</a></li>
-                                <li><a href="#" class="tab-a" id="avatar">我的头像</a></li>
-                                <li><a href="#" class="tab-a" id="security">修改密码</a></li>
+                                <li class="active"><a href="#" class="tab-a" id="profile">修改密码</a></li>
                     </ul>
                     <br>
                             <div class="tab-content">
                                 <div class="tab-pane active">
-                                    <form class="form-horizontal userForm" id="profileForm">
+                                    <form class="form-horizontal userForm" th:action="@{/modifypassword}"  th:method="post" id="profileForm">
+
+                                        <input th:type="hidden" name="_method" value="put">
+
+
                                         <div class="box-body">
+
+                                            <div class="form-group" th:if="${wrong}!=null">
+                                                <label class="col-sm-2 control-label" style="color: red;">提示错误：</label>
+                                                <div class="col-sm-6">
+                                                    <label class="control-label" style="color: red;">[[${wrong}]]</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" th:if="${right}!=null">
+                                                <label class="col-sm-2 control-label" style="color: green;">提示信息：</label>
+                                                <div class="col-sm-6">
+                                                    <label class="control-label" style="color: green;">[[${right}]]</label>
+                                                </div>
+                                            </div>
+
+
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">用户名</label>
                                                 <div class="col-sm-6">
-                                                    <label class="control-label">sada</label>
+                                                    <label class="control-label" th>sada</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="nickname" class="col-sm-2 control-label">昵称</label>
+                                                <label for="usernamee" class="col-sm-2 control-label">用户名</label>
                                                 <div class="col-sm-6">
-                                                     <input type="text" class="form-control" id="nickname" name="nickname" value="sdasd">
+                                                     <input type="text" class="form-control" id="usernamee" name="usernamee" th:value="${session.username}" readonly="readonly">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="homepage" class="col-sm-2 control-label">个人主页</label>
+                                                <label for="original" class="col-sm-2 control-label">原密码</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="homepage" name="homepage" value="">
+                                                    <input type="text" class="form-control" id="original" name="original" value="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="github" class="col-sm-2 control-label">Github</label>
+                                                <label for="present" class="col-sm-2 control-label">修改密码</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="github" name="github" value="">
+                                                    <input type="text" class="form-control" id="present" name="present" value="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="contact" class="col-sm-2 control-label">联系方式</label>
+                                                <label for="confirm" class="col-sm-2 control-label">确认密码</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="contact" name="contact" value="" placeholder="如 QQ: 666666（微信同号）">
+                                                    <input type="text" class="form-control" id="confirm" name="confirm" value="" placeholder="">
                                                             </div>
                                                         </div>
                                                         

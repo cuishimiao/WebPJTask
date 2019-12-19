@@ -15,10 +15,13 @@ public interface QuestionDao {
 
     Question getRequest(int question_id);
 
-    List<Question> findAllr();
-
     int deleteby(int uid);
     
     int deleteByQId(int question_id);
+
+
+    Question findrequest(int question_id);
+    int modifyqu(Question article);
+    List<Question> findAllr();
 
 }

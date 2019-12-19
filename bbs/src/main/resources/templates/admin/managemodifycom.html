@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        input{
+            width: 400px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div  align="center">
+
+    <form id="updateForm" th:action="@{/modifycom}"  th:method="post">
+        <h3 align="center">用户 >> 用户编辑</h3>
+        <br>
+        <table border="2">
+            <!--th:action="@{/modifyArticle}"-->
+            <input th:type="hidden" name="_method" value="put">
+
+            <tr>
+                <td><span >文章编号<strong>(*只读)</strong></span></td>
+                <td><input type="text" th:value="${msg.article_id}" id="article_id" name="article_id" size="50px"  /> </td>
+            </tr>
+
+            <tr>
+                <td><span >回复者编号</span></td>
+                <td><input type="text" th:value="${msg.responder_id}" id="responder_id"  name="responder_id" placeholder="韩露" / ></td>
+
+            </tr>
+
+            <tr>
+                <td><span >回复时间</span></td>
+                <td><input type="text" th:value="${msg.reply_time}" id="reply_time" name="reply_time"  placeholder="创建时间" /></td>
+
+
+            </tr>
+
+            <tr>
+                <td> <span >序号</span></td>
+                <td> <input type="text" th:value="${msg.id}" id="id"  name="id" placeholder="种类编号"/></td>
+            </tr>
+
+            <tr>
+                <td><span >内容</span></td>
+                <td><textarea th:text="${msg.context}" name="context" id="context" cols="54" rows="10"></textarea>
+                    <!--<input type="textarea" th:value="${msg.content}" id="content" name="content"  placeholder="内容"/></td>-->
+            </tr>
+
+        </table>
+
+        <input style="width: 100px;height: 50px;margin-right: 50px;" type="submit" value="保存" id="btn"   />
+        <input style="width: 100px;height: 50px"  type="button" value="返回" onclick="history.back(-1)"/>
+    </form>
+
+</div>
+</body>
+</html>

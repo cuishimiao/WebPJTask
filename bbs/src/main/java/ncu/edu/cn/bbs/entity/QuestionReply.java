@@ -1,8 +1,10 @@
 package ncu.edu.cn.bbs.entity;
 
+import org.apache.ibatis.type.Alias;
 
 import java.sql.Timestamp;
 
+@Alias("replyQuestion")
 public class QuestionReply {
     //    新增
     private int id;

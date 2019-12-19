@@ -9,8 +9,8 @@
 
 </head>
 <body class="skin-blue layout-top-nav" style="transform: none; height: auto; min-height: 100%;">
+<li><a th:href="@{/manageart}">登录管测试接口</a></li>
 <div class="wrapper" style="transform: none; height: auto; min-height: 100%;">
-    <li><a th:href="@{/manageart}" >进入管理员模式 </a></li>
     <header class="main-header">
         <nav class="navbar navbar-static-top">
             <div class="container">
@@ -29,6 +29,7 @@
                         <li><a href="/article">文章</a></li>
                         <li><a href="/askandanswer">问答</a></li>
                         <li><a href="/main">我的主页</a></li>
+                        <li><a th:href="@{/loginconvert}">登录管理员</a></li>
                     </ul>
 
                     <form class="navbar-form navbar-left" action="/search/articles" role="search">
