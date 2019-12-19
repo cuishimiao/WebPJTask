@@ -26,10 +26,8 @@ public class ArticleController1 {
     @RequestMapping("/article")
     public String article(Model model,
                           @RequestParam(name = "page", defaultValue = "1") Integer page,  //页码
-                          @RequestParam(name = "size", defaultValue = "5") Integer size,  //大小
-                          @RequestParam(name = "search", required = false) String search,
-                          @RequestParam(name = "tag", required = false) String tag,
-                          @RequestParam(name = "sort", required = false) String sort){
+                          @RequestParam(name = "size", defaultValue = "5") Integer size  //大小
+                          ){
         Integer offset=size*(page-1);
         List<Article> Articles=articleMapper.getArticle(offset,size);
         //处理分页数据
