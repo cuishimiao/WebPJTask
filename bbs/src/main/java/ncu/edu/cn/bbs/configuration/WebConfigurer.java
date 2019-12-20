@@ -6,6 +6,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+拦截器配置
+ */
 
 @Configuration
 public class WebConfigurer implements WebMvcConfigurer {
@@ -14,7 +17,7 @@ public class WebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/admin/**","/main","/article","/askandanswer")
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/admin/**","/main","/article","/askandanswer","/publish","/ask")
                 .excludePathPatterns("/","/login","/logout");
     }
 
