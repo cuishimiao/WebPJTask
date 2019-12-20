@@ -31,6 +31,9 @@ public class AskAndAnswerDetailController {
         Question question=questionMapper.getQuestionById(questionid);
         model.addAttribute(question);
 
+        User questioner=uerDao.findById(question.getUid());
+        model.addAttribute("questioner",questioner);
+
         if(question!=null)
             System.out.println(question.toString());
         else

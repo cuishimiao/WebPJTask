@@ -242,6 +242,28 @@
     </div>
 
     <div class="col-md-3" style="margin-left: 20px;margin-right: 20px;background-color: whitesmoke">
+
+        <div>
+            <h4>提问人</h4>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <!--<img class="media-object img-circle" th:src="${card.getUser().getHead()}">-->
+                        <!--头像-->
+                        <!--<img class="media-object img-circle" src="http://img2.imgtn.bdimg.com/it/u=105681142,4090944988&fm=26&gp=0.jpg" width="50">-->
+                        <img th:src="@{'../static/images/'+${questioner.getHead()}}" alt="" class="img-circle" width="50">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <span th:text="${questioner.getUsername()}"></span>
+                    </h4>
+                    <h6>工作地点：<span th:text="${questioner.getAddress()}"></span></h6>
+                    <h6>工作性质：<span th:text="${questioner.getWork()}"></span></h6>
+                </div>
+            </div>
+        </div>
+
         <div class="list-group" style="margin-top: 15px">
             <a href="#" class="list-group-item active">
                 <span style="font-size: 13px">最新问题</span>
