@@ -50,7 +50,6 @@ public class ArticleController {
     @ResponseBody
     public String write(@RequestBody Article article){
 
-
         String msg;
         if(article.getTitle()==null || article.getTitle().equals(""))
         {
@@ -67,8 +66,6 @@ public class ArticleController {
          msg = service.generateArticle(article);
         return msg;
     }
-
-
 
 
     @RequestMapping("/publish")

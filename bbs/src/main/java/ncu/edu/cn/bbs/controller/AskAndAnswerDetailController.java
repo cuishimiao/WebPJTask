@@ -63,6 +63,10 @@ public class AskAndAnswerDetailController {
         Integer questionReplyCount=questionReplyMapper.getQuestionReplyCountById(questionid);
         model.addAttribute("questionReplyCount",questionReplyCount);
 
+        //搜索最新问题
+        List<Question> leastQuestion=questionMapper.findLeastQuestion();
+        model.addAttribute("leastQuestion",leastQuestion);
+
         return "questiondetail";
     }
 }

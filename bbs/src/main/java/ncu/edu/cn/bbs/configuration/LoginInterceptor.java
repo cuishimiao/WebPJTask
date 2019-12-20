@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @Author:wzh
- * @Description:
- * @Date:Createed in 2019/12/13 20:10
- **/
+拦截器
+ */
+
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
