@@ -101,7 +101,11 @@ public class ManageArticle {
         {
             if(h.getArticle_id()==article_id)
             {
-               top=h.getTop();
+                if(h.getTop()==null)
+                    top=0;
+                else
+                    top=h.getTop();
+                System.out.println(h.getTop());
             }
         }
         System.out.println(top);
@@ -124,7 +128,7 @@ public class ManageArticle {
 //查询所有的文章
     @RequestMapping("/manageart")
     public String manageart(@RequestParam(value = "page",defaultValue = "1")String page,@RequestParam(value = "tag",defaultValue = "1")String tag,Model m){
-        int size=2; //一页的大小
+        int size=6; //一页的大小
         int j=1;    //初始值
         System.out.println("查询文章***************");
         if(tag.equals("1")) //当前页面

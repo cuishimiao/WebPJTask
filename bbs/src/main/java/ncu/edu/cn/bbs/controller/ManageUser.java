@@ -136,7 +136,7 @@ public class ManageUser {
     //查询用户
     @RequestMapping("/Users")
     public String Users(@RequestParam(value = "page",defaultValue = "1")String page,@RequestParam(value = "tag",defaultValue = "1")String tag,Model m){
-        int size=2; //一页的大小
+        int size=6; //一页的大小
         int j=1;    //初始值
         System.out.println("查询用户***************");
         if(tag.equals("1")) //当前页面
