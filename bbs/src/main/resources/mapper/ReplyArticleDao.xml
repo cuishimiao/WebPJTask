@@ -12,7 +12,7 @@
 
     <!--//管理员查找回复文章-->
 <select id="findAllReply" resultType="replyArticle">
-    select * from reply_table where article_id = #{id}
+    select * from reply_table where responder_id = #{id}
 </select>
 
 <select id="getReply" resultType="replyArticle">

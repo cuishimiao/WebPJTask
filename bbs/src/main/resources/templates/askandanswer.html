@@ -4,20 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>问答</title>
-    <!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <!--<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
-    <!--<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skin-blue.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="../static/css/cycle_title_css.css">
     <link rel="stylesheet" href="../static/css/3.3.7bootstrap.min.css">
     <script src="../static/js/2.1.1jquery.min.js"></script>
     <script src="../static/js/bootstrap3.3.7.min.js"></script>
 
-
-
-    <!--<link rel="stylesheet" href="css/style.css">-->
-    <!--<link rel="stylesheet" href="css/skin-blue.min.css">-->
-    <!--<link rel="stylesheet" href="css/bootstrap.css">-->
 
 </head>
 <style>
@@ -204,33 +199,41 @@
     <div class="col-md-3" style="margin-left: 20px;margin-right: 20px;background-color: whitesmoke">
         <div class="list-group" style="margin-top: 15px">
             <a href="#" class="list-group-item active">
-                <span style="font-size: 13px">公告栏</span>
+                <span style="font-size: 13px">最新问题</span>
             </a>
-            <a href="#" class="list-group-item"><span style="color: #a94442">[置顶]</span>白日依山尽</a>
-            <a href="#" class="list-group-item">黄河入海流</a>
-            <a href="#" class="list-group-item">欲穷千里目</a>
-            <a href="#" class="list-group-item">更上一层楼</a>
+            <a class="list-group-item" th:each="leastquestion:${leastQuestion}" th:href="@{'questiondetail/'+${leastquestion.getQuestion_id()}}" th:text="${leastquestion.getContent()}"></a>
         </div>
 
         <div class="list-group" style="margin-top: 15px">
             <a href="#" class="list-group-item active" style="margin-bottom: 5px">
                 <span style="font-size: 13px">赏金榜</span>
             </a>
-            <a href="#" class="" th:each="golduser:${goldUsers}">
-                <div style="margin-top: 2px;border-radius: 3px;background-color: white" >
-                    <div class="media-left">
-                        <a href="#">
-                            <!--<img class="media-object" src="..." alt="...">-->
-                            <!--<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">-->
-                            <img th:src="@{'../static/images/'+${golduser.head}}" alt="" class="img-circle" width="40">
-                        </a>
+            <!--<a href="#" class="" th:each="golduser:${goldUsers}">-->
+                <!--<div style="margin-top: 2px;border-radius: 3px;background-color: white" >-->
+                    <!--<div class="media-left">-->
+                        <!--<a href="#">-->
+                            <!--&lt;!&ndash;<img class="media-object" src="..." alt="...">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<img src="http://www.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&amp;d=identicon&amp;r=PG" alt="" class="img-circle" width="40">&ndash;&gt;-->
+                            <!--<img th:src="@{'../static/images/'+${golduser.head}}" alt="" class="img-circle" width="40px">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="media-body" style="margin-left: 10px;">-->
+                        <!--<h5 class="media-heading" style="margin-top: 3px">昵 称：<span th:text="${golduser.username}"></span></h5>-->
+                        <!--<h5 class="media-heading" style="margin-bottom:3px">赏金值：<span th:text="${golduser.gold}"></span></h5>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</a>-->
+            <div th:each="golduser:${goldUsers}">
+                    <div style="margin-top: 2px;border-radius: 3px;background-color: white" >
+                        <div class="media-left">
+                                <img th:src="@{'../static/images/'+${golduser.head}}" alt="" class="img-circle" width="40px">
+                        </div>
+                        <div class="media-body" style="margin-left: 10px;">
+                            <h5 class="media-heading" style="margin-top: 3px">昵 称：<span th:text="${golduser.username}"></span></h5>
+                            <h5 class="media-heading" style="margin-bottom:3px">赏金值：<span th:text="${golduser.gold}"></span></h5>
+                        </div>
                     </div>
-                    <div class="media-body" style="margin-left: 10px;">
-                        <h5 class="media-heading" style="margin-top: 3px">昵 称：<span th:text="${golduser.username}"></span></h5>
-                        <h5 class="media-heading" style="margin-bottom:3px">赏金值：<span th:text="${golduser.gold}"></span></h5>
-                    </div>
-                </div>
-            </a>
+            </div>
 
         </div>
     </div>

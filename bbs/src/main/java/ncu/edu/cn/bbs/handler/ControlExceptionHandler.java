@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+错误页面处理
+ */
 @ControllerAdvice
 public class ControlExceptionHandler {
 

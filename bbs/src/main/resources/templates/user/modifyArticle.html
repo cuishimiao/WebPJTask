@@ -26,11 +26,11 @@
     </div><!-- /.modal -->
 </div>
 
-<body>
+<body align="center">
     <h3>标题</h3>
-    <textArea th:text="${article.title}" id="title"></textArea>
+    <textArea align="center" th:text="${article.title}" id="title"></textArea>
     <h3>内容</h3>
-    <textArea th:text="${article.content}" id="content" style="height: 400px;width: 400px"></textArea>
+    <textArea th:text="${article.content}" id="content" style="height: 300px;width: 600px"></textArea>
     <p th:text="|创作时间${article.create_time}|"></p>
     <input type="hidden" th:value="${article.article_id}" id="article_id">
     <input type="button" id="btn" value="提交" class="btn btn-success"/>

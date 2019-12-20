@@ -210,7 +210,7 @@
                                                             <label class="col-sm-2 control-label">用户说明</label>
 
                                                             <div class="col-sm-6">
-                                                                <textarea class="form-control" name="profile"  rows="4" placeholder="关于我的一些事儿..."></textarea>
+                                                                <textarea class="form-control" id="desc"  rows="4" placeholder="关于我的一些事儿..."></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -233,11 +233,10 @@
         </div>
     </div>
 </div>
-<footer class="main-footer">
-    <div class="container" style="text-align: center;">
-        <strong>Copyright © 2019 <a href="#">BBS</a></strong> <a href="#" class="text-black" target="_blank">赣ICP备17002430号-2</a>
-    </div>
-</footer>
+
+
+<div th:insert="~{footer :: foot}"></div>
+
 <input type="hidden" id="uid" th:value="${session.user.user_id}">
 <input type="hidden" id="username" th:value="${session.user.username}">
 
@@ -349,10 +348,11 @@
         //修改个人信息
         $(document).on("click","#profile-btn",function () {
             var param ={
-                "user_id":$("#uid").val(),
-                "phone":$("#contact").val(),
-                "address":$("#address").val(),
-                "description":$("#profile option:selected").text()
+                user_id:$("#uid").val(),
+                phone:$("#contact").val(),
+                address:$("#address").val(),
+                work:$("#job").find("option:selected").text(),
+                description:document.getElementById("desc").value
             };
             $.ajax({
                 method:"POST",

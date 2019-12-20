@@ -16,9 +16,11 @@
         <nav class="navbar navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/" class="navbar-brand">
-                        <img src="http://cdn2.codergroup.cn/FjbXnMr4E2G1jt4JvsIGhwPXIkmi" alt="" height="25">
-                    </a>
+                    <!--<a href="/" class="navbar-brand">-->
+                        <!--<img src="/images/ncu.png" alt="" height="3r5">-->
+                    <!--</a>-->
+                    <img  class="navbar-brand" src="/images/ncu.png" alt="" height="160" width="120" style="padding: 8px;">
+
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
@@ -33,7 +35,7 @@
                         <li><a th:href="@{/loginconvert}">管理员登录</a></li>
                     </ul>
 
-                    <form class="navbar-form navbar-left" action="/search/articles" role="search">
+                    <form class="navbar-form navbar-left" action="#" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control global-search-input" name="keywords" id="main-search-input" placeholder="Search...">
                         </div>
@@ -68,20 +70,20 @@
                             <div class="carousel-inner">
                                 <div class="item active left">
                                     <a href="#" target="_blank">
-                                        <img src="/images/lb1.jpg" width="760" height="300" alt="欢迎加入 CoderGroup">
-                                        <div class="carousel-caption">欢迎加入 BBS论坛</div>
+                                        <img src="/images/lb1.jpg" width="760" height="300" alt="欢迎加入BBS论坛">
+                                        <div class="carousel-caption">欢迎加入BBS论坛</div>
                                     </a>
                                 </div>
                                 <div class="item next left">
                                     <a href="#" target="_blank">
-                                        <img src="/images/lb2.jpg" width="760" height="300" alt="技术分享，疑难求助，简单而方便">
-                                        <div class="carousel-caption">技术分享，疑难求助，简单而方便</div>
+                                        <img src="/images/lb2.jpg" width="760" height="300" alt="谈天说地,畅所欲言">
+                                        <div class="carousel-caption">谈天说地,畅所欲言</div>
                                     </a>
                                 </div>
                                 <div class="item">
                                     <a href="#" target="_blank">
-                                        <img src="/images/lb3.jpg" width="760" height="300" alt="程序人生，义无反顾">
-                                        <div class="carousel-caption">程序人生，义无反顾</div>
+                                        <img src="/images/lb3.jpg" width="760" height="300" alt="分享点滴，记录美好">
+                                        <div class="carousel-caption">分享点滴，记录美好</div>
                                     </a>
                                 </div>
                             </div>
@@ -98,7 +100,7 @@
                             <div id="article-box-replace">
                                 <div class="box box-solid">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">推荐文章</h3>
+                                        <h3 class="box-title">精品文章</h3>
                                     </div>
                                     <div class="box-body" id="box-body" style="padding: 0 10px;">
                                         <ul  class="profile-mine__content mb0">
@@ -112,9 +114,6 @@
                                                             <li>
                                                                     <img th:src="@{'/images/'+${goodArticle.uhead}}" alt="" class="img-circle" width="30">
                                                                     <span th:text="${goodArticle.getUname()}"></span>
-                                                            </li>
-                                                            <li class="pull-right">
-                                                                <i class="margin-r-5" th:text="|赞同数(${goodArticle.getLike()})|"></i>
                                                             </li>
                                                             <li class="pull-right">
                                                                 <i class="margin-r-5"th:text="|阅读数(${goodArticle.getCount()})|"></i>
@@ -146,8 +145,8 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/bulletins/sell" target="_blank">
-                                                    <span class="text-maroon">[置顶]</span>本站源码出售
+                                                <a class="profile-mine__content--title" href="#" >
+                                                    <span class="text-maroon">[置顶]</span>注意事项
                                                 </a>
                                             </div>
                                         </div>
@@ -155,7 +154,7 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/bulletins/uprotocol" target="_blank">
+                                                <a class="profile-mine__content--title" href="#" >
                                                     用户协议
                                                 </a>
                                             </div>
@@ -164,14 +163,11 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="/bulletins/reputation-explanation" target="_blank">
+                                                <a class="profile-mine__content--title" href="#" >
                                                     用户积分(声望)说明
                                                 </a>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li style="border-bottom: 0;">
-                                        <a href="/bulletins" target="_blank">查看更多</a>
                                     </li>
                                 </ul>
                             </div>
@@ -182,22 +178,19 @@
                             <div class="box-body" style="padding: 0 10px;">
                                 <div class="row">
                                     <div class="col-md-12" style="margin: 5px 0;">
-                                        <a class="btn btn-default btn-xs" href="/article?keywords=面试" target="_blank" style="margin: 3px;">
-                                            面试
-                                        </a><a class="btn btn-default btn-xs" href="/article?keywords=源码" target="_blank" style="margin: 3px;">
-                                        源码
-                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=Java" target="_blank" style="margin: 3px;">
-                                        Java
-                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=算法" target="_blank" style="margin: 3px;">
-                                        算法
-                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=数据结构" target="_blank" style="margin: 3px;">
-                                        数据结构
-                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=计算机网络" target="_blank" style="margin: 3px;">
-                                        计算机网络
-                                    </a><a class="btn btn-default btn-xs" href="/article?keywords=操作系统" target="_blank" style="margin: 3px;">
-                                        操作系统
-                                    </a>
-                                    </div>
+                                        <a class="btn btn-default btn-xs" href="#"  style="margin: 3px;">
+                                            公告
+                                        </a><a class="btn btn-default btn-xs" href="#"  style="margin: 3px;">
+                                        文学
+                                    </a><a class="btn btn-default btn-xs" href="#"  style="margin: 3px;">
+                                        IT
+                                    </a><a class="btn btn-default btn-xs" href="#" style="margin: 3px;">
+                                       体育
+                                    </a><a class="btn btn-default btn-xs" href="#"  style="margin: 3px;">
+                                        娱乐
+                                    </a><a class="btn btn-default btn-xs" href="#" style="margin: 3px;">
+                                        科技
+                                    </a></div>
                                 </div>
                             </div>
                         </div><div class="box box-solid">
@@ -206,53 +199,16 @@
                             </div>
                             <div class="box-body" style="padding: 0 10px;">
                                 <ul class="profile-mine__content mb0">
-                                    <li>
+                                    <li th:each="each:${questionDtos}">
                                         <div class="row">
                                             <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    很厉害的网站
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    SG飞艇稳赢计划群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    极速赛车七码雪球计划交流群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    澳洲幸运10精准计划交流群822444
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 profile-mine__content--title-warp">
-                                                <a class="profile-mine__content--title" href="#" target="_blank">
-                                                    SG飞艇稳定五码计划群822444
+                                                <a class="profile-mine__content--title" th:href="@{'/showQuestion/'+${each.getQuestion().getQuestion_id()}}" target="_blank" th:text="${each.getQuestion().getQuestion_title()}">
                                                 </a>
                                             </div>
                                         </div>
                                     </li>
                                     <li style="border-bottom: 0;">
-                                        <a href="/questions" target="_blank">查看更多</a>
+                                        <a href="/askandanswer" target="_blank">查看更多</a>
                                     </li>
                                 </ul>
                             </div>
@@ -269,49 +225,18 @@
                                 <div class="ranking-card-base false">
                                     <div class="ranking-list-base true">
                                         <div class="ranking-list">
-                                            <div class="ranking-list-item">
+                                            <div th:each="p,status:${users}" class="ranking-list-item">
                                                 <div class="list-inner">
-                                                    <div class="ranking">1</div>
+                                                    <div class="ranking" th:text="${status.count}"></div>
                                                     <div class="avatar">
-                                                        <a href="/yu7788" target="_blank">
-                                                            <img src="http://www.gravatar.com/avatar/f3f150bee831811e25c8ed677c37c76c?s=128&amp;d=identicon&amp;r=PG" style="height: 30px; width: 30px;" class="img-circle"></a>
+                                                        <a href="#" target="_blank">
+                                                            <img th:src="@{'/images/'+${p.getHead()}}" style="height: 30px; width: 30px;" class="img-circle"></a>
                                                     </div>
                                                     <div class="name-info">
-                                                        <div class="name">yu7788</div>
-                                                        <div class="info">32115 声望</div>
+                                                        <div class="name" th:text="${p.getName()}"></div>
+                                                        <div class="info" th:text="|${p.getGold()} 声望|"></div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="ranking-list-item">
-                                                <div class="list-inner">
-                                                    <div class="ranking">2</div>
-                                                    <div class="avatar">
-                                                        <a href="/dx3303" target="_blank">
-                                                            <img src="http://www.gravatar.com/avatar/a7cf42c2c6084336d93895100ddc0ebb?s=128&amp;d=identicon&amp;r=PG" style="height: 30px; width: 30px;" class="img-circle"></a>
-                                                    </div>
-                                                    <div class="name-info">
-                                                        <div class="name">dx3303</div>
-                                                        <div class="info">25260 声望</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ranking-list-item hide">
-                                                <div class="list-inner">
-                                                    <div class="ranking">10</div>
-                                                    <div class="avatar">
-                                                        <a href="/115044810052" target="_blank">
-                                                            <img src="http://cdn2.codergroup.cn/uploads/2018/11/1/115044810052/1541070111410" style="height: 30px; width: 30px;" class="img-circle"></a>
-                                                    </div>
-                                                    <div class="name-info">
-                                                        <div class="name">哈哈哈哈</div>
-                                                        <div class="info">66 声望</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ranking-list-item-more">
-                                                <a href="javascript:void(0)">
-                                                    <div class="list-inner text-center">显示更多...</div>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -326,21 +251,21 @@
                                 <strong><i class="fa fa-qq margin-r-5"></i> QQ交流群</strong>
 
                                 <p class="text-muted">
-                                    开发者交流群：<strong>590480292</strong> <br>
+                                    交流群：<strong>66666666</strong> <br>
                                 </p>
 
                                 <hr>
                                 <strong><i class="fa fa-wechat margin-r-5"></i> 管理员微信</strong>
 
                                 <p class="text-muted">
-                                    微信号：<strong>847064370 </strong>(QQ同号) <br>
+                                    微信号：<strong>66666666 </strong>(QQ同号) <br>
                                     遇到问题，可以联系管理员
                                 </p>
 
                                 <hr>
                                 <strong><i class="fa fa-file-text-o margin-r-5"></i> 其他方式</strong>
                                 <p>
-                                    <a href="https://liuyanzhao.com/message.html" target="_blank">博客留言板</a>
+                                    <a href="#" target="_blank">博客留言板</a>
                                 </p>
                             </div>
                             <!-- /.box-body -->
@@ -352,11 +277,7 @@
         <!-- /.container -->
     </div>
 </div>
-<footer class="main-footer">
-    <div class="container" style="text-align: center;">
-        <strong>Copyright © 2019 <a href="http://codergroup.cn">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
-    </div>
-</footer>
+<div th:insert="~{footer :: foot}"></div>
 
 <!--登录框-->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
@@ -376,7 +297,7 @@
                     <span class="input-group-addon">密码：</span>
                     <input type="password" class="input-sm" id="password" aria-describedby="basic-addon3">
                 </div>
-                还没有账号?<a href="#" id="btnRegister">立即注册</a>
+                还没有账号?<a href="/register" id="btnRegister">立即注册</a>
                 <div id="message">
                 </div>
             </div>

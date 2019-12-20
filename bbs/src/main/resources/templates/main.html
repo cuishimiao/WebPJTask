@@ -23,6 +23,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
+                        <img  class="navbar-brand" src="/images/ncu.png" alt="" height="160" width="120" style="padding: 8px;">
                         <li><a href="/" class="active">首页</a></li>
                         <li><a href="/article" class="active">文章 <span class="sr-only">(current)</span></a></li>
                         <li><a href="/askandanswer">问答</a></li>
@@ -212,12 +213,7 @@
         <!-- /.container -->
     </div>
 </div>
-<footer class="main-footer">
-    <div class="container" style="text-align: center;">
-        <strong>Copyright &copy; 2018 <a href="#">CoderGroup</a></strong> <a href="http://www.miitbeian.gov.cn/" class="text-black" target="_blank">赣ICP备17002430号-2</a>
-    </div>
-    <!-- /.container -->
-</footer>
+<div th:insert="~{footer :: foot}"></div>
 
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -329,33 +325,31 @@
 
 
         $(document).on('click',"#user_Reply",function () {
+            console.log("hello");
             var page = $("#user_Reply").attr("value");
             var content ='';
             $.ajax({
                 url:page,
                 type:"GET",
                 success:function (msg) {
-                    for(var i in msg){
-                        console.log(msg[i].id);
-                    }
-                    var obj = msg;
-                    var content = '<table class="table table-hover">' +
-                        '<thead>' +
-                        '<th>文章编号</th><th>回复者编号</th><th>回复内容</th><th>回复时间</th><th>操作</th></thead>' + '<tbody>';
-                    for (var i in obj) {
-                        var text;
-                        var time = obj[i].reply_time;
-                        if (obj[i].context.length > 8)
-                            text = obj[i].context.substring(0, 7) + "...";
-                        else
-                            text = obj[i].context;
-                        content += '<tr><td>' + obj[i].id + '</td><td>' + obj[i].responder_id + '</td>' +
-                            '<td>' + text + '</td>' +
-                            '<td>' + time + '</td>' +
-                            '<td>' +
-                            '<a type="button" class="btn btn-primary" href="/showReplyById/'+obj[i].id+'">' + "查看" + '</a>' +
-                            '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].id+'">' + "删除" + '</a>'+
-                            '</td></tr>'
+                        var obj = msg;
+                        var content = '<table class="table table-hover">' +
+                            '<thead>' +
+                            '<th>文章编号</th><th>回复者编号</th><th>回复内容</th><th>回复时间</th><th>操作</th></thead>' + '<tbody>';
+                        for (var i in obj) {
+                            var text;
+                            var time = obj[i].reply_time;
+                            if (obj[i].context.length > 8)
+                                text = obj[i].context.substring(0, 7) + "...";
+                            else
+                                text = obj[i].context;
+                            content += '<tr><td>' + obj[i].id + '</td><td>' + obj[i].responder_id + '</td>' +
+                                '<td>' + text + '</td>' +
+                                '<td>' + time + '</td>' +
+                                '<td>' +
+                                '<a type="button" class="btn btn-primary" href="/showReplyById/'+obj[i].id+'">' + "查看" + '</a>' +
+                                '<a type="button" class="btn btn-danger" href="/deleteReply/'+obj[i].id+'">' + "删除" + '</a>'+
+                                '</td></tr>'
                     }
                     content += '</tbody></table>';
                     $("#content").html(content);
@@ -370,7 +364,6 @@
         });
 
     });
-
 
 </script>
 

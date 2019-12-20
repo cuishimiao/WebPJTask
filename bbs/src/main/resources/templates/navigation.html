@@ -5,63 +5,36 @@
 <body>
 
 <div th:fragment="nav" class="main-header">
-    <nav class="navbar navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/" class="active">首页</a></li>
-                    <li><a href="/article">文章</a></li>
-                    <li><a href="/askandanswer">问答</a></li>
-                    <li><a href="/main">我的主页</a></li>
-                </ul>
-
-                <form class="navbar-form navbar-left" action="/search/articles" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control global-search-input" name="keywords"
-                               id="main-search-input"
-                               placeholder="Search...">
-                    </div>
-                </form>
-                <ul class="nav navbar-nav">
-                    <li><a href="/publish">写文章 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/ask">提问</a></li>
-                </ul>
-            </div>
-
-            <div class="navbar-custom-menu" id="user-nav-wrapper">
-                <ul class="nav navbar-nav" id="user-nav">
-                    <!-- 私信-->
-                    <li class="dropdown messages-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" id="message-size-btn" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-
-                            <li class="header">
-                                您没有未读私信
-                            </li>
-                            <li id="not-read-message-list">
-                                加载中...
-                            </li>
-                            <li class="footer"><a href="/manage/messages" target="_blank">查看所有私信</a></li>
-                        </ul>
-                    </li>
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <img  class="navbar-brand" src="/images/ncu.png" alt="" height="160" width="120" style="padding: 8px;">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/" class="active">首页</a></li>
+                        <li><a href="/article">文章</a></li>
+                        <li><a href="/askandanswer">问答</a></li>
+                        <li><a href="/main">我的主页</a></li>
+                    </ul>
 
 
-                </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/publish">写文章 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="/ask">提问</a></li>
+                    </ul>
+                </div>
+
 
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+
 </div>
 
 </body>

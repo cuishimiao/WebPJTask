@@ -244,12 +244,9 @@
     <div class="col-md-3" style="margin-left: 20px;margin-right: 20px;background-color: whitesmoke">
         <div class="list-group" style="margin-top: 15px">
             <a href="#" class="list-group-item active">
-                <span style="font-size: 13px">公告栏</span>
+                <span style="font-size: 13px">最新问题</span>
             </a>
-            <a href="#" class="list-group-item"><span style="color: #a94442">[置顶]</span>白日依山尽</a>
-            <a href="#" class="list-group-item">黄河入海流</a>
-            <a href="#" class="list-group-item">欲穷千里目</a>
-            <a href="#" class="list-group-item">更上一层楼</a>
+            <a class="list-group-item" th:each="leastquestion:${leastQuestion}" th:href="@{'questiondetail/'+${leastquestion.getQuestion_id()}}" th:text="${leastquestion.getContent()}"></a>
         </div>
 
 

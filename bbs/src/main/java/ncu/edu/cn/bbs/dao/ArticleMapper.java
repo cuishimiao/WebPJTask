@@ -21,7 +21,10 @@ public interface ArticleMapper {
 
 //    @Select("SELECT * FROM article where title like '%'+ #{key} +'%' order by top desc limit #{offset},#{size}")
 //    @Select("SELECT * FROM article WHERE title LIKE CONCAT(CONCAT('%', #{key}), '%') order by top desc limit #{offset},#{size};")
-    @Select("SELECT * FROM article WHERE title LIKE '%${key}%'order by top desc")
+//    @Select("SELECT * FROM article WHERE title LIKE '%${key}%'order by top desc limit #{offset},#{size}")
+//    List<Article> getcheckArticle(@Param(value = "key") String key,@Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
+
+    @Select("SELECT * FROM article WHERE title LIKE '%${key}%'order by top desc ")
     List<Article> getcheckArticle(@Param(value = "key") String key);
 
     @Select("select * from article order by score desc limit 5")
@@ -51,4 +54,6 @@ public interface ArticleMapper {
     @Update("update article set score=#{newscore} where article_id = #{id}")
     void updateScore(@Param(value = "newscore")String newscore);
 
+    @Select("SELECT count(1) FROM article WHERE title LIKE '%${key}%'")
+    Integer countCheck(String key);
 }
