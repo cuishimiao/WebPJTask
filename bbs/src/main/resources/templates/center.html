@@ -233,11 +233,10 @@
         </div>
     </div>
 </div>
-<footer class="main-footer">
-    <div class="container" style="text-align: center;">
-        <strong>Copyright © 2019 <a href="#">BBS</a></strong> <a href="#" class="text-black" target="_blank">赣ICP备17002430号-2</a>
-    </div>
-</footer>
+
+
+<div th:insert="~{footer :: foot}"></div>
+
 <input type="hidden" id="uid" th:value="${session.user.user_id}">
 <input type="hidden" id="username" th:value="${session.user.username}">
 
