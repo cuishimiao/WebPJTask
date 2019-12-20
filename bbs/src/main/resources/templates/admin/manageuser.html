@@ -187,7 +187,7 @@
                 <button class="btn"  type="button" style="margin-left:50px;"><a th:href="@{/adduser}">添加用户</a> </button>
 
                 <form class="form-search form-inline center-block" th:action="@{/findAllByname}" th:method="get" style="display: inline-block;  margin-left:150px;"  >
-                    <span>用户编号：</span>
+                    <span>用户名：</span>
                     <input size="50" th:value="${searchname}" name="searchname" class="input-medium search-query" type="text" />
                     <button type="submit" class="btn">查找</button>
                 </form>
@@ -253,7 +253,22 @@
                 </tbody>
             </table>
 
-            <nav aria-label="Page navigation" class="center-block" >
+
+            <nav aria-label="Page navigation" class="center-block" th:if="${find}==1">
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="#" name="page">上一页</a>
+                    </li>
+                      <li class="active">
+                          <a>1</a>
+                      </li>
+                    <li>
+                        <a href="#" name="page">下一页</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Page navigation" class="center-block" th:if="${find}!=1">
                 <ul class="pagination pagination-lg">
                     <li>
                         <a th:href="@{/Users}+'?page='+${currentpage}+'&tag=0'" name="page">上一页</a>
@@ -263,9 +278,6 @@
                             <a  th:href="@{/Users}+'?page='+${p}+'&tag=1'" th:text="${p}" name="page"></a>
                         </li>
                     </td>
-                    <li th:if="${find}==1" class="active">
-                        <a>1</a>
-                    </li>
 
                     <!--<li th:class="${currentpage}==1? 'active':'#'">-->
                     <!--<a  th:href="@{/sspage}+'?page=1'+'&tag=1'" name="page">1</a>-->

@@ -82,8 +82,15 @@ public class ManageUser {
 
     //将修改后的信息更新
     @PostMapping("/modifyuser")
-    public String modifyuser(User user){
+    public String modifyuser(User user,Model m){
         System.out.println("将修改后的信息更新");
+        if(user.getPassword().isEmpty())
+        {
+            m.addAttribute("wrong","密码不能为空！！！");
+            m.addAttribute("msg",service.findusername(user.getUsername()));
+            String name=user.getUsername();
+            return "admin/managemodifyuser";
+        }
         service.updateuser(user);
         return "redirect:/Users";
     }
@@ -299,7 +306,7 @@ public class ManageUser {
         String username=(String) request.getSession().getAttribute("username");
         String password=(String) request.getSession().getAttribute("password");
         System.out.println("退出登录");
-        return "index";
+        return "redirect:index";
     }
 
     //退出登录
@@ -309,7 +316,7 @@ public class ManageUser {
         String username=(String) request.getSession().getAttribute("username");
         String password=(String) request.getSession().getAttribute("password");
         System.out.println("退出登录***************************");
-        return "admin/login";
+        return  "admin/login";
     }
 
 }

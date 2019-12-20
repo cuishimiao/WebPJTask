@@ -42,22 +42,22 @@ public class ManageArticle {
     public String delete(@PathVariable int id){
         service.deleteArticle(id);
         List<Article> all = service.findAll();
-        List<Category> all1 = categoryService.findAllCategory();
-        for(Category m:all1)
-        {
-            boolean flag=false;
-            for(Article n:all)
-            {
-                if(n.getCategory_id()==m.getCategory_id())
-                {
-                    flag=true;
-                }
-            }
-            if(flag)
-                continue;
-            else
-                categoryService.deletebyid(m.getCategory_id());
-        }
+//        List<Category> all1 = categoryService.findAllCategory();
+//        for(Category m:all1)
+//        {
+//            boolean flag=false;
+//            for(Article n:all)
+//            {
+//                if(n.getCategory_id()==m.getCategory_id())
+//                {
+//                    flag=true;
+//                }
+//            }
+//            if(flag)
+//                continue;
+//            else
+//                categoryService.deletebyid(m.getCategory_id());
+//        }
         return "redirect:/manageart";
     }
 

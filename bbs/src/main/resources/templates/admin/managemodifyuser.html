@@ -37,7 +37,7 @@
 
             <tr>
                 <td><span >用户密码</span></td>
-                <td><input type="text" th:value="${msg.password}" id="password" name="password"  placeholder="标题"/></td>
+                <td><input type="text" th:value="${msg.password}" id="password" name="password"  placeholder="用户密码"/></td>
 
             </tr>
 
@@ -45,34 +45,34 @@
 
             <tr>
                 <td><span >用户邮箱</span></td>
-                <td><input type="text" th:value="${msg.email}" id="email" name="email"  placeholder="创建时间" /></td>
+                <td><input type="text" th:value="${msg.email}" id="email" name="email"  placeholder="用户邮箱" /></td>
 
 
             </tr>
 
             <tr>
                 <td> <span >电话号码</span></td>
-                <td> <input type="text" th:value="${msg.phone}" id="phone"  name="phone" placeholder="种类编号"/></td>
+                <td> <input type="text" th:value="${msg.phone}" id="phone"  name="phone" placeholder="电话号码"/></td>
 
 
             </tr>
 
             <tr>
                 <td><span >工作</span></td>
-                <td><input type="text" th:value="${msg.work}" id="work" name="work"  placeholder="是否置顶"/></td>
+                <td><input type="text" th:value="${msg.work}" id="work" name="work"  placeholder="工作"/></td>
 
 
             </tr>
 
             <tr>
                 <td><span >地址</span></td>
-                <td><input type="text" th:value="${msg.address}" id="address" name="address" placeholder="用户头像"/></td>
+                <td><input type="text" th:value="${msg.address}" id="address" name="address" placeholder="地址"/></td>
 
             </tr>
 
             <tr>
                 <td><span >是否为管理员<strong>(*只读)</strong></span></td>
-                <td><input type="text" th:value="${msg.is_admin}" id="is_admin" name="is_admin" placeholder="用户头像" readonly="readonly"/></td>
+                <td><input type="text" th:value="${msg.is_admin}" id="is_admin" name="is_admin" placeholder="是否为管理员" readonly="readonly"/></td>
 
             </tr>
 
@@ -82,6 +82,8 @@
         <input style="width: 100px;height: 50px;margin-right: 50px;" type="submit" value="保存" id="btn"   />
         <input style="width: 100px;height: 50px"  type="button" value="返回" onclick="history.back(-1)"/>
     </form>
+
+    <span th:if="${wrong}"  style="color: red;">密码不能为空！！！</span>
 
 </div>
 </body>
