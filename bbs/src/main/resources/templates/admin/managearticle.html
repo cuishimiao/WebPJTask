@@ -218,9 +218,9 @@
                         <th width="100px">
                             置顶操作
                         </th>
-                        <th width="100px">
-                            用户头像
-                        </th>
+                        <!--<th width="100px">-->
+                            <!--用户头像-->
+                        <!--</th>-->
                         <th width="200px">
                             操作
                         </th>
@@ -236,7 +236,7 @@
                     <td th:text="${p.getCategory_id()}"></td>
                     <td th:text="${p.top}"></td>
                     <td><a th:href="@{/managesettop/} + ${p.article_id}" type="button" class="btn btn-primary">是/否</a></td>
-                    <td th:text="${p.uhead}"></td>
+                    <!--<td th:text="${p.uhead}"></td>-->
                     <td>
                         <a th:href="@{/managegetArt/} + ${p.article_id}" type="button" class="btn btn-primary">查看</a>
                         <a th:href="@{/managegetArt/} + ${p.article_id}+'?type=managemodify'" type="button" class="btn btn-success">编辑</a>

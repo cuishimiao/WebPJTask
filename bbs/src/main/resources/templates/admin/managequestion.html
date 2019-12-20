@@ -208,9 +208,9 @@
                         <th>
                             问题
                         </th>
-                        <th>
-                            头像
-                        </th>
+                        <!--<th>-->
+                            <!--头像-->
+                        <!--</th>-->
                         <th>
                             操作
                         </th>
@@ -223,7 +223,7 @@
                     <td th:text="${#strings.abbreviate(p.content,100)}"></td>
                     <td th:text="${#dates.format(p.time, 'yyyy-MM-dd')}"></td>
                     <td th:text="${p.question_title}"></td>
-                    <td th:text="${p.uhead}"></td>
+                    <!--<td th:text="${p.uhead}"></td>-->
                     <td>
                         <a th:href="@{/modifyq/} + ${p.question_id}" type="button" class="btn btn-success">编辑</a>
                         <a th:href="@{/deleterep/} + ${p.question_id}" type="button" class="btn btn-danger">删除</a>
