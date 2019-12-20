@@ -112,9 +112,8 @@ public class UserController {
      */
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request, Model model){
-        request.getSession().removeAttribute("user");
-        request.getSession().removeAttribute("curuser");
-        return "/";
+        request.getSession().invalidate();
+        return "index";
     }
 
     @RequestMapping("/modifyUserInfo")
