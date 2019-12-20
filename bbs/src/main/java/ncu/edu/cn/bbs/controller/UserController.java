@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,6 +94,9 @@ public class UserController {
         if(user.getPassword()==null || user.getPassword().equals("")){
             return "密码不能为空";
         }
+        if(user.getEmail()==null || user.getEmail().equals("")){
+            return "邮箱不能为空";
+        }
         User temp = service.findByName(user);
         if(temp != null){
             return "用户名已存在";
@@ -111,9 +116,9 @@ public class UserController {
      * @description:退出销毁session
      */
     @RequestMapping("/logout")
-    public String logout(HttpServletRequest request, Model model){
+    public void logout(HttpServletRequest request, HttpServletResponse response,Model model) throws IOException {
         request.getSession().invalidate();
-        return "index";
+        response.sendRedirect("/index");
     }
 
     @RequestMapping("/modifyUserInfo")
