@@ -13,7 +13,7 @@
 </select>
 
 <insert id="addUser">
-    insert into user(username,password,email,head) values (#{username},#{password},#{email},#{head},#{is_admin})
+    insert into user(username,password,email,head,is_admin) values (#{username},#{password},#{email},#{head},#{is_admin})
 </insert>
 
 <update id="modifyUserInfo" >

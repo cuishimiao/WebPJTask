@@ -100,7 +100,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header" style="width: 220px">
-            <a class="navbar-brand" title="logoTitle" href="#" style="margin-left: 30px">CoderGroup</a>
+            <a class="navbar-brand" title="logoTitle" href="#" style="margin-left: 30px">BBS论坛</a>
        </div>
        
        <div class="collapse navbar-collapse">
@@ -218,9 +218,9 @@
                         <th width="100px">
                             置顶操作
                         </th>
-                        <th width="100px">
-                            用户头像
-                        </th>
+                        <!--<th width="100px">-->
+                            <!--用户头像-->
+                        <!--</th>-->
                         <th width="200px">
                             操作
                         </th>
@@ -236,7 +236,7 @@
                     <td th:text="${p.getCategory_id()}"></td>
                     <td th:text="${p.top}"></td>
                     <td><a th:href="@{/managesettop/} + ${p.article_id}" type="button" class="btn btn-primary">是/否</a></td>
-                    <td th:text="${p.uhead}"></td>
+                    <!--<td th:text="${p.uhead}"></td>-->
                     <td>
                         <a th:href="@{/managegetArt/} + ${p.article_id}" type="button" class="btn btn-primary">查看</a>
                         <a th:href="@{/managegetArt/} + ${p.article_id}+'?type=managemodify'" type="button" class="btn btn-success">编辑</a>
@@ -247,7 +247,22 @@
             </table>
 
 
-            <nav aria-label="Page navigation" class="center-block" >
+            <nav aria-label="Page navigation" class="center-block" th:if="${find}==1">
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="#" name="page">上一页</a>
+                    </li>
+                    <li class="active">
+                        <a>1</a>
+                    </li>
+                    <li>
+                        <a href="#" name="page">下一页</a>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <nav aria-label="Page navigation" class="center-block" th:if="${find}!=1">
                   <ul class="pagination pagination-lg">
 				<li>
 					 <a th:href="@{/manageart}+'?page='+${currentpage}+'&tag=0'" name="page">上一页</a>
@@ -257,9 +272,6 @@
 				   	        <a  th:href="@{/manageart}+'?page='+${p}+'&tag=1'" th:text="${p}" name="page"></a>
                            </li>
                  </td>
-                  <li th:if="${find}==1" class="active">
-                      <a>1</a>
-                  </li>
 
 				<!--<li th:class="${currentpage}==1? 'active':'#'">-->
 					 <!--<a  th:href="@{/sspage}+'?page=1'+'&tag=1'" name="page">1</a>-->
