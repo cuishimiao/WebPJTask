@@ -22,4 +22,7 @@ public interface QuestionMapper {
     @Update("update question set wealthy=0 where question_id=#{curquestionId}")
     void UpdateWeathyById(Integer curquestionId);
 
+    @Select("select * from question order by time desc limit 5")
+    List<Question> findLeastQuestion();
+
 }

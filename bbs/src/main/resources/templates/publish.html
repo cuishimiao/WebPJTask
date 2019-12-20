@@ -19,7 +19,8 @@
                     content:$("#description").val(),
                     uid:$("#uid").val(),
                     category_id:$("#tag").val(),
-                    uhead:$("#uhead").val()
+                    uhead:$("#uhead").val(),
+                    uname:$("#username").val()
                 };
                 $.ajax({
                     url:"/writeArticle",
@@ -43,6 +44,7 @@
 <div th:insert="~{navigation :: nav}"></div>
 
 <input type="hidden" id="uhead" th:value="${session.user.getHead()}">
+<input type="hidden" id="username" th:value="${session.user.getName()}">
 
 
 
