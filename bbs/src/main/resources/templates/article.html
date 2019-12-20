@@ -122,8 +122,7 @@
          <div>
              <ul class="nav nav-pills" style="background-color: whitesmoke;">
                  <li role="presentation" class="active"><a href="#">全部文章</a></li>
-                 <li role="presentation"><a href="#">我的文章</a></li>
-                 <li role="presentation"><a href="#">我的收藏</a></li>
+                 <li role="presentation"><a href="/main">我的文章</a></li>
              </ul>
          </div>
         <div>
@@ -239,6 +238,17 @@
                     </div>
                 </div>
             </a>
+            <!--<div class="media" th:each="golduser:${goldUsers}">-->
+                <!--&lt;!&ndash;<div class="media-left">&ndash;&gt;-->
+                    <!--<a href="#" class="media-left">-->
+                        <!--<img th:src="@{'../static/images/'+${golduser.getHead()}}" alt="" class="img-circle" width="30">-->
+                    <!--</a>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--<div class="media-body">-->
+                    <!--<h6>昵 称：<span th:text="${golduser.getUsername()}"></span></h6>-->
+                    <!--<h6>赏金值：<span th:text="${golduser.getGold()}"></span></h6>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </div>
