@@ -25,12 +25,22 @@ public class ArticleController {
     @Autowired
     private CategoryService categoryService;
 
+    /*
+     * @param: []
+     * @return: java.util.List<ncu.edu.cn.bbs.entity.Article>
+     * @description: 查询所有文章，以列表的形式返回到前端
+     */
     @RequestMapping("/articles")
     @ResponseBody
     public List<Article> findAll(){
         return service.findAll();
     }
 
+    /*
+     * @param: [id, m]
+     * @return: java.lang.String
+     * @description: 根据文章id得到文章对象
+     */
     @RequestMapping("/getArticle/{id}")
     public String getArticle(@PathVariable int id, Model m){
         m.addAttribute("msg",service.getArticle(id));
@@ -38,6 +48,11 @@ public class ArticleController {
     }
 
 
+    /*
+     * @param: [uid]
+     * @return: java.util.List<ncu.edu.cn.bbs.entity.Article>
+     * @description:根据用户id得到用户的所有文章
+     */
     @RequestMapping("/articles/{uid}")
     @ResponseBody
     public List<Article> finaAllByUid(@PathVariable int uid){
@@ -105,19 +120,33 @@ public class ArticleController {
         }
     }
 
-
+    /*
+     * @param: [id]
+     * @return: java.lang.String
+     * @description:根据文章id删除该文章
+     */
     @RequestMapping("/deleteArticleById/{id}")
     @ResponseBody
     public String delete(@PathVariable int id){
         return service.deleteArticle(id);
     }
 
+    /*
+     * @param: [article]
+     * @return: java.lang.String
+     * @description:根据文章对象去修改文章
+     */
     @RequestMapping("/modifyArt")
     @ResponseBody
     public String modify(@RequestBody Article article){
         return service.modifyArticle(article);
     }
 
+    /*
+     * @param: [article_id, model]
+     * @return: java.lang.String
+     * @description:根据文章id得到文章对象并且进行视图的定位 (查看文章)
+     */
     @RequestMapping("/showArticle/{article_id}")
     public String publish(@PathVariable int article_id,Model model){
         Article article = service.getArticle(article_id);
@@ -125,6 +154,11 @@ public class ArticleController {
         return "/user/showArticle";
     }
 
+    /*
+     * @param: [article_id, model]
+     * @return: java.lang.String
+     * @description: 根据文章id得到文章对象并且进行视图的定位（修改文章）
+     */
     @RequestMapping("/modifyArticle/{article_id}")
     public String modifyArticle(@PathVariable int article_id, Model model){
         Article article = service.getArticle(article_id);

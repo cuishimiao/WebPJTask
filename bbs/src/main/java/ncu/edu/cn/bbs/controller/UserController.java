@@ -121,6 +121,11 @@ public class UserController {
         response.sendRedirect("/index");
     }
 
+    /*
+     * @param: [user]
+     * @return: java.lang.String
+     * @description:修改个人信息
+     */
     @RequestMapping("/modifyUserInfo")
     @ResponseBody
     public String modifyUserInfo(@RequestBody User user){
@@ -133,6 +138,11 @@ public class UserController {
         }
     }
 
+    /*
+     * @param: [session]
+     * @return: java.util.Map<java.lang.String,java.lang.Object>
+     * @description: 判断是否登录
+     */
     @RequestMapping("/isLogin")
     @ResponseBody
     public Map<String,Object> isLogin(HttpSession session){
@@ -141,6 +151,11 @@ public class UserController {
         return map;
     }
 
+    /*
+     * @param: [user]
+     * @return: java.lang.String
+     * @description:修改密码
+     */
     @RequestMapping("/modifyPassword")
     @ResponseBody
     public String modifyPassword(@RequestBody User user){
@@ -152,6 +167,11 @@ public class UserController {
         }
     }
 
+    /*
+     * @param: [email, uid]
+     * @return: java.lang.String
+     * @description:修改邮箱
+     */
     @RequestMapping("/modifyEmail")
     @ResponseBody
     public String modifyEmail(@RequestParam String email,@RequestParam String uid){
@@ -163,6 +183,11 @@ public class UserController {
         }
     }
 
+    /*
+     * @param: [user, model, session, request]
+     * @return: java.lang.String
+     * @description:选择头像
+     */
     @RequestMapping("/chooseHead")
     public String chooseHead(@RequestBody User user,Model model,HttpSession session,HttpServletRequest request){
         service.modifyHead(user);

@@ -48,7 +48,6 @@ public interface ArticleDao {
 
     List<Article> findAllByUid(int uid);
 
-
     //manage查找文章
     Article findAllByarticleid(int article_id);
     //manage修改文章

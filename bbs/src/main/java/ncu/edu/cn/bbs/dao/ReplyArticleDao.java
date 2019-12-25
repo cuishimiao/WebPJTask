@@ -14,15 +14,14 @@ public interface ReplyArticleDao {
     int generateReply(ReplyArticle replyArticle);
     //查看某文章的所有评论
     List<ReplyArticle>findAllReply(int id);
-
+    //查看所有评论
     List<ReplyArticle>findAll();
-
     //查看某一个评论
     ReplyArticle getReply(int id);
     //删除某评论
     int deleteReply(int id);
     //修改某评论
     int modifyReply(ReplyArticle replyArticle);
-
+    //查看某个评论
     ReplyArticle showReplyById(int id);
 }

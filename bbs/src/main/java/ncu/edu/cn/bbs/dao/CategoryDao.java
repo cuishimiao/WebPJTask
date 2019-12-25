@@ -16,7 +16,19 @@ public interface CategoryDao {
      * @description:查询所有帖子分类
      */
     List<Category> findAll();
+
+    /*
+     * @param: [category_id]
+     * @return: int
+     * @description:根据id删除类别
+     */
     int deletebyid(int category_id);
+
+    /*
+     * @param: [category_name]
+     * @return: int
+     * @description:插入类别
+     */
     int insertCategory(String  category_name);
 
 

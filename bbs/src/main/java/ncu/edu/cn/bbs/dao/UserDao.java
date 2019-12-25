@@ -33,7 +33,6 @@ public interface UserDao {
 
     int modifyHeader(User user);
 
-
     int updateuser(User user);
 
     User findusername(String username);;

@@ -27,7 +27,11 @@ public class RequestArticleController {
     @Autowired
     private RequestArticleService articleService;
 
-    //发问题
+    /*
+     * @param: [article]
+     * @return: java.lang.String
+     * @description:发布一个问题
+     */
     @RequestMapping("/generateRequest")
     @ResponseBody
     public String generate(@RequestBody Question article) throws  IOException {
@@ -46,12 +50,22 @@ public class RequestArticleController {
 
     }
 
+    /*
+     * @param: [user_id]
+     * @return: java.util.List<ncu.edu.cn.bbs.entity.Question>
+     * @description:根据用户的id得到用户发布的所有问题
+     */
     @RequestMapping("/findAllRequest/{user_id}")
     @ResponseBody
     public List<Question> findAll(@PathVariable int user_id){
         return articleService.findAllRequest(user_id);
     }
 
+    /*
+     * @param: [id]
+     * @return: java.util.Map<java.lang.String,java.lang.Object>
+     * @description:根据问题的id得到question对象
+     */
     @RequestMapping("/getRequest/{id}")
     @ResponseBody
     public Map<String,Object>getRequest(@PathVariable int id){
@@ -59,14 +73,23 @@ public class RequestArticleController {
         map.put("msg",articleService.getRequestArticle(id));
         return map;
     }
-    
+
+    /*
+     * @param: [id]
+     * @return: java.lang.String
+     * @description:根据问题Id删除该问题
+     */
     @RequestMapping("/deleteByQId/{id}")
     @ResponseBody
     public String deleteByQid(@PathVariable int id){
         return articleService.deleteByQId(id);
     }
 
-
+    /*
+     * @param: [id, model]
+     * @return: java.lang.String
+     * @description:根据问题的id查看问题（视图定位）
+     */
     @RequestMapping("/showQuestion/{id}")
     public String showQuestion(@PathVariable int id ,Model model){
         Question question = articleService.getRequestArticle(id);
